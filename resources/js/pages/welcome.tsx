@@ -801,7 +801,6 @@ export default function Welcome({
                         </div>
                     </main>
                 </div>
-                <div className="hidden h-14.5 lg:block"></div>
             </div>
         </>
     );
