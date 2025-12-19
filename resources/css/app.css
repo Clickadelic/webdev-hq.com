@@ -8,10 +8,14 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-    --font-sans:
+    /* --font-sans:
         'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-        'Noto Color Emoji';
+        'Noto Color Emoji'; */
+
+    --font-sans: 'Open Sans', var(--font-sans);
+    --font-serif: 'Yellowtail', var(--font-serif);
+    --font-mono: 'La Belle Aurore', var(--font-mono);
 
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
@@ -68,7 +72,8 @@
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
+    /* --primary: oklch(0.205 0 0); */
+    --primary: oklch(0.6502 0.1883 252.56); /* Mantis Blue */
     --primary-foreground: oklch(0.985 0 0);
     --secondary: oklch(0.97 0 0);
     --secondary-foreground: oklch(0.205 0 0);
