@@ -45,6 +45,7 @@ export default function Welcome({
                 <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
                     <main className="container mx-auto flex flex-col items-center justify-center">
                         <Testlogo />
+                        <br />
                         <h3 className="font-open-sans">Welcome</h3>
                         <h3 className="font-la-belle-aurore">Welcome</h3>
                         <h3 className="font-oooh-baby">Welcome</h3>
