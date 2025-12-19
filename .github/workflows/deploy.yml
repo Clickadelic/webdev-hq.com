@@ -1,4 +1,4 @@
-name: Deploy dashboard.tobias-hopp.de
+name: Deploy webdev-hq.com (Laravel + Inertia + React)
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: deploy-dashboard-production
+  group: deploy-webdev-hq-production
   cancel-in-progress: true
 
 permissions:
