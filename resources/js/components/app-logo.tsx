@@ -5,7 +5,6 @@ export default function AppLogo() {
         <>
             <div className="flex aspect-square size-8 items-center justify-center">
                 <AppLogoIcon />
-                {/* <img src="./icons/extension/icon-128.png" className="bg-white group-hover:opacity-80" width="32" height="32" alt="WebDev HQ Logo" /> */}
             </div>
             <div className="ml-1 grid flex-1 text-left text-sm">
                 <h1 className="text-2xl my-3 max-w-[180px]">
