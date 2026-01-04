@@ -1,8 +1,8 @@
-name: Deploy webdev-hq.com (Laravel + Inertia + React)
+name: Deploy webdev-hq.com
 
 on:
   push:
-    branches: ["production"]
+    branches: ["prod"]
   workflow_dispatch:
 
 concurrency:
@@ -13,154 +13,169 @@ permissions:
   contents: read
 
 env:
-  PHP_VERSION: "8.3"
   NODE_VERSION: "20"
+  PHP_VERSION: "8.2"
 
 jobs:
-  build-and-deploy:
+  deploy:
+    if: ${{ github.ref == 'refs/heads/prod' }}
     runs-on: ubuntu-latest
+    environment: production
+
     steps:
+      # 1. Code auschecken
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup PHP & Composer
+      # 2. PHP einrichten
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ env.PHP_VERSION }}
-          tools: composer
-          extensions: mbstring, intl, bcmath, curl, gd, pdo_mysql
+          extensions: mbstring, bcmath, xml, curl, pdo, tokenizer
+          coverage: none
 
-      - name: Install PHP dependencies (for build-time artisan)
-        run: composer install --no-interaction --prefer-dist
+      # 3. Composer Cache einrichten
+      - name: Cache Composer
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: composer-
 
-      - name: Prepare app environment (.env and key)
-        shell: bash
-        run: |
-          [ -f .env ] || cp .env.example .env
-          php artisan key:generate --force || true
+      # 4. Composer-Abhängigkeiten installieren
+      - name: Install Composer dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader
 
+      # 5. Node.js einrichten
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
+          cache: "npm"
 
+      # 6. Node-Dependencies installieren
       - name: Install Node dependencies
-        run: npm ci || (rm package-lock.json && npm install)
+        run: npm ci || (rm -f package-lock.json && npm install)
 
-      - name: Build frontend (TypeScript + Vite)
-        run: npm run build
-
-      - name: Validate required secrets
-        shell: bash
+      # 7. Wayfinder & Vite Build
+      - name: Build Wayfinder types & Vite assets
         run: |
-          set -e
-          missing=0
-          [ -z "${{ secrets.DEPLOY_HOST }}" ] && echo "::error title=Missing secret::DEPLOY_HOST is not set" && missing=1
-          [ -z "${{ secrets.DEPLOY_USER }}" ] && echo "::error title=Missing secret::DEPLOY_USER is not set" && missing=1
-          [ -z "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" ] && echo "::error title=Missing secret::DEPLOY_SSH_PRIVATE_KEY is not set" && missing=1
-          [ -z "${{ secrets.DEPLOY_PORT }}" ] && echo "::error title=Missing secret::DEPLOY_PORT is not set" && missing=1
-          [ -z "${{ secrets.DEPLOY_PATH }}" ] && echo "::error title=Missing secret::DEPLOY_PATH is not set" && missing=1
-          [ -z "${{ secrets.SSH_HOST_FINGERPRINT }}" ] && echo "::notice title=Host key checking::SSH_HOST_FINGERPRINT not set; host key will not be verified"
-          if [ "$missing" -eq 1 ]; then
+          php artisan wayfinder:generate --with-form
+          npm run build
+
+      # 8. SSH Key für Deployment schreiben
+      - name: Write SSH key (base64 secret)
+        shell: bash
+        env:
+          KEY_B64: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY_B64 }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          KEY="$HOME/.ssh/web_deploy_key"
+          if [ -z "$KEY_B64" ]; then
+            echo "::error title=Missing secret::DEPLOY_SSH_PRIVATE_KEY_B64 is not set"
             exit 1
           fi
+          echo "$KEY_B64" | base64 -d > "$KEY"
+          chmod 600 "$KEY"
+          ssh-keygen -lf "$KEY" >/dev/null
 
-      - name: Prepare SSH key
+      # 9. SSH Known Hosts hinzufügen
+      - name: Add host key
         shell: bash
         run: |
-          set -e
-          mkdir -p "$GITHUB_WORKSPACE/.ssh"
-          chmod 700 "$GITHUB_WORKSPACE/.ssh"
-          KEY_PATH="$GITHUB_WORKSPACE/.ssh/web_deploy_key"
-          if [ -n "${{ secrets.DEPLOY_SSH_PRIVATE_KEY_B64 }}" ]; then
-            echo "Using base64-encoded private key secret"
-            printf "%s" "${{ secrets.DEPLOY_SSH_PRIVATE_KEY_B64 }}" | base64 -d > "$KEY_PATH"
-          else
-            printf "%s" "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" | tr -d '\r' > "$KEY_PATH"
-          fi
-          chmod 600 "$KEY_PATH"
-          # Validate key format; fail early if invalid or passphrase-protected
-          if ! ssh-keygen -lf "$KEY_PATH" >/dev/null 2>&1; then
-            echo "::error title=Invalid SSH key::The provided private key is invalid or passphrase-protected."
-            echo "Add DEPLOY_SSH_PRIVATE_KEY_B64 (base64 of your key) or provide an unencrypted deploy key."
-            exit 1
-          fi
-
-      - name: Verify key file exists
-        shell: bash
-        run: |
-          set -e
-          ls -la "$GITHUB_WORKSPACE/.ssh"
-          test -f "$GITHUB_WORKSPACE/.ssh/web_deploy_key" || (echo "::error ::Key file missing" && exit 1)
-
-      - name: Add known_hosts (validate fingerprint)
-        shell: bash
-        run: |
-          set -e
+          set -euo pipefail
           HOST="${{ secrets.DEPLOY_HOST }}"
-          PORT="${{ secrets.DEPLOY_PORT }}"
-          FPRINT="${{ secrets.SSH_HOST_FINGERPRINT }}"
-          KEYS=$(ssh-keyscan -p "$PORT" -t rsa,ed25519 -H "$HOST" 2>/dev/null || true)
-          if [ -z "$KEYS" ]; then
-            echo "::error title=ssh-keyscan failed::No host keys received for $HOST:$PORT"
-            exit 1
-          fi
-          if [ -n "$FPRINT" ]; then
-            MATCH=0
-            while IFS= read -r line; do
-              FP=$(printf "%s\n" "$line" | ssh-keygen -lf - -E sha256 | awk '{print $2}')
-              if [ "$FP" = "$FPRINT" ]; then
-                MATCH=1
-                break
-              fi
-            done <<< "$KEYS"
-            if [ "$MATCH" -ne 1 ]; then
-              echo "::error title=Host key mismatch::None of the server host key fingerprints match $FPRINT"
-              echo "::group::Computed fingerprints"
-              printf "%s\n" "$KEYS" | ssh-keygen -lf - -E sha256 || true
-              echo "::endgroup::"
-              exit 1
-            fi
-          fi
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          printf "%s\n" "$KEYS" >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
+          PORT="${{ secrets.DEPLOY_PORT }}"; [ -z "$PORT" ] && PORT=22
+          ssh-keyscan -p "$PORT" -t rsa,ed25519 -H "$HOST" >> "$HOME/.ssh/known_hosts" 2>/dev/null
 
+      # 10. SSH Connectivity testen
+      - name: Probe SSH connectivity
+        shell: bash
+        run: |
+          set -euo pipefail
+          PORT="${{ secrets.DEPLOY_PORT }}"; [ -z "$PORT" ] && PORT=22
+          ssh -i "$HOME/.ssh/web_deploy_key" \
+            -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes \
+            -o IdentitiesOnly=yes \
+            -p "$PORT" \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" echo ok
+
+      # 11. Remote-Verzeichnis sicherstellen
       - name: Ensure remote directory exists
         shell: bash
         run: |
-          set -e
-          REMOTE="${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}"
-          ssh -i "$GITHUB_WORKSPACE/.ssh/web_deploy_key" -o BatchMode=yes -o StrictHostKeyChecking=yes -o IdentitiesOnly=yes -p "${{ secrets.DEPLOY_PORT }}" "$REMOTE" "mkdir -p \"${{ secrets.DEPLOY_PATH }}\""
+          set -euo pipefail
+          PORT="${{ secrets.DEPLOY_PORT }}"; [ -z "$PORT" ] && PORT=22
+          ssh -i "$HOME/.ssh/web_deploy_key" \
+            -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes \
+            -o IdentitiesOnly=yes \
+            -p "$PORT" \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
+            "mkdir -p \"${{ secrets.DEPLOY_PATH }}\""
 
-      - name: Deploy files via SSH (tar stream with excludes)
+      # 12. Upload der App (tar stream)
+      - name: Upload app (tar stream)
         shell: bash
         run: |
-          set -e
+          set -euo pipefail
+          PORT="${{ secrets.DEPLOY_PORT }}"; [ -z "$PORT" ] && PORT=22
           REMOTE="${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}"
           REMOTE_PATH="${{ secrets.DEPLOY_PATH }}"
-          TAR_EXCLUDES=(
-            --exclude=.git
-            --exclude=.github
-            --exclude=node_modules
-            --exclude=vendor
-            --exclude=tests
-            --exclude=storage
-            --exclude=x-files
-            --exclude=.env
-            --exclude=.editorconfig
-            --exclude=.prettier*
-            --exclude=.eslint*
-            --exclude=docker
-          )
-          tar "${TAR_EXCLUDES[@]}" -czf - . | ssh -i "$GITHUB_WORKSPACE/.ssh/web_deploy_key" -o BatchMode=yes -o StrictHostKeyChecking=yes -o IdentitiesOnly=yes -p "${{ secrets.DEPLOY_PORT }}" "$REMOTE" "tar -xzf - -C \"$REMOTE_PATH\""
+          tar \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude=node_modules \
+            --exclude=vendor \
+            --exclude=tests \
+            --exclude=storage \
+            --exclude=.env \
+            --exclude=x-files \
+            -czf - . \
+          | ssh -i "$HOME/.ssh/web_deploy_key" \
+              -o BatchMode=yes \
+              -o StrictHostKeyChecking=yes \
+              -o IdentitiesOnly=yes \
+              -p "$PORT" \
+              "$REMOTE" "tar -xzf - -C \"$REMOTE_PATH\""
 
-      - name: Run server-side deploy tasks (Composer + Artisan)
+      # 13. Remote Deployment: Composer, Artisan, Caches
+      - name: Run remote deploy (Composer + Artisan)
         shell: bash
         run: |
+          set -euo pipefail
+          PORT="${{ secrets.DEPLOY_PORT }}"; [ -z "$PORT" ] && PORT=22
+          ssh -i "$HOME/.ssh/web_deploy_key" \
+            -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes \
+            -o IdentitiesOnly=yes \
+            -p "$PORT" \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" << 'EOF'
           set -e
-          REMOTE="${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}"
-          REMOTE_PATH="${{ secrets.DEPLOY_PATH }}"
-          ssh -i "$GITHUB_WORKSPACE/.ssh/web_deploy_key" -o BatchMode=yes -o StrictHostKeyChecking=yes -p "${{ secrets.DEPLOY_PORT }}" "$REMOTE" bash -lc "set -e; cd \"$REMOTE_PATH\"; mkdir -p storage bootstrap/cache; composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader; php artisan key:generate --force || true; php artisan migrate --force; php artisan config:cache; php artisan route:cache; php artisan view:cache; php artisan storage:link || true; chmod -R ug+rwx storage bootstrap/cache || true"
+          cd "${{ secrets.DEPLOY_PATH }}"
+
+          # Sicherstellen der Ordner
+          mkdir -p storage bootstrap/cache resources/views
+
+          # env-Datei
+          [ -f .env ] || cp .env.example .env
+
+          # Alte Caches löschen
+          php artisan config:clear
+          php artisan view:clear || true
+
+          # Composer + Artisan
+          composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+          php artisan key:generate --force || true
+          php artisan migrate --force
+          php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache || true
+          php artisan storage:link || true
+
+          chmod -R ug+rwx storage bootstrap/cache || true
+          EOF
