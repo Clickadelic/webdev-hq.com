@@ -2,7 +2,7 @@ name: Deploy webdev-hq.com
 
 on:
   push:
-    branches: ["prod"]
+    branches: ["production"]
   workflow_dispatch:
 
 concurrency:
