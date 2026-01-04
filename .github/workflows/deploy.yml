@@ -18,7 +18,7 @@ env:
 
 jobs:
   deploy:
-    if: ${{ github.ref == 'refs/heads/prod' }}
+    if: ${{ github.ref == 'refs/heads/production' }}
     runs-on: ubuntu-latest
     environment: production
 
