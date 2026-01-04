@@ -1,7 +1,10 @@
+import { Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
-import { type SharedData } from '@/types';
-import { Head, Link, usePage } from '@inertiajs/react';
+
 import AppLogo from '@/components/app-logo';
+
+import { type SharedData } from '@/types';
+
 import { cn } from '@/lib/utils';
 
 interface PublicHeaderProps {
@@ -10,7 +13,7 @@ interface PublicHeaderProps {
 }
 
 export default function PublicHeader({ canRegister = true, className }: PublicHeaderProps) {
-    const { auth, quote } = usePage<SharedData>().props;
+    const { auth } = usePage<SharedData>().props;
     return (
         <div className={cn("w-full bg-white shadow", className)}>
             <header className="container mx-auto flex items-center justify-between p-2">
