@@ -1,7 +1,7 @@
 import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
-
+import AppLogo from '../components/app-logo';
 interface PublicLayoutProps {
     title?: string
     children: React.ReactNode
@@ -23,8 +23,8 @@ export default function PublicLayout({ title, children, canRegister }: PublicLay
             <Head title={title} />
             <div className="flex flex-col min-h-dvh justify-between items-center">
                 <div className="w-full bg-white shadow">
-                    <header className="container mx-auto flex items-center justify-between">
-                        <h1>Public Layout</h1>
+                    <header className="container mx-auto flex items-center justify-between p-4">
+                        <AppLogo />
                         <nav className="flex items-center justify-end gap-4">
                             {auth.user ? (
                                 <Link
@@ -55,7 +55,7 @@ export default function PublicLayout({ title, children, canRegister }: PublicLay
                     </header>
                 </div>
                 {children}
-                <div className="w-full bg-gray-200 shadow p-4">
+                <div className="w-full bg-white p-4">
                     <footer className="container mx-auto flex items-center justify-center">
                         <p>{quote && quote.message}</p>
                     </footer>
