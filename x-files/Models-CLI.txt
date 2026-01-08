@@ -1,0 +1,9 @@
+php artisan make:model App -a --api
+
+php artisan make:model Category -a
+
+php artisan make:migration create_categorizables_table
+
+php artisan make:model Tag -a
+
+php artisan make:migration create_taggables_table
