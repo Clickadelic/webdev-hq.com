@@ -5,13 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use App\Enums\AppStatus;
 
 class App extends Model
 {
     use HasUuids, SoftDeletes;
-
+    
     protected $keyType = 'string';
     public $incrementing = false;
+    
+    protected $casts = [
+        'status' => AppStatus::class,
+    ];
 
     protected $fillable = [
         'title',
@@ -20,8 +25,13 @@ class App extends Model
         'description',
         'created_by',
         'status',
-        'is_active',
     ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function creator()
     {

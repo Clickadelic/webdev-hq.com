@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Enums\AppStatus;
 
 return new class extends Migration
 {
@@ -30,14 +31,13 @@ return new class extends Migration
                 ->nullOnDelete();
 
             // Optional extensions
-            $table->string('status')->default('published');
-            $table->boolean('is_active')->default(true);
+            $table->string('status')->default(AppStatus::Published->value);
 
             // Housekeeping
             $table->timestamps();
             $table->softDeletes();
 
-            $table->index(['status', 'is_active']);
+            $table->index(['status']);
         });
     }
 
