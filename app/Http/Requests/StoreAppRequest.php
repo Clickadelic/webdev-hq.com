@@ -11,8 +11,9 @@ class StoreAppRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -22,7 +23,13 @@ class StoreAppRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "id" => ["required", "integer"],
+            "title" => ["required", "string"],
+            "url" => ["required", "url"],
+            "target" => ["required", "string"],
+            "description" => ["nullable", "string"],
+            "created_by" => ["required", "string"],
+            "status" => ["required", "string"],
         ];
     }
 }
