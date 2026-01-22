@@ -1,0 +1,43 @@
+<?php
+
+use App\Enums\Status;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('hyperlinks', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('title');
+            $table->string('url');
+            $table->text('description')->nullable();
+
+            $table->foreignId('category_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
+
+            $table->string('status')
+                ->default(Status::Draft->value)
+                ->index();
+
+            $table->boolean('is_featured')->default(false);
+
+            $table->foreignId('created_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
+
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('hyperlinks');
+    }
+};

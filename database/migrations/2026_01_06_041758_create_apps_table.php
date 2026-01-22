@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Enums\AppStatus;
+use App\Enums\Status;
 
 return new class extends Migration
 {
@@ -31,7 +31,7 @@ return new class extends Migration
                 ->nullOnDelete();
 
             // Optional extensions
-            $table->string('status')->default(AppStatus::Published->value);
+            $table->string('status')->default(Status::Published->value);
 
             // Housekeeping
             $table->timestamps();
