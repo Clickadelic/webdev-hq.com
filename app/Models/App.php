@@ -40,7 +40,7 @@ class App extends Model
 
     public function categories()
     {
-        return $this->morphToMany(Category::class, 'categorizable');
+        return $this->morphToMany(Category::class, name: 'categorizable');
     }
 
     public function tags()
