@@ -1,13 +1,13 @@
 
 import AppLayout from '@/layouts/app-layout';
-import { hyperlinks } from '@/routes';
+
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Hyperlinks',
-        href: hyperlinks().url,
+        href: '/hyperlinks',
     },
 ];
 

@@ -15,7 +15,6 @@ class HyperlinkController extends Controller
     public function index()
     {
         $links = Hyperlink::query()
-            ->where('is_active', true)
             ->with('category')
             ->orderByDesc('is_featured')
             ->orderBy('title')
