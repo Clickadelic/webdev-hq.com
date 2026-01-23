@@ -21,7 +21,7 @@ class HyperlinkController extends Controller
             ->orderBy('title')
             ->paginate(24);
 
-        return view('hyperlinks.index', compact('links'));
+        return inertia('Hyperlinks/Index', compact('links'));
     }
 
     /**

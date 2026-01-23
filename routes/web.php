@@ -15,9 +15,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
+    // Hyperlinks
+    Route::resource('/hyperlinks', HyperlinkController::class);
 });
-
-// Hyperlinks
-Route::get('/links', [HyperlinkController::class, 'index']);
 
 require __DIR__.'/settings.php';
