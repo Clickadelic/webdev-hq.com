@@ -1,5 +1,4 @@
 import { SVGAttributes } from 'react';
-import webdedevhqLogo from '../icons/webdevhq-logo.svg';
 
 export default function AppLogoIcon(props: SVGAttributes<SVGElement>) {
 

@@ -14,13 +14,13 @@ class HyperlinkController extends Controller
 
     public function index()
     {
-        $links = Hyperlink::query()
+        $hyperlinks = Hyperlink::query()
             ->with('category')
             ->orderByDesc('is_featured')
             ->orderBy('title')
             ->paginate(24);
 
-        return inertia('Hyperlinks/Index', compact('links'));
+        return inertia('hyperlinks/Index', compact('hyperlinks'));
     }
 
     /**
