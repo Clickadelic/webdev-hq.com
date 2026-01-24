@@ -25,8 +25,6 @@ return new class extends Migration
                 ->default(Status::Draft->value)
                 ->index();
 
-            $table->boolean('is_featured')->default(false);
-
             $table->foreignId('created_by')
                 ->nullable()
                 ->constrained('users')
