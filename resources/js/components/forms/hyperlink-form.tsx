@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import { HyperlinkSchema } from "@/schemas";
-import { cn } from "@/lib/utils";
 
 import {
     Form,
@@ -25,6 +24,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+
+import { cn } from "@/lib/utils";
 
 type HyperlinkFormValues = z.infer<typeof HyperlinkSchema>;
 
