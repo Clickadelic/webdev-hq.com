@@ -1,8 +1,7 @@
 import AppLogoIcon from './app-logo-icon';
-import { Link } from '@inertiajs/react';
 export default function AppLogo() {
     return (
-        <Link href="/" className="flex items-center" id="logo" title="WebDev HQ">
+        <div className="flex items-center" id="logo" title="WebDev HQ">
             <div className="flex aspect-square size-8 items-center justify-center">
                 <AppLogoIcon className="size-6" />
             </div>
@@ -15,6 +14,6 @@ export default function AppLogo() {
                     </div>
                 </h1>
             </div>
-        </Link>
+        </div>
     );
 }
