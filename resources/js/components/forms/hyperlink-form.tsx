@@ -68,9 +68,9 @@ function HyperlinkForm({
                     name="title"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Titel</FormLabel>
+                            <FormLabel>Title</FormLabel>
                             <FormControl>
-                                <Input placeholder="Google" {...field} />
+                                <Input placeholder="Best link resource" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
