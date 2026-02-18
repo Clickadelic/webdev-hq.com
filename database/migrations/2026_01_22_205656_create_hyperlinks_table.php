@@ -25,11 +25,6 @@ return new class extends Migration
                 ->default(Status::Draft->value)
                 ->index();
 
-            $table->foreignId('created_by')
-                ->nullable()
-                ->constrained('users')
-                ->nullOnDelete();
-
             $table->timestamps();
         });
     }

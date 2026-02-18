@@ -14,19 +14,18 @@ class Hyperlink extends Model
         'title',
         'url',
         'description',
+        'category_id',
         'status',
-        'is_featured',
     ];
 
     protected $casts = [
-        'status'      => Status::class,
-        'is_featured' => 'boolean',
+        'category_id' => 'integer',
     ];
 
     /*
-    |--------------------------------------------------------------------------
-    | Relationships
-    |--------------------------------------------------------------------------
+    --------------------------------------------------------------------------
+     Relationships
+    --------------------------------------------------------------------------
     */
 
     public function category()
