@@ -13,7 +13,7 @@ class HyperlinkController extends Controller
      */
     public function index()
     {
-        $hyperlinks = Hyperlink::latest()->get();
+        $hyperlinks = Hyperlink::latest()->paginate(15);
 
         return inertia('hyperlinks/index', [
             'hyperlinks' => $hyperlinks,

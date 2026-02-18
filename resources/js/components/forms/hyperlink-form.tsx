@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import { HyperlinkSchema } from "@/schemas";
-
+import { useEffect } from "react";
 import {
     Form,
     FormControl,
@@ -46,15 +46,20 @@ function HyperlinkForm({
             title: "",
             url: "",
             description: "",
-            is_featured: false,
             status: "published",
             ...defaultValues,
         },
     });
 
     function handleSubmit(values: HyperlinkFormValues) {
+        console.log(values);
+        console.log(form.formState.errors);
         onSubmit?.(values);
     }
+
+    useEffect(() => {
+        console.log(form.formState.errors);
+    }, [form.formState.errors]);
 
     return (
         <Form {...form}>
@@ -121,8 +126,8 @@ function HyperlinkForm({
                         <FormItem>
                             <FormLabel>Status</FormLabel>
                             <Select
+                                value={field.value}
                                 onValueChange={field.onChange}
-                                defaultValue={field.value}
                             >
                                 <FormControl>
                                     <SelectTrigger>
@@ -146,30 +151,11 @@ function HyperlinkForm({
                     )}
                 />
 
-                {/* Featured */}
-                <FormField
-                    control={form.control}
-                    name="is_featured"
-                    render={({ field }) => (
-                        <FormItem className="flex flex-row items-center gap-2">
-                            <FormControl>
-                                <Checkbox
-                                    checked={field.value}
-                                    onCheckedChange={field.onChange}
-                                />
-                            </FormControl>
-                            <FormLabel className="cursor-pointer">
-                                Hervorgehoben
-                            </FormLabel>
-                        </FormItem>
-                    )}
-                />
-
                 {/* Submit */}
                 <div className="flex justify-end">
-                    <Button type="submit">
+                    <button type="submit">
                         Speichern
-                    </Button>
+                    </button>
                 </div>
             </form>
         </Form>
