@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import { HyperlinkSchema } from "@/schemas";
-import { useEffect } from "react";
+
 import {
     Form,
     FormControl,
@@ -53,13 +53,8 @@ function HyperlinkForm({
 
     function handleSubmit(values: HyperlinkFormValues) {
         console.log(values);
-        console.log(form.formState.errors);
         onSubmit?.(values);
     }
-
-    useEffect(() => {
-        console.log(form.formState.errors);
-    }, [form.formState.errors]);
 
     return (
         <Form {...form}>
@@ -153,9 +148,9 @@ function HyperlinkForm({
 
                 {/* Submit */}
                 <div className="flex justify-end">
-                    <button type="submit">
+                    <Button type="submit">
                         Speichern
-                    </button>
+                    </Button>
                 </div>
             </form>
         </Form>
