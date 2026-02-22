@@ -46,6 +46,6 @@ class Hyperlink extends Model
 
     public function scopePublished($query)
     {
-        return $query->where('status', Status::Published);
+        return $query->where('status', Status::Published->value);
     }
 }

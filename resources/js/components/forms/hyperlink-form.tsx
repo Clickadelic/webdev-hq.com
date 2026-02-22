@@ -50,12 +50,10 @@ function HyperlinkForm({
             ...defaultValues,
         },
     });
-
     function handleSubmit(values: HyperlinkFormValues) {
-        console.log(values);
+        // Hier rufen wir die Prop auf, die von der Parent-Seite kommt
         onSubmit?.(values);
     }
-
     return (
         <Form {...form}>
             <form
