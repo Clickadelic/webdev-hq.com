@@ -1,17 +1,14 @@
-// Hyperlinks.tsx
-import { index } from "@/actions/App/Http/Controllers/HyperlinkController";
+"use client";
+
+import { Link } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
-import { type BreadcrumbItem } from '@/types';
+import { usePage } from '@inertiajs/react';
 
-// Definiere den Typ für ein Hyperlink-Item (basierend auf deinem Model)
-interface Hyperlink {
-    id: number;
-    title: string;
-    url: string;
-    description: string | null;
-    status: string;
-}
+import { type BreadcrumbItem } from '@/types';
+import { Hyperlink } from '@/types';
+
+import { index } from "@/actions/App/Http/Controllers/HyperlinkController";
 
 interface Props {
     hyperlinks: Hyperlink[];
@@ -24,14 +21,16 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Hyperlinks({ hyperlinks }: Props) {
+export default function Hyperlinks() {
+    const { hyperlinks } = usePage<{ hyperlinks: any }>().props;
+    const items = hyperlinks.data;
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className="flex flex-col gap-8 p-4">
                 
                 {/* Sektion 1: Das Formular (oben oder in der Sidebar) */}
                 <div className="max-w-2xl">
-                    <h2 className="text-xl font-bold mb-4">Neuen Link hinzufügen</h2>
+                    <h2 className="text-lg font-medium mb-4">Add a Hyperlink </h2>
                     <HyperlinkForm className="border bg-white dark:bg-neutral-900 p-6 rounded-xl shadow-sm" />
                 </div>
 
@@ -39,39 +38,39 @@ export default function Hyperlinks({ hyperlinks }: Props) {
 
                 {/* Sektion 2: Die Liste der Items */}
                 <div>
-                    <h2 className="text-xl font-bold mb-4">Deine Ressourcen</h2>
+                    <h2 className="text-lg font-medium mb-4">Deine Ressourcen</h2>
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                        {hyperlinks.length > 0 ? (
-                            hyperlinks.map((link) => (
+                        {items && items.length > 0 ? (
+                            items.map((link: Hyperlink) => (
                                 <div 
                                     key={link.id} 
-                                    className="group relative flex flex-col gap-2 rounded-xl border border-sidebar-border bg-white p-4 shadow-sm transition-all hover:shadow-md dark:bg-neutral-900"
+                                    className="flex flex-col gap-2 rounded-xl border border-sidebar-border bg-white p-4 shadow-sm transition-all hover:border-primary/50 dark:bg-neutral-900"
                                 >
                                     <div className="flex justify-between items-start">
-                                        <h3 className="font-semibold text-lg leading-tight">{link.title}</h3>
-                                        <span className={`text-[10px] uppercase px-2 py-1 rounded-full font-bold ${
-                                            link.status === 'published' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                                        }`}>
+                                        <h3 className="font-semibold text-lg leading-tight truncate pr-2">
+                                            {link.title}
+                                        </h3>
+                                        <span className="text-[10px] uppercase px-2 py-1 rounded-md font-bold bg-primary/10 text-primary border border-primary/20">
                                             {link.status}
                                         </span>
                                     </div>
                                     
-                                    <p className="text-sm text-muted-foreground line-clamp-2 flex-1">
-                                        {link.description || "Keine Beschreibung vorhanden."}
+                                    <p className="text-sm text-muted-foreground line-clamp-2 flex-1 italic font-mono">
+                                        {link.description || "Keine Beschreibung."}
                                     </p>
 
                                     <a 
                                         href={link.url} 
                                         target="_blank" 
                                         rel="noopener noreferrer"
-                                        className="text-sm text-blue-500 hover:underline truncate mt-2"
+                                        className="text-sm text-primary hover:underline underline-offset-4 truncate mt-2 font-medium"
                                     >
-                                        {link.url}
+                                        {link.url.replace(/^https?:\/\//, '')}
                                     </a>
                                 </div>
                             ))
                         ) : (
-                            <p className="text-muted-foreground italic">Noch keine Hyperlinks gespeichert.</p>
+                            <p className="text-muted-foreground italic">Noch keine Links vorhanden.</p>
                         )}
                     </div>
                 </div>

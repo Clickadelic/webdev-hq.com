@@ -41,3 +41,14 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+export interface Hyperlink {
+    id: number;
+    title: string;
+    url: string;
+    description: string;
+    category_id: number | null;
+    status: string;
+    created_at: string;
+    updated_at: string;
+}
