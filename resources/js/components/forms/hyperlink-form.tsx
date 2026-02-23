@@ -3,14 +3,8 @@ import { store } from "@/actions/App/Http/Controllers/HyperlinkController";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label"; // shadcn Label
-import { 
-    Select, 
-    SelectContent, 
-    SelectItem, 
-    SelectTrigger, 
-    SelectValue 
-} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
+import {  Select,  SelectContent,  SelectItem,  SelectTrigger,  SelectValue } from "@/components/ui/select";
 
 import { cn } from "@/lib/utils";
 
@@ -31,7 +25,7 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
         e.preventDefault();
         // Wir senden die Daten an die Wayfinder-Route
         post(store.url(), {
-            onSuccess: () => reset(), // Leert das Formular bei Erfolg
+            onSuccess: () => reset(),
         });
     }
 
@@ -63,11 +57,12 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
                 {errors.url && <p className="text-sm text-destructive">{errors.url}</p>}
             </div>
 
-            {/* URL */}
+            {/* Description */}
             <div className="grid gap-2">
                 <Label htmlFor="url">Description</Label>
-                <Textarea 
+                <Textarea
                     id="description"
+                    placeholder="Description"
                     value={data.description}
                     onChange={e => setData("description", e.target.value)}
                 />
@@ -94,7 +89,7 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
             </div>
 
             <Button type="submit" disabled={processing}>
-                {processing ? "Wird gespeichert..." : "Speichern"}
+                {processing ? "Loading" : "Save Hyperlink"}
             </Button>
         </form>
     );

@@ -1,5 +1,5 @@
 // Hyperlinks.tsx
-import { index, store } from "@/actions/App/Http/Controllers/HyperlinkController";
+import { index } from "@/actions/App/Http/Controllers/HyperlinkController";
 import AppLayout from '@/layouts/app-layout';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
 import { type BreadcrumbItem } from '@/types';
