@@ -8,7 +8,7 @@ export default function Welcome({
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
             <main className="container mx-auto flex flex-col items-center justify-center py-12">
-                <h1>Welcome</h1>
+                <h1 className="bg-primary text-primary-foreground px-4 py-2">Welcome</h1>
             </main>
         </PublicLayout>
     );
