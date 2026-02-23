@@ -80,9 +80,9 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
                         <SelectValue placeholder="Status wählen" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="draft">Entwurf</SelectItem>
-                        <SelectItem value="published">Veröffentlicht</SelectItem>
-                        <SelectItem value="archived">Archiviert</SelectItem>
+                        <SelectItem value="draft">Draft</SelectItem>
+                        <SelectItem value="published">Published</SelectItem>
+                        <SelectItem value="archived">Archived</SelectItem>
                     </SelectContent>
                 </Select>
                 {errors.status && <p className="text-sm text-destructive">{errors.status}</p>}
