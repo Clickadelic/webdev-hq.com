@@ -58,11 +58,15 @@ jobs:
       - name: Install Node dependencies
         run: npm ci || (rm -f package-lock.json && npm install)
 
-      # 7. Wayfinder & Vite Build
-      - name: Build Wayfinder types & Vite assets
-        run: |
-          php artisan wayfinder:generate --with-form
-          npm run build
+      # 7. Vite Build (inkl. Wayfinder types)
+      - name: Build assets with Vite
+        env:
+          # Verhindert den Datenbank-Fehler während des Bootstrapping
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ":memory:"
+          # Ein Fallback-Key, falls Laravel beim Booten einen verlangt
+          APP_KEY: base64:u8vS6Yx9f9vH9Z9z9y9x9w9v9u9t9s9r9q9p9o9n9m=
+        run: npm run build
 
       # 8. SSH Key für Deployment schreiben
       - name: Write SSH key (base64 secret)
@@ -170,6 +174,7 @@ jobs:
 
           # Composer + Artisan
           composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+          php artisan wayfinder:generate
           php artisan key:generate --force || true
           php artisan migrate --force
           php artisan config:cache
