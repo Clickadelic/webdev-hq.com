@@ -1,158 +1,96 @@
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-
-import { HyperlinkSchema } from "@/schemas";
-
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form";
-
+import { useForm } from "@inertiajs/react";
+import { store } from "@/actions/App/Http/Controllers/HyperlinkController";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-// import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
+import {  Select,  SelectContent,  SelectItem,  SelectTrigger,  SelectValue } from "@/components/ui/select";
 
 import { cn } from "@/lib/utils";
 
-type HyperlinkFormValues = z.infer<typeof HyperlinkSchema>;
-
 interface HyperlinkFormProps {
     className?: string;
-    defaultValues?: Partial<HyperlinkFormValues>;
-    onSubmit?: (values: HyperlinkFormValues) => void;
 }
 
-function HyperlinkForm({
-    className,
-    defaultValues,
-    onSubmit,
-}: HyperlinkFormProps) {
-    const form = useForm<HyperlinkFormValues>({
-        resolver: zodResolver(HyperlinkSchema),
-        defaultValues: {
-            title: "",
-            url: "",
-            description: "",
-            status: "published",
-            ...defaultValues,
-        },
+export default function HyperlinkForm({ className }: HyperlinkFormProps) {
+    // Inertia's useForm Hook
+    const { data, setData, post, processing, errors, reset } = useForm({
+        title: "",
+        url: "",
+        description: "",
+        status: "published",
     });
-    function handleSubmit(values: HyperlinkFormValues) {
-        // Hier rufen wir die Prop auf, die von der Parent-Seite kommt
-        onSubmit?.(values);
+
+    function handleSubmit(e: React.FormEvent) {
+        e.preventDefault();
+        // Wir senden die Daten an die Wayfinder-Route
+        post(store.url(), {
+            onSuccess: () => reset(),
+        });
     }
+
     return (
-        <Form {...form}>
-            <form
-                onSubmit={form.handleSubmit(handleSubmit)}
-                className={cn("flex flex-col gap-4", className)}
-            >
-                {/* Title */}
-                <FormField
-                    control={form.control}
-                    name="title"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Title</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Best link resource" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
+        <form onSubmit={handleSubmit} className={cn("flex flex-col gap-4", className)}>
+            {/* Title */}
+            <div className="grid gap-2">
+                <Label htmlFor="title">Titel</Label>
+                <Input 
+                    id="title"
+                    value={data.title}
+                    required
+                    placeholder="Title"
+                    onChange={e => setData("title", e.target.value)}
                 />
+                {errors.title && <p className="text-sm text-destructive">{errors.title}</p>}
+            </div>
 
-                {/* URL */}
-                <FormField
-                    control={form.control}
-                    name="url"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>URL</FormLabel>
-                            <FormControl>
-                                <Input
-                                    placeholder="https://example.com"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
+            {/* URL */}
+            <div className="grid gap-2">
+                <Label htmlFor="url">URL</Label>
+                <Input 
+                    id="url"
+                    value={data.url}
+                    required
+                    placeholder="https://example.com"
+                    onChange={e => setData("url", e.target.value)}
                 />
+                {errors.url && <p className="text-sm text-destructive">{errors.url}</p>}
+            </div>
 
-                {/* Description */}
-                <FormField
-                    control={form.control}
-                    name="description"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Beschreibung</FormLabel>
-                            <FormControl>
-                                <Textarea
-                                    placeholder="Optionale Beschreibung"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
+            {/* Description */}
+            <div className="grid gap-2">
+                <Label htmlFor="description">Description</Label>
+                <Textarea
+                    id="description"
+                    placeholder="Description"
+                    value={data.description}
+                    onChange={e => setData("description", e.target.value)}
                 />
+                {errors.description && <p className="text-sm text-destructive">{errors.description}</p>}
+            </div>
 
-                {/* Status */}
-                <FormField
-                    control={form.control}
-                    name="status"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Status</FormLabel>
-                            <Select
-                                value={field.value}
-                                onValueChange={field.onChange}
-                            >
-                                <FormControl>
-                                    <SelectTrigger>
-                                        <SelectValue placeholder="Status wählen" />
-                                    </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                    <SelectItem value="draft">
-                                        Entwurf
-                                    </SelectItem>
-                                    <SelectItem value="published">
-                                        Veröffentlicht
-                                    </SelectItem>
-                                    <SelectItem value="archived">
-                                        Archiviert
-                                    </SelectItem>
-                                </SelectContent>
-                            </Select>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
+            {/* Status (Select) */}
+            <div className="grid gap-2">
+                <Label>Status</Label>
+                <Select 
+                    value={data.status} 
+                    onValueChange={(value) => setData("status", value)}
+                >
+                    <SelectTrigger>
+                        <SelectValue placeholder="Status wählen" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="draft">Draft</SelectItem>
+                        <SelectItem value="published">Published</SelectItem>
+                        <SelectItem value="archived">Archived</SelectItem>
+                    </SelectContent>
+                </Select>
+                {errors.status && <p className="text-sm text-destructive">{errors.status}</p>}
+            </div>
 
-                {/* Submit */}
-                <div className="flex justify-end">
-                    <Button type="submit">
-                        Speichern
-                    </Button>
-                </div>
-            </form>
-        </Form>
+            <Button type="submit" disabled={processing}>
+                {processing ? "Loading" : "Save Hyperlink"}
+            </Button>
+        </form>
     );
 }
-
-export default HyperlinkForm;
