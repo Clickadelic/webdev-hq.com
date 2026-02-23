@@ -21,7 +21,7 @@ export namespace App {
         /**
          * @see [\App\Models\Hyperlink](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Hyperlink.php)
          */
-        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: App.Enums.Status, is_featured: boolean, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null }
+        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: string, is_featured: boolean, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null }
 
         /**
          * @see [\App\Models\Tag](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Tag.php)
@@ -43,7 +43,7 @@ export namespace App {
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
-                    export type Response = Inertia.Pages.Hyperlinks/Index
+                    export type Response = Inertia.Pages.Hyperlinks/index
 
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
@@ -55,17 +55,20 @@ export namespace App {
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
-                    export type Request = Record<string, unknown>
-                }
+                    export type Response = Inertia.Pages.Hyperlinks/create
 
-                export namespace Store {
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace Show {
+                    /**
+                     * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
+                     */
+                    export type Response = Inertia.Pages.Hyperlinks/show
+
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
@@ -76,14 +79,34 @@ export namespace App {
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
+                    export type Response = Inertia.Pages.Hyperlinks/edit
+
+                    /**
+                     * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
+                     */
                     export type Request = Record<string, unknown>
+                }
+
+                export namespace Store {
+                    /**
+                     * @see [\App\Http\Controllers\HyperlinkController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
+                     */
+                    export type Request = {    title: string;
+                        url: string;
+                        description?: string | null;
+                        category_id?: string | null;
+                        status: string;}
                 }
 
                 export namespace Update {
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::update](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
-                    export type Request = Record<string, unknown>
+                    export type Request = {    title: string;
+                        url: string;
+                        description?: string | null;
+                        category_id?: string | null;
+                        status: string;}
                 }
 
                 export namespace Destroy {
@@ -192,7 +215,22 @@ export namespace Inertia {
             /**
              * @see [\App\Http\Controllers\HyperlinkController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
-            export type Hyperlinks/Index = Inertia.SharedData & { "0": unknown }
+            export type Hyperlinks/index = Inertia.SharedData & { hyperlinks: Illuminate.Pagination.LengthAwarePaginator }
+
+            /**
+             * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
+             */
+            export type Hyperlinks/create = Inertia.SharedData
+
+            /**
+             * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
+             */
+            export type Hyperlinks/show = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
+
+            /**
+             * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
+             */
+            export type Hyperlinks/edit = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
         }
 
         export namespace Settings {
