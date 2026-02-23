@@ -59,9 +59,8 @@ jobs:
         run: npm ci || (rm -f package-lock.json && npm install)
 
       # 7. Wayfinder & Vite Build
-      - name: Build Wayfinder types & Vite assets
+      - name: Run Vite Build
         run: |
-          php artisan wayfinder:generate
           npm run build
 
       # 8. SSH Key für Deployment schreiben
@@ -170,6 +169,7 @@ jobs:
 
           # Composer + Artisan
           composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+          php artisan wayfinder:generate
           php artisan key:generate --force || true
           php artisan migrate --force
           php artisan config:cache
