@@ -2,7 +2,7 @@ import { Head } from '@inertiajs/react';
 
 import PublicHeader from '@/components/public-header';
 import PublicFooter from '@/components/public-footer';
-
+import { Toaster } from "@/components/ui/sonner"
 interface PublicLayoutProps {
     title?: string
     children: React.ReactNode
@@ -24,6 +24,7 @@ export default function PublicLayout({ title, children, canRegister }: PublicLay
             <div className="flex flex-col min-h-dvh justify-between items-center">
                 <PublicHeader canRegister={canRegister} />
                 {children}
+                <Toaster />
                 <PublicFooter />
             </div>
         </>

@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import {  Select,  SelectContent,  SelectItem,  SelectTrigger,  SelectValue } from "@/components/ui/select";
 
 import { cn } from "@/lib/utils";
-
+import { toast } from "sonner"
 interface HyperlinkFormProps {
     className?: string;
 }
@@ -25,7 +25,13 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
         e.preventDefault();
         // Wir senden die Daten an die Wayfinder-Route
         post(store.url(), {
-            onSuccess: () => reset(),
+            onSuccess: () => {
+                reset()
+                toast.success("Hyperlink erstellt!")
+            },
+            onError: () => {
+                toast.error("Hyperlink konnte nicht erstellt werden!")
+            }
         });
     }
 
