@@ -17,8 +17,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
     // Hyperlinks
     Route::resource('/hyperlinks', HyperlinkController::class);
-    // Route::get('/hyperlinks', [HyperlinkController::class, 'index']);
-    Route::resource('hyperlinks', HyperlinkController::class);
 });
 
 // Hyperlinks

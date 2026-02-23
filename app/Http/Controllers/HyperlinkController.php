@@ -11,16 +11,13 @@ class HyperlinkController extends Controller
     /**
      * Display a listing of the resource.
      */
-
     public function index()
     {
-        $hyperlinks = Hyperlink::query()
-            ->with('category')
-            ->orderByDesc('is_featured')
-            ->orderBy('title')
-            ->paginate(24);
+        $hyperlinks = Hyperlink::latest()->paginate(15);
 
-        return inertia('hyperlinks/Index', compact('hyperlinks'));
+        return inertia('hyperlinks/index', [
+            'hyperlinks' => $hyperlinks,
+        ]);
     }
 
     /**
@@ -28,7 +25,7 @@ class HyperlinkController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('hyperlinks/create');
     }
 
     /**
@@ -36,7 +33,11 @@ class HyperlinkController extends Controller
      */
     public function store(StoreHyperlinkRequest $request)
     {
-        //
+        Hyperlink::create($request->validated());
+
+        return redirect()
+            ->route('hyperlinks.index')
+            ->with('success', 'Hyperlink erfolgreich erstellt.');
     }
 
     /**
@@ -44,7 +45,9 @@ class HyperlinkController extends Controller
      */
     public function show(Hyperlink $hyperlink)
     {
-        //
+        return inertia('hyperlinks/show', [
+            'hyperlink' => $hyperlink,
+        ]);
     }
 
     /**
@@ -52,7 +55,9 @@ class HyperlinkController extends Controller
      */
     public function edit(Hyperlink $hyperlink)
     {
-        //
+        return inertia('hyperlinks/edit', [
+            'hyperlink' => $hyperlink,
+        ]);
     }
 
     /**
@@ -60,7 +65,11 @@ class HyperlinkController extends Controller
      */
     public function update(UpdateHyperlinkRequest $request, Hyperlink $hyperlink)
     {
-        //
+        $hyperlink->update($request->validated());
+
+        return redirect()
+            ->route('hyperlinks.index')
+            ->with('success', 'Hyperlink erfolgreich aktualisiert.');
     }
 
     /**
@@ -68,6 +77,10 @@ class HyperlinkController extends Controller
      */
     public function destroy(Hyperlink $hyperlink)
     {
-        //
+        $hyperlink->delete();
+
+        return redirect()
+            ->route('hyperlinks.index')
+            ->with('success', 'Hyperlink erfolgreich gelöscht.');
     }
 }

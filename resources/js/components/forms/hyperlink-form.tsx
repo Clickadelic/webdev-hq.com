@@ -15,7 +15,7 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
+// import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import {
     Select,
@@ -46,16 +46,14 @@ function HyperlinkForm({
             title: "",
             url: "",
             description: "",
-            is_featured: false,
             status: "published",
             ...defaultValues,
         },
     });
-
     function handleSubmit(values: HyperlinkFormValues) {
+        // Hier rufen wir die Prop auf, die von der Parent-Seite kommt
         onSubmit?.(values);
     }
-
     return (
         <Form {...form}>
             <form
@@ -68,9 +66,9 @@ function HyperlinkForm({
                     name="title"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Titel</FormLabel>
+                            <FormLabel>Title</FormLabel>
                             <FormControl>
-                                <Input placeholder="Google" {...field} />
+                                <Input placeholder="Best link resource" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -121,8 +119,8 @@ function HyperlinkForm({
                         <FormItem>
                             <FormLabel>Status</FormLabel>
                             <Select
+                                value={field.value}
                                 onValueChange={field.onChange}
-                                defaultValue={field.value}
                             >
                                 <FormControl>
                                     <SelectTrigger>
@@ -142,25 +140,6 @@ function HyperlinkForm({
                                 </SelectContent>
                             </Select>
                             <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                {/* Featured */}
-                <FormField
-                    control={form.control}
-                    name="is_featured"
-                    render={({ field }) => (
-                        <FormItem className="flex flex-row items-center gap-2">
-                            <FormControl>
-                                <Checkbox
-                                    checked={field.value}
-                                    onCheckedChange={field.onChange}
-                                />
-                            </FormControl>
-                            <FormLabel className="cursor-pointer">
-                                Hervorgehoben
-                            </FormLabel>
                         </FormItem>
                     )}
                 />

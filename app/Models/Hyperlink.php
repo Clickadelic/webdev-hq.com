@@ -16,19 +16,16 @@ class Hyperlink extends Model
         'description',
         'category_id',
         'status',
-        'is_featured',
-        'created_by',
     ];
 
     protected $casts = [
-        'status'      => Status::class,
-        'is_featured' => 'boolean',
+        'category_id' => 'integer',
     ];
 
     /*
-    |--------------------------------------------------------------------------
-    | Relationships
-    |--------------------------------------------------------------------------
+    --------------------------------------------------------------------------
+     Relationships
+    --------------------------------------------------------------------------
     */
 
     public function category()
@@ -49,6 +46,6 @@ class Hyperlink extends Model
 
     public function scopePublished($query)
     {
-        return $query->where('status', Status::Published);
+        return $query->where('status', Status::Published->value);
     }
 }
