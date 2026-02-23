@@ -61,7 +61,7 @@ jobs:
       # 7. Wayfinder & Vite Build
       - name: Build Wayfinder types & Vite assets
         run: |
-          php artisan wayfinder:generate --with-form
+          php artisan wayfinder:generate
           npm run build
 
       # 8. SSH Key für Deployment schreiben
