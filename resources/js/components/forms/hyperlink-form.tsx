@@ -59,7 +59,7 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
 
             {/* Description */}
             <div className="grid gap-2">
-                <Label htmlFor="url">Description</Label>
+                <Label htmlFor="description">Description</Label>
                 <Textarea
                     id="description"
                     placeholder="Description"
