@@ -4,11 +4,11 @@ import { Link } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
 import { usePage } from '@inertiajs/react';
-
+import { router } from '@inertiajs/react';
 import { type BreadcrumbItem } from '@/types';
 import { Hyperlink } from '@/types';
-
-import { index } from "@/actions/App/Http/Controllers/HyperlinkController";
+import { toast } from "sonner"
+import { index, destroy } from "@/actions/App/Http/Controllers/HyperlinkController";
 
 interface Props {
     hyperlinks: Hyperlink[];
@@ -24,6 +24,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function Hyperlinks() {
     const { hyperlinks } = usePage<{ hyperlinks: any }>().props;
     const items = hyperlinks.data;
+
+    function handleDestroy({ id }: { id: number }) {
+        if (confirm("Are you sure you want to delete this item?")) {
+            router.delete(destroy.url(id));
+            toast.success("Hyperlink deleted successfully.");
+        }
+    }
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className="flex flex-col gap-8 p-4">
@@ -67,6 +74,7 @@ export default function Hyperlinks() {
                                     >
                                         {link.url.replace(/^https?:\/\//, '')}
                                     </a>
+                                    <button className="text-sm text-muted-foreground hover:underline underline-offset-4 truncate mt-2 font-medium" onClick={() => handleDestroy({ id: link.id })}>delete</button>
                                 </div>
                             ))
                         ) : (
