@@ -19,6 +19,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/hyperlinks', HyperlinkController::class);
 });
 
-// Hyperlinks
-
 require __DIR__.'/settings.php';
