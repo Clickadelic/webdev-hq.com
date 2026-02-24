@@ -5,6 +5,6 @@ import { App } from "./types";
 
 declare module '@inertiajs/core' {
     export interface InertiaConfig {
-     sharedPageProps: { name: unknown, quote: {message: string, author: string }, auth: {user: App.Models.User | null }, sidebarOpen: boolean } 
+     sharedPageProps: { auth: {user: App.Models.User | null }, sidebarOpen: boolean } 
     }
 }
