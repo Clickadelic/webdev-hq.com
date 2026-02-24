@@ -75,6 +75,7 @@ export default function Hyperlinks() {
                                         {link.url.replace(/^https?:\/\//, '')}
                                     </a>
                                     <DeleteHyperlinkButton id={link.id} />
+                                </div>
                             ))
                         ) : (
                             <p className="text-muted-foreground italic">Noch keine Links vorhanden.</p>
