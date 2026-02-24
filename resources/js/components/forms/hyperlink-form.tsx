@@ -8,6 +8,7 @@ import {  Select,  SelectContent,  SelectItem,  SelectTrigger,  SelectValue } fr
 
 import { cn } from "@/lib/utils";
 import { toast } from "sonner"
+
 interface HyperlinkFormProps {
     className?: string;
 }
@@ -27,10 +28,10 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
         post(store.url(), {
             onSuccess: () => {
                 reset()
-                toast.success("Hyperlink erstellt!")
+                toast.success("Hyperlink created!")
             },
             onError: () => {
-                toast.error("Hyperlink konnte nicht erstellt werden!")
+                toast.error("Hyperlink creation failed!")
             }
         });
     }
