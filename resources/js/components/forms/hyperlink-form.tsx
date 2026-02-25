@@ -4,10 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import {  Select,  SelectContent,  SelectItem,  SelectTrigger,  SelectValue } from "@/components/ui/select";
+import { toast } from "sonner"
+
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 import { cn } from "@/lib/utils";
-import { toast } from "sonner"
 
 interface HyperlinkFormProps {
     className?: string;
@@ -40,7 +42,7 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
         <form onSubmit={handleSubmit} className={cn("flex flex-col gap-4", className)}>
             {/* Title */}
             <div className="grid gap-2">
-                <Label htmlFor="title">Titel</Label>
+                <Label htmlFor="title">Title</Label>
                 <Input 
                     id="title"
                     value={data.title}
@@ -79,6 +81,11 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
             {/* Status (Select) */}
             <div className="grid gap-2">
                 <Label>Status</Label>
+                {/* <ToggleGroup size="sm" variant="outline" type="single" defaultValue="published" onValueChange={(value) => setData("status", value)} className="asd">
+                    <ToggleGroupItem value="draft">Draft</ToggleGroupItem>
+                    <ToggleGroupItem value="published">Published</ToggleGroupItem>
+                    <ToggleGroupItem value="archived">Archived</ToggleGroupItem>
+                </ToggleGroup> */}
                 <Select 
                     value={data.status} 
                     onValueChange={(value) => setData("status", value)}
@@ -92,6 +99,7 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
                         <SelectItem value="archived">Archived</SelectItem>
                     </SelectContent>
                 </Select>
+                
                 {errors.status && <p className="text-sm text-destructive">{errors.status}</p>}
             </div>
 
