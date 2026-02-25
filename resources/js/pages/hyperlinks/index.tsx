@@ -9,7 +9,7 @@ import { type BreadcrumbItem } from '@/types';
 import { Hyperlink } from '@/types';
 import { toast } from "sonner"
 import { index, destroy } from "@/actions/App/Http/Controllers/HyperlinkController";
-
+import DeleteHyperlinkButton from "@/components/hyperlinks/delete-hyperlink-button";
 interface Props {
     hyperlinks: Hyperlink[];
 }
@@ -74,8 +74,7 @@ export default function Hyperlinks() {
                                     >
                                         {link.url.replace(/^https?:\/\//, '')}
                                     </a>
-                                    <button className="text-sm text-muted-foreground hover:underline underline-offset-4 truncate mt-2 font-medium" onClick={() => handleDestroy({ id: link.id })}>delete</button>
-                                </div>
+                                    <DeleteHyperlinkButton id={link.id} />
                             ))
                         ) : (
                             <p className="text-muted-foreground italic">Noch keine Links vorhanden.</p>
