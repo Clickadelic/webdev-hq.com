@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner"
-
+import { LoaderCircle, LucideLink } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -104,6 +104,7 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
             </div>
 
             <Button type="submit" disabled={processing}>
+                {processing ? <LoaderCircle /> : <LucideLink size={8} className="mr-2" />}
                 {processing ? "Loading" : "Save Hyperlink"}
             </Button>
         </form>

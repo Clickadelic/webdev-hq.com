@@ -6,12 +6,14 @@ import { toast } from "sonner"
 import { destroy } from "@/actions/App/Http/Controllers/HyperlinkController";
 import { router } from '@inertiajs/react';
 
+// Todo: clarify
 interface DeleteHyperlinkButtonProps {
     id: number;
 }
 
+// Todo: clarify type inheritance
 export default function DeleteHyperlinkButton({ id }: DeleteHyperlinkButtonProps) {
-    function handleDestroy({ id }: { id: number }) {
+    function handleDestroy({ id }: DeleteHyperlinkButtonProps) {
         if (confirm("Are you sure you want to delete this item?")) {
             router.delete(destroy.url(id));
             toast.success("Hyperlink deleted successfully.");
