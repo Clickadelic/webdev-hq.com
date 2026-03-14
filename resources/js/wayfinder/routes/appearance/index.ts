@@ -43,6 +43,8 @@ edit.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\settings.php:22
  * @route "/settings/appearance"
@@ -69,6 +71,8 @@ editForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: edit.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 edit.form = editForm
 

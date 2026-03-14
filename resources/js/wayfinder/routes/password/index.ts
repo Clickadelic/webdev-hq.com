@@ -48,6 +48,8 @@ request.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\PasswordResetLinkController::create
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\PasswordResetLinkController.php:22
@@ -77,6 +79,8 @@ requestForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => 
     action: request.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 request.form = requestForm
 /**
@@ -141,6 +145,8 @@ reset.head = (args: { token: string | number } | [ token: string | number ] | st
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::create
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:44
@@ -170,6 +176,8 @@ resetForm.head = (args: { token: string | number } | [ token: string | number ] 
     action: reset.url(args, formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 reset.form = resetForm
 /**
@@ -206,6 +214,8 @@ email.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\PasswordResetLinkController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\PasswordResetLinkController.php:30
@@ -225,6 +235,8 @@ emailForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
     action: email.url(options),
     method: "post",
 })
+
+
 
 email.form = emailForm
 /**
@@ -261,6 +273,8 @@ update.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:55
@@ -280,6 +294,8 @@ updateForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
     action: update.url(options),
     method: "post",
 })
+
+
 
 update.form = updateForm
 /**
@@ -326,6 +342,8 @@ confirm.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::show
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:40
@@ -355,6 +373,8 @@ confirmForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => 
     action: confirm.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 confirm.form = confirmForm
 /**
@@ -401,6 +421,8 @@ confirmation.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmedPasswordStatusController::show
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmedPasswordStatusController.php:17
@@ -430,6 +452,8 @@ confirmationForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"
     action: confirmation.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 confirmation.form = confirmationForm
 

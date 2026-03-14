@@ -56,6 +56,8 @@ deleteMethod.delete = (args: { key: string | number, tags?: string | number } | 
     method: "delete",
 })
 
+
+
 /**
  * @see \Barryvdh\Debugbar\Controllers\CacheController::delete
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\CacheController.php:13
@@ -75,6 +77,8 @@ deleteMethodForm.delete = (args: { key: string | number, tags?: string | number 
     action: deleteMethod.url(args, formSafeOptions("delete", options)),
     method: "post",
 })
+
+
 
 deleteMethod.form = deleteMethodForm
 

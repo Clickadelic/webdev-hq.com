@@ -47,6 +47,8 @@ login.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::create
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:47
@@ -76,6 +78,8 @@ loginForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: login.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 login.form = loginForm
 /**
@@ -112,6 +116,8 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::destroy
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:100
@@ -131,6 +137,8 @@ logoutForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
     action: logout.url(options),
     method: "post",
 })
+
+
 
 logout.form = logoutForm
 /**
@@ -177,6 +185,8 @@ register.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::create
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php:41
@@ -206,6 +216,8 @@ registerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =>
     action: register.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 register.form = registerForm
 /**
@@ -248,6 +260,8 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:8
  * @route "/"
@@ -274,6 +288,8 @@ homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: home.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 home.form = homeForm
 /**
@@ -316,6 +332,8 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:15
  * @route "/dashboard"
@@ -342,6 +360,8 @@ dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =
     action: dashboard.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 dashboard.form = dashboardForm
 

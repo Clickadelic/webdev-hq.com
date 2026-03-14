@@ -1,18 +1,13 @@
 "use client";
 
-import { Link } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
 import { usePage } from '@inertiajs/react';
-import { router } from '@inertiajs/react';
 import { type BreadcrumbItem } from '@/types';
 import { Hyperlink } from '@/types';
-import { toast } from "sonner"
-import { index, destroy } from "@/actions/App/Http/Controllers/HyperlinkController";
+import { index } from "@/actions/App/Http/Controllers/HyperlinkController";
+
 import DeleteHyperlinkButton from "@/components/hyperlinks/delete-hyperlink-button";
-interface Props {
-    hyperlinks: Hyperlink[];
-}
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -22,15 +17,11 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Hyperlinks() {
-    const { hyperlinks } = usePage<{ hyperlinks: any }>().props;
+    const { hyperlinks } = usePage<{ hyperlinks: { data: Hyperlink[] } }>().props;
     const items = hyperlinks.data;
 
-    function handleDestroy({ id }: { id: number }) {
-        if (confirm("Are you sure you want to delete this item?")) {
-            router.delete(destroy.url(id));
-            toast.success("Hyperlink deleted successfully.");
-        }
-    }
+    console.log("Items are", items);
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className="flex flex-col gap-8 p-4">
@@ -47,6 +38,7 @@ export default function Hyperlinks() {
                 <div>
                     <h2 className="text-lg font-medium mb-4">Deine Ressourcen</h2>
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                        
                         {items && items.length > 0 ? (
                             items.map((link: Hyperlink) => (
                                 <div 

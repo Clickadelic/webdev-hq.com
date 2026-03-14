@@ -47,6 +47,8 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::create
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:41
@@ -76,6 +78,8 @@ createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
     action: create.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 create.form = createForm
 /**
@@ -112,6 +116,8 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:56
@@ -131,6 +137,8 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
     action: store.url(options),
     method: "post",
 })
+
+
 
 store.form = storeForm
 

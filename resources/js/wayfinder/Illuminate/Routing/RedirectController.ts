@@ -97,6 +97,8 @@ RedirectController.options = (options?: RouteQueryOptions): RouteDefinition<"opt
     method: "options",
 })
 
+
+
 /**
  * @see \Illuminate\Routing\RedirectController::__invoke
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Routing\RedirectController.php:19
@@ -176,6 +178,8 @@ RedirectControllerForm.options = (options?: RouteQueryOptions): RouteFormDefinit
     action: RedirectController.url(formSafeOptions("options", options)),
     method: "get",
 })
+
+
 
 RedirectController.form = RedirectControllerForm
 

@@ -47,6 +47,8 @@ notice.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationPromptController::__invoke
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationPromptController.php:18
@@ -76,6 +78,8 @@ noticeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
     action: notice.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 notice.form = noticeForm
 /**
@@ -139,6 +143,8 @@ verify.head = (args: { id: string | number, hash: string | number } | [ id: stri
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
@@ -168,6 +174,8 @@ verifyForm.head = (args: { id: string | number, hash: string | number } | [ id: 
     action: verify.url(args, formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 verify.form = verifyForm
 /**
@@ -204,6 +212,8 @@ send.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php:19
@@ -223,6 +233,8 @@ sendForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
     action: send.url(options),
     method: "post",
 })
+
+
 
 send.form = sendForm
 

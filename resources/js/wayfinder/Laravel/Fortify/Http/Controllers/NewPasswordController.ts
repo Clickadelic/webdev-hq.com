@@ -65,6 +65,8 @@ create.head = (args: { token: string | number } | [ token: string | number ] | s
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::create
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:44
@@ -94,6 +96,8 @@ createForm.head = (args: { token: string | number } | [ token: string | number ]
     action: create.url(args, formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 create.form = createForm
 /**
@@ -130,6 +134,8 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:55
@@ -149,6 +155,8 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
     action: store.url(options),
     method: "post",
 })
+
+
 
 store.form = storeForm
 

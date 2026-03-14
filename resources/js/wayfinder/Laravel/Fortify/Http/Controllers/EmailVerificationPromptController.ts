@@ -47,6 +47,8 @@ __invoke.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationPromptController::__invoke
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationPromptController.php:18
@@ -76,6 +78,8 @@ __invokeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =>
     action: __invoke.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 __invoke.form = __invokeForm
 
