@@ -168,12 +168,15 @@ jobs:
           # env-Datei
           [ -f .env ] || cp .env.example .env
 
-          # Alte Caches löschen
+          # Entferne evtl. veraltete Cache-Dateien, ohne die App zu booten
+          rm -f bootstrap/cache/*.php || true
+
+          # Composer installieren (führt package:discover aus)
+          composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+
+          # Jetzt Artisan-Befehle ausführen
           php artisan config:clear
           php artisan view:clear || true
-
-          # Composer + Artisan
-          composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
           php artisan wayfinder:generate
           php artisan key:generate --force || true
           php artisan migrate --force
