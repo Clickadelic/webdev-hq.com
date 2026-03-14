@@ -47,6 +47,8 @@ edit.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::edit
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:19
@@ -76,6 +78,8 @@ editForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: edit.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 edit.form = editForm
 /**
@@ -112,6 +116,8 @@ update.patch = (options?: RouteQueryOptions): RouteDefinition<"patch"> => ({
     method: "patch",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::update
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:30
@@ -131,6 +137,8 @@ updateForm.patch = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =>
     action: update.url(formSafeOptions("patch", options)),
     method: "post",
 })
+
+
 
 update.form = updateForm
 /**
@@ -167,6 +175,8 @@ destroy.delete = (options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
     method: "delete",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::destroy
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:46
@@ -186,6 +196,8 @@ destroyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<"post"> 
     action: destroy.url(formSafeOptions("delete", options)),
     method: "post",
 })
+
+
 
 destroy.form = destroyForm
 

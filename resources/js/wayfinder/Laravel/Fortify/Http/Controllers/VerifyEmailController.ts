@@ -64,6 +64,8 @@ __invoke.head = (args: { id: string | number, hash: string | number } | [ id: st
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
@@ -93,6 +95,8 @@ __invokeForm.head = (args: { id: string | number, hash: string | number } | [ id
     action: __invoke.url(args, formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 __invoke.form = __invokeForm
 

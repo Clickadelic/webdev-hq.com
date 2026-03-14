@@ -47,6 +47,8 @@ handle.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Barryvdh\Debugbar\Controllers\OpenHandlerController::handle
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php:43
@@ -76,6 +78,8 @@ handleForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
     action: handle.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 handle.form = handleForm
 /**
@@ -140,6 +144,8 @@ clockwork.head = (args: { id: string | number } | [ id: string | number ] | stri
     method: "head",
 })
 
+
+
 /**
  * @see \Barryvdh\Debugbar\Controllers\OpenHandlerController::clockwork
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php:77
@@ -169,6 +175,8 @@ clockworkForm.head = (args: { id: string | number } | [ id: string | number ] | 
     action: clockwork.url(args, formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 clockwork.form = clockworkForm
 

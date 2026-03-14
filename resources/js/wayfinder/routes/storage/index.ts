@@ -62,6 +62,8 @@ local.head = (args: { path: string | number } | [ path: string | number ] | stri
     method: "head",
 })
 
+
+
 /**
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
  * @route "/storage/{path}"
@@ -88,6 +90,8 @@ localForm.head = (args: { path: string | number } | [ path: string | number ] | 
     action: local.url(args, formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 local.form = localForm
 

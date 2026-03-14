@@ -47,6 +47,8 @@ css.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Barryvdh\Debugbar\Controllers\AssetController::css
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\AssetController.php:36
@@ -76,6 +78,8 @@ cssForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: css.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 css.form = cssForm
 /**
@@ -122,6 +126,8 @@ js.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Barryvdh\Debugbar\Controllers\AssetController::js
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\AssetController.php:14
@@ -151,6 +157,8 @@ jsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: js.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 js.form = jsForm
 

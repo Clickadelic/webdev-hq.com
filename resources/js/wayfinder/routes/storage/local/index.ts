@@ -52,6 +52,8 @@ upload.put = (args: { path: string | number } | [ path: string | number ] | stri
     method: "put",
 })
 
+
+
 /**
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:106
  * @route "/storage/{path}"
@@ -69,6 +71,8 @@ uploadForm.put = (args: { path: string | number } | [ path: string | number ] | 
     action: upload.url(args, formSafeOptions("put", options)),
     method: "post",
 })
+
+
 
 upload.form = uploadForm
 

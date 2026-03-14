@@ -21,7 +21,7 @@ export namespace App {
         /**
          * @see [\App\Models\Hyperlink](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Hyperlink.php)
          */
-        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: string, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null }
+        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: string, is_featured: boolean, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null }
 
         /**
          * @see [\App\Models\Tag](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Tag.php)
@@ -43,7 +43,7 @@ export namespace App {
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
-                    export type Response = Inertia.Pages.Hyperlinks/index
+                    export type Response = Inertia.Pages.Hyperlinks.Index
 
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
@@ -55,7 +55,7 @@ export namespace App {
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
-                    export type Response = Inertia.Pages.Hyperlinks/create
+                    export type Response = Inertia.Pages.Hyperlinks.Create
 
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
@@ -67,7 +67,7 @@ export namespace App {
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
-                    export type Response = Inertia.Pages.Hyperlinks/show
+                    export type Response = Inertia.Pages.Hyperlinks.Show
 
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
@@ -79,7 +79,7 @@ export namespace App {
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
-                    export type Response = Inertia.Pages.Hyperlinks/edit
+                    export type Response = Inertia.Pages.Hyperlinks.Edit
 
                     /**
                      * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
@@ -123,7 +123,7 @@ export namespace App {
                         /**
                          * @see [\App\Http\Controllers\Settings\ProfileController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php)
                          */
-                        export type Response = Inertia.Pages.Settings/profile
+                        export type Response = Inertia.Pages.Settings.Profile
 
                         /**
                          * @see [\App\Http\Controllers\Settings\ProfileController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php)
@@ -152,7 +152,7 @@ export namespace App {
                         /**
                          * @see [\App\Http\Controllers\Settings\PasswordController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\PasswordController.php)
                          */
-                        export type Response = Inertia.Pages.Settings/password
+                        export type Response = Inertia.Pages.Settings.Password
 
                         /**
                          * @see [\App\Http\Controllers\Settings\PasswordController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\PasswordController.php)
@@ -174,7 +174,7 @@ export namespace App {
                         /**
                          * @see [\App\Http\Controllers\Settings\TwoFactorAuthenticationController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php)
                          */
-                        export type Response = Inertia.Pages.Settings/twoFactor
+                        export type Response = Inertia.Pages.Settings.TwoFactor
 
                         /**
                          * @see [\App\Http\Controllers\Settings\TwoFactorAuthenticationController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php)
@@ -215,39 +215,39 @@ export namespace Inertia {
             /**
              * @see [\App\Http\Controllers\HyperlinkController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
-            export type Hyperlinks/index = Inertia.SharedData & { hyperlinks: Illuminate.Pagination.LengthAwarePaginator }
+            export type Index = Inertia.SharedData & { hyperlinks: Illuminate.Pagination.LengthAwarePaginator }
 
             /**
              * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
-            export type Hyperlinks/create = Inertia.SharedData
+            export type Create = Inertia.SharedData
 
             /**
              * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
-            export type Hyperlinks/show = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
+            export type Show = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
 
             /**
              * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
-            export type Hyperlinks/edit = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
+            export type Edit = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
         }
 
         export namespace Settings {
             /**
              * @see [\App\Http\Controllers\Settings\ProfileController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php)
              */
-            export type Settings/profile = Inertia.SharedData & { mustVerifyEmail: boolean, status: unknown }
+            export type Profile = Inertia.SharedData & { mustVerifyEmail: boolean, status: unknown }
 
             /**
              * @see [\App\Http\Controllers\Settings\PasswordController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\PasswordController.php)
              */
-            export type Settings/password = Inertia.SharedData
+            export type Password = Inertia.SharedData
 
             /**
              * @see [\App\Http\Controllers\Settings\TwoFactorAuthenticationController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php)
              */
-            export type Settings/twoFactor = Inertia.SharedData & { twoFactorEnabled: unknown, requiresConfirmation: boolean }
+            export type TwoFactor = Inertia.SharedData & { twoFactorEnabled: unknown, requiresConfirmation: boolean }
         }
     }
 }

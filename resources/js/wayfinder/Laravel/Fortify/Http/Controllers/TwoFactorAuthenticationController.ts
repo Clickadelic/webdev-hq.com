@@ -37,6 +37,8 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:21
@@ -56,6 +58,8 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
     action: store.url(options),
     method: "post",
 })
+
+
 
 store.form = storeForm
 /**
@@ -92,6 +96,8 @@ destroy.delete = (options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
     method: "delete",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::destroy
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:35
@@ -111,6 +117,8 @@ destroyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<"post"> 
     action: destroy.url(formSafeOptions("delete", options)),
     method: "post",
 })
+
+
 
 destroy.form = destroyForm
 

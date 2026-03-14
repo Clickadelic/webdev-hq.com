@@ -47,6 +47,8 @@ show.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php:28
@@ -76,6 +78,8 @@ showForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: show.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 show.form = showForm
 

@@ -48,6 +48,8 @@ login.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::create
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:41
@@ -77,6 +79,8 @@ loginForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: login.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 login.form = loginForm
 /**
@@ -113,6 +117,8 @@ enable.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:21
@@ -132,6 +138,8 @@ enableForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
     action: enable.url(options),
     method: "post",
 })
+
+
 
 enable.form = enableForm
 /**
@@ -168,6 +176,8 @@ confirm.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmedTwoFactorAuthenticationController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmedTwoFactorAuthenticationController.php:19
@@ -187,6 +197,8 @@ confirmForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =>
     action: confirm.url(options),
     method: "post",
 })
+
+
 
 confirm.form = confirmForm
 /**
@@ -223,6 +235,8 @@ disable.delete = (options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
     method: "delete",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::destroy
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:35
@@ -242,6 +256,8 @@ disableForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<"post"> 
     action: disable.url(formSafeOptions("delete", options)),
     method: "post",
 })
+
+
 
 disable.form = disableForm
 /**
@@ -288,6 +304,8 @@ qrCode.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorQrCodeController::show
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorQrCodeController.php:16
@@ -317,6 +335,8 @@ qrCodeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
     action: qrCode.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 qrCode.form = qrCodeForm
 /**
@@ -363,6 +383,8 @@ secretKey.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorSecretKeyController::show
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorSecretKeyController.php:17
@@ -392,6 +414,8 @@ secretKeyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =
     action: secretKey.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 secretKey.form = secretKeyForm
 /**
@@ -438,6 +462,8 @@ recoveryCodes.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => (
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::index
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:19
@@ -467,6 +493,8 @@ recoveryCodesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get
     action: recoveryCodes.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 recoveryCodes.form = recoveryCodesForm
 /**
@@ -503,6 +531,8 @@ regenerateRecoveryCodes.post = (options?: RouteQueryOptions): RouteDefinition<"p
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:38
@@ -522,6 +552,8 @@ regenerateRecoveryCodesForm.post = (options?: RouteQueryOptions): RouteFormDefin
     action: regenerateRecoveryCodes.url(options),
     method: "post",
 })
+
+
 
 regenerateRecoveryCodes.form = regenerateRecoveryCodesForm
 /**
@@ -568,6 +600,8 @@ show.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php:28
@@ -597,6 +631,8 @@ showForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: show.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 show.form = showForm
 

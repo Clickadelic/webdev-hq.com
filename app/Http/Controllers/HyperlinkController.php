@@ -37,7 +37,7 @@ class HyperlinkController extends Controller
 
         return redirect()
             ->route('hyperlinks.index')
-            ->with('success', 'Hyperlink erfolgreich erstellt.');
+            ->with('success', 'Hyperlink successfully created.');
     }
 
     /**
@@ -69,7 +69,7 @@ class HyperlinkController extends Controller
 
         return redirect()
             ->route('hyperlinks.index')
-            ->with('success', 'Hyperlink erfolgreich aktualisiert.');
+            ->with('success', 'Hyperlink successfully updated.');
     }
 
     /**
@@ -81,6 +81,6 @@ class HyperlinkController extends Controller
 
         return redirect()
             ->route('hyperlinks.index')
-            ->with('success', 'Hyperlink erfolgreich gelöscht.');
+            ->with('success', 'Hyperlink successfully deleted.');
     }
 }
