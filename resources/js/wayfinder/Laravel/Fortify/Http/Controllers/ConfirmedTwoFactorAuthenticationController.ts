@@ -37,6 +37,8 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmedTwoFactorAuthenticationController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmedTwoFactorAuthenticationController.php:19
@@ -56,6 +58,8 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
     action: store.url(options),
     method: "post",
 })
+
+
 
 store.form = storeForm
 

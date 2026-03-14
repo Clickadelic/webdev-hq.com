@@ -9,6 +9,8 @@ import { LoaderCircle, LucideLink } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
+import { Bold, Italic, Underline } from "lucide-react"
+
 import { cn } from "@/lib/utils";
 
 interface HyperlinkFormProps {
@@ -81,24 +83,11 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
             {/* Status (Select) */}
             <div className="grid gap-2">
                 <Label>Status</Label>
-                {/* <ToggleGroup size="sm" variant="outline" type="single" defaultValue="published" onValueChange={(value) => setData("status", value)} className="asd">
+                <ToggleGroup size="sm" variant="outline" type="single" defaultValue="published" onValueChange={(value) => setData("status", value)} className="asd">
                     <ToggleGroupItem value="draft">Draft</ToggleGroupItem>
                     <ToggleGroupItem value="published">Published</ToggleGroupItem>
                     <ToggleGroupItem value="archived">Archived</ToggleGroupItem>
-                </ToggleGroup> */}
-                <Select 
-                    value={data.status} 
-                    onValueChange={(value) => setData("status", value)}
-                >
-                    <SelectTrigger>
-                        <SelectValue placeholder="Status wählen" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="draft">Draft</SelectItem>
-                        <SelectItem value="published">Published</SelectItem>
-                        <SelectItem value="archived">Archived</SelectItem>
-                    </SelectContent>
-                </Select>
+                </ToggleGroup>
                 
                 {errors.status && <p className="text-sm text-destructive">{errors.status}</p>}
             </div>

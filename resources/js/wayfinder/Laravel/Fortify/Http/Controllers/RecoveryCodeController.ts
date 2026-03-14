@@ -47,6 +47,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::index
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:19
@@ -76,6 +78,8 @@ indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: index.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 index.form = indexForm
 /**
@@ -112,6 +116,8 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:38
@@ -131,6 +137,8 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
     action: store.url(options),
     method: "post",
 })
+
+
 
 store.form = storeForm
 

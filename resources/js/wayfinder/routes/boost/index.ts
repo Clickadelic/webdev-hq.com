@@ -4,7 +4,7 @@
 import { queryParams, type RouteDefinition, type RouteFormDefinition, type RouteQueryOptions } from "./../../index";
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php:114
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php:115
  * @route "/_boost/browser-logs"
  */
 export const browserLogs = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -18,7 +18,7 @@ browserLogs.definition = {
 } satisfies RouteDefinition<["post"]>
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php:114
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php:115
  * @route "/_boost/browser-logs"
  */
 browserLogs.url = (options?: RouteQueryOptions) => {
@@ -26,7 +26,7 @@ browserLogs.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php:114
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php:115
  * @route "/_boost/browser-logs"
  */
 browserLogs.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -34,8 +34,10 @@ browserLogs.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php:114
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php:115
  * @route "/_boost/browser-logs"
  */
 const browserLogsForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -44,13 +46,15 @@ const browserLogsForm = (options?: RouteQueryOptions): RouteFormDefinition<"post
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php:114
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php:115
  * @route "/_boost/browser-logs"
  */
 browserLogsForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
     action: browserLogs.url(options),
     method: "post",
 })
+
+
 
 browserLogs.form = browserLogsForm
 

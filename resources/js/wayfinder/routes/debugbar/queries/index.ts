@@ -37,6 +37,8 @@ explain.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Barryvdh\Debugbar\Controllers\QueriesController::explain
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\QueriesController.php:14
@@ -56,6 +58,8 @@ explainForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =>
     action: explain.url(options),
     method: "post",
 })
+
+
 
 explain.form = explainForm
 

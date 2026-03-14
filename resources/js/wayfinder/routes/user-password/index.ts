@@ -47,6 +47,8 @@ edit.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\Settings\PasswordController::edit
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\PasswordController.php:17
@@ -76,6 +78,8 @@ editForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: edit.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 edit.form = editForm
 /**
@@ -112,6 +116,8 @@ update.put = (options?: RouteQueryOptions): RouteDefinition<"put"> => ({
     method: "put",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\Settings\PasswordController::update
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\PasswordController.php:25
@@ -131,6 +137,8 @@ updateForm.put = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
     action: update.url(formSafeOptions("put", options)),
     method: "post",
 })
+
+
 
 update.form = updateForm
 

@@ -15,8 +15,11 @@ interface DeleteHyperlinkButtonProps {
 export default function DeleteHyperlinkButton({ id }: DeleteHyperlinkButtonProps) {
     function handleDestroy({ id }: DeleteHyperlinkButtonProps) {
         if (confirm("Are you sure you want to delete this item?")) {
-            router.delete(destroy.url(id));
-            toast.success("Hyperlink deleted successfully.");
+            router.delete(destroy.url(id), {
+                preserveScroll: true,
+                onSuccess: () => toast.success("Hyperlink deleted successfully."),
+                onError: () => toast.error("Failed to delete hyperlink."),
+            });
         }
     }
     return (
@@ -34,7 +37,7 @@ export default function DeleteHyperlinkButton({ id }: DeleteHyperlinkButtonProps
                 </DialogHeader>
                 <DialogFooter>
                     <DialogClose asChild>
-                        <Button variant="destructive">Delete</Button>
+                        <Button variant="destructive" onClick={() => handleDestroy({ id })}>Delete</Button>
                     </DialogClose>
                 </DialogFooter>
             </DialogContent>

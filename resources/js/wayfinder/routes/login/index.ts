@@ -37,6 +37,8 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:58
@@ -56,6 +58,8 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
     action: store.url(options),
     method: "post",
 })
+
+
 
 store.form = storeForm
 

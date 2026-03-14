@@ -47,6 +47,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\HyperlinkController::index
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:14
@@ -76,6 +78,8 @@ indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: index.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 index.form = indexForm
 /**
@@ -122,6 +126,8 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\HyperlinkController::create
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:26
@@ -151,6 +157,8 @@ createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
     action: create.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 create.form = createForm
 /**
@@ -187,6 +195,8 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
     method: "post",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\HyperlinkController::store
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:34
@@ -206,6 +216,8 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
     action: store.url(options),
     method: "post",
 })
+
+
 
 store.form = storeForm
 /**
@@ -274,6 +286,8 @@ show.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: number 
     method: "head",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\HyperlinkController::show
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:46
@@ -303,6 +317,8 @@ showForm.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: num
     action: show.url(args, formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 show.form = showForm
 /**
@@ -371,6 +387,8 @@ edit.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: number 
     method: "head",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\HyperlinkController::edit
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:56
@@ -400,6 +418,8 @@ editForm.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: num
     action: edit.url(args, formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 edit.form = editForm
 /**
@@ -468,6 +488,8 @@ update.patch = (args: { hyperlink: number | { id: number } } | [ hyperlink: numb
     method: "patch",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\HyperlinkController::update
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:66
@@ -497,6 +519,8 @@ updateForm.patch = (args: { hyperlink: number | { id: number } } | [ hyperlink: 
     action: update.url(args, formSafeOptions("patch", options)),
     method: "post",
 })
+
+
 
 update.form = updateForm
 /**
@@ -555,6 +579,8 @@ destroy.delete = (args: { hyperlink: number | { id: number } } | [ hyperlink: nu
     method: "delete",
 })
 
+
+
 /**
  * @see \App\Http\Controllers\HyperlinkController::destroy
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:78
@@ -574,6 +600,8 @@ destroyForm.delete = (args: { hyperlink: number | { id: number } } | [ hyperlink
     action: destroy.url(args, formSafeOptions("delete", options)),
     method: "post",
 })
+
+
 
 destroy.form = destroyForm
 

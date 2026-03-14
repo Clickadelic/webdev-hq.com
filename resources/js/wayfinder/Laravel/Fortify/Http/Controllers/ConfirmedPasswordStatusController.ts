@@ -47,6 +47,8 @@ show.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
     method: "head",
 })
 
+
+
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmedPasswordStatusController::show
  * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmedPasswordStatusController.php:17
@@ -76,6 +78,8 @@ showForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
     action: show.url(formSafeOptions("head", options)),
     method: "get",
 })
+
+
 
 show.form = showForm
 
