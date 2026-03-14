@@ -1,14 +1,11 @@
 "use client";
 
-import { Link } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
 import { usePage } from '@inertiajs/react';
-import { router } from '@inertiajs/react';
 import { type BreadcrumbItem } from '@/types';
 import { Hyperlink } from '@/types';
-import { toast } from "sonner"
-import { index, destroy } from "@/actions/App/Http/Controllers/HyperlinkController";
+import { index } from "@/actions/App/Http/Controllers/HyperlinkController";
 
 import DeleteHyperlinkButton from "@/components/hyperlinks/delete-hyperlink-button";
 
@@ -20,17 +17,10 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Hyperlinks() {
-    const { hyperlinks } = usePage<{ hyperlinks: Hyperlink[] }>().props;
-    const items = hyperlinks;
+    const { hyperlinks } = usePage<{ hyperlinks: { data: Hyperlink[] } }>().props;
+    const items = hyperlinks.data;
 
     console.log("Items are", items);
-
-    function handleDestroy({ id }: { id: number }) {
-        if (confirm("Are you sure you want to delete this item?")) {
-            router.delete(destroy.url(id));
-            toast.success("Hyperlink deleted successfully.");
-        }
-    }
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
