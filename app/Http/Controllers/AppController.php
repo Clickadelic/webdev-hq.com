@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\App;
 use App\Http\Requests\StoreAppRequest;
 use App\Http\Requests\UpdateAppRequest;
-
+// use App\Models\User;
 
 class AppController extends Controller
 {
@@ -17,21 +17,23 @@ class AppController extends Controller
         //
     }
 
-
     /**
      * Store a newly created resource in storage.
      */
-    // TODO: Store a newly created resource in storage
     public function store(StoreAppRequest $request)
     {
         $validated = $request->validated();
 
-        $app = App::create($validated);
+        // $userId = User::id();
+
+        $app = App::create([
+            ...$validated,
+            // 'created_by' => $userId,
+            'created_by' => auth()->id(),
+        ]);
 
         return redirect()->route('apps.show', $app);
-        
     }
-
 
     /**
      * Display the specified resource.

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreAppRequest extends FormRequest
 {
@@ -14,22 +15,23 @@ class StoreAppRequest extends FormRequest
         return true;
     }
 
-
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            "id" => ["required", "integer"],
-            "title" => ["required", "string"],
-            "url" => ["required", "url"],
-            "target" => ["required", "string"],
-            "description" => ["nullable", "string"],
-            "created_by" => ["required", "string"],
-            "status" => ["required", "string"],
+            'title' => ['required', 'string', 'max:255'],
+
+            'url' => ['required', 'url', 'max:2048'],
+
+            'target' => [
+                'required',
+                'string',
+                Rule::in(['_self', '_blank'])
+            ],
+
+            'position' => ['nullable', 'integer', 'min:0'],
         ];
     }
 }
