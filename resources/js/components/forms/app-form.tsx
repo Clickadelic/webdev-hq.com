@@ -1,13 +1,13 @@
 import { useForm } from "@inertiajs/react";
 // import { store } from "@/actions/App/Http/Controllers/AppController";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner"
 import { LoaderCircle, LucideLink } from 'lucide-react';
 
 import { cn } from "@/lib/utils";
+import { BsPlusLg } from "react-icons/bs";
 
 interface AppFormProps {
     className?: string;
@@ -64,21 +64,9 @@ export default function AppForm({ className }: AppFormProps) {
                 {errors.url && <p className="text-sm text-destructive">{errors.url}</p>}
             </div>
 
-            {/* Description */}
-            <div className="grid gap-2">
-                <Label htmlFor="description">Description</Label>
-                <Textarea
-                    id="description"
-                    placeholder="Description"
-                    value={data.description}
-                    onChange={e => setData("description", e.target.value)}
-                />
-                {errors.description && <p className="text-sm text-destructive">{errors.description}</p>}
-            </div>
-
             <Button type="submit" disabled={processing}>
-                {processing ? <LoaderCircle /> : <LucideLink size={8} className="mr-2" />}
-                {processing ? "Loading" : "Save App"}
+                {processing ? <LoaderCircle /> : <BsPlusLg size={8} className="mr-2" />}
+                {processing ? "Loading" : "Add App"}
             </Button>
         </form>
     );

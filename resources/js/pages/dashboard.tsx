@@ -134,10 +134,10 @@ export default function Dashboard() {
                                         <DialogHeader>
                                             <DialogTitle className="flex items-start gap-2">
                                                 <BsApp />
-                                                Edit App
+                                                Add App
                                             </DialogTitle>
                                             <DialogDescription>
-                                                Add a new app to your list.
+                                                Add a new app to your Dashboard.
                                             </DialogDescription>
                                         </DialogHeader>
                                         <div className="flex">
