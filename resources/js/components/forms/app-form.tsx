@@ -18,22 +18,22 @@ export default function AppForm({ className }: AppFormProps) {
     const { data, setData, post, processing, errors, reset } = useForm({
         title: "",
         url: "",
-        description: "",
-        status: "published",
+        target: "_self",
+        position: 1,
     });
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
         // Wir senden die Daten an die Wayfinder-Route
-        post(store.url(), {
-            onSuccess: () => {
-                reset()
-                toast.success("App created!")
-            },
-            onError: () => {
-                toast.error("App creation failed!")
-            }
-        });
+        // post(store.url(), {
+        //     onSuccess: () => {
+        //         reset()
+        //         toast.success("App created!")
+        //     },
+        //     onError: () => {
+        //         toast.error("App creation failed!")
+        //     }
+        // });
     }
 
     return (
@@ -78,7 +78,7 @@ export default function AppForm({ className }: AppFormProps) {
 
             <Button type="submit" disabled={processing}>
                 {processing ? <LoaderCircle /> : <LucideLink size={8} className="mr-2" />}
-                {processing ? "Loading" : "Save Hyperlink"}
+                {processing ? "Loading" : "Save App"}
             </Button>
         </form>
     );

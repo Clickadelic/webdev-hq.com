@@ -7,7 +7,7 @@ import type { DragEndEvent } from "@dnd-kit/core"
 import type { DragStartEvent } from '@dnd-kit/core'
 
 import { DndContext, closestCenter, PointerSensor, useSensor, useSensors, DragOverlay } from "@dnd-kit/core"
-import { arrayMove, SortableContext, rectSortingStrategy } from "@dnd-kit/sortable"
+import { arrayMove, SortableContext, horizontalListSortingStrategy } from "@dnd-kit/sortable"
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Plus } from "lucide-react"
@@ -18,7 +18,8 @@ import { TbEdit } from "react-icons/tb"
 
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import AppForm
+
+import AppForm from '@/components/forms/app-form';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -98,7 +99,7 @@ export default function Dashboard() {
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-                    <SortableContext items={apps.map(app => app.id)} strategy={rectSortingStrategy}>
+                    <SortableContext items={apps.map(app => app.id)} strategy={horizontalListSortingStrategy}>
                         <ul className="w-full grid grid-cols-12 gap-1 p-1 bg-white/30 dark:bg-slate-800/30 rounded backdrop-blur">
                             {apps.map(app => (
                                 <SortableAppTile
@@ -140,7 +141,7 @@ export default function Dashboard() {
                                             </DialogDescription>
                                         </DialogHeader>
                                         <div className="flex">
-                                            form
+                                            <AppForm className="w-full" />
                                         </div>
                                     </DialogContent>
                                 </Dialog>
