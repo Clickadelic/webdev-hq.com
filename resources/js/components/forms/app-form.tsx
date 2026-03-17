@@ -1,5 +1,5 @@
 import { useForm } from "@inertiajs/react";
-import { store } from "@/actions/App/Http/Controllers/HyperlinkController";
+// import { store } from "@/actions/App/Http/Controllers/AppController";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -9,11 +9,11 @@ import { LoaderCircle, LucideLink } from 'lucide-react';
 
 import { cn } from "@/lib/utils";
 
-interface HyperlinkFormProps {
+interface AppFormProps {
     className?: string;
 }
 
-export default function HyperlinkForm({ className }: HyperlinkFormProps) {
+export default function AppForm({ className }: AppFormProps) {
     // Inertia's useForm Hook
     const { data, setData, post, processing, errors, reset } = useForm({
         title: "",
@@ -28,10 +28,10 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
         post(store.url(), {
             onSuccess: () => {
                 reset()
-                toast.success("Hyperlink created!")
+                toast.success("App created!")
             },
             onError: () => {
-                toast.error("Hyperlink creation failed!")
+                toast.error("App creation failed!")
             }
         });
     }

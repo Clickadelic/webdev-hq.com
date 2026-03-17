@@ -19,6 +19,7 @@ export interface SortableAppTileProps {
 	setWasDragged: (val: boolean) => void
 }
 
+
 export const SortableAppTile = ({ app, onEdit, onDelete }: SortableAppTileProps) => {
 	const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: app.id })
 
@@ -54,13 +55,13 @@ export const SortableAppTile = ({ app, onEdit, onDelete }: SortableAppTileProps)
 					<DropdownMenuItem>
 						<button onClick={() => onEdit(app.id)} className="flex justify-between rounded">
 							<AiOutlineEdit className="mt-1 mr-2" />
-							{chrome.i18n.getMessage("edit", "Edit")}
+							Edit
 						</button>
 					</DropdownMenuItem>
 					<DropdownMenuItem>
 						<button onClick={() => onDelete(app.id)} className="flex justify-between text-red-500 hover:text-red-700 rounded">
 							<BsTrash className="text-red-500 hover:text-red-700 size-3 mt-1 mr-2" />
-							{chrome.i18n.getMessage("delete", "Delete")}
+							Delete
 						</button>
 					</DropdownMenuItem>
 				</DropdownMenuContent>
