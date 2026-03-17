@@ -6,27 +6,27 @@ export namespace App {
         /**
          * @see [\App\Models\App](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\App.php)
          */
-        export type App = { id: string, title: string, url: string, target: string, description: string | null, created_by: number | null, status: App.Enums.Status, created_at: string | null, updated_at: string | null, deleted_at: string | null, creator?: App.Models.User | null, categories?: App.Models.Category[], tags?: App.Models.Tag[] }
+        export type App = { id: string, title: string, url: string, target: string, position: number, created_by: number | null, created_at: string | null, updated_at: string | null, creator?: App.Models.User | null }
 
         /**
          * @see [\App\Models\User](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\User.php)
          */
-        export type User = { id: number, name: string, email: string, email_verified_at: string | null, password: string, two_factor_secret: string | null, two_factor_recovery_codes: string | null, two_factor_confirmed_at: string | null, remember_token: string | null, created_at: string | null, updated_at: string | null, notifications?: Illuminate.Notifications.DatabaseNotification[] }
+        export type User = Record<string, never>
 
         /**
          * @see [\App\Models\Category](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Category.php)
          */
-        export type Category = { id: number, name: string, slug: string, created_at: string | null, updated_at: string | null, hyperlinks?: App.Models.Hyperlink[] }
+        export type Category = Record<string, never>
 
         /**
          * @see [\App\Models\Hyperlink](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Hyperlink.php)
          */
-        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: string, is_featured: boolean, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null }
+        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: string, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
 
         /**
          * @see [\App\Models\Tag](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Tag.php)
          */
-        export type Tag = { id: number, name: string, slug: string, created_at: string | null, updated_at: string | null }
+        export type Tag = Record<string, never>
     }
 
     export namespace Enums {
@@ -182,26 +182,6 @@ export namespace App {
                         export type Request = Record<string, unknown>
                     }
                 }
-            }
-        }
-    }
-}
-
-export namespace Illuminate {
-    export namespace Notifications {
-        /**
-         * @see [\Illuminate\Notifications\DatabaseNotification](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Notifications\DatabaseNotification.php)
-         */
-        export type DatabaseNotification = { incrementing: boolean, notifiable?: Illuminate.Notifications.DatabaseNotification | null }
-    }
-
-    export namespace Routing {
-        export namespace RedirectController {
-            export namespace __invoke {
-                /**
-                 * @see [\Illuminate\Routing\RedirectController::__invoke](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Routing\RedirectController.php)
-                 */
-                export type Request = Record<string, unknown>
             }
         }
     }
@@ -535,5 +515,18 @@ export namespace Closure {
          * @see [\Closure::__invoke](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php)
          */
         export type Request = Record<string, unknown>
+    }
+}
+
+export namespace Illuminate {
+    export namespace Routing {
+        export namespace RedirectController {
+            export namespace __invoke {
+                /**
+                 * @see [\Illuminate\Routing\RedirectController::__invoke](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Routing\RedirectController.php)
+                 */
+                export type Request = Record<string, unknown>
+            }
+        }
     }
 }
