@@ -1,0 +1,6 @@
+import { create } from 'zustand'
+
+const useAppStore = create((set) => ({
+    apps: 0
+
+}))

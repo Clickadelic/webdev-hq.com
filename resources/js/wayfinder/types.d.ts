@@ -6,7 +6,7 @@ export namespace App {
         /**
          * @see [\App\Models\App](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\App.php)
          */
-        export type App = { id: string, title: string, url: string, target: string, description: string | null, created_by: number | null, status: string, created_at: string | null, updated_at: string | null, deleted_at: string | null, creator?: App.Models.User | null }
+        export type App = { id: string, title: string, url: string, target: string, position: number, created_by: number | null, created_at: string | null, updated_at: string | null, creator?: App.Models.User | null }
 
         /**
          * @see [\App\Models\User](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\User.php)
@@ -21,7 +21,7 @@ export namespace App {
         /**
          * @see [\App\Models\Hyperlink](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Hyperlink.php)
          */
-        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: string, is_featured: boolean, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
+        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: string, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
 
         /**
          * @see [\App\Models\Tag](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Tag.php)
@@ -183,6 +183,63 @@ export namespace App {
                     }
                 }
             }
+
+            export namespace AppController {
+                export namespace Store {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = {    title: string;
+                        url: string;
+                        target: string;
+                        position?: number | null;}
+                }
+
+                export namespace Update {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::update](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = {    title?: string;
+                        url?: string;
+                        target?: string;
+                        position?: number;}
+                }
+
+                export namespace Index {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace Create {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace Show {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace Edit {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace Destroy {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::destroy](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+            }
         }
     }
 }
@@ -208,7 +265,7 @@ export namespace Illuminate {
 }
 
 export namespace Inertia {
-    export type SharedData = {auth: {user: Record<string, unknown> }, sidebarOpen: boolean }
+    export type SharedData = {auth: {user: App.Models.User | null }, sidebarOpen: boolean }
 
     export namespace Pages {
         export namespace Hyperlinks {

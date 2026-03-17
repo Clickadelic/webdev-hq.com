@@ -33,29 +33,10 @@ const apps = [
         id: 1,
         name: 'App 1',
         icon: <BsApp />
-    },
-    {
-        id: 2,
-        name: 'App 2',
-        icon: <BsApp />
-    },
-    {
-        id: 3,
-        name: 'App 3',
-        icon: <BsApp />
-    },
+    }
 ]
 
 export default function Dashboard() {
-
-    // const { apps, addApp, editApp, removeApp } = useAppStore()
-	// const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
-	// const [isLoading, setIsLoading] = useState<boolean>(false)
-	// const [isEditing, setIsEditing] = useState<boolean>(false)
-	// const [editingAppId, setEditingAppId] = useState<string | null>(null)
-	// const [error, setError] = useState<string | undefined>("")
-	// const [success, setSuccess] = useState<string | undefined>("")
-	// const [draggingApp, setDraggingApp] = useState<AppType | null>(null)
 	
 	const sensors = useSensors(
 		useSensor(PointerSensor, {
@@ -66,11 +47,11 @@ export default function Dashboard() {
 	)
 
 	const handleDragStart = (event: DragStartEvent) => {
-		alert("Handledragstart")
+		alert("Handledragstart" + JSON.stringify(event))
 	}
 
 	const handleDragEnd = ({ active, over }: DragEndEvent) => {
-		alert("Handledragend")
+		alert("Handledragend" + JSON.stringify({ active, over }))
 	}
 
 
@@ -92,7 +73,6 @@ export default function Dashboard() {
 
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
-    const [editingAppId, setEditingAppId] = useState<string | null>(null)
     const draggingApp = null
 
     return (

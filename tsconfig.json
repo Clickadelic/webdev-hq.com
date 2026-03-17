@@ -109,6 +109,9 @@
         "skipLibCheck": true /* Skip type checking all .d.ts files. */,
         "baseUrl": ".",
         "paths": {
+            "@/routes": ["./resources/js/wayfinder/routes"],
+            "@/routes/*": ["./resources/js/wayfinder/routes/*"],
+            "@/actions/*": ["./resources/js/wayfinder/*"],
             "@/*": ["./resources/js/*"]
         },
         "jsx": "react-jsx"

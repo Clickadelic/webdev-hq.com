@@ -1,13 +1,16 @@
 import { useForm } from "@inertiajs/react";
-// import { store } from "@/actions/App/Http/Controllers/AppController";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner"
-import { LoaderCircle, LucideLink } from 'lucide-react';
+import { LoaderCircle } from 'lucide-react';
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { BsPlusLg } from "react-icons/bs";
+
+import { store } from "@/actions/App/Http/Controllers/AppController";
 
 import { cn } from "@/lib/utils";
-import { BsPlusLg } from "react-icons/bs";
 
 interface AppFormProps {
     className?: string;
@@ -18,22 +21,22 @@ export default function AppForm({ className }: AppFormProps) {
     const { data, setData, post, processing, errors, reset } = useForm({
         title: "",
         url: "",
-        target: "_self",
+        target: "_self" as "_self" | "_blank",
         position: 1,
     });
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
         // Wir senden die Daten an die Wayfinder-Route
-        // post(store.url(), {
-        //     onSuccess: () => {
-        //         reset()
-        //         toast.success("App created!")
-        //     },
-        //     onError: () => {
-        //         toast.error("App creation failed!")
-        //     }
-        // });
+        post(store.url(), {
+            onSuccess: () => {
+                reset()
+                toast.success("App created!")
+            },
+            onError: () => {
+                toast.error("App creation failed!")
+            }
+        });
     }
 
     return (
@@ -62,6 +65,17 @@ export default function AppForm({ className }: AppFormProps) {
                     onChange={e => setData("url", e.target.value)}
                 />
                 {errors.url && <p className="text-sm text-destructive">{errors.url}</p>}
+            </div>
+
+            {/* Status (Select) */}
+            <div className="grid gap-2">
+                <Label>Target</Label>
+                <ToggleGroup size="sm" variant="outline" type="single" defaultValue="_blank" onValueChange={(value) => setData("target", value)} className="asd">
+                    <ToggleGroupItem value="_self">self</ToggleGroupItem>
+                    <ToggleGroupItem value="_blank">blank</ToggleGroupItem>
+                </ToggleGroup>
+
+                {errors.target && <p className="text-sm text-destructive">{errors.target}</p>}
             </div>
 
             <Button type="submit" disabled={processing}>
