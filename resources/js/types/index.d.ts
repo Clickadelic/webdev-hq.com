@@ -41,6 +41,15 @@ export interface User {
     [key: string]: unknown; // This allows for additional properties...
 }
 
+export interface App {
+    id: number;
+    title: string;
+    url: string;
+    category_id: number | null;
+    status: string;
+    created_at: string;
+    updated_at: string;
+}
 export interface Hyperlink {
     id: number;
     title: string;

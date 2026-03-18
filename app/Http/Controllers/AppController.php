@@ -14,7 +14,12 @@ class AppController extends Controller
      */
     public function index()
     {
-        //
+        // Apps
+        $apps = App::all();
+
+        return inertia('apps/index', [
+            'apps' => $apps,
+        ]);
     }
 
     /**
