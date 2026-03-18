@@ -8,6 +8,18 @@ use Inertia\Middleware;
 class HandleInertiaRequests extends Middleware
 {
     /**
+     * Determines whether Inertia should handle this request.
+     */
+    public function shouldProcess(Request $request): bool
+    {
+        // Skip Inertia for API routes
+        if ($request->is('api/*')) {
+            return false;
+        }
+        
+        return parent::shouldProcess($request);
+    }
+    /**
      * The root template that's loaded on the first page visit.
      *
      * @see https://inertiajs.com/server-side-setup#root-template
