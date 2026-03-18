@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateAppRequest extends FormRequest
 {
@@ -11,18 +12,27 @@ class UpdateAppRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // Nur der Ersteller darf die App ändern
+        return $this->app && $this->app->creator_id === auth()->id();
     }
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            //
+            'title' => ['sometimes', 'string', 'max:255'],
+
+            'url' => ['sometimes', 'url', 'max:2048'],
+
+            'target' => [
+                'sometimes',
+                'string',
+                Rule::in(['_self', '_blank'])
+            ],
+
+            'position' => ['sometimes', 'integer', 'min:0'],
         ];
     }
 }

@@ -18,11 +18,17 @@ import AppLogo from './app-logo';
 
 import { type NavItem } from '@/types';
 
+
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+    {
+        title: 'Apps',
+        href: "/apps",
+        icon: Link2,
     },
     {
         title: 'Hyperlinks',

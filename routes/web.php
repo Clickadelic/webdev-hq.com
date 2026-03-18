@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
+
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\HyperlinkController;
 
 Route::get('/', function () {
@@ -15,7 +17,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
-    // Hyperlinks
+    
+    Route::resource('/apps', AppController::class);
     Route::resource('/hyperlinks', HyperlinkController::class);
 });
 
