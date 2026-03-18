@@ -11,7 +11,7 @@ export namespace App {
         /**
          * @see [\App\Models\User](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\User.php)
          */
-        export type User = { id: number, name: string, email: string, email_verified_at: string | null, password: string, two_factor_secret: string | null, two_factor_recovery_codes: string | null, two_factor_confirmed_at: string | null, remember_token: string | null, created_at: string | null, updated_at: string | null, notifications?: Illuminate.Notifications.DatabaseNotification[] }
+        export type User = { id: number, name: string, email: string, email_verified_at: string | null, password: string, two_factor_secret: string | null, two_factor_recovery_codes: string | null, two_factor_confirmed_at: string | null, remember_token: string | null, created_at: string | null, updated_at: string | null, notifications?: Illuminate.Notifications.DatabaseNotification[], tokens?: Laravel.Sanctum.PersonalAccessToken[] }
 
         /**
          * @see [\App\Models\Category](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Category.php)
@@ -245,6 +245,33 @@ export namespace App {
                     }
                 }
             }
+
+            export namespace Api {
+                export namespace AuthController {
+                    export namespace Login {
+                        /**
+                         * @see [\App\Http\Controllers\Api\AuthController::login](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php)
+                         */
+                        export type Request = {    email: string;
+                            password: string;
+                            device_name?: string | null;}
+                    }
+
+                    export namespace Me {
+                        /**
+                         * @see [\App\Http\Controllers\Api\AuthController::me](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php)
+                         */
+                        export type Request = Record<string, unknown>
+                    }
+
+                    export namespace Logout {
+                        /**
+                         * @see [\App\Http\Controllers\Api\AuthController::logout](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php)
+                         */
+                        export type Request = Record<string, unknown>
+                    }
+                }
+            }
         }
     }
 }
@@ -269,59 +296,27 @@ export namespace Illuminate {
     }
 }
 
-export namespace Inertia {
-    export type SharedData = {auth: {user: App.Models.User | null }, sidebarOpen: boolean }
+export namespace Laravel {
+    export namespace Sanctum {
+        /**
+         * @see [\Laravel\Sanctum\PersonalAccessToken](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\PersonalAccessToken.php)
+         */
+        export type PersonalAccessToken = { id: number, tokenable_type: string, tokenable_id: number, name: string, token: string, abilities: Record<string, unknown>, last_used_at: string | null, expires_at: string | null, created_at: string | null, updated_at: string | null, tokenable?: Laravel.Sanctum.PersonalAccessToken | null }
 
-    export namespace Pages {
-        export namespace Apps {
-            /**
-             * @see [\App\Http\Controllers\AppController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
-             */
-            export type Index = Inertia.SharedData & { apps: Illuminate.Database.Eloquent.Collection }
-        }
-
-        export namespace Hyperlinks {
-            /**
-             * @see [\App\Http\Controllers\HyperlinkController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
-             */
-            export type Index = Inertia.SharedData & { hyperlinks: Illuminate.Pagination.LengthAwarePaginator }
-
-            /**
-             * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
-             */
-            export type Create = Inertia.SharedData
-
-            /**
-             * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
-             */
-            export type Show = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
-
-            /**
-             * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
-             */
-            export type Edit = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
-        }
-
-        export namespace Settings {
-            /**
-             * @see [\App\Http\Controllers\Settings\ProfileController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php)
-             */
-            export type Profile = Inertia.SharedData & { mustVerifyEmail: boolean, status: unknown }
-
-            /**
-             * @see [\App\Http\Controllers\Settings\PasswordController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\PasswordController.php)
-             */
-            export type Password = Inertia.SharedData
-
-            /**
-             * @see [\App\Http\Controllers\Settings\TwoFactorAuthenticationController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php)
-             */
-            export type TwoFactor = Inertia.SharedData & { twoFactorEnabled: unknown, requiresConfirmation: boolean }
+        export namespace Http {
+            export namespace Controllers {
+                export namespace CsrfCookieController {
+                    export namespace Show {
+                        /**
+                         * @see [\Laravel\Sanctum\Http\Controllers\CsrfCookieController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\Http\Controllers\CsrfCookieController.php)
+                         */
+                        export type Request = Record<string, unknown>
+                    }
+                }
+            }
         }
     }
-}
 
-export namespace Laravel {
     export namespace Fortify {
         export namespace Http {
             export namespace Controllers {
@@ -538,6 +533,58 @@ export namespace Laravel {
                     }
                 }
             }
+        }
+    }
+}
+
+export namespace Inertia {
+    export type SharedData = {auth: {user: App.Models.User | null }, sidebarOpen: boolean }
+
+    export namespace Pages {
+        export namespace Apps {
+            /**
+             * @see [\App\Http\Controllers\AppController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+             */
+            export type Index = Inertia.SharedData & { apps: Illuminate.Database.Eloquent.Collection }
+        }
+
+        export namespace Hyperlinks {
+            /**
+             * @see [\App\Http\Controllers\HyperlinkController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
+             */
+            export type Index = Inertia.SharedData & { hyperlinks: Illuminate.Pagination.LengthAwarePaginator }
+
+            /**
+             * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
+             */
+            export type Create = Inertia.SharedData
+
+            /**
+             * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
+             */
+            export type Show = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
+
+            /**
+             * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
+             */
+            export type Edit = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
+        }
+
+        export namespace Settings {
+            /**
+             * @see [\App\Http\Controllers\Settings\ProfileController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php)
+             */
+            export type Profile = Inertia.SharedData & { mustVerifyEmail: boolean, status: unknown }
+
+            /**
+             * @see [\App\Http\Controllers\Settings\PasswordController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\PasswordController.php)
+             */
+            export type Password = Inertia.SharedData
+
+            /**
+             * @see [\App\Http\Controllers\Settings\TwoFactorAuthenticationController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php)
+             */
+            export type TwoFactor = Inertia.SharedData & { twoFactorEnabled: unknown, requiresConfirmation: boolean }
         }
     }
 }

@@ -3,11 +3,13 @@
 
 import AppController from "./AppController";
 import HyperlinkController from "./HyperlinkController";
+import Api from "./Api";
 import Settings from "./Settings";
 
 export const Controllers = {
     AppController,
     HyperlinkController,
+    Api,
     Settings,
 }
 
