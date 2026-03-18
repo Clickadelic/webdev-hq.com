@@ -1293,16 +1293,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v12.54.1",
+            "version": "v12.55.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "325497463e7599cd14224c422c6e5dd2fe832868"
+                "reference": "6917962a55ac91598e8c5e2ebd25e27aed121b5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/325497463e7599cd14224c422c6e5dd2fe832868",
-                "reference": "325497463e7599cd14224c422c6e5dd2fe832868",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/6917962a55ac91598e8c5e2ebd25e27aed121b5e",
+                "reference": "6917962a55ac91598e8c5e2ebd25e27aed121b5e",
                 "shasum": ""
             },
             "require": {
@@ -1418,7 +1418,7 @@
                 "orchestra/testbench-core": "^10.9.0",
                 "pda/pheanstalk": "^5.0.6|^7.0.0",
                 "php-http/discovery": "^1.15",
-                "phpstan/phpstan": "^2.0",
+                "phpstan/phpstan": "^2.1.41",
                 "phpunit/phpunit": "^10.5.35|^11.5.3|^12.0.1",
                 "predis/predis": "^2.3|^3.0",
                 "resend/resend-php": "^0.10.0|^1.0",
@@ -1511,7 +1511,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-03-10T20:25:56+00:00"
+            "time": "2026-03-17T14:19:00+00:00"
         },
         {
             "name": "laravel/pint",
@@ -1583,16 +1583,16 @@
         },
         {
             "name": "laravel/prompts",
-            "version": "v0.3.14",
+            "version": "v0.3.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/prompts.git",
-                "reference": "9f0e371244eedfe2ebeaa72c79c54bb5df6e0176"
+                "reference": "4bb8107ec97651fd3f17f897d6489dbc4d8fb999"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/9f0e371244eedfe2ebeaa72c79c54bb5df6e0176",
-                "reference": "9f0e371244eedfe2ebeaa72c79c54bb5df6e0176",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/4bb8107ec97651fd3f17f897d6489dbc4d8fb999",
+                "reference": "4bb8107ec97651fd3f17f897d6489dbc4d8fb999",
                 "shasum": ""
             },
             "require": {
@@ -1636,29 +1636,29 @@
             "description": "Add beautiful and user-friendly forms to your command-line applications.",
             "support": {
                 "issues": "https://github.com/laravel/prompts/issues",
-                "source": "https://github.com/laravel/prompts/tree/v0.3.14"
+                "source": "https://github.com/laravel/prompts/tree/v0.3.15"
             },
-            "time": "2026-03-01T09:02:38+00:00"
+            "time": "2026-03-17T13:45:17+00:00"
         },
         {
             "name": "laravel/ranger",
-            "version": "v0.1.8",
+            "version": "v0.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ranger.git",
-                "reference": "24d64649b2f0bc3331aafa8b6fb781f0805b2e72"
+                "reference": "f179407d027fe9c099e78f0a6779f90ec5d35e01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ranger/zipball/24d64649b2f0bc3331aafa8b6fb781f0805b2e72",
-                "reference": "24d64649b2f0bc3331aafa8b6fb781f0805b2e72",
+                "url": "https://api.github.com/repos/laravel/ranger/zipball/f179407d027fe9c099e78f0a6779f90ec5d35e01",
+                "reference": "f179407d027fe9c099e78f0a6779f90ec5d35e01",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "^11.0|^12.0",
-                "illuminate/contracts": "^11.0|^12.0",
-                "illuminate/routing": "^11.0|^12.0",
-                "illuminate/support": "^11.0|^12.0",
+                "illuminate/console": "^11.0|^12.0|^13.0",
+                "illuminate/contracts": "^11.0|^12.0|^13.0",
+                "illuminate/routing": "^11.0|^12.0|^13.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
                 "laravel/pint": "^1.22",
                 "laravel/surveyor": "^0.1.0",
                 "nikic/php-parser": "^5.4",
@@ -1669,7 +1669,7 @@
             "require-dev": {
                 "inertiajs/inertia-laravel": "^2.0",
                 "mockery/mockery": "^1.6",
-                "orchestra/testbench": "^9.0|^10.0",
+                "orchestra/testbench": "^9.0|^10.0|^11.0",
                 "pestphp/pest": "^3.0",
                 "phpstan/phpstan": "2.1.24"
             },
@@ -1708,7 +1708,7 @@
                 "issues": "https://github.com/laravel/ranger/issues",
                 "source": "https://github.com/laravel/ranger"
             },
-            "time": "2026-01-27T17:05:51+00:00"
+            "time": "2026-03-17T22:44:57+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -1836,23 +1836,23 @@
         },
         {
             "name": "laravel/surveyor",
-            "version": "v0.1.8",
+            "version": "v0.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/surveyor.git",
-                "reference": "750df59ea8993e7ecacc6ae85e2b0e8194684d69"
+                "reference": "36953bc750548926f8b110d887d6a9e4dcff7e50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/surveyor/zipball/750df59ea8993e7ecacc6ae85e2b0e8194684d69",
-                "reference": "750df59ea8993e7ecacc6ae85e2b0e8194684d69",
+                "url": "https://api.github.com/repos/laravel/surveyor/zipball/36953bc750548926f8b110d887d6a9e4dcff7e50",
+                "reference": "36953bc750548926f8b110d887d6a9e4dcff7e50",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "^11.0|^12.0",
-                "illuminate/contracts": "^11.0|^12.0",
-                "illuminate/routing": "^11.0|^12.0",
-                "illuminate/support": "^11.0|^12.0",
+                "illuminate/console": "^11.0|^12.0|^13.0",
+                "illuminate/contracts": "^11.0|^12.0|^13.0",
+                "illuminate/routing": "^11.0|^12.0|^13.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
                 "nikic/php-parser": "^5.4",
                 "php": "^8.2",
                 "phpstan/phpdoc-parser": "^2.1",
@@ -1861,7 +1861,7 @@
             "require-dev": {
                 "laravel/pint": "^1.22",
                 "mockery/mockery": "^1.6",
-                "orchestra/testbench": "^9.0|^10.0",
+                "orchestra/testbench": "^9.0|^10.0|^11.0",
                 "pestphp/pest": "^3.0",
                 "phpstan/phpstan": "^2.1"
             },
@@ -1900,7 +1900,7 @@
                 "issues": "https://github.com/laravel/surveyor/issues",
                 "source": "https://github.com/laravel/surveyor"
             },
-            "time": "2026-03-06T18:26:31+00:00"
+            "time": "2026-03-17T22:45:01+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1974,19 +1974,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/wayfinder.git",
-                "reference": "045e0470f0f03bcb8f651304284058ab6b1a97b7"
+                "reference": "3c8c7e0a6a44645953f5740ad52dda78be9d2353"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/wayfinder/zipball/045e0470f0f03bcb8f651304284058ab6b1a97b7",
-                "reference": "045e0470f0f03bcb8f651304284058ab6b1a97b7",
+                "url": "https://api.github.com/repos/laravel/wayfinder/zipball/3c8c7e0a6a44645953f5740ad52dda78be9d2353",
+                "reference": "3c8c7e0a6a44645953f5740ad52dda78be9d2353",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "^11.0|^12.0",
-                "illuminate/filesystem": "^11.0|^12.0",
-                "illuminate/routing": "^11.0|^12.0",
-                "illuminate/support": "^11.0|^12.0",
+                "illuminate/console": "^11.0|^12.0|^13.0",
+                "illuminate/filesystem": "^11.0|^12.0|^13.0",
+                "illuminate/routing": "^11.0|^12.0|^13.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
                 "laravel/ranger": "^0.1.0",
                 "laravel/surveyor": "^0.1.0",
                 "php": "^8.2",
@@ -1995,7 +1995,7 @@
             "require-dev": {
                 "inertiajs/inertia-laravel": "^2.0",
                 "laravel/pint": "^1.21",
-                "orchestra/testbench": "^10.1 | ^9.0"
+                "orchestra/testbench": "^11.0|^10.1|^9.0"
             },
             "type": "library",
             "extra": {
@@ -2032,7 +2032,7 @@
                 "issues": "https://github.com/laravel/wayfinder/issues",
                 "source": "https://github.com/laravel/wayfinder"
             },
-            "time": "2026-03-01T11:15:07+00:00"
+            "time": "2026-03-17T23:00:16+00:00"
         },
         {
             "name": "league/commonmark",
@@ -7706,16 +7706,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.53.0",
+            "version": "v1.54.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "e340eaa2bea9b99192570c48ed837155dbf24fbb"
+                "reference": "bcc5e06f1a79d806d880a4b027964d2aa5872b07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/e340eaa2bea9b99192570c48ed837155dbf24fbb",
-                "reference": "e340eaa2bea9b99192570c48ed837155dbf24fbb",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/bcc5e06f1a79d806d880a4b027964d2aa5872b07",
+                "reference": "bcc5e06f1a79d806d880a4b027964d2aa5872b07",
                 "shasum": ""
             },
             "require": {
@@ -7765,7 +7765,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2026-02-06T12:16:02+00:00"
+            "time": "2026-03-11T14:10:52+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -10495,9 +10495,9 @@
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.3.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.9.0"
 }
