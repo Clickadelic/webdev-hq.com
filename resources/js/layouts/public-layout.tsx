@@ -3,6 +3,7 @@ import { Head } from '@inertiajs/react';
 import PublicHeader from '@/components/public-header';
 import PublicFooter from '@/components/public-footer';
 import { Toaster } from "@/components/ui/sonner"
+
 interface PublicLayoutProps {
     title?: string
     children: React.ReactNode
