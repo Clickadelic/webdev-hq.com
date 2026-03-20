@@ -15,7 +15,7 @@ interface PublicHeaderProps {
 export default function PublicHeader({ canRegister = true, className }: PublicHeaderProps) {
     const { auth } = usePage<SharedData>().props;
     return (
-        <div className={cn("w-full bg-white shadow", className)}>
+        <div className={cn("w-full bg-neutral-100 dark:bg-neutral-900 shadow", className)}>
             <header className="container mx-auto flex items-center justify-between p-2">
                 <AppLogo />
                 <nav className="flex items-center justify-end gap-4">
