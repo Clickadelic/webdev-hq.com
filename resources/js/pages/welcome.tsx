@@ -10,19 +10,11 @@ export default function Welcome({
     hyperlinks: Hyperlink[];
     canRegister?: boolean;
 }) {
-    
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
             <main className="container mx-auto flex flex-col items-center justify-center py-12">
-                <div className="text-center">
-                    <h1 className="text-4xl font-bold mb-4">Welcome to WebDev HQ</h1>
-                    <p className="text-lg text-gray-600">
-                        We're working on it.
-                    </p>
-                    <p className="text-lg text-gray-600">
-                        While we do our best, check out our collection of resources in the meanwhile:
-                    </p>
-                </div>
+                <h1 className="text-4xl font-bold mb-8">Welcome</h1>
+                
                 {hyperlinks && hyperlinks.length > 0 ? (
                     <div className="grid gap-4 w-full max-w-2xl">
                         {hyperlinks.map((hyperlink) => (

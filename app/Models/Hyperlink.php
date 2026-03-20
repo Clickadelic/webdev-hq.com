@@ -16,6 +16,7 @@ class Hyperlink extends Model
         'description',
         'category_id',
         'status',
+        'created_by',
     ];
 
     protected $casts = [
