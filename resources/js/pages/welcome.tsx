@@ -16,7 +16,7 @@ export default function Welcome({
                 <h1 className="text-4xl font-bold mb-8">Welcome</h1>
                 
                 {hyperlinks && hyperlinks.length > 0 ? (
-                    <div className="grid gap-4 w-full max-w-2xl">
+                    <div className="grid grid-cols-8 gap-4 w-full">
                         {hyperlinks.map((hyperlink) => (
                             <a
                                 key={hyperlink.id}

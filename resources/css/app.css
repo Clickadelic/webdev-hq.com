@@ -145,6 +145,6 @@
     }
 
     body {
-        @apply bg-gray-200 text-foreground dark:bg-gray-800;
+        @apply bg-gray-200 text-foreground dark:bg-neutral-800;
     }
 }
