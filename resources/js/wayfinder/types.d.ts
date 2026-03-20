@@ -38,6 +38,20 @@ export namespace App {
 
     export namespace Http {
         export namespace Controllers {
+            export namespace FrontpageController {
+                export namespace Index {
+                    /**
+                     * @see [\App\Http\Controllers\FrontpageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php)
+                     */
+                    export type Response = Inertia.Pages.Welcome
+
+                    /**
+                     * @see [\App\Http\Controllers\FrontpageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+            }
+
             export namespace AppController {
                 export namespace Index {
                     /**
@@ -541,6 +555,11 @@ export namespace Inertia {
     export type SharedData = {auth: {user: App.Models.User | null }, sidebarOpen: boolean }
 
     export namespace Pages {
+        /**
+         * @see [\App\Http\Controllers\FrontpageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php)
+         */
+        export type Welcome = Inertia.SharedData & { hyperlinks: unknown, canRegister: true }
+
         export namespace Apps {
             /**
              * @see [\App\Http\Controllers\AppController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
