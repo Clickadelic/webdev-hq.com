@@ -65,6 +65,50 @@ export namespace App {
                     export type Request = Record<string, unknown>
                 }
 
+                export namespace Create {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Response = Inertia.Pages.Apps.Create
+
+                    /**
+                     * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace Show {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Response = Inertia.Pages.Apps.Show
+
+                    /**
+                     * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace Edit {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Response = Inertia.Pages.Apps.Edit
+
+                    /**
+                     * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace Reorder {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::reorder](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = {    order: unknown[];
+                        "order.*"?: string;}
+                }
+
                 export namespace Store {
                     /**
                      * @see [\App\Http\Controllers\AppController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
@@ -83,27 +127,6 @@ export namespace App {
                         url?: string;
                         target?: string;
                         position?: number;}
-                }
-
-                export namespace Create {
-                    /**
-                     * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Show {
-                    /**
-                     * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Edit {
-                    /**
-                     * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
-                     */
-                    export type Request = Record<string, unknown>
                 }
 
                 export namespace Destroy {
@@ -564,7 +587,22 @@ export namespace Inertia {
             /**
              * @see [\App\Http\Controllers\AppController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
              */
-            export type Index = Inertia.SharedData & { apps: Illuminate.Database.Eloquent.Collection }
+            export type Index = Inertia.SharedData & { apps: unknown }
+
+            /**
+             * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+             */
+            export type Create = Inertia.SharedData
+
+            /**
+             * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+             */
+            export type Show = Inertia.SharedData & { app: App.Models.App }
+
+            /**
+             * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+             */
+            export type Edit = Inertia.SharedData & { app: App.Models.App }
         }
 
         export namespace Hyperlinks {
