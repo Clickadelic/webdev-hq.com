@@ -22,7 +22,7 @@ export interface SortableAppTileProps {
 
 
 export const SortableAppTile = ({ app, onEdit, onDelete, enabled = true }: SortableAppTileProps) => {
-	const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: app.id })
+	const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: app.id })
 
 	const style = {
 		transform: CSS.Transform.toString(transform),
@@ -34,7 +34,7 @@ export const SortableAppTile = ({ app, onEdit, onDelete, enabled = true }: Sorta
 			style={style}
 			key={app.id}
 			
-			className="size-[70px] z-10 relative bg-white dark:bg-slate-800 pt-1 rounded transition-colors duration-150 ease-in-out border-transparent hover:border-mantis-primary hover:text-mantis-primary hover:cursor-pointer"
+			className="size-[70px] z-10 relative bg-white dark:bg-slate-800 pt-1 rounded transition-colors duration-150 ease-in-out border-gray-800 hover:cursor-pointer"
 		>
 			<div
 				className={"drag-handle absolute top-[4px] left-[24px] w-[20px] h-[5px] bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 inline-flex z-100 text-slate-600 dark:text-slate-300 rounded " + (enabled ? 'hover:cursor-move' : 'opacity-50 cursor-not-allowed')}
