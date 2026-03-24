@@ -13,6 +13,7 @@
 
 /storage/*.key
 /storage/pail
+/storage/framework/cache/
 /vendor
 .DS_Store
 .env
