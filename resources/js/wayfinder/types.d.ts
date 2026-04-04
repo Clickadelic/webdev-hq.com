@@ -646,36 +646,20 @@ export namespace Inertia {
     }
 }
 
-export namespace Barryvdh {
-    export namespace Debugbar {
+export namespace Fruitcake {
+    export namespace LaravelDebugbar {
         export namespace Controllers {
             export namespace OpenHandlerController {
                 export namespace Handle {
                     /**
-                     * @see [\Barryvdh\Debugbar\Controllers\OpenHandlerController::handle](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php)
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\OpenHandlerController::handle](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php)
                      */
-                    export type Request = Record<string, unknown>
+                    export type Request = {    op?: string | null;}
                 }
 
                 export namespace Clockwork {
                     /**
-                     * @see [\Barryvdh\Debugbar\Controllers\OpenHandlerController::clockwork](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-            }
-
-            export namespace AssetController {
-                export namespace Css {
-                    /**
-                     * @see [\Barryvdh\Debugbar\Controllers\AssetController::css](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\AssetController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Js {
-                    /**
-                     * @see [\Barryvdh\Debugbar\Controllers\AssetController::js](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\AssetController.php)
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\OpenHandlerController::clockwork](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
@@ -684,18 +668,33 @@ export namespace Barryvdh {
             export namespace CacheController {
                 export namespace Delete {
                     /**
-                     * @see [\Barryvdh\Debugbar\Controllers\CacheController::delete](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\CacheController.php)
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\CacheController::delete](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\CacheController.php)
                      */
-                    export type Request = Record<string, unknown>
+                    export type Request = {    tags?: unknown[];
+                        "tags.*"?: string;}
                 }
             }
 
             export namespace QueriesController {
                 export namespace Explain {
                     /**
-                     * @see [\Barryvdh\Debugbar\Controllers\QueriesController::explain](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\QueriesController.php)
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\QueriesController::explain](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\QueriesController.php)
                      */
-                    export type Request = Record<string, unknown>
+                    export type Request = {    connection: string;
+                        query: string;
+                        bindings?: unknown[] | null;
+                        hash: string;
+                        mode?: "explain" | "visual" | "result" | null;
+                        format?: string | null;}
+                }
+            }
+
+            export namespace AssetController {
+                export namespace GetAssets {
+                    /**
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\AssetController::getAssets](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\AssetController.php)
+                     */
+                    export type Request = {    type: "js" | "css";}
                 }
             }
         }
