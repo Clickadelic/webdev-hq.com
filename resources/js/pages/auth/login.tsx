@@ -1,11 +1,14 @@
+import AuthLayout from '@/layouts/auth-layout';
+
 import InputError from '@/components/input-error';
 import TextLink from '@/components/text-link';
+
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
-import AuthLayout from '@/layouts/auth-layout';
+
 import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
@@ -24,8 +27,8 @@ export default function Login({
 }: LoginProps) {
     return (
         <AuthLayout
-            title="Log in to your account"
-            description="Enter your email and password below to log in"
+            title="Log in"
+            description="Welcome back"
         >
             <Head title="Log in" />
 
@@ -55,15 +58,7 @@ export default function Login({
                             <div className="grid gap-2">
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Password</Label>
-                                    {canResetPassword && (
-                                        <TextLink
-                                            href={request()}
-                                            className="ml-auto text-sm"
-                                            tabIndex={5}
-                                        >
-                                            Forgot password?
-                                        </TextLink>
-                                    )}
+                                    
                                 </div>
                                 <Input
                                     id="password"
@@ -97,6 +92,16 @@ export default function Login({
                                 Log in
                             </Button>
                         </div>
+                        
+                        {canResetPassword && (
+                            <TextLink
+                                href={request()}
+                                className="mx-auto text-sm"
+                                tabIndex={5}
+                            >
+                                Forgot password?
+                            </TextLink>
+                        )}
 
                         {canRegister && (
                             <div className="text-center text-sm text-muted-foreground">

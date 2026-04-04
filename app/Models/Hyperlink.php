@@ -19,9 +19,12 @@ class Hyperlink extends Model
         'created_by',
     ];
 
-    protected $casts = [
-        'category_id' => 'integer',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'status' => Status::class,
+        ];
+    }
 
     /*
     --------------------------------------------------------------------------
