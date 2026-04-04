@@ -16,17 +16,17 @@ export namespace App {
         /**
          * @see [\App\Models\Category](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Category.php)
          */
-        export type Category = { id: number, name: string, slug: string, created_at: string | null, updated_at: string | null, hyperlinks?: App.Models.Hyperlink[] }
+        export type Category = Record<string, never>
 
         /**
          * @see [\App\Models\Hyperlink](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Hyperlink.php)
          */
-        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: string, is_featured: boolean, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
+        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: App.Enums.Status, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
 
         /**
          * @see [\App\Models\Tag](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Tag.php)
          */
-        export type Tag = { id: number, name: string, slug: string, created_at: string | null, updated_at: string | null }
+        export type Tag = Record<string, never>
     }
 
     export namespace Enums {
@@ -65,6 +65,50 @@ export namespace App {
                     export type Request = Record<string, unknown>
                 }
 
+                export namespace Create {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Response = Inertia.Pages.Apps.Create
+
+                    /**
+                     * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace Show {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Response = Inertia.Pages.Apps.Show
+
+                    /**
+                     * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace Edit {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Response = Inertia.Pages.Apps.Edit
+
+                    /**
+                     * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace Reorder {
+                    /**
+                     * @see [\App\Http\Controllers\AppController::reorder](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+                     */
+                    export type Request = {    order: unknown[];
+                        "order.*"?: string;}
+                }
+
                 export namespace Store {
                     /**
                      * @see [\App\Http\Controllers\AppController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
@@ -83,27 +127,6 @@ export namespace App {
                         url?: string;
                         target?: string;
                         position?: number;}
-                }
-
-                export namespace Create {
-                    /**
-                     * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Show {
-                    /**
-                     * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Edit {
-                    /**
-                     * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
-                     */
-                    export type Request = Record<string, unknown>
                 }
 
                 export namespace Destroy {
@@ -171,7 +194,9 @@ export namespace App {
                         url: string;
                         description?: string | null;
                         category_id?: string | null;
-                        status: string;}
+                        status: string;
+                        tags?: unknown[] | null;
+                        "tags.*"?: string;}
                 }
 
                 export namespace Update {
@@ -182,7 +207,9 @@ export namespace App {
                         url: string;
                         description?: string | null;
                         category_id?: string | null;
-                        status: string;}
+                        status: string;
+                        tags?: unknown[] | null;
+                        "tags.*"?: string;}
                 }
 
                 export namespace Destroy {
@@ -564,7 +591,22 @@ export namespace Inertia {
             /**
              * @see [\App\Http\Controllers\AppController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
              */
-            export type Index = Inertia.SharedData & { apps: Illuminate.Database.Eloquent.Collection }
+            export type Index = Inertia.SharedData & { apps: unknown }
+
+            /**
+             * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+             */
+            export type Create = Inertia.SharedData
+
+            /**
+             * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+             */
+            export type Show = Inertia.SharedData & { app: App.Models.App }
+
+            /**
+             * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
+             */
+            export type Edit = Inertia.SharedData & { app: App.Models.App }
         }
 
         export namespace Hyperlinks {
@@ -576,7 +618,7 @@ export namespace Inertia {
             /**
              * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
-            export type Create = Inertia.SharedData
+            export type Create = Inertia.SharedData & { categories: unknown, tags: unknown }
 
             /**
              * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
@@ -586,7 +628,7 @@ export namespace Inertia {
             /**
              * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
-            export type Edit = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
+            export type Edit = Inertia.SharedData & { hyperlink: App.Models.Hyperlink, categories: unknown, tags: unknown }
         }
 
         export namespace Settings {
@@ -608,36 +650,20 @@ export namespace Inertia {
     }
 }
 
-export namespace Barryvdh {
-    export namespace Debugbar {
+export namespace Fruitcake {
+    export namespace LaravelDebugbar {
         export namespace Controllers {
             export namespace OpenHandlerController {
                 export namespace Handle {
                     /**
-                     * @see [\Barryvdh\Debugbar\Controllers\OpenHandlerController::handle](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php)
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\OpenHandlerController::handle](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php)
                      */
-                    export type Request = Record<string, unknown>
+                    export type Request = {    op?: string | null;}
                 }
 
                 export namespace Clockwork {
                     /**
-                     * @see [\Barryvdh\Debugbar\Controllers\OpenHandlerController::clockwork](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-            }
-
-            export namespace AssetController {
-                export namespace Css {
-                    /**
-                     * @see [\Barryvdh\Debugbar\Controllers\AssetController::css](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\AssetController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Js {
-                    /**
-                     * @see [\Barryvdh\Debugbar\Controllers\AssetController::js](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\AssetController.php)
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\OpenHandlerController::clockwork](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
@@ -646,18 +672,33 @@ export namespace Barryvdh {
             export namespace CacheController {
                 export namespace Delete {
                     /**
-                     * @see [\Barryvdh\Debugbar\Controllers\CacheController::delete](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\CacheController.php)
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\CacheController::delete](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\CacheController.php)
                      */
-                    export type Request = Record<string, unknown>
+                    export type Request = {    tags?: unknown[];
+                        "tags.*"?: string;}
                 }
             }
 
             export namespace QueriesController {
                 export namespace Explain {
                     /**
-                     * @see [\Barryvdh\Debugbar\Controllers\QueriesController::explain](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\QueriesController.php)
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\QueriesController::explain](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\QueriesController.php)
                      */
-                    export type Request = Record<string, unknown>
+                    export type Request = {    connection: string;
+                        query: string;
+                        bindings?: unknown[] | null;
+                        hash: string;
+                        mode?: "explain" | "visual" | "result" | null;
+                        format?: string | null;}
+                }
+            }
+
+            export namespace AssetController {
+                export namespace GetAssets {
+                    /**
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\AssetController::getAssets](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\AssetController.php)
+                     */
+                    export type Request = {    type: "js" | "css";}
                 }
             }
         }

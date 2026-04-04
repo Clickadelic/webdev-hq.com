@@ -48,7 +48,7 @@ export default function Apps() {
                                             {link.title}
                                         </h3>
                                         <span className="text-[10px] uppercase px-2 py-1 rounded-md font-bold bg-primary/10 text-primary border border-primary/20">
-                                            {link.status}
+                                            {link.target}
                                         </span>
                                     </div>
                                 

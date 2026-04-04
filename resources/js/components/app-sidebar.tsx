@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import { Link } from '@inertiajs/react';
-import { BookOpen, GalleryHorizontal, LayoutGrid, Link2 } from 'lucide-react';
+import { BookOpen, GalleryHorizontal, LayoutGrid, Link2, ScreenShare } from 'lucide-react';
 
 import AppLogo from './app-logo';
 
@@ -28,7 +28,7 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Apps',
         href: "/apps",
-        icon: Link2,
+        icon: ScreenShare,
     },
     {
         title: 'Hyperlinks',

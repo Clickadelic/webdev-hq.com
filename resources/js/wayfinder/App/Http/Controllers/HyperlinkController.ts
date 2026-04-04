@@ -5,7 +5,7 @@ import { applyUrlDefaults, formSafeOptions, queryParams, type RouteDefinition, t
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:16
  * @route "/hyperlinks"
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -20,7 +20,7 @@ index.definition = {
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:16
  * @route "/hyperlinks"
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:16
  * @route "/hyperlinks"
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -39,7 +39,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:16
  * @route "/hyperlinks"
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -51,7 +51,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:16
  * @route "/hyperlinks"
  */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -61,7 +61,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:16
  * @route "/hyperlinks"
  */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -71,7 +71,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:16
  * @route "/hyperlinks"
  */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -84,7 +84,7 @@ indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 index.form = indexForm
 /**
  * @see \App\Http\Controllers\HyperlinkController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:26
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:28
  * @route "/hyperlinks/create"
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -99,7 +99,7 @@ create.definition = {
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:26
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:28
  * @route "/hyperlinks/create"
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -108,7 +108,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:26
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:28
  * @route "/hyperlinks/create"
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -118,7 +118,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:26
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:28
  * @route "/hyperlinks/create"
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -130,7 +130,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:26
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:28
  * @route "/hyperlinks/create"
  */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -140,7 +140,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => 
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:26
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:28
  * @route "/hyperlinks/create"
  */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -150,7 +150,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:26
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:28
  * @route "/hyperlinks/create"
  */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -163,7 +163,7 @@ createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
 create.form = createForm
 /**
  * @see \App\Http\Controllers\HyperlinkController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:39
  * @route "/hyperlinks"
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -178,7 +178,7 @@ store.definition = {
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:39
  * @route "/hyperlinks"
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -187,7 +187,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:39
  * @route "/hyperlinks"
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -199,7 +199,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:39
  * @route "/hyperlinks"
  */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -209,7 +209,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:39
  * @route "/hyperlinks"
  */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -222,7 +222,7 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
 store.form = storeForm
 /**
  * @see \App\Http\Controllers\HyperlinkController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:55
  * @route "/hyperlinks/{hyperlink}"
  */
 export const show = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -237,7 +237,7 @@ show.definition = {
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:55
  * @route "/hyperlinks/{hyperlink}"
  */
 show.url = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -268,7 +268,7 @@ show.url = (args: { hyperlink: number | { id: number } } | [ hyperlink: number |
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:55
  * @route "/hyperlinks/{hyperlink}"
  */
 show.get = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -278,7 +278,7 @@ show.get = (args: { hyperlink: number | { id: number } } | [ hyperlink: number |
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:55
  * @route "/hyperlinks/{hyperlink}"
  */
 show.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -290,7 +290,7 @@ show.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: number 
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:55
  * @route "/hyperlinks/{hyperlink}"
  */
 const showForm = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -300,7 +300,7 @@ const showForm = (args: { hyperlink: number | { id: number } } | [ hyperlink: nu
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:55
  * @route "/hyperlinks/{hyperlink}"
  */
 showForm.get = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -310,7 +310,7 @@ showForm.get = (args: { hyperlink: number | { id: number } } | [ hyperlink: numb
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:55
  * @route "/hyperlinks/{hyperlink}"
  */
 showForm.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -323,7 +323,7 @@ showForm.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: num
 show.form = showForm
 /**
  * @see \App\Http\Controllers\HyperlinkController::edit
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:56
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:65
  * @route "/hyperlinks/{hyperlink}/edit"
  */
 export const edit = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -338,7 +338,7 @@ edit.definition = {
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::edit
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:56
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:65
  * @route "/hyperlinks/{hyperlink}/edit"
  */
 edit.url = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -369,7 +369,7 @@ edit.url = (args: { hyperlink: number | { id: number } } | [ hyperlink: number |
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::edit
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:56
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:65
  * @route "/hyperlinks/{hyperlink}/edit"
  */
 edit.get = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -379,7 +379,7 @@ edit.get = (args: { hyperlink: number | { id: number } } | [ hyperlink: number |
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::edit
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:56
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:65
  * @route "/hyperlinks/{hyperlink}/edit"
  */
 edit.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -391,7 +391,7 @@ edit.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: number 
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::edit
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:56
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:65
  * @route "/hyperlinks/{hyperlink}/edit"
  */
 const editForm = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -401,7 +401,7 @@ const editForm = (args: { hyperlink: number | { id: number } } | [ hyperlink: nu
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::edit
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:56
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:65
  * @route "/hyperlinks/{hyperlink}/edit"
  */
 editForm.get = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -411,7 +411,7 @@ editForm.get = (args: { hyperlink: number | { id: number } } | [ hyperlink: numb
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::edit
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:56
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:65
  * @route "/hyperlinks/{hyperlink}/edit"
  */
 editForm.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -424,7 +424,7 @@ editForm.head = (args: { hyperlink: number | { id: number } } | [ hyperlink: num
 edit.form = editForm
 /**
  * @see \App\Http\Controllers\HyperlinkController::update
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:66
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:77
  * @route "/hyperlinks/{hyperlink}"
  */
 export const update = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<"put"> => ({
@@ -439,7 +439,7 @@ update.definition = {
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::update
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:66
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:77
  * @route "/hyperlinks/{hyperlink}"
  */
 update.url = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -470,7 +470,7 @@ update.url = (args: { hyperlink: number | { id: number } } | [ hyperlink: number
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::update
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:66
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:77
  * @route "/hyperlinks/{hyperlink}"
  */
 update.put = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<"put"> => ({
@@ -480,7 +480,7 @@ update.put = (args: { hyperlink: number | { id: number } } | [ hyperlink: number
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::update
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:66
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:77
  * @route "/hyperlinks/{hyperlink}"
  */
 update.patch = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<"patch"> => ({
@@ -492,7 +492,7 @@ update.patch = (args: { hyperlink: number | { id: number } } | [ hyperlink: numb
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::update
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:66
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:77
  * @route "/hyperlinks/{hyperlink}"
  */
 const updateForm = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -502,7 +502,7 @@ const updateForm = (args: { hyperlink: number | { id: number } } | [ hyperlink: 
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::update
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:66
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:77
  * @route "/hyperlinks/{hyperlink}"
  */
 updateForm.put = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -512,7 +512,7 @@ updateForm.put = (args: { hyperlink: number | { id: number } } | [ hyperlink: nu
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::update
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:66
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:77
  * @route "/hyperlinks/{hyperlink}"
  */
 updateForm.patch = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -525,7 +525,7 @@ updateForm.patch = (args: { hyperlink: number | { id: number } } | [ hyperlink: 
 update.form = updateForm
 /**
  * @see \App\Http\Controllers\HyperlinkController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:78
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:90
  * @route "/hyperlinks/{hyperlink}"
  */
 export const destroy = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
@@ -540,7 +540,7 @@ destroy.definition = {
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:78
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:90
  * @route "/hyperlinks/{hyperlink}"
  */
 destroy.url = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -571,7 +571,7 @@ destroy.url = (args: { hyperlink: number | { id: number } } | [ hyperlink: numbe
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:78
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:90
  * @route "/hyperlinks/{hyperlink}"
  */
 destroy.delete = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
@@ -583,7 +583,7 @@ destroy.delete = (args: { hyperlink: number | { id: number } } | [ hyperlink: nu
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:78
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:90
  * @route "/hyperlinks/{hyperlink}"
  */
 const destroyForm = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -593,7 +593,7 @@ const destroyForm = (args: { hyperlink: number | { id: number } } | [ hyperlink:
 
 /**
  * @see \App\Http\Controllers\HyperlinkController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:78
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php:90
  * @route "/hyperlinks/{hyperlink}"
  */
 destroyForm.delete = (args: { hyperlink: number | { id: number } } | [ hyperlink: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({

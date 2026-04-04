@@ -12,8 +12,8 @@ class UpdateAppRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // Nur der Ersteller darf die App ändern
-        return $this->app && $this->app->creator_id === auth()->id();
+        // Only the creator may update the app
+        return $this->app && (int) $this->app->created_by === (int) auth()->id();
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Status;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -19,7 +20,9 @@ class UpdateHyperlinkRequest extends FormRequest
             'url' => ['required', 'url', 'max:255'],
             'description' => ['nullable', 'string'],
             'category_id' => ['nullable', 'exists:categories,id'],
-            'status' => ['required', Rule::in(['draft', 'published', 'archived'])],
+            'status' => ['required', Rule::enum(Status::class)],
+            'tags' => ['nullable', 'array'],
+            'tags.*' => ['exists:tags,id'],
         ];
     }
 }

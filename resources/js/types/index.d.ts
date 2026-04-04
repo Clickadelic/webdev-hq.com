@@ -42,13 +42,14 @@ export interface User {
 }
 
 export interface App {
-    id: number;
+    id: string;
     title: string;
     url: string;
-    category_id: number | null;
-    status: string;
-    created_at: string;
-    updated_at: string;
+    target: '_self' | '_blank';
+    position: number;
+    created_by: number | null;
+    created_at: string | null;
+    updated_at: string | null;
 }
 export interface Hyperlink {
     id: number;
