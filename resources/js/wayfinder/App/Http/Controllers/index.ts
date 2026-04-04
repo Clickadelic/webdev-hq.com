@@ -4,6 +4,7 @@
 import AppController from "./AppController";
 import FrontpageController from "./FrontpageController";
 import HyperlinkController from "./HyperlinkController";
+import PageController from "./PageController";
 import Api from "./Api";
 import Settings from "./Settings";
 
@@ -11,6 +12,7 @@ export const Controllers = {
     AppController,
     FrontpageController,
     HyperlinkController,
+    PageController,
     Api,
     Settings,
 }

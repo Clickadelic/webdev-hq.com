@@ -300,7 +300,7 @@ homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 home.form = homeForm
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:15
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
  * @route "/dashboard"
  */
 export const dashboard = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -314,7 +314,7 @@ dashboard.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:15
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
  * @route "/dashboard"
  */
 dashboard.url = (options?: RouteQueryOptions) => {
@@ -322,7 +322,7 @@ dashboard.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:15
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
  * @route "/dashboard"
  */
 dashboard.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -331,7 +331,7 @@ dashboard.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:15
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
  * @route "/dashboard"
  */
 dashboard.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -342,7 +342,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:15
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
  * @route "/dashboard"
  */
 const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -351,7 +351,7 @@ const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> 
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:15
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
  * @route "/dashboard"
  */
 dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -360,7 +360,7 @@ dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =>
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:15
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
  * @route "/dashboard"
  */
 dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -371,6 +371,164 @@ dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =
 
 
 dashboard.form = dashboardForm
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
+ * @route "/legal-notice"
+ */
+export const legalNotice = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: legalNotice.url(options),
+    method: "get",
+})
+
+legalNotice.definition = {
+    methods: ["get","head"],
+    url: "/legal-notice",
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
+ * @route "/legal-notice"
+ */
+legalNotice.url = (options?: RouteQueryOptions) => {
+    return legalNotice.definition.url + queryParams(options)
+}
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
+ * @route "/legal-notice"
+ */
+legalNotice.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: legalNotice.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
+ * @route "/legal-notice"
+ */
+legalNotice.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
+    url: legalNotice.url(options),
+    method: "head",
+})
+
+
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
+ * @route "/legal-notice"
+ */
+const legalNoticeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: legalNotice.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
+ * @route "/legal-notice"
+ */
+legalNoticeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: legalNotice.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
+ * @route "/legal-notice"
+ */
+legalNoticeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: legalNotice.url(formSafeOptions("head", options)),
+    method: "get",
+})
+
+
+
+legalNotice.form = legalNoticeForm
+/**
+ * @see \App\Http\Controllers\PageController::disclaimer
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @route "/disclaimer"
+ */
+export const disclaimer = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: disclaimer.url(options),
+    method: "get",
+})
+
+disclaimer.definition = {
+    methods: ["get","head"],
+    url: "/disclaimer",
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+ * @see \App\Http\Controllers\PageController::disclaimer
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @route "/disclaimer"
+ */
+disclaimer.url = (options?: RouteQueryOptions) => {
+    return disclaimer.definition.url + queryParams(options)
+}
+
+/**
+ * @see \App\Http\Controllers\PageController::disclaimer
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @route "/disclaimer"
+ */
+disclaimer.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: disclaimer.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::disclaimer
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @route "/disclaimer"
+ */
+disclaimer.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
+    url: disclaimer.url(options),
+    method: "head",
+})
+
+
+
+/**
+ * @see \App\Http\Controllers\PageController::disclaimer
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @route "/disclaimer"
+ */
+const disclaimerForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: disclaimer.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::disclaimer
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @route "/disclaimer"
+ */
+disclaimerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: disclaimer.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::disclaimer
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @route "/disclaimer"
+ */
+disclaimerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: disclaimer.url(formSafeOptions("head", options)),
+    method: "get",
+})
+
+
+
+disclaimer.form = disclaimerForm
 
 const routes = {
     login,
@@ -378,6 +536,8 @@ const routes = {
     register,
     home,
     dashboard,
+    "legal-notice": legalNotice,
+    disclaimer,
 }
 
 export default routes
