@@ -65,6 +65,7 @@ export default function Dashboard() {
 
     // Debounced persistence
     const persistTimer = useRef<number | null>(null);
+    
     const debouncedPersist = useCallback((order: string[], revert: () => void) => {
         if (persistTimer.current) window.clearTimeout(persistTimer.current);
         persistTimer.current = window.setTimeout(() => {
