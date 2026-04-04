@@ -221,8 +221,8 @@ registerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =>
 
 register.form = registerForm
 /**
- * @see \App\Http\Controllers\FrontpageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php:10
+ * @see \App\Http\Controllers\PageController::index
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
  * @route "/"
  */
 export const home = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -236,8 +236,8 @@ home.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see \App\Http\Controllers\FrontpageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php:10
+ * @see \App\Http\Controllers\PageController::index
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
  * @route "/"
  */
 home.url = (options?: RouteQueryOptions) => {
@@ -245,8 +245,8 @@ home.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see \App\Http\Controllers\FrontpageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php:10
+ * @see \App\Http\Controllers\PageController::index
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
  * @route "/"
  */
 home.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -255,8 +255,8 @@ home.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 })
 
 /**
- * @see \App\Http\Controllers\FrontpageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php:10
+ * @see \App\Http\Controllers\PageController::index
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
  * @route "/"
  */
 home.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -267,8 +267,8 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 
 /**
- * @see \App\Http\Controllers\FrontpageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php:10
+ * @see \App\Http\Controllers\PageController::index
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
  * @route "/"
  */
 const homeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -277,8 +277,8 @@ const homeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 })
 
 /**
- * @see \App\Http\Controllers\FrontpageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php:10
+ * @see \App\Http\Controllers\PageController::index
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
  * @route "/"
  */
 homeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -287,8 +287,8 @@ homeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 })
 
 /**
- * @see \App\Http\Controllers\FrontpageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php:10
+ * @see \App\Http\Controllers\PageController::index
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
  * @route "/"
  */
 homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -300,159 +300,87 @@ homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 home.form = homeForm
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
- * @route "/dashboard"
+ * @see \App\Http\Controllers\PageController::cookiePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @route "/cookie-policy"
  */
-export const dashboard = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
-    url: dashboard.url(options),
+export const cookiePolicy = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: cookiePolicy.url(options),
     method: "get",
 })
 
-dashboard.definition = {
+cookiePolicy.definition = {
     methods: ["get","head"],
-    url: "/dashboard",
+    url: "/cookie-policy",
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
- * @route "/dashboard"
+ * @see \App\Http\Controllers\PageController::cookiePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @route "/cookie-policy"
  */
-dashboard.url = (options?: RouteQueryOptions) => {
-    return dashboard.definition.url + queryParams(options)
+cookiePolicy.url = (options?: RouteQueryOptions) => {
+    return cookiePolicy.definition.url + queryParams(options)
 }
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
- * @route "/dashboard"
+ * @see \App\Http\Controllers\PageController::cookiePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @route "/cookie-policy"
  */
-dashboard.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
-    url: dashboard.url(options),
+cookiePolicy.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: cookiePolicy.url(options),
     method: "get",
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
- * @route "/dashboard"
+ * @see \App\Http\Controllers\PageController::cookiePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @route "/cookie-policy"
  */
-dashboard.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
-    url: dashboard.url(options),
+cookiePolicy.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
+    url: cookiePolicy.url(options),
     method: "head",
 })
 
 
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
- * @route "/dashboard"
+ * @see \App\Http\Controllers\PageController::cookiePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @route "/cookie-policy"
  */
-const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: dashboard.url(options),
+const cookiePolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: cookiePolicy.url(options),
     method: "get",
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
- * @route "/dashboard"
+ * @see \App\Http\Controllers\PageController::cookiePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @route "/cookie-policy"
  */
-dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: dashboard.url(options),
+cookiePolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: cookiePolicy.url(options),
     method: "get",
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:16
- * @route "/dashboard"
+ * @see \App\Http\Controllers\PageController::cookiePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @route "/cookie-policy"
  */
-dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: dashboard.url(formSafeOptions("head", options)),
-    method: "get",
-})
-
-
-
-dashboard.form = dashboardForm
-/**
- * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
- * @route "/legal-notice"
- */
-export const legalNotice = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
-    url: legalNotice.url(options),
-    method: "get",
-})
-
-legalNotice.definition = {
-    methods: ["get","head"],
-    url: "/legal-notice",
-} satisfies RouteDefinition<["get","head"]>
-
-/**
- * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
- * @route "/legal-notice"
- */
-legalNotice.url = (options?: RouteQueryOptions) => {
-    return legalNotice.definition.url + queryParams(options)
-}
-
-/**
- * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
- * @route "/legal-notice"
- */
-legalNotice.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
-    url: legalNotice.url(options),
-    method: "get",
-})
-
-/**
- * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
- * @route "/legal-notice"
- */
-legalNotice.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
-    url: legalNotice.url(options),
-    method: "head",
-})
-
-
-
-/**
- * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
- * @route "/legal-notice"
- */
-const legalNoticeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: legalNotice.url(options),
-    method: "get",
-})
-
-/**
- * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
- * @route "/legal-notice"
- */
-legalNoticeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: legalNotice.url(options),
-    method: "get",
-})
-
-/**
- * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:10
- * @route "/legal-notice"
- */
-legalNoticeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: legalNotice.url(formSafeOptions("head", options)),
+cookiePolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: cookiePolicy.url(formSafeOptions("head", options)),
     method: "get",
 })
 
 
 
-legalNotice.form = legalNoticeForm
+cookiePolicy.form = cookiePolicyForm
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
  * @route "/disclaimer"
  */
 export const disclaimer = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -467,7 +395,7 @@ disclaimer.definition = {
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
  * @route "/disclaimer"
  */
 disclaimer.url = (options?: RouteQueryOptions) => {
@@ -476,7 +404,7 @@ disclaimer.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
  * @route "/disclaimer"
  */
 disclaimer.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -486,7 +414,7 @@ disclaimer.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
  * @route "/disclaimer"
  */
 disclaimer.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -498,7 +426,7 @@ disclaimer.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
  * @route "/disclaimer"
  */
 const disclaimerForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -508,7 +436,7 @@ const disclaimerForm = (options?: RouteQueryOptions): RouteFormDefinition<"get">
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
  * @route "/disclaimer"
  */
 disclaimerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -518,7 +446,7 @@ disclaimerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:14
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
  * @route "/disclaimer"
  */
 disclaimerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -529,15 +457,327 @@ disclaimerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> 
 
 
 disclaimer.form = disclaimerForm
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @route "/legal-notice"
+ */
+export const legalNotice = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: legalNotice.url(options),
+    method: "get",
+})
+
+legalNotice.definition = {
+    methods: ["get","head"],
+    url: "/legal-notice",
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @route "/legal-notice"
+ */
+legalNotice.url = (options?: RouteQueryOptions) => {
+    return legalNotice.definition.url + queryParams(options)
+}
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @route "/legal-notice"
+ */
+legalNotice.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: legalNotice.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @route "/legal-notice"
+ */
+legalNotice.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
+    url: legalNotice.url(options),
+    method: "head",
+})
+
+
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @route "/legal-notice"
+ */
+const legalNoticeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: legalNotice.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @route "/legal-notice"
+ */
+legalNoticeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: legalNotice.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::legalNotice
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @route "/legal-notice"
+ */
+legalNoticeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: legalNotice.url(formSafeOptions("head", options)),
+    method: "get",
+})
+
+
+
+legalNotice.form = legalNoticeForm
+/**
+ * @see \App\Http\Controllers\PageController::privatePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @route "/privacy-policy"
+ */
+export const privacyPolicy = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: privacyPolicy.url(options),
+    method: "get",
+})
+
+privacyPolicy.definition = {
+    methods: ["get","head"],
+    url: "/privacy-policy",
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+ * @see \App\Http\Controllers\PageController::privatePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @route "/privacy-policy"
+ */
+privacyPolicy.url = (options?: RouteQueryOptions) => {
+    return privacyPolicy.definition.url + queryParams(options)
+}
+
+/**
+ * @see \App\Http\Controllers\PageController::privatePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @route "/privacy-policy"
+ */
+privacyPolicy.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: privacyPolicy.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::privatePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @route "/privacy-policy"
+ */
+privacyPolicy.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
+    url: privacyPolicy.url(options),
+    method: "head",
+})
+
+
+
+/**
+ * @see \App\Http\Controllers\PageController::privatePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @route "/privacy-policy"
+ */
+const privacyPolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: privacyPolicy.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::privatePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @route "/privacy-policy"
+ */
+privacyPolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: privacyPolicy.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::privatePolicy
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @route "/privacy-policy"
+ */
+privacyPolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: privacyPolicy.url(formSafeOptions("head", options)),
+    method: "get",
+})
+
+
+
+privacyPolicy.form = privacyPolicyForm
+/**
+ * @see \App\Http\Controllers\PageController::termsOfService
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @route "/terms-of-service"
+ */
+export const termsOfService = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: termsOfService.url(options),
+    method: "get",
+})
+
+termsOfService.definition = {
+    methods: ["get","head"],
+    url: "/terms-of-service",
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+ * @see \App\Http\Controllers\PageController::termsOfService
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @route "/terms-of-service"
+ */
+termsOfService.url = (options?: RouteQueryOptions) => {
+    return termsOfService.definition.url + queryParams(options)
+}
+
+/**
+ * @see \App\Http\Controllers\PageController::termsOfService
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @route "/terms-of-service"
+ */
+termsOfService.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: termsOfService.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::termsOfService
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @route "/terms-of-service"
+ */
+termsOfService.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
+    url: termsOfService.url(options),
+    method: "head",
+})
+
+
+
+/**
+ * @see \App\Http\Controllers\PageController::termsOfService
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @route "/terms-of-service"
+ */
+const termsOfServiceForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: termsOfService.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::termsOfService
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @route "/terms-of-service"
+ */
+termsOfServiceForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: termsOfService.url(options),
+    method: "get",
+})
+
+/**
+ * @see \App\Http\Controllers\PageController::termsOfService
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @route "/terms-of-service"
+ */
+termsOfServiceForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: termsOfService.url(formSafeOptions("head", options)),
+    method: "get",
+})
+
+
+
+termsOfService.form = termsOfServiceForm
+/**
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @route "/dashboard"
+ */
+export const dashboard = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: dashboard.url(options),
+    method: "get",
+})
+
+dashboard.definition = {
+    methods: ["get","head"],
+    url: "/dashboard",
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @route "/dashboard"
+ */
+dashboard.url = (options?: RouteQueryOptions) => {
+    return dashboard.definition.url + queryParams(options)
+}
+
+/**
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @route "/dashboard"
+ */
+dashboard.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: dashboard.url(options),
+    method: "get",
+})
+
+/**
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @route "/dashboard"
+ */
+dashboard.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
+    url: dashboard.url(options),
+    method: "head",
+})
+
+
+
+/**
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @route "/dashboard"
+ */
+const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: dashboard.url(options),
+    method: "get",
+})
+
+/**
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @route "/dashboard"
+ */
+dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: dashboard.url(options),
+    method: "get",
+})
+
+/**
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @route "/dashboard"
+ */
+dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: dashboard.url(formSafeOptions("head", options)),
+    method: "get",
+})
+
+
+
+dashboard.form = dashboardForm
 
 const routes = {
     login,
     logout,
     register,
     home,
-    dashboard,
-    "legal-notice": legalNotice,
+    "cookie-policy": cookiePolicy,
     disclaimer,
+    "legal-notice": legalNotice,
+    "privacy-policy": privacyPolicy,
+    "terms-of-service": termsOfService,
+    dashboard,
 }
 
 export default routes
