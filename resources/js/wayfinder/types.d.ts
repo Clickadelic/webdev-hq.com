@@ -21,7 +21,7 @@ export namespace App {
         /**
          * @see [\App\Models\Hyperlink](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Hyperlink.php)
          */
-        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: string, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
+        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: App.Enums.Status, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
 
         /**
          * @see [\App\Models\Tag](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Tag.php)
@@ -194,7 +194,9 @@ export namespace App {
                         url: string;
                         description?: string | null;
                         category_id?: string | null;
-                        status: string;}
+                        status: string;
+                        tags?: unknown[] | null;
+                        "tags.*"?: string;}
                 }
 
                 export namespace Update {
@@ -205,7 +207,9 @@ export namespace App {
                         url: string;
                         description?: string | null;
                         category_id?: string | null;
-                        status: string;}
+                        status: string;
+                        tags?: unknown[] | null;
+                        "tags.*"?: string;}
                 }
 
                 export namespace Destroy {
@@ -614,7 +618,7 @@ export namespace Inertia {
             /**
              * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
-            export type Create = Inertia.SharedData
+            export type Create = Inertia.SharedData & { categories: unknown, tags: unknown }
 
             /**
              * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
@@ -624,7 +628,7 @@ export namespace Inertia {
             /**
              * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
-            export type Edit = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
+            export type Edit = Inertia.SharedData & { hyperlink: App.Models.Hyperlink, categories: unknown, tags: unknown }
         }
 
         export namespace Settings {

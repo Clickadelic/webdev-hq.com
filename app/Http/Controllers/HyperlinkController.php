@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Hyperlink;
+use App\Models\Tag;
 use App\Http\Requests\StoreHyperlinkRequest;
 use App\Http\Requests\UpdateHyperlinkRequest;
 
@@ -25,7 +27,10 @@ class HyperlinkController extends Controller
      */
     public function create()
     {
-        return inertia('hyperlinks/create');
+        return inertia('hyperlinks/create', [
+            'categories' => Category::orderBy('name')->get(),
+            'tags' => Tag::orderBy('name')->get(),
+        ]);
     }
 
     /**
@@ -33,7 +38,11 @@ class HyperlinkController extends Controller
      */
     public function store(StoreHyperlinkRequest $request)
     {
-        Hyperlink::create($request->validated());
+        $hyperlink = Hyperlink::create($request->safe()->except('tags'));
+
+        if ($request->validated('tags')) {
+            $hyperlink->tags()->sync($request->validated('tags'));
+        }
 
         return redirect()
             ->route('hyperlinks.index')
@@ -56,7 +65,9 @@ class HyperlinkController extends Controller
     public function edit(Hyperlink $hyperlink)
     {
         return inertia('hyperlinks/edit', [
-            'hyperlink' => $hyperlink,
+            'hyperlink' => $hyperlink->load('tags'),
+            'categories' => Category::orderBy('name')->get(),
+            'tags' => Tag::orderBy('name')->get(),
         ]);
     }
 
@@ -65,7 +76,8 @@ class HyperlinkController extends Controller
      */
     public function update(UpdateHyperlinkRequest $request, Hyperlink $hyperlink)
     {
-        $hyperlink->update($request->validated());
+        $hyperlink->update($request->safe()->except('tags'));
+        $hyperlink->tags()->sync($request->validated('tags', []));
 
         return redirect()
             ->route('hyperlinks.index')
