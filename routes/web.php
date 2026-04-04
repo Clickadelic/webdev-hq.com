@@ -5,9 +5,10 @@ use Inertia\Inertia;
 // use Laravel\Fortify\Features;
 
 use App\Http\Controllers\AppController;
-use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\HyperlinkController;
 use App\Http\Controllers\PageController;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\App as AppModel;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
@@ -20,7 +21,7 @@ Route::get('/terms-of-service', [PageController::class, 'termsOfService'])->name
 Route::middleware(['auth', 'verified'])->group(function () {
 	Route::get('dashboard', function () {
 		$apps = AppModel::query()
-			->where('created_by', auth()->id())
+			->where('created_by', Auth::id())
 			->orderBy('position')
 			->get();
 
