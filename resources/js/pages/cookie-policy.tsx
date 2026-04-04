@@ -1,5 +1,3 @@
-'use client';
-
 import PublicLayout from '@/layouts/public-layout';
 
 export default function CookiePolicy({

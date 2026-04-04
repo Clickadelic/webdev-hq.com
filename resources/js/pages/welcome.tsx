@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import PublicLayout from '@/layouts/public-layout';
+import FrontpageLayout from '@/layouts/frontpage-layout';
 import { type Hyperlink } from '@/types';
 
 export default function Welcome({
@@ -11,31 +11,37 @@ export default function Welcome({
     canRegister?: boolean;
 }) {
     return (
-        <PublicLayout canRegister={canRegister} title="Welcome">
+        <FrontpageLayout canRegister={canRegister} title="Welcome">
             <main className="container mx-auto flex flex-col items-center justify-center py-12">
-                <h1 className="text-4xl font-bold mb-8">Welcome</h1>
-                
+                <h2 className="mb-8 text-4xl font-bold">Welcome</h2>
+
                 {hyperlinks && hyperlinks.length > 0 ? (
-                    <div className="grid grid-cols-8 gap-4 w-full">
+                    <div className="grid w-full grid-cols-8 gap-4">
                         {hyperlinks.map((hyperlink) => (
                             <a
                                 key={hyperlink.id}
                                 href={hyperlink.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="p-4 border rounded-lg hover:bg-gray-50 transition-colors"
+                                className="rounded-lg border p-4 transition-colors hover:bg-gray-50"
                             >
-                                <h3 className="font-semibold text-lg">{hyperlink.title}</h3>
+                                <h3 className="text-lg font-semibold">
+                                    {hyperlink.title}
+                                </h3>
                                 {hyperlink.description && (
-                                    <p className="text-gray-600 mt-1">{hyperlink.description}</p>
+                                    <p className="mt-1 text-gray-600">
+                                        {hyperlink.description}
+                                    </p>
                                 )}
                             </a>
                         ))}
                     </div>
                 ) : (
-                    <p className="text-gray-500">No hyperlinks available yet.</p>
+                    <p className="text-gray-500">
+                        No hyperlinks available yet.
+                    </p>
                 )}
             </main>
-        </PublicLayout>
+        </FrontpageLayout>
     );
 }
