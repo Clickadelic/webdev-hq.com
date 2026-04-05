@@ -7,13 +7,12 @@ export default function CookiePolicy({
 }) {
     return (
         <PublicLayout canRegister={canRegister} title="Cookie Policy">
-            <main className="container mx-auto flex flex-col items-center justify-center py-12">
-                <h1 className="mb-8 text-4xl font-bold">Cookie Policy</h1>
-                <p>
-                    ## Privacy Policy ### 1. General Information Protecting your
-                    personal data is important to me. This website is designed
-                    with a strong focus on privacy and minimal data collection.
-                    ### 2. Data Controller Tobias Hopp Email:
+            <ol>
+                <li>
+                    General Information Protecting your personal data is
+                    important to me. This website is designed with a strong
+                    focus on privacy and minimal data collection. 2. Data
+                    Controller Tobias Hopp Email:
                     [admin@webdev-hq.com](mailto:admin@webdev-hq.com) ### 3.
                     Data We Collect We only collect data necessary to operate
                     the platform: * Account information (e.g., username, email
@@ -44,8 +43,8 @@ export default function CookiePolicy({
                     necessary for the operation of the platform or as required
                     by law. ### 10. Changes This privacy policy may be updated
                     to reflect changes in functionality or legal requirements.
-                </p>
-            </main>
+                </li>
+            </ol>
         </PublicLayout>
     );
 }
