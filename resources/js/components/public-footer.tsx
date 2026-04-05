@@ -11,7 +11,7 @@ export default function ({ className }: PublicFooterProps) {
     return (
         <div
             className={cn(
-                'w-full border-t-2 border-primary bg-white dark:bg-gray-900',
+                'w-full border-t-2 border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900',
                 className,
             )}
         >
@@ -170,9 +170,9 @@ export default function ({ className }: PublicFooterProps) {
                         Tobias Hopp
                     </a>
                 </div> */}
-                <div className="text-center text-sm text-gray-600 hover:text-primary dark:text-gray-200">
-                    &copy; {new Date().getFullYear()} webdev-hq.com. All rights
-                    reserved.
+                <div className="cursor-default text-center text-sm text-gray-600 dark:text-gray-200">
+                    WebDev HQ &middot; All rights reserved{' '}
+                    {new Date().getFullYear()} &copy;.
                 </div>
             </footer>
         </div>

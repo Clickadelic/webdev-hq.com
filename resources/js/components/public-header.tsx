@@ -18,13 +18,8 @@ export default function PublicHeader({
 }: PublicHeaderProps) {
     const { auth } = usePage<SharedData>().props;
     return (
-        <div
-            className={cn(
-                'w-full bg-gray-100 shadow dark:bg-gray-900',
-                className,
-            )}
-        >
-            <header className="container mx-auto flex items-center justify-between py-1">
+        <div className={cn('mt-2 w-full', className)}>
+            <header className="container mx-auto flex items-center justify-between rounded-lg bg-white px-2 dark:bg-gray-900">
                 <AppLogo />
                 <nav className="flex items-center justify-end gap-4">
                     {auth.user ? (

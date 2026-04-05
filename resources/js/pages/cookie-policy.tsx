@@ -8,8 +8,8 @@ export default function CookiePolicy({
     return (
         <PublicLayout canRegister={canRegister} title="Cookie Policy">
             <article>
+                <h3>Cookie Policy</h3>
                 <section>
-                    <h3>Privacy Policy</h3>
                     General Information Protecting your personal data is
                     important to us. This website is designed with a strong
                     focus on privacy and minimal data collection.

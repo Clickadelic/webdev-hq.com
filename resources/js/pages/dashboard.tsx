@@ -182,7 +182,7 @@ export default function Dashboard() {
                                 Enable reordering
                             </span>
                         </div>
-                        <ul className="flex w-full gap-1 rounded bg-white/30 p-1 backdrop-blur dark:bg-slate-800/30">
+                        <ul className="flex w-full gap-2 rounded bg-white/30 p-1 backdrop-blur dark:bg-slate-800/30">
                             {items.map((app) => (
                                 <SortableAppTile
                                     key={app.id}
@@ -207,7 +207,7 @@ export default function Dashboard() {
                                 >
                                     <DialogTrigger
                                         onClick={() => setIsModalOpen(true)}
-                                        className="hover:border-mantis-primary hover:text-mantis-primary flex size-[70px] flex-col place-content-center items-center gap-1 rounded border-1 border-transparent bg-white p-2 text-slate-400 transition-colors duration-150 ease-in-out hover:cursor-pointer dark:bg-slate-800 dark:text-slate-300"
+                                        className="flex size-[70px] flex-col place-content-center items-center gap-1 rounded border bg-white p-2 text-slate-400 transition-colors duration-150 ease-in-out hover:cursor-pointer hover:border-primary hover:text-primary dark:bg-slate-800 dark:text-slate-300"
                                     >
                                         <Plus />
                                     </DialogTrigger>

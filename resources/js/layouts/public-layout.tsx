@@ -29,7 +29,7 @@ export default function PublicLayout({
             <div className="grid min-h-svh grid-rows-[auto_auto_1fr_auto]">
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
-                <main className="container mx-auto py-12">{children}</main>
+                <main className="container mx-auto py-4">{children}</main>
                 <Toaster />
                 <CircularMenu />
                 <PublicFooter />
