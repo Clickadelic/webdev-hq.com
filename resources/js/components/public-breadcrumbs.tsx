@@ -34,12 +34,17 @@ const PublicBreadcrumbs = () => {
     });
 
     return (
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto w-full px-2 md:px-0">
             <ul className="flex items-center gap-2 border-b border-gray-200 py-3 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-200">
                 {/* Home */}
                 <li>
-                    <Link href="/" className="hover:text-primary">
-                        <RiHomeLine className="inline" />
+                    <Link
+                        href="/"
+                        className="hover:text-primary"
+                        aria-label="Homepage"
+                        title="Homepage"
+                    >
+                        <RiHomeLine className="-mt-1 inline" />
                         <span className="sr-only">Homepage</span>
                     </Link>
                 </li>

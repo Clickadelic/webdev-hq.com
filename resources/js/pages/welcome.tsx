@@ -1,7 +1,9 @@
 'use client';
 
-import FrontpageLayout from '@/layouts/frontpage-layout';
+import PublicLayout from '@/layouts/public-layout';
 import { type Hyperlink } from '@/types';
+
+import { ExternalLink } from 'lucide-react';
 
 export default function Welcome({
     hyperlinks,
@@ -11,25 +13,24 @@ export default function Welcome({
     canRegister?: boolean;
 }) {
     return (
-        <FrontpageLayout canRegister={canRegister} title="Welcome">
-            <main className="container mx-auto flex flex-col items-center justify-center py-12">
-                <h2 className="mb-8 text-4xl font-bold">Welcome</h2>
-
+        <PublicLayout canRegister={canRegister} title="Welcome">
+            <main className="container mx-auto flex flex-col items-start justify-center py-12">
                 {hyperlinks && hyperlinks.length > 0 ? (
-                    <div className="grid w-full grid-cols-8 gap-4">
+                    <div className="flex-start flex w-full gap-4">
                         {hyperlinks.map((hyperlink) => (
                             <a
                                 key={hyperlink.id}
                                 href={hyperlink.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-lg border p-4 transition-colors hover:bg-gray-50"
+                                className="w-64 rounded-lg border bg-white p-3 shadow transition-colors hover:shadow-lg"
                             >
-                                <h3 className="text-lg font-semibold">
+                                <h3 className="text-md font-semibold">
                                     {hyperlink.title}
+                                    <ExternalLink className="-mt-1 ml-1 inline-block h-4 w-4 text-gray-500" />
                                 </h3>
                                 {hyperlink.description && (
-                                    <p className="mt-1 text-gray-600">
+                                    <p className="mt-1 text-sm text-gray-600">
                                         {hyperlink.description}
                                     </p>
                                 )}
@@ -42,6 +43,6 @@ export default function Welcome({
                     </p>
                 )}
             </main>
-        </FrontpageLayout>
+        </PublicLayout>
     );
 }

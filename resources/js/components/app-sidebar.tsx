@@ -10,16 +10,27 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
+import { dashboard, home } from '@/routes';
 import { Link } from '@inertiajs/react';
-import { BookOpen, GalleryHorizontal, LayoutGrid, Link2, ScreenShare } from 'lucide-react';
+import {
+    BookOpen,
+    GalleryHorizontal,
+    Home,
+    LayoutGrid,
+    Link2,
+    ScreenShare,
+} from 'lucide-react';
 
 import AppLogo from './app-logo';
 
 import { type NavItem } from '@/types';
 
-
 const mainNavItems: NavItem[] = [
+    {
+        title: 'Home',
+        href: home(),
+        icon: Home,
+    },
     {
         title: 'Dashboard',
         href: dashboard(),
@@ -27,12 +38,12 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Apps',
-        href: "/apps",
+        href: '/apps',
         icon: ScreenShare,
     },
     {
         title: 'Hyperlinks',
-        href: "/hyperlinks",
+        href: '/hyperlinks',
         icon: Link2,
     },
 ];

@@ -1,4 +1,7 @@
 import { cn } from '@/lib/utils';
+import { Link } from '@inertiajs/react';
+
+import { ChevronRight } from 'lucide-react'; // ShadCN Icons
 
 interface PublicFooterProps {
     className?: string;
@@ -8,103 +11,166 @@ export default function ({ className }: PublicFooterProps) {
     return (
         <div
             className={cn(
-                'w-full border-t bg-gray-200 dark:bg-gray-900',
+                'w-full border-t-2 border-primary bg-white dark:bg-gray-900',
                 className,
             )}
         >
-            <footer className="container mx-auto py-4">
+            <footer className="container mx-auto py-6">
                 <div className="mb-12 grid grid-cols-1 gap-4 md:grid-cols-4">
-                    <div className="asd">
-                        <h3 className="mb-3 text-2xl font-medium">Legal</h3>
-                        <ul>
+                    <div className="spacer">
+                        <h3 className="mb-6 text-2xl">Legal</h3>
+                        <ul className="space-y-2">
                             <li>
-                                <a href="/disclaimer">Disclaimer</a>
+                                <Link
+                                    href="/disclaimer"
+                                    className="flex items-center gap-1 text-gray-600 hover:text-primary dark:text-gray-200"
+                                >
+                                    <ChevronRight />
+                                    Disclaimer
+                                </Link>
                             </li>
                             <li>
-                                <a href="/privacy">Privacy Policy</a>
+                                <Link
+                                    href="/privacy-policy"
+                                    className="flex items-center gap-1 text-gray-600 hover:text-primary dark:text-gray-200"
+                                >
+                                    <ChevronRight />
+                                    Privacy Policy
+                                </Link>
                             </li>
                             <li>
-                                <a href="/terms">Terms of Service</a>
+                                <Link
+                                    href="/terms-of-service"
+                                    className="flex items-center gap-1 text-gray-600 hover:text-primary dark:text-gray-200"
+                                >
+                                    <ChevronRight />
+                                    Terms of Service
+                                </Link>
                             </li>
                             <li>
-                                <a href="/cookie-policy">Cookie Policy</a>
+                                <Link
+                                    href="/cookie-policy"
+                                    className="flex items-center gap-1 text-gray-600 hover:text-primary dark:text-gray-200"
+                                >
+                                    <ChevronRight />
+                                    Cookie Policy
+                                </Link>
                             </li>
                             <li>
-                                <a href="/terms-of-service">Terms of Service</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="asd">
-                        <h3 className="mb-3 text-2xl font-medium">Title</h3>
-                        <ul>
-                            <li>
-                                <a href="#">Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Link</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="asd">
-                        <h3 className="mb-3 text-2xl font-medium">Title</h3>
-                        <ul>
-                            <li>
-                                <a href="#">Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Link</a>
+                                <Link
+                                    href="/terms-of-service"
+                                    className="flex items-center gap-1 text-gray-600 hover:text-primary dark:text-gray-200"
+                                >
+                                    <ChevronRight />
+                                    Terms of Service
+                                </Link>
                             </li>
                         </ul>
                     </div>
-                    <div className="asd">
-                        <h3 className="mb-3 text-2xl font-medium">Title</h3>
-                        <ul>
+                    <div className="spacer">
+                        <h3 className="mb-6 text-2xl">Navigation</h3>
+                        <ul className="space-y-2">
                             <li>
-                                <a href="#">Link</a>
+                                <Link
+                                    href="/disclaimer"
+                                    className="flex items-center gap-1 text-gray-600 hover:text-primary dark:text-gray-200"
+                                >
+                                    <ChevronRight />
+                                    Disclaimer
+                                </Link>
                             </li>
                             <li>
-                                <a href="#">Link</a>
+                                <Link
+                                    href="/privacy-policy"
+                                    className="flex items-center gap-1 text-gray-600 hover:text-primary dark:text-gray-200"
+                                >
+                                    <ChevronRight />
+                                    Privacy Policy
+                                </Link>
                             </li>
                             <li>
-                                <a href="#">Link</a>
+                                <Link
+                                    href="/terms-of-service"
+                                    className="flex items-center gap-1 text-gray-600 hover:text-primary dark:text-gray-200"
+                                >
+                                    <ChevronRight />
+                                    Terms of Service
+                                </Link>
                             </li>
                             <li>
-                                <a href="#">Link</a>
+                                <Link
+                                    href="/cookie-policy"
+                                    className="flex items-center gap-1 text-gray-600 hover:text-primary dark:text-gray-200"
+                                >
+                                    <ChevronRight />
+                                    Cookie Policy
+                                </Link>
                             </li>
                             <li>
-                                <a href="#">Link</a>
+                                <Link
+                                    href="/terms-of-service"
+                                    className="flex items-center gap-1 text-gray-600 hover:text-primary dark:text-gray-200"
+                                >
+                                    <ChevronRight />
+                                    Terms of Service
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="spacer">
+                        <h3 className="mb-6 text-2xl">Title</h3>
+                        <ul className="space-y-2">
+                            <li>
+                                <Link href="#">Link</Link>
+                            </li>
+                            <li>
+                                <Link href="#">Link</Link>
+                            </li>
+                            <li>
+                                <Link href="#">Link</Link>
+                            </li>
+                            <li>
+                                <Link href="#">Link</Link>
+                            </li>
+                            <li>
+                                <Link href="#">Link</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="spacer">
+                        <h3 className="mb-6 text-2xl">Title</h3>
+                        <ul className="space-y-2">
+                            <li>
+                                <Link href="#">Link</Link>
+                            </li>
+                            <li>
+                                <Link href="#">Link</Link>
+                            </li>
+                            <li>
+                                <Link href="#">Link</Link>
+                            </li>
+                            <li>
+                                <Link href="#">Link</Link>
+                            </li>
+                            <li>
+                                <Link href="#">Link</Link>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div className="text-center text-sm text-gray-600 dark:text-gray-200">
+                {/* 
+                <div className="mb-4 text-center text-sm text-gray-600 dark:text-gray-200 hover:text-primary">
                     Made with ❤️ by{' '}
                     <a
                         href="https://tobias-hopp.de"
                         className="hover:text-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         Tobias Hopp
                     </a>
-                </div>
-                <div className="text-center text-sm text-gray-600 dark:text-gray-200">
+                </div> */}
+                <div className="text-center text-sm text-gray-600 hover:text-primary dark:text-gray-200">
                     &copy; {new Date().getFullYear()} webdev-hq.com. All rights
                     reserved.
                 </div>

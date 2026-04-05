@@ -24,7 +24,7 @@ export default function PublicHeader({
                 className,
             )}
         >
-            <header className="container mx-auto flex items-center justify-between p-2">
+            <header className="container mx-auto flex items-center justify-between py-1">
                 <AppLogo />
                 <nav className="flex items-center justify-end gap-4">
                     {auth.user ? (
