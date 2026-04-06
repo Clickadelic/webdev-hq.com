@@ -1,5 +1,3 @@
-'use client';
-
 import PublicLayout from '@/layouts/public-layout';
 
 export default function PrivacyPolicy({
@@ -9,23 +7,63 @@ export default function PrivacyPolicy({
 }) {
     return (
         <PublicLayout canRegister={canRegister} title="Privacy Policy">
+            <article>
+                <section>
+                    <h3 className="text-lg font-semibold">
+                        General Information
+                    </h3>
+                    <p>
+                        Protecting your personal data is important to me. This
+                        website is designed with a strong focus on privacy and
+                        minimal data collection.
+                    </p>
+                </section>
+                <section>
+                    <h3>Data Controller</h3>
+                    <ul>
+                        <li>Tobias Hopp</li>
+                        <li>
+                            [admin@webdev-hq.com](mailto:admin@webdev-hq.com)
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Data Collection</h3>
+                    <p>
+                        We only collect data necessary to operate the platform:
+                        * Account information (e.g., username, email address) *
+                        Content you submit (links, posts, comments) * Technical
+                        data (e.g., IP address, browser type) stored in server
+                        logs
+                    </p>
+                </section>
+                <section>
+                    <h3>Server Hosting</h3>
+                    <p>
+                        This website is hosted by a provider located in Germany.
+                        Server logs may be automatically collected and stored by
+                        the hosting provider for security and operational
+                        purposes. A data processing agreement (DPA) is in place
+                        with the hosting provider in accordance with GDPR
+                        requirements.
+                    </p>
+                </section>
+                <section>
+                    <h3>Authentication & Social Login</h3>
+                    <p>
+                        This website is hosted by a provider located in Germany.
+                        Server logs may be automatically collected and stored by
+                        the hosting provider for security and operational
+                        purposes. A data processing agreement (DPA) is in place
+                        with the hosting provider in accordance with GDPR
+                        requirements.
+                    </p>
+                </section>
+            </article>
+
             <p>
-                ## Privacy Policy ### 1. General Information Protecting your
-                personal data is important to me. This website is designed with
-                a strong focus on privacy and minimal data collection. ### 2.
-                Data Controller Tobias Hopp Email:
-                [admin@webdev-hq.com](mailto:admin@webdev-hq.com) ### 3. Data We
-                Collect We only collect data necessary to operate the platform:
-                * Account information (e.g., username, email address) * Content
-                you submit (links, posts, comments) * Technical data (e.g., IP
-                address, browser type) stored in server logs ### 4. Server
-                Hosting This website is hosted by a provider located in Germany.
-                Server logs may be automatically collected and stored by the
-                hosting provider for security and operational purposes. A data
-                processing agreement (DPA) is in place with the hosting provider
-                in accordance with GDPR requirements. ### 5. Authentication &
-                Social Login Users may register using traditional login methods
-                or third-party authentication providers (e.g., Google, GitHub).
+                Users may register using traditional login methods or
+                third-party authentication providers (e.g., Google, GitHub).
                 When using social login, certain data may be transferred from
                 these providers. Please refer to their privacy policies: *
                 Google * GitHub ### 6. Cookies This website uses essential

@@ -2,8 +2,9 @@ import CircularMenu from '@/components/circular-menu';
 import PublicBreadcrumbs from '@/components/public-breadcrumbs';
 import PublicFooter from '@/components/public-footer';
 import PublicHeader from '@/components/public-header';
+
 import { Toaster } from '@/components/ui/sonner';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 
 interface PublicLayoutProps {
     title?: string;
@@ -29,7 +30,25 @@ export default function PublicLayout({
             <div className="grid min-h-svh grid-rows-[auto_auto_1fr_auto]">
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
-                <main className="container mx-auto py-4">{children}</main>
+                <main className="container mx-auto py-4">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
+                        <aside>
+                            <ul>
+                                <li>
+                                    <Link
+                                        href="#"
+                                        className="text-gray-500 hover:text-gray-700"
+                                    >
+                                        Link
+                                    </Link>
+                                </li>
+                            </ul>
+                        </aside>
+                        <section className="col-span-1 md:col-span-4">
+                            {children}
+                        </section>
+                    </div>
+                </main>
                 <Toaster />
                 <CircularMenu />
                 <PublicFooter />

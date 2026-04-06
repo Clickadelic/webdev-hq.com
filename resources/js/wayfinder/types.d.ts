@@ -21,7 +21,7 @@ export namespace App {
         /**
          * @see [\App\Models\Hyperlink](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Hyperlink.php)
          */
-        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: App.Enums.Status, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
+        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: App.Enums.Status, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
 
         /**
          * @see [\App\Models\Tag](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Tag.php)
@@ -377,7 +377,7 @@ export namespace Laravel {
         /**
          * @see [\Laravel\Sanctum\PersonalAccessToken](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\PersonalAccessToken.php)
          */
-        export type PersonalAccessToken = { id: number, tokenable_type: string, tokenable_id: number, name: string, token: string, abilities: Record<string, unknown>, last_used_at: string | null, expires_at: string | null, created_at: string | null, updated_at: string | null, tokenable?: Laravel.Sanctum.PersonalAccessToken | null }
+        export type PersonalAccessToken = { tokenable?: Laravel.Sanctum.PersonalAccessToken | null }
 
         export namespace Http {
             export namespace Controllers {

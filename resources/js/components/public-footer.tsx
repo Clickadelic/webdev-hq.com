@@ -5,7 +5,7 @@ interface PublicFooterProps {
     className?: string;
 }
 
-export default function ({ className }: PublicFooterProps) {
+export default function PublicFooter({ className }: PublicFooterProps) {
     return (
         <div
             className={cn(
@@ -18,41 +18,11 @@ export default function ({ className }: PublicFooterProps) {
                     <ul className="mx-auto mb-4 space-y-3 text-center text-sm sm:flex sm:space-y-0 sm:space-x-3">
                         <li>
                             <Link
-                                href="/terms-of-service"
+                                href="/cookie-policy"
                                 className="text-sm hover:text-primary"
-                                title="Terms of Service"
+                                title="Cookie Policy"
                             >
-                                Terms of Service
-                            </Link>
-                        </li>
-                        <li className="hidden sm:inline-block">&middot;</li>
-                        <li>
-                            <Link
-                                href="/privacy-policy"
-                                className="text-sm hover:text-primary"
-                                title="Privacy Policy"
-                            >
-                                Privacy Policy
-                            </Link>
-                        </li>
-                        <li className="hidden sm:inline-block">&middot;</li>
-                        <li>
-                            <Link
-                                href="/cookie-notice"
-                                className="text-sm hover:text-primary"
-                                title="Cookie Notice"
-                            >
-                                Cookie Notice
-                            </Link>
-                        </li>
-                        <li className="hidden sm:inline-block">&middot;</li>
-                        <li>
-                            <Link
-                                href="/privacy-policy"
-                                className="text-sm hover:text-primary"
-                                title="Privacy Policy"
-                            >
-                                Privacy Policy
+                                Cookie Policy
                             </Link>
                         </li>
                         <li className="hidden sm:inline-block">&middot;</li>
@@ -63,6 +33,36 @@ export default function ({ className }: PublicFooterProps) {
                                 title="Disclaimer"
                             >
                                 Disclaimer
+                            </Link>
+                        </li>
+                        <li className="hidden sm:inline-block">&middot;</li>
+                        <li>
+                            <Link
+                                href="/legal-notice"
+                                className="text-sm hover:text-primary"
+                                title="Legal Notice"
+                            >
+                                Legal Notice
+                            </Link>
+                        </li>
+                        <li className="hidden sm:inline-block">&middot;</li>
+                        <li>
+                            <Link
+                                href="/privacy-policy"
+                                className="text-sm hover:text-primary"
+                                title="Privacy Policy"
+                            >
+                                Privacy Policy
+                            </Link>
+                        </li>
+                        <li className="hidden sm:inline-block">&middot;</li>
+                        <li>
+                            <Link
+                                href="/terms-of-service"
+                                className="text-sm hover:text-primary"
+                                title="Terms of Service"
+                            >
+                                Terms of Service
                             </Link>
                         </li>
                     </ul>
