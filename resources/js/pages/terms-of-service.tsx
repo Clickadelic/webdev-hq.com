@@ -25,12 +25,14 @@ export default function TermsofService({
                     </h3>
                     <p>
                         WebDev HQ (webdev-hq.com) is a community-driven platform
-                        that allows users to: * Share and discover links
-                        (resources) * Publish posts or articles * (Planned)
+                        that allows users to:
                     </p>
-                    <ul>
+                    <ul className="my-3 list-disc pl-5">
                         <li>Share and discover links (resources)</li>
-                        <li>Publish posts or articles * (Planned)</li>
+                        <li>
+                            Publish posts or articles (for informational
+                            purposes)
+                        </li>
                         <li>
                             The Platform is not intended for commercial use.
                         </li>
