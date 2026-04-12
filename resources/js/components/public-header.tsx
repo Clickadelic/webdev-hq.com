@@ -1,5 +1,5 @@
-import { Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
+import { Link, usePage } from '@inertiajs/react';
 
 import AppLogo from '@/components/app-logo';
 
@@ -12,11 +12,14 @@ interface PublicHeaderProps {
     className?: string;
 }
 
-export default function PublicHeader({ canRegister = true, className }: PublicHeaderProps) {
+export default function PublicHeader({
+    canRegister = true,
+    className,
+}: PublicHeaderProps) {
     const { auth } = usePage<SharedData>().props;
     return (
-        <div className={cn("w-full bg-neutral-100 dark:bg-neutral-900 shadow", className)}>
-            <header className="container mx-auto flex items-center justify-between p-2">
+        <div className={cn('mt-2 w-full', className)}>
+            <header className="container mx-auto flex items-center justify-between rounded-lg bg-white px-2 dark:bg-gray-900">
                 <AppLogo />
                 <nav className="flex items-center justify-end gap-4">
                     {auth.user ? (
@@ -47,5 +50,5 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                 </nav>
             </header>
         </div>
-    )
+    );
 }
