@@ -1,0 +1,41 @@
+# Dependencies (installed inside container)
+node_modules
+vendor
+
+# Build output (rebuilt inside container)
+public/build
+public/hot
+bootstrap/ssr
+
+# Environment files (mounted or copied separately)
+.env
+.env.*
+!.env.example
+
+# VCS & IDE
+.git
+.gitattributes
+.gitignore
+.idea
+.vscode
+.fleet
+.nova
+.zed
+.DS_Store
+
+# Testing & caches
+.phpunit.cache
+.phpunit.result.cache
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+
+# Docker itself
+docker-compose*.yml
+Dockerfile
+
+# Misc
+*.md
+tests
+x-files

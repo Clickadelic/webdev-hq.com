@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -145,6 +145,6 @@
     }
 
     body {
-        @apply bg-gray-200 text-foreground dark:bg-neutral-800;
+        @apply bg-gray-200 text-foreground dark:bg-gray-800;
     }
 }

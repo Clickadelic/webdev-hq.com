@@ -1,0 +1,83 @@
+services:
+  # ── Laravel App (PHP-FPM + Nginx) ──────────────────────────
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: webdevhq-app
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/http.d/default.conf:ro
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini:ro
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_CONNECTION=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=webdevhqcom_dev
+      - DB_USERNAME=root
+      - DB_PASSWORD=groot
+    entrypoint: ["/usr/local/bin/entrypoint.sh"]
+    networks:
+      - webdevhq
+
+  # ── MySQL 8 ────────────────────────────────────────────────
+  mysql:
+    image: mysql:8.0
+    container_name: webdevhq-mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: webdevhqcom_dev
+      MYSQL_ROOT_PASSWORD: groot
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - webdevhq
+
+  # ── Vite Dev Server (HMR) ─────────────────────────────────
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: build
+    container_name: webdevhq-node
+    working_dir: /app
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    environment:
+      - DB_HOST=mysql
+      - DB_USERNAME=root
+      - DB_PASSWORD=groot
+      - DB_DATABASE=webdevhqcom_dev
+    depends_on:
+      mysql:
+        condition: service_healthy
+    command: sh -c "npm ci --ignore-scripts && npm run dev -- --host 0.0.0.0"
+    networks:
+      - webdevhq
+
+volumes:
+  mysql-data:
+  node_modules:
+
+networks:
+  webdevhq:
+    driver: bridge

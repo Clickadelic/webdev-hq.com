@@ -6,7 +6,7 @@ export namespace App {
         /**
          * @see [\App\Models\App](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\App.php)
          */
-        export type App = { id: string, title: string, url: string, target: string, description: string | null, created_by: number | null, status: string, created_at: string | null, updated_at: string | null, deleted_at: string | null, creator?: App.Models.User | null }
+        export type App = { id: string, title: string, url: string, target: string, position: number, created_by: number | null, created_at: string | null, updated_at: string | null, creator?: App.Models.User | null }
 
         /**
          * @see [\App\Models\User](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\User.php)
@@ -21,7 +21,7 @@ export namespace App {
         /**
          * @see [\App\Models\Hyperlink](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Hyperlink.php)
          */
-        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: App.Enums.Status, created_by: number | null, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
+        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: App.Enums.Status, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
 
         /**
          * @see [\App\Models\Tag](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Tag.php)
@@ -38,15 +38,50 @@ export namespace App {
 
     export namespace Http {
         export namespace Controllers {
-            export namespace FrontpageController {
+            export namespace PageController {
                 export namespace Index {
                     /**
-                     * @see [\App\Http\Controllers\FrontpageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php)
+                     * @see [\App\Http\Controllers\PageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
                      */
                     export type Response = Inertia.Pages.Welcome
 
                     /**
-                     * @see [\App\Http\Controllers\FrontpageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php)
+                     * @see [\App\Http\Controllers\PageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace CookiePolicy {
+                    /**
+                     * @see [\App\Http\Controllers\PageController::cookiePolicy](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace Disclaimer {
+                    /**
+                     * @see [\App\Http\Controllers\PageController::disclaimer](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace LegalNotice {
+                    /**
+                     * @see [\App\Http\Controllers\PageController::legalNotice](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace PrivatePolicy {
+                    /**
+                     * @see [\App\Http\Controllers\PageController::privatePolicy](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+
+                export namespace TermsOfService {
+                    /**
+                     * @see [\App\Http\Controllers\PageController::termsOfService](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
@@ -342,7 +377,7 @@ export namespace Laravel {
         /**
          * @see [\Laravel\Sanctum\PersonalAccessToken](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\PersonalAccessToken.php)
          */
-        export type PersonalAccessToken = { id: number, tokenable_type: string, tokenable_id: number, name: string, token: string, abilities: Record<string, unknown>, last_used_at: string | null, expires_at: string | null, created_at: string | null, updated_at: string | null, tokenable?: Laravel.Sanctum.PersonalAccessToken | null }
+        export type PersonalAccessToken = { tokenable?: Laravel.Sanctum.PersonalAccessToken | null }
 
         export namespace Http {
             export namespace Controllers {
@@ -583,7 +618,7 @@ export namespace Inertia {
 
     export namespace Pages {
         /**
-         * @see [\App\Http\Controllers\FrontpageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\FrontpageController.php)
+         * @see [\App\Http\Controllers\PageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
          */
         export type Welcome = Inertia.SharedData & { hyperlinks: unknown, canRegister: true }
 
