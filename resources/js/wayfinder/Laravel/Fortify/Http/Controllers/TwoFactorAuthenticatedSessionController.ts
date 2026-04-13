@@ -5,7 +5,7 @@ import { formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefin
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:41
  * @route "/two-factor-challenge"
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -20,7 +20,7 @@ create.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:41
  * @route "/two-factor-challenge"
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:41
  * @route "/two-factor-challenge"
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -39,7 +39,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:41
  * @route "/two-factor-challenge"
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -51,7 +51,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:41
  * @route "/two-factor-challenge"
  */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -61,7 +61,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:41
  * @route "/two-factor-challenge"
  */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -71,7 +71,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:41
  * @route "/two-factor-challenge"
  */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -84,7 +84,7 @@ createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
 create.form = createForm
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:56
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:56
  * @route "/two-factor-challenge"
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -99,7 +99,7 @@ store.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:56
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:56
  * @route "/two-factor-challenge"
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -108,7 +108,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:56
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:56
  * @route "/two-factor-challenge"
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -120,7 +120,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:56
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:56
  * @route "/two-factor-challenge"
  */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -130,7 +130,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php:56
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:56
  * @route "/two-factor-challenge"
  */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({

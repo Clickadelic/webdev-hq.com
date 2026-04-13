@@ -5,7 +5,7 @@ import { formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefin
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:47
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
  * @route "/login"
  */
 export const login = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -20,7 +20,7 @@ login.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:47
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
  * @route "/login"
  */
 login.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ login.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:47
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
  * @route "/login"
  */
 login.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -39,7 +39,7 @@ login.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:47
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
  * @route "/login"
  */
 login.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -51,7 +51,7 @@ login.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:47
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
  * @route "/login"
  */
 const loginForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -61,7 +61,7 @@ const loginForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:47
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
  * @route "/login"
  */
 loginForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -71,7 +71,7 @@ loginForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:47
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
  * @route "/login"
  */
 loginForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -84,7 +84,7 @@ loginForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 login.form = loginForm
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:100
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:100
  * @route "/logout"
  */
 export const logout = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -99,7 +99,7 @@ logout.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:100
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:100
  * @route "/logout"
  */
 logout.url = (options?: RouteQueryOptions) => {
@@ -108,7 +108,7 @@ logout.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:100
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:100
  * @route "/logout"
  */
 logout.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -120,7 +120,7 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:100
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:100
  * @route "/logout"
  */
 const logoutForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -130,7 +130,7 @@ const logoutForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =>
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:100
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:100
  * @route "/logout"
  */
 logoutForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -143,7 +143,7 @@ logoutForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 logout.form = logoutForm
 /**
  * @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
  * @route "/register"
  */
 export const register = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -158,7 +158,7 @@ register.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
  * @route "/register"
  */
 register.url = (options?: RouteQueryOptions) => {
@@ -167,7 +167,7 @@ register.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
  * @route "/register"
  */
 register.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -177,7 +177,7 @@ register.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
  * @route "/register"
  */
 register.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -189,7 +189,7 @@ register.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
  * @route "/register"
  */
 const registerForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -199,7 +199,7 @@ const registerForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
  * @route "/register"
  */
 registerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -209,7 +209,7 @@ registerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php:41
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
  * @route "/register"
  */
 registerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -222,7 +222,7 @@ registerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =>
 register.form = registerForm
 /**
  * @see \App\Http\Controllers\PageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
+ * @see /app/app/Http/Controllers/PageController.php:11
  * @route "/"
  */
 export const home = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -237,7 +237,7 @@ home.definition = {
 
 /**
  * @see \App\Http\Controllers\PageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
+ * @see /app/app/Http/Controllers/PageController.php:11
  * @route "/"
  */
 home.url = (options?: RouteQueryOptions) => {
@@ -246,7 +246,7 @@ home.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\PageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
+ * @see /app/app/Http/Controllers/PageController.php:11
  * @route "/"
  */
 home.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -256,7 +256,7 @@ home.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
+ * @see /app/app/Http/Controllers/PageController.php:11
  * @route "/"
  */
 home.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -268,7 +268,7 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
+ * @see /app/app/Http/Controllers/PageController.php:11
  * @route "/"
  */
 const homeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -278,7 +278,7 @@ const homeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
+ * @see /app/app/Http/Controllers/PageController.php:11
  * @route "/"
  */
 homeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -288,7 +288,7 @@ homeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:11
+ * @see /app/app/Http/Controllers/PageController.php:11
  * @route "/"
  */
 homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -301,7 +301,7 @@ homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 home.form = homeForm
 /**
  * @see \App\Http\Controllers\PageController::cookiePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @see /app/app/Http/Controllers/PageController.php:28
  * @route "/cookie-policy"
  */
 export const cookiePolicy = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -316,7 +316,7 @@ cookiePolicy.definition = {
 
 /**
  * @see \App\Http\Controllers\PageController::cookiePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @see /app/app/Http/Controllers/PageController.php:28
  * @route "/cookie-policy"
  */
 cookiePolicy.url = (options?: RouteQueryOptions) => {
@@ -325,7 +325,7 @@ cookiePolicy.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\PageController::cookiePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @see /app/app/Http/Controllers/PageController.php:28
  * @route "/cookie-policy"
  */
 cookiePolicy.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -335,7 +335,7 @@ cookiePolicy.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::cookiePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @see /app/app/Http/Controllers/PageController.php:28
  * @route "/cookie-policy"
  */
 cookiePolicy.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -347,7 +347,7 @@ cookiePolicy.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::cookiePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @see /app/app/Http/Controllers/PageController.php:28
  * @route "/cookie-policy"
  */
 const cookiePolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -357,7 +357,7 @@ const cookiePolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<"get
 
 /**
  * @see \App\Http\Controllers\PageController::cookiePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @see /app/app/Http/Controllers/PageController.php:28
  * @route "/cookie-policy"
  */
 cookiePolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -367,7 +367,7 @@ cookiePolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get">
 
 /**
  * @see \App\Http\Controllers\PageController::cookiePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:28
+ * @see /app/app/Http/Controllers/PageController.php:28
  * @route "/cookie-policy"
  */
 cookiePolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -380,7 +380,7 @@ cookiePolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"
 cookiePolicy.form = cookiePolicyForm
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
+ * @see /app/app/Http/Controllers/PageController.php:24
  * @route "/disclaimer"
  */
 export const disclaimer = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -395,7 +395,7 @@ disclaimer.definition = {
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
+ * @see /app/app/Http/Controllers/PageController.php:24
  * @route "/disclaimer"
  */
 disclaimer.url = (options?: RouteQueryOptions) => {
@@ -404,7 +404,7 @@ disclaimer.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
+ * @see /app/app/Http/Controllers/PageController.php:24
  * @route "/disclaimer"
  */
 disclaimer.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -414,7 +414,7 @@ disclaimer.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
+ * @see /app/app/Http/Controllers/PageController.php:24
  * @route "/disclaimer"
  */
 disclaimer.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -426,7 +426,7 @@ disclaimer.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
+ * @see /app/app/Http/Controllers/PageController.php:24
  * @route "/disclaimer"
  */
 const disclaimerForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -436,7 +436,7 @@ const disclaimerForm = (options?: RouteQueryOptions): RouteFormDefinition<"get">
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
+ * @see /app/app/Http/Controllers/PageController.php:24
  * @route "/disclaimer"
  */
 disclaimerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -446,7 +446,7 @@ disclaimerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =
 
 /**
  * @see \App\Http\Controllers\PageController::disclaimer
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:24
+ * @see /app/app/Http/Controllers/PageController.php:24
  * @route "/disclaimer"
  */
 disclaimerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -459,7 +459,7 @@ disclaimerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> 
 disclaimer.form = disclaimerForm
 /**
  * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @see /app/app/Http/Controllers/PageController.php:20
  * @route "/legal-notice"
  */
 export const legalNotice = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -474,7 +474,7 @@ legalNotice.definition = {
 
 /**
  * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @see /app/app/Http/Controllers/PageController.php:20
  * @route "/legal-notice"
  */
 legalNotice.url = (options?: RouteQueryOptions) => {
@@ -483,7 +483,7 @@ legalNotice.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @see /app/app/Http/Controllers/PageController.php:20
  * @route "/legal-notice"
  */
 legalNotice.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -493,7 +493,7 @@ legalNotice.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @see /app/app/Http/Controllers/PageController.php:20
  * @route "/legal-notice"
  */
 legalNotice.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -505,7 +505,7 @@ legalNotice.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @see /app/app/Http/Controllers/PageController.php:20
  * @route "/legal-notice"
  */
 const legalNoticeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -515,7 +515,7 @@ const legalNoticeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"
 
 /**
  * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @see /app/app/Http/Controllers/PageController.php:20
  * @route "/legal-notice"
  */
 legalNoticeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -525,7 +525,7 @@ legalNoticeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> 
 
 /**
  * @see \App\Http\Controllers\PageController::legalNotice
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:20
+ * @see /app/app/Http/Controllers/PageController.php:20
  * @route "/legal-notice"
  */
 legalNoticeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -538,7 +538,7 @@ legalNoticeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get">
 legalNotice.form = legalNoticeForm
 /**
  * @see \App\Http\Controllers\PageController::privatePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @see /app/app/Http/Controllers/PageController.php:32
  * @route "/privacy-policy"
  */
 export const privacyPolicy = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -553,7 +553,7 @@ privacyPolicy.definition = {
 
 /**
  * @see \App\Http\Controllers\PageController::privatePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @see /app/app/Http/Controllers/PageController.php:32
  * @route "/privacy-policy"
  */
 privacyPolicy.url = (options?: RouteQueryOptions) => {
@@ -562,7 +562,7 @@ privacyPolicy.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\PageController::privatePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @see /app/app/Http/Controllers/PageController.php:32
  * @route "/privacy-policy"
  */
 privacyPolicy.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -572,7 +572,7 @@ privacyPolicy.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::privatePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @see /app/app/Http/Controllers/PageController.php:32
  * @route "/privacy-policy"
  */
 privacyPolicy.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -584,7 +584,7 @@ privacyPolicy.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => (
 
 /**
  * @see \App\Http\Controllers\PageController::privatePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @see /app/app/Http/Controllers/PageController.php:32
  * @route "/privacy-policy"
  */
 const privacyPolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -594,7 +594,7 @@ const privacyPolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<"ge
 
 /**
  * @see \App\Http\Controllers\PageController::privatePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @see /app/app/Http/Controllers/PageController.php:32
  * @route "/privacy-policy"
  */
 privacyPolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -604,7 +604,7 @@ privacyPolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"
 
 /**
  * @see \App\Http\Controllers\PageController::privatePolicy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:32
+ * @see /app/app/Http/Controllers/PageController.php:32
  * @route "/privacy-policy"
  */
 privacyPolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -617,7 +617,7 @@ privacyPolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get
 privacyPolicy.form = privacyPolicyForm
 /**
  * @see \App\Http\Controllers\PageController::termsOfService
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @see /app/app/Http/Controllers/PageController.php:36
  * @route "/terms-of-service"
  */
 export const termsOfService = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -632,7 +632,7 @@ termsOfService.definition = {
 
 /**
  * @see \App\Http\Controllers\PageController::termsOfService
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @see /app/app/Http/Controllers/PageController.php:36
  * @route "/terms-of-service"
  */
 termsOfService.url = (options?: RouteQueryOptions) => {
@@ -641,7 +641,7 @@ termsOfService.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\PageController::termsOfService
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @see /app/app/Http/Controllers/PageController.php:36
  * @route "/terms-of-service"
  */
 termsOfService.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -651,7 +651,7 @@ termsOfService.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\PageController::termsOfService
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @see /app/app/Http/Controllers/PageController.php:36
  * @route "/terms-of-service"
  */
 termsOfService.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -663,7 +663,7 @@ termsOfService.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => 
 
 /**
  * @see \App\Http\Controllers\PageController::termsOfService
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @see /app/app/Http/Controllers/PageController.php:36
  * @route "/terms-of-service"
  */
 const termsOfServiceForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -673,7 +673,7 @@ const termsOfServiceForm = (options?: RouteQueryOptions): RouteFormDefinition<"g
 
 /**
  * @see \App\Http\Controllers\PageController::termsOfService
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @see /app/app/Http/Controllers/PageController.php:36
  * @route "/terms-of-service"
  */
 termsOfServiceForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -683,7 +683,7 @@ termsOfServiceForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get
 
 /**
  * @see \App\Http\Controllers\PageController::termsOfService
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php:36
+ * @see /app/app/Http/Controllers/PageController.php:36
  * @route "/terms-of-service"
  */
 termsOfServiceForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -695,7 +695,7 @@ termsOfServiceForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"ge
 
 termsOfService.form = termsOfServiceForm
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @see /app/routes/web.php:22
  * @route "/dashboard"
  */
 export const dashboard = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -709,7 +709,7 @@ dashboard.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @see /app/routes/web.php:22
  * @route "/dashboard"
  */
 dashboard.url = (options?: RouteQueryOptions) => {
@@ -717,7 +717,7 @@ dashboard.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @see /app/routes/web.php:22
  * @route "/dashboard"
  */
 dashboard.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -726,7 +726,7 @@ dashboard.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @see /app/routes/web.php:22
  * @route "/dashboard"
  */
 dashboard.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -737,7 +737,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @see /app/routes/web.php:22
  * @route "/dashboard"
  */
 const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -746,7 +746,7 @@ const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> 
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @see /app/routes/web.php:22
  * @route "/dashboard"
  */
 dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -755,7 +755,7 @@ dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =>
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\web.php:22
+ * @see /app/routes/web.php:22
  * @route "/dashboard"
  */
 dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({

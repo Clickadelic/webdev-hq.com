@@ -5,7 +5,7 @@ import { queryParams, type RouteDefinition, type RouteFormDefinition, type Route
 
 /**
  * @see \Fruitcake\LaravelDebugbar\Controllers\QueriesController::explain
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\QueriesController.php:17
+ * @see /app/vendor/barryvdh/laravel-debugbar/src/Controllers/QueriesController.php:17
  * @route "/_debugbar/queries/explain"
  */
 export const explain = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -20,7 +20,7 @@ explain.definition = {
 
 /**
  * @see \Fruitcake\LaravelDebugbar\Controllers\QueriesController::explain
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\QueriesController.php:17
+ * @see /app/vendor/barryvdh/laravel-debugbar/src/Controllers/QueriesController.php:17
  * @route "/_debugbar/queries/explain"
  */
 explain.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ explain.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Fruitcake\LaravelDebugbar\Controllers\QueriesController::explain
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\QueriesController.php:17
+ * @see /app/vendor/barryvdh/laravel-debugbar/src/Controllers/QueriesController.php:17
  * @route "/_debugbar/queries/explain"
  */
 explain.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -41,7 +41,7 @@ explain.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \Fruitcake\LaravelDebugbar\Controllers\QueriesController::explain
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\QueriesController.php:17
+ * @see /app/vendor/barryvdh/laravel-debugbar/src/Controllers/QueriesController.php:17
  * @route "/_debugbar/queries/explain"
  */
 const explainForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -51,7 +51,7 @@ const explainForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =
 
 /**
  * @see \Fruitcake\LaravelDebugbar\Controllers\QueriesController::explain
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\QueriesController.php:17
+ * @see /app/vendor/barryvdh/laravel-debugbar/src/Controllers/QueriesController.php:17
  * @route "/_debugbar/queries/explain"
  */
 explainForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({

@@ -5,7 +5,7 @@ import { applyUrlDefaults, formSafeOptions, queryParams, type RouteDefinition, t
 
 /**
  * @see \Fruitcake\LaravelDebugbar\Controllers\CacheController::delete
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\CacheController.php:16
+ * @see /app/vendor/barryvdh/laravel-debugbar/src/Controllers/CacheController.php:16
  * @route "/_debugbar/cache/{key}"
  */
 export const deleteMethod = (args: { key: string | number } | [ key: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
@@ -20,19 +20,19 @@ deleteMethod.definition = {
 
 /**
  * @see \Fruitcake\LaravelDebugbar\Controllers\CacheController::delete
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\CacheController.php:16
+ * @see /app/vendor/barryvdh/laravel-debugbar/src/Controllers/CacheController.php:16
  * @route "/_debugbar/cache/{key}"
  */
 deleteMethod.url = (args: { key: string | number } | [ key: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === "string" || typeof args === "number") {
-    args = { key: args }
-}
+        args = { key: args }
+    }
     
     if (Array.isArray(args)) {
-    args = {
+        args = {
         key: args[0],
     }
-}
+    }
     
     args = applyUrlDefaults(args)
     
@@ -47,7 +47,7 @@ deleteMethod.url = (args: { key: string | number } | [ key: string | number ] | 
 
 /**
  * @see \Fruitcake\LaravelDebugbar\Controllers\CacheController::delete
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\CacheController.php:16
+ * @see /app/vendor/barryvdh/laravel-debugbar/src/Controllers/CacheController.php:16
  * @route "/_debugbar/cache/{key}"
  */
 deleteMethod.delete = (args: { key: string | number } | [ key: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
@@ -59,7 +59,7 @@ deleteMethod.delete = (args: { key: string | number } | [ key: string | number ]
 
 /**
  * @see \Fruitcake\LaravelDebugbar\Controllers\CacheController::delete
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\CacheController.php:16
+ * @see /app/vendor/barryvdh/laravel-debugbar/src/Controllers/CacheController.php:16
  * @route "/_debugbar/cache/{key}"
  */
 const deleteMethodForm = (args: { key: string | number } | [ key: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -69,7 +69,7 @@ const deleteMethodForm = (args: { key: string | number } | [ key: string | numbe
 
 /**
  * @see \Fruitcake\LaravelDebugbar\Controllers\CacheController::delete
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\CacheController.php:16
+ * @see /app/vendor/barryvdh/laravel-debugbar/src/Controllers/CacheController.php:16
  * @route "/_debugbar/cache/{key}"
  */
 deleteMethodForm.delete = (args: { key: string | number } | [ key: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
