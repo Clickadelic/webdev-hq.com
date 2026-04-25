@@ -9,7 +9,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
     return (
         <div
             className={cn(
-                'w-full border-t-2 border-gray-200 bg-gray-200 dark:border-gray-800 dark:bg-gray-700',
+                'w-full border-t-2 border-neutral-200 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-700',
                 className,
             )}
         >
@@ -67,7 +67,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                         </li>
                     </ul>
                 </div>
-                <div className="cursor-default text-center text-sm text-gray-600 dark:text-gray-200">
+                <div className="cursor-default text-center text-sm text-neutral-600 dark:text-neutral-200">
                     <p>
                         WebDev HQ &middot; All rights reserved{' '}
                         {new Date().getFullYear()} &copy;.

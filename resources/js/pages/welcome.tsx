@@ -26,10 +26,10 @@ export default function Welcome({
                         >
                             <h3 className="text-md font-semibold">
                                 {hyperlink.title}
-                                <ExternalLink className="-mt-1 ml-1 inline-block h-4 w-4 text-gray-500" />
+                                <ExternalLink className="-mt-1 ml-1 inline-block h-4 w-4 text-neutral-500" />
                             </h3>
                             {hyperlink.description && (
-                                <p className="mt-1 text-sm text-gray-600">
+                                <p className="mt-1 text-sm text-neutral-600">
                                     {hyperlink.description}
                                 </p>
                             )}
@@ -37,7 +37,7 @@ export default function Welcome({
                     ))}
                 </div>
             ) : (
-                <p className="text-gray-500">No hyperlinks available yet.</p>
+                <p className="text-neutral-500">No hyperlinks available yet.</p>
             )}
         </PublicLayout>
     );

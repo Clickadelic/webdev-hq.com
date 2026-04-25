@@ -30,7 +30,7 @@ export default function Hyperlinks() {
                     <h2 className="mb-4 text-lg font-medium">
                         Add a Hyperlink{' '}
                     </h2>
-                    <HyperlinkForm className="rounded-xl border bg-white p-6 shadow-sm dark:bg-gray-900" />
+                    <HyperlinkForm className="rounded-xl border bg-white p-6 shadow-sm dark:bg-neutral-900" />
                 </div>
 
                 <hr className="border-sidebar-border" />
@@ -45,7 +45,7 @@ export default function Hyperlinks() {
                             items.map((link: Hyperlink) => (
                                 <div
                                     key={link.id}
-                                    className="flex flex-col gap-2 rounded-xl border border-sidebar-border bg-white p-4 shadow-sm transition-all hover:border-primary/50 dark:bg-gray-900"
+                                    className="flex flex-col gap-2 rounded-xl border border-sidebar-border bg-white p-4 shadow-sm transition-all hover:border-primary/50 dark:bg-neutral-900"
                                 >
                                     <div className="flex items-start justify-between">
                                         <h3 className="truncate pr-2 text-lg leading-tight font-semibold">
