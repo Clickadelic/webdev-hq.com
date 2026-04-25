@@ -5,7 +5,7 @@ import { queryParams, type RouteDefinition, type RouteFormDefinition, type Route
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::store
- * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:58
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:58
  * @route "/login"
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -20,7 +20,7 @@ store.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::store
- * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:58
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:58
  * @route "/login"
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::store
- * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:58
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:58
  * @route "/login"
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -41,7 +41,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::store
- * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:58
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:58
  * @route "/login"
  */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -51,7 +51,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::store
- * @see /app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:58
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php:58
  * @route "/login"
  */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({

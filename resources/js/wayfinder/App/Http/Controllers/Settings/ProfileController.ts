@@ -5,7 +5,7 @@ import { formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefin
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::edit
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:19
  * @route "/settings/profile"
  */
 export const edit = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -20,7 +20,7 @@ edit.definition = {
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::edit
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:19
  * @route "/settings/profile"
  */
 edit.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ edit.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::edit
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:19
  * @route "/settings/profile"
  */
 edit.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -39,7 +39,7 @@ edit.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::edit
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:19
  * @route "/settings/profile"
  */
 edit.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -51,7 +51,7 @@ edit.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::edit
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:19
  * @route "/settings/profile"
  */
 const editForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -61,7 +61,7 @@ const editForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::edit
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:19
  * @route "/settings/profile"
  */
 editForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -71,7 +71,7 @@ editForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::edit
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:19
  * @route "/settings/profile"
  */
 editForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -84,7 +84,7 @@ editForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 edit.form = editForm
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::update
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:30
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:30
  * @route "/settings/profile"
  */
 export const update = (options?: RouteQueryOptions): RouteDefinition<"patch"> => ({
@@ -99,7 +99,7 @@ update.definition = {
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::update
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:30
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:30
  * @route "/settings/profile"
  */
 update.url = (options?: RouteQueryOptions) => {
@@ -108,7 +108,7 @@ update.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::update
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:30
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:30
  * @route "/settings/profile"
  */
 update.patch = (options?: RouteQueryOptions): RouteDefinition<"patch"> => ({
@@ -120,7 +120,7 @@ update.patch = (options?: RouteQueryOptions): RouteDefinition<"patch"> => ({
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::update
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:30
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:30
  * @route "/settings/profile"
  */
 const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -130,7 +130,7 @@ const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =>
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::update
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:30
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:30
  * @route "/settings/profile"
  */
 updateForm.patch = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -143,7 +143,7 @@ updateForm.patch = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =>
 update.form = updateForm
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::destroy
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:46
  * @route "/settings/profile"
  */
 export const destroy = (options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
@@ -158,7 +158,7 @@ destroy.definition = {
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::destroy
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:46
  * @route "/settings/profile"
  */
 destroy.url = (options?: RouteQueryOptions) => {
@@ -167,7 +167,7 @@ destroy.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::destroy
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:46
  * @route "/settings/profile"
  */
 destroy.delete = (options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
@@ -179,7 +179,7 @@ destroy.delete = (options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::destroy
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:46
  * @route "/settings/profile"
  */
 const destroyForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -189,7 +189,7 @@ const destroyForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =
 
 /**
  * @see \App\Http\Controllers\Settings\ProfileController::destroy
- * @see /app/app/Http/Controllers/Settings/ProfileController.php:46
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php:46
  * @route "/settings/profile"
  */
 destroyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({

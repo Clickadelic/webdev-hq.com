@@ -5,7 +5,7 @@ import { queryParams, type RouteDefinition, type RouteFormDefinition, type Route
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmedTwoFactorAuthenticationController::store
- * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmedTwoFactorAuthenticationController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmedTwoFactorAuthenticationController.php:19
  * @route "/user/confirmed-two-factor-authentication"
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -20,7 +20,7 @@ store.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmedTwoFactorAuthenticationController::store
- * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmedTwoFactorAuthenticationController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmedTwoFactorAuthenticationController.php:19
  * @route "/user/confirmed-two-factor-authentication"
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmedTwoFactorAuthenticationController::store
- * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmedTwoFactorAuthenticationController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmedTwoFactorAuthenticationController.php:19
  * @route "/user/confirmed-two-factor-authentication"
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -41,7 +41,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmedTwoFactorAuthenticationController::store
- * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmedTwoFactorAuthenticationController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmedTwoFactorAuthenticationController.php:19
  * @route "/user/confirmed-two-factor-authentication"
  */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -51,7 +51,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmedTwoFactorAuthenticationController::store
- * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmedTwoFactorAuthenticationController.php:19
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmedTwoFactorAuthenticationController.php:19
  * @route "/user/confirmed-two-factor-authentication"
  */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
