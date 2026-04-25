@@ -31,6 +31,11 @@ export namespace App {
 
     export namespace Enums {
         /**
+         * @see [\App\Enums\Season](/app/app/Enums/Season.php)
+         */
+        export type Season = 'spring' | 'summer' | 'autumn' | 'winter'
+
+        /**
          * @see [\App\Enums\Status](/app/app/Enums/Status.php)
          */
         export type Status = 'draft' | 'published' | 'archived'
@@ -718,7 +723,7 @@ export namespace Fruitcake {
 export namespace Closure {
     export namespace __invoke {
         /**
-         * @see [\Closure::__invoke](/app/vendor/laravel/boost/src/BoostServiceProvider.php)
+         * @see [\Closure::__invoke](/[serialized-closure])
          */
         export type Request = Record<string, unknown>
     }

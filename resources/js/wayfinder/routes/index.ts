@@ -695,7 +695,7 @@ termsOfServiceForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"ge
 
 termsOfService.form = termsOfServiceForm
 /**
- * @see /app/routes/web.php:22
+ * @see /[serialized-closure]:2
  * @route "/dashboard"
  */
 export const dashboard = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -709,7 +709,7 @@ dashboard.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see /app/routes/web.php:22
+ * @see /[serialized-closure]:2
  * @route "/dashboard"
  */
 dashboard.url = (options?: RouteQueryOptions) => {
@@ -717,7 +717,7 @@ dashboard.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see /app/routes/web.php:22
+ * @see /[serialized-closure]:2
  * @route "/dashboard"
  */
 dashboard.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -726,7 +726,7 @@ dashboard.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 })
 
 /**
- * @see /app/routes/web.php:22
+ * @see /[serialized-closure]:2
  * @route "/dashboard"
  */
 dashboard.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -737,7 +737,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 
 /**
- * @see /app/routes/web.php:22
+ * @see /[serialized-closure]:2
  * @route "/dashboard"
  */
 const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -746,7 +746,7 @@ const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> 
 })
 
 /**
- * @see /app/routes/web.php:22
+ * @see /[serialized-closure]:2
  * @route "/dashboard"
  */
 dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -755,7 +755,7 @@ dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =>
 })
 
 /**
- * @see /app/routes/web.php:22
+ * @see /[serialized-closure]:2
  * @route "/dashboard"
  */
 dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
