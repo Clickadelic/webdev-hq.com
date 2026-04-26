@@ -14,8 +14,8 @@ export default function Welcome({
 }) {
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
-            <div className="bg-gradient-to-br from-[#ff80b5] to-[#9089fc]">
-                asd
+            <div className="bg-gradient-to-br from-[#ff80b5] to-sky-400 bg-clip-text text-center">
+                <h2 className="text-center text-3xl font-medium">Welcome</h2>
             </div>
             {hyperlinks && hyperlinks.length > 0 ? (
                 <div className="flex-start flex w-full gap-4">
