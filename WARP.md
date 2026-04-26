@@ -3,7 +3,7 @@
 This file provides guidance to WARP (warp.dev) when working with code in this repository.
 
 Project summary
-- Laravel 12 + Inertia.js + React 19, built with Vite 7 and Tailwind CSS 4.
+- Laravel 13 + Inertia.js + React 19, built with Vite 7 and Tailwind CSS 4.
 - UI primitives largely come from shadcn/radix-based components under `resources/js/components` and `resources/js/components/ui`.
 - Server-side rendering (SSR) is wired via Inertia; the SSR entry is `resources/js/ssr.tsx` and is managed by Artisan (`php artisan inertia:start-ssr`).
 - Auth flows are handled by Laravel Fortify with 2FA; routing lives in `routes/*.php`; the SPA shell is `resources/views/app.blade.php`.

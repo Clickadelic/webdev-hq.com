@@ -4,7 +4,7 @@
 import { applyUrlDefaults, formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefinition, type RouteQueryOptions } from "./../../../index";
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:119
+ * @see \[serialized-closure]:2
  * @route "/storage/{path}"
  */
 export const upload = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"put"> => ({
@@ -18,7 +18,7 @@ upload.definition = {
 } satisfies RouteDefinition<["put"]>
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:119
+ * @see \[serialized-closure]:2
  * @route "/storage/{path}"
  */
 upload.url = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -44,7 +44,7 @@ upload.url = (args: { path: string | number } | [ path: string | number ] | stri
 }
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:119
+ * @see \[serialized-closure]:2
  * @route "/storage/{path}"
  */
 upload.put = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"put"> => ({
@@ -55,7 +55,7 @@ upload.put = (args: { path: string | number } | [ path: string | number ] | stri
 
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:119
+ * @see \[serialized-closure]:2
  * @route "/storage/{path}"
  */
 const uploadForm = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -64,7 +64,7 @@ const uploadForm = (args: { path: string | number } | [ path: string | number ] 
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:119
+ * @see \[serialized-closure]:2
  * @route "/storage/{path}"
  */
 uploadForm.put = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({

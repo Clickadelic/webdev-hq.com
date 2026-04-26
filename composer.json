@@ -15,7 +15,8 @@
         "laravel/framework": "^13.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^3.0",
-        "laravel/wayfinder": "dev-next"
+        "laravel/wayfinder": "dev-next",
+        "unsplash/unsplash": "^3.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^4.0",
