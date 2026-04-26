@@ -12,7 +12,7 @@ export default function AppLogo() {
                 <div className="ml-1 grid flex-1 text-left text-sm">
                     <h1 className="my-3 max-w-[180px] text-2xl">
                         <div
-                            className="flex font-light hover:text-gray-500"
+                            className="flex font-light hover:text-neutral-500"
                             id="logo-text"
                         >
                             <span className="web">Web</span>

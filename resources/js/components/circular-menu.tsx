@@ -11,7 +11,7 @@ import {
 import { cn } from '@/lib/utils';
 
 import { TooltipArrow } from '@radix-ui/react-tooltip';
-import { BsJournalBookmark } from 'react-icons/bs';
+import { BsApp } from 'react-icons/bs';
 import { FiPlus } from 'react-icons/fi';
 import { TbSalt } from 'react-icons/tb';
 
@@ -39,7 +39,7 @@ export function CircularMenu() {
                                 className="rounded-full bg-primary p-3 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
                                 href="#"
                             >
-                                <BsJournalBookmark />
+                                <BsApp />
                             </Link>
                         </TooltipTrigger>
                         <TooltipContent side="left" className="text-white">

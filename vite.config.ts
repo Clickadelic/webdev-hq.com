@@ -26,14 +26,17 @@ export default defineConfig({
             { find: '@/actions', replacement: path.resolve(__dirname, 'resources/js/wayfinder') },
         ],
     },
-    esbuild: {
-        jsx: 'automatic',
-    },
     server: {
         host: '0.0.0.0',
         port: 5173,
         hmr: {
             host: 'localhost',
+            port: 5173,
+            protocol: 'ws',
+        },
+        watch: {
+            usePolling: true,
+            interval: 100,
         },
     },
 });

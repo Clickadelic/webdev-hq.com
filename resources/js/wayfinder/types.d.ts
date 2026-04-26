@@ -31,6 +31,11 @@ export namespace App {
 
     export namespace Enums {
         /**
+         * @see [\App\Enums\Season](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Enums\Season.php)
+         */
+        export type Season = 'spring' | 'summer' | 'autumn' | 'winter'
+
+        /**
          * @see [\App\Enums\Status](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Enums\Status.php)
          */
         export type Status = 'draft' | 'published' | 'archived'
@@ -345,6 +350,23 @@ export namespace App {
                          * @see [\App\Http\Controllers\Api\AuthController::logout](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php)
                          */
                         export type Request = Record<string, unknown>
+                    }
+                }
+
+                export namespace ImageController {
+                    export namespace Seasonal {
+                        /**
+                         * @see [\App\Http\Controllers\Api\ImageController::seasonal](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\ImageController.php)
+                         */
+                        export type Request = {    season?: string | null;
+                            collections?: string | null;}
+                    }
+
+                    export namespace General {
+                        /**
+                         * @see [\App\Http\Controllers\Api\ImageController::general](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\ImageController.php)
+                         */
+                        export type Request = {    collections?: string | null;}
                     }
                 }
             }
@@ -743,7 +765,7 @@ export namespace Fruitcake {
 export namespace Closure {
     export namespace __invoke {
         /**
-         * @see [\Closure::__invoke](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\boost\src\BoostServiceProvider.php)
+         * @see [\Closure::__invoke](\[serialized-closure])
          */
         export type Request = Record<string, unknown>
     }

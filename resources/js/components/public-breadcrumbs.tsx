@@ -35,7 +35,7 @@ const PublicBreadcrumbs = () => {
 
     return (
         <div className="container mx-auto w-full px-2 md:px-0">
-            <ul className="flex items-center gap-2 border-b border-gray-200 py-3 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-200">
+            <ul className="flex items-center gap-2 border-b border-neutral-200 py-3 text-sm text-neutral-600 dark:border-neutral-700 dark:text-neutral-200">
                 {/* Home */}
                 <li>
                     <Link
@@ -51,7 +51,7 @@ const PublicBreadcrumbs = () => {
 
                 {crumbs.map((crumb, idx) => (
                     <li key={idx} className="line-clamp-1 flex items-center">
-                        <ChevronRight className="mr-2 h-4 w-4 text-gray-600 dark:text-gray-200" />
+                        <ChevronRight className="mr-2 h-4 w-4 text-neutral-600 dark:text-neutral-200" />
                         {/* Letztes Segment nicht als Link */}
                         {idx === crumbs.length - 1 ? (
                             <span className="line-clamp-1">{crumb.name}</span>

@@ -14,6 +14,7 @@ Run the WebDev HQ application in Docker for a portable, reproducible development
 | Laravel App (PHP-FPM + Nginx) | `webdevhq-app` | PHP 8.4-FPM Alpine | `localhost:8000` |
 | MySQL Database | `webdevhq-mysql` | MySQL 8.0 | `localhost:3306` |
 | Vite Dev Server (HMR) | `webdevhq-node` | Node 20 Alpine + PHP 8.4 CLI | `localhost:5173` |
+| phpMyAdmin | `webdevhq-phpmyadmin` | phpmyadmin:latest | `localhost:8080` |
 
 ## Quick Start
 
@@ -56,6 +57,10 @@ MySQL 8.0 with a persistent named volume (`mysql-data`). Default credentials:
 ### Node (`webdevhq-node`)
 
 Runs the Vite dev server with hot module replacement (HMR). Includes PHP 8.4 CLI so the `@laravel/vite-plugin-wayfinder` can generate route types. The `node_modules` directory uses a named volume to avoid cross-platform issues.
+
+### phpMyAdmin (`webdevhq-phpmyadmin`)
+
+Web-based database management interface at [localhost:8080](http://localhost:8080). Auto-configured with root credentials — no login required.
 
 ## Common Commands
 
@@ -137,7 +142,7 @@ If you want to connect to the Docker MySQL from a local GUI tool (e.g. TablePlus
 
 ## Troubleshooting
 
-**Port conflicts:** If ports `8000`, `3306`, or `5173` are already in use, either stop the conflicting service or change the host port mapping in `docker-compose.yml` (e.g. `"8080:80"`).
+**Port conflicts:** If ports `8000`, `3306`, `5173`, or `8080` are already in use, either stop the conflicting service or change the host port mapping in `docker-compose.yml` (e.g. `"8081:80"`).
 
 **MySQL won't start:** If the MySQL container is unhealthy after changing credentials, remove the data volume and recreate: `docker compose down -v && docker compose up -d`
 
