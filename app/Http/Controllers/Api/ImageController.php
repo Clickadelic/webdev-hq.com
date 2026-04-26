@@ -71,8 +71,8 @@ class ImageController extends Controller
                 ? Season::current()
                 : Season::from($validated['season']);
 
-            // Get collection IDs from request or use season default
-            $collectionIds = $this->parseCollectionIds($validated['collections'] ?? null);
+            // Get collection IDs from request or fall back to season default
+            $collectionIds = $validated['collection_ids'] ?? [];
 
             if (blank($collectionIds)) {
                 $collectionId = $season->collectionId();
@@ -133,7 +133,7 @@ class ImageController extends Controller
             $validated = $request->validated();
 
             // Get collection IDs from request or use all configured collections
-            $collectionIds = $this->parseCollectionIds($validated['collections'] ?? null);
+            $collectionIds = $validated['collection_ids'] ?? [];
 
             if (blank($collectionIds)) {
                 // Combine all seasonal collections
@@ -189,19 +189,4 @@ class ImageController extends Controller
         }
     }
 
-    /**
-     * Parse comma-separated collection IDs from a string.
-     */
-    private function parseCollectionIds(?string $collectionsString): array
-    {
-        if (blank($collectionsString)) {
-            return [];
-        }
-
-        return array_values(
-            array_filter(
-                array_map('trim', explode(',', $collectionsString))
-            )
-        );
-    }
 }
