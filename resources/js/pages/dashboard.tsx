@@ -182,7 +182,7 @@ export default function Dashboard() {
                                 Enable reordering
                             </span>
                         </div>
-                        <ul className="flex w-full gap-2 rounded bg-white/30 p-1 backdrop-blur dark:bg-slate-800/30">
+                        <ul className="flex w-full gap-2 rounded bg-white/30 p-1 backdrop-blur dark:bg-neutral-800/30">
                             {items.map((app) => (
                                 <SortableAppTile
                                     key={app.id}
@@ -207,7 +207,7 @@ export default function Dashboard() {
                                 >
                                     <DialogTrigger
                                         onClick={() => setIsModalOpen(true)}
-                                        className="flex size-[70px] flex-col place-content-center items-center gap-1 rounded border bg-white p-2 text-slate-400 transition-colors duration-150 ease-in-out hover:cursor-pointer hover:border-primary hover:text-primary dark:bg-slate-800 dark:text-slate-300"
+                                        className="flex size-[70px] flex-col place-content-center items-center gap-1 rounded border bg-white p-2 text-neutral-400 transition-colors duration-150 ease-in-out hover:cursor-pointer hover:border-primary hover:text-primary dark:bg-neutral-800 dark:text-neutral-300"
                                     >
                                         <Plus />
                                     </DialogTrigger>
@@ -238,13 +238,13 @@ export default function Dashboard() {
                     </SortableContext>
                     <DragOverlay zIndex={50}>
                         {draggingApp ? (
-                            <div className="border-mantis-primary flex size-[70px] flex-col items-center justify-between rounded border bg-white p-2 pt-1 shadow-lg dark:bg-slate-800">
+                            <div className="border-mantis-primary flex size-[70px] flex-col items-center justify-between rounded border bg-white p-2 pt-1 shadow-lg dark:bg-neutral-800">
                                 <img
                                     src={draggingApp.icon}
                                     alt={draggingApp.title}
                                     className="size-6 rounded-xs"
                                 />
-                                <span className="max-w-[56px] truncate text-xs text-slate-800 dark:text-slate-300">
+                                <span className="max-w-[56px] truncate text-xs text-neutral-800 dark:text-neutral-300">
                                     {draggingApp.title}
                                 </span>
                             </div>
