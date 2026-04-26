@@ -126,7 +126,7 @@ export default function AuthSimpleLayout({
             />
             <div className="w-full max-w-sm">
                 <div className="rounded-xl bg-white/30 p-2 dark:bg-neutral-900/30">
-                    <div className="flex flex-col gap-8 rounded-md bg-gray-100 p-8 dark:bg-neutral-900">
+                    <div className="flex flex-col gap-8 rounded-md bg-neutral-100 p-8 dark:bg-neutral-900">
                         <div className="flex flex-col items-center gap-4">
                             <Link
                                 href={home()}
