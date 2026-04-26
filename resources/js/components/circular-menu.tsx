@@ -36,7 +36,7 @@ export function CircularMenu() {
                     <Tooltip>
                         <TooltipTrigger asChild data-state="instant-open">
                             <Link
-                                className="rounded-full bg-primary p-3 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
+                                className="rounded-full bg-primary p-3 text-white shadow-lg hover:cursor-pointer"
                                 href="#"
                             >
                                 <BsApp />
@@ -44,7 +44,7 @@ export function CircularMenu() {
                         </TooltipTrigger>
                         <TooltipContent side="left" className="text-white">
                             <p>New App</p>
-                            <TooltipArrow className="fill-emerald-800 dark:fill-emerald-800" />
+                            <TooltipArrow className="fill-primary dark:fill-primary" />
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
@@ -53,7 +53,7 @@ export function CircularMenu() {
                     <Tooltip>
                         <TooltipTrigger asChild data-state="instant-open">
                             <Link
-                                className="rounded-full bg-primary p-3 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
+                                className="rounded-full bg-primary p-3 text-white shadow-lg hover:cursor-pointer"
                                 href="#"
                             >
                                 <TbSalt />
@@ -61,7 +61,7 @@ export function CircularMenu() {
                         </TooltipTrigger>
                         <TooltipContent side="left" className="text-white">
                             <p>New Hyperlink</p>
-                            <TooltipArrow className="fill-emerald-800 dark:fill-emerald-800" />
+                            <TooltipArrow className="fill-primary dark:fill-primary" />
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
@@ -74,7 +74,7 @@ export function CircularMenu() {
                         <button
                             aria-label="Add new content"
                             onClick={() => setShowCircularMenu((prev) => !prev)}
-                            className="rounded-full bg-primary p-4 text-lg text-white shadow-lg transition hover:cursor-pointer hover:bg-primary/90"
+                            className="rounded-full bg-primary p-4 text-lg text-white shadow-lg transition hover:cursor-pointer"
                         >
                             <FiPlus
                                 className={cn(
@@ -86,7 +86,7 @@ export function CircularMenu() {
                     </TooltipTrigger>
                     <TooltipContent side="left" className="text-white">
                         <p>Add new content</p>
-                        <TooltipArrow className="fill-emerald-800 dark:fill-emerald-800" />
+                        <TooltipArrow className="fill-primary dark:fill-primary" />
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>

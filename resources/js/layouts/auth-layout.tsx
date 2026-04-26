@@ -16,8 +16,8 @@ export default function AuthSimpleLayout({
     // Use API JSON mode and preload the image to avoid first-paint flicker.
     const apiBase = import.meta.env.APP_URL;
     const today = new Date().toISOString().slice(0, 10);
-    const jsonUrl = `${apiBase}/api/background/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&response=json&d=${encodeURIComponent(today)}`;
-    const redirectUrl = `${apiBase}/api/background/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&d=${encodeURIComponent(today)}`;
+    const jsonUrl = `${apiBase}/api/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&response=json&d=${encodeURIComponent(today)}`;
+    const redirectUrl = `${apiBase}/api/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&d=${encodeURIComponent(today)}`;
     const [bgUrl, setBgUrl] = useState<string | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [attribution, setAttribution] = useState<{
