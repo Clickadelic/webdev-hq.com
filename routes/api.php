@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AuthController::class, 'login']);
 
 // Unsplash Image Service Routes (public)
-Route::prefix('unsplash/image')->group(function () {
+Route::prefix('unsplash/image')->middleware('throttle:60,10')->group(function () {
 	Route::get('/seasonal', [ImageController::class, 'seasonal']);
 	Route::get('/general', [ImageController::class, 'general']);
 });
