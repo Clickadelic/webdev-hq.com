@@ -4,7 +4,7 @@
 import { applyUrlDefaults, formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefinition, type RouteQueryOptions } from "./../../../index";
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 export const upload = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"put"> => ({
@@ -18,19 +18,19 @@ upload.definition = {
 } satisfies RouteDefinition<["put"]>
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 upload.url = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === "string" || typeof args === "number") {
-    args = { path: args }
-}
+        args = { path: args }
+    }
     
     if (Array.isArray(args)) {
-    args = {
+        args = {
         path: args[0],
     }
-}
+    }
     
     args = applyUrlDefaults(args)
     
@@ -44,7 +44,7 @@ upload.url = (args: { path: string | number } | [ path: string | number ] | stri
 }
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 upload.put = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"put"> => ({
@@ -55,7 +55,7 @@ upload.put = (args: { path: string | number } | [ path: string | number ] | stri
 
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 const uploadForm = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -64,7 +64,7 @@ const uploadForm = (args: { path: string | number } | [ path: string | number ] 
 })
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 uploadForm.put = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({

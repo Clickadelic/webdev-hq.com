@@ -5,7 +5,7 @@ import { formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefin
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:21
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:21
  * @route "/user/two-factor-authentication"
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -20,7 +20,7 @@ store.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:21
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:21
  * @route "/user/two-factor-authentication"
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:21
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:21
  * @route "/user/two-factor-authentication"
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -41,7 +41,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:21
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:21
  * @route "/user/two-factor-authentication"
  */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -51,7 +51,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:21
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:21
  * @route "/user/two-factor-authentication"
  */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -64,7 +64,7 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
 store.form = storeForm
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:35
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:35
  * @route "/user/two-factor-authentication"
  */
 export const destroy = (options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
@@ -79,7 +79,7 @@ destroy.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:35
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:35
  * @route "/user/two-factor-authentication"
  */
 destroy.url = (options?: RouteQueryOptions) => {
@@ -88,7 +88,7 @@ destroy.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:35
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:35
  * @route "/user/two-factor-authentication"
  */
 destroy.delete = (options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
@@ -100,7 +100,7 @@ destroy.delete = (options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:35
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:35
  * @route "/user/two-factor-authentication"
  */
 const destroyForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -110,7 +110,7 @@ const destroyForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::destroy
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php:35
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:35
  * @route "/user/two-factor-authentication"
  */
 destroyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
