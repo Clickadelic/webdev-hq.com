@@ -5,7 +5,7 @@ import { applyUrlDefaults, formSafeOptions, queryParams, type RouteDefinition, t
 import localA914886 from "./local";
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 export const local = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -19,19 +19,19 @@ local.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 local.url = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === "string" || typeof args === "number") {
-    args = { path: args }
-}
+        args = { path: args }
+    }
     
     if (Array.isArray(args)) {
-    args = {
+        args = {
         path: args[0],
     }
-}
+    }
     
     args = applyUrlDefaults(args)
     
@@ -45,7 +45,7 @@ local.url = (args: { path: string | number } | [ path: string | number ] | strin
 }
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 local.get = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -54,7 +54,7 @@ local.get = (args: { path: string | number } | [ path: string | number ] | strin
 })
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 local.head = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -65,7 +65,7 @@ local.head = (args: { path: string | number } | [ path: string | number ] | stri
 
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 const localForm = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -74,7 +74,7 @@ const localForm = (args: { path: string | number } | [ path: string | number ] |
 })
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 localForm.get = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -83,7 +83,7 @@ localForm.get = (args: { path: string | number } | [ path: string | number ] | s
 })
 
 /**
- * @see \[serialized-closure]:2
+ * @see /[serialized-closure]:2
  * @route "/storage/{path}"
  */
 localForm.head = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({

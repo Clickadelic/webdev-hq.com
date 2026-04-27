@@ -20,13 +20,13 @@ import { TbSalt } from 'react-icons/tb';
  * It contains buttons to create a new recipe and to view all ingredients.
  */
 export function CircularMenu() {
-    const [showCircularMenu, setShowCircularMenu] = useState(false);
+    const [showCircularMenu, setShowCircularMenu] = useState<boolean>(false);
 
     return (
         <div className="fixed right-4 bottom-4 z-20 max-w-[48px] md:right-8 md:bottom-8 lg:right-12 lg:bottom-12">
             <div
                 className={cn(
-                    'absolute -top-24 left-[4px] flex flex-col items-center space-y-2 transition-all',
+                    'absolute -top-24 left-1 flex flex-col items-center space-y-2 transition-all',
                     showCircularMenu
                         ? 'opacity-100'
                         : 'pointer-events-none opacity-0',

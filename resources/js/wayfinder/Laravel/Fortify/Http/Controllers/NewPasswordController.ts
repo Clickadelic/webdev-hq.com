@@ -5,7 +5,7 @@ import { applyUrlDefaults, formSafeOptions, queryParams, type RouteDefinition, t
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:44
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:44
  * @route "/reset-password/{token}"
  */
 export const create = (args: { token: string | number } | [ token: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -20,19 +20,19 @@ create.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:44
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:44
  * @route "/reset-password/{token}"
  */
 create.url = (args: { token: string | number } | [ token: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === "string" || typeof args === "number") {
-    args = { token: args }
-}
+        args = { token: args }
+    }
     
     if (Array.isArray(args)) {
-    args = {
+        args = {
         token: args[0],
     }
-}
+    }
     
     args = applyUrlDefaults(args)
     
@@ -47,7 +47,7 @@ create.url = (args: { token: string | number } | [ token: string | number ] | st
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:44
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:44
  * @route "/reset-password/{token}"
  */
 create.get = (args: { token: string | number } | [ token: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -57,7 +57,7 @@ create.get = (args: { token: string | number } | [ token: string | number ] | st
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:44
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:44
  * @route "/reset-password/{token}"
  */
 create.head = (args: { token: string | number } | [ token: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -69,7 +69,7 @@ create.head = (args: { token: string | number } | [ token: string | number ] | s
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:44
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:44
  * @route "/reset-password/{token}"
  */
 const createForm = (args: { token: string | number } | [ token: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -79,7 +79,7 @@ const createForm = (args: { token: string | number } | [ token: string | number 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:44
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:44
  * @route "/reset-password/{token}"
  */
 createForm.get = (args: { token: string | number } | [ token: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -89,7 +89,7 @@ createForm.get = (args: { token: string | number } | [ token: string | number ] 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::create
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:44
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:44
  * @route "/reset-password/{token}"
  */
 createForm.head = (args: { token: string | number } | [ token: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -102,7 +102,7 @@ createForm.head = (args: { token: string | number } | [ token: string | number ]
 create.form = createForm
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:55
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:55
  * @route "/reset-password"
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -117,7 +117,7 @@ store.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:55
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:55
  * @route "/reset-password"
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -126,7 +126,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:55
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:55
  * @route "/reset-password"
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -138,7 +138,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:55
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:55
  * @route "/reset-password"
  */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -148,7 +148,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\NewPasswordController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php:55
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php:55
  * @route "/reset-password"
  */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
