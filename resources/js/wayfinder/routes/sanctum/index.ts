@@ -5,7 +5,7 @@ import { formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefin
 
 /**
  * @see \Laravel\Sanctum\Http\Controllers\CsrfCookieController::show
- * @see /app/vendor/laravel/sanctum/src/Http/Controllers/CsrfCookieController.php:17
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\Http\Controllers\CsrfCookieController.php:17
  * @route "/sanctum/csrf-cookie"
  */
 export const csrfCookie = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -20,7 +20,7 @@ csrfCookie.definition = {
 
 /**
  * @see \Laravel\Sanctum\Http\Controllers\CsrfCookieController::show
- * @see /app/vendor/laravel/sanctum/src/Http/Controllers/CsrfCookieController.php:17
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\Http\Controllers\CsrfCookieController.php:17
  * @route "/sanctum/csrf-cookie"
  */
 csrfCookie.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ csrfCookie.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Sanctum\Http\Controllers\CsrfCookieController::show
- * @see /app/vendor/laravel/sanctum/src/Http/Controllers/CsrfCookieController.php:17
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\Http\Controllers\CsrfCookieController.php:17
  * @route "/sanctum/csrf-cookie"
  */
 csrfCookie.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -39,7 +39,7 @@ csrfCookie.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Sanctum\Http\Controllers\CsrfCookieController::show
- * @see /app/vendor/laravel/sanctum/src/Http/Controllers/CsrfCookieController.php:17
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\Http\Controllers\CsrfCookieController.php:17
  * @route "/sanctum/csrf-cookie"
  */
 csrfCookie.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -51,7 +51,7 @@ csrfCookie.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \Laravel\Sanctum\Http\Controllers\CsrfCookieController::show
- * @see /app/vendor/laravel/sanctum/src/Http/Controllers/CsrfCookieController.php:17
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\Http\Controllers\CsrfCookieController.php:17
  * @route "/sanctum/csrf-cookie"
  */
 const csrfCookieForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -61,7 +61,7 @@ const csrfCookieForm = (options?: RouteQueryOptions): RouteFormDefinition<"get">
 
 /**
  * @see \Laravel\Sanctum\Http\Controllers\CsrfCookieController::show
- * @see /app/vendor/laravel/sanctum/src/Http/Controllers/CsrfCookieController.php:17
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\Http\Controllers\CsrfCookieController.php:17
  * @route "/sanctum/csrf-cookie"
  */
 csrfCookieForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -71,7 +71,7 @@ csrfCookieForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> =
 
 /**
  * @see \Laravel\Sanctum\Http\Controllers\CsrfCookieController::show
- * @see /app/vendor/laravel/sanctum/src/Http/Controllers/CsrfCookieController.php:17
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\Http\Controllers\CsrfCookieController.php:17
  * @route "/sanctum/csrf-cookie"
  */
 csrfCookieForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({

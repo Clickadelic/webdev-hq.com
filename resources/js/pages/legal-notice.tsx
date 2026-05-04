@@ -17,7 +17,7 @@ export default function LegalNotice({
                     <ul>
                         <li>Tobias Hopp</li>
                         <li>Oberer Markenweg 70</li>
-                        <li>56566 Neuwied</li>
+                        <li>56566 Neuwied, Germany</li>
                         <li>
                             <Link
                                 href="mailto:admin@webdev-hq.com"
