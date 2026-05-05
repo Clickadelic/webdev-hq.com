@@ -5,7 +5,7 @@ import { applyUrlDefaults, formSafeOptions, queryParams, type RouteDefinition, t
 
 /**
  * @see \App\Http\Controllers\AppController::reorder
- * @see /app/app/Http/Controllers/AppController.php:106
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:106
  * @route "/apps/reorder"
  */
 export const reorder = (options?: RouteQueryOptions): RouteDefinition<"patch"> => ({
@@ -20,7 +20,7 @@ reorder.definition = {
 
 /**
  * @see \App\Http\Controllers\AppController::reorder
- * @see /app/app/Http/Controllers/AppController.php:106
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:106
  * @route "/apps/reorder"
  */
 reorder.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ reorder.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\AppController::reorder
- * @see /app/app/Http/Controllers/AppController.php:106
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:106
  * @route "/apps/reorder"
  */
 reorder.patch = (options?: RouteQueryOptions): RouteDefinition<"patch"> => ({
@@ -41,7 +41,7 @@ reorder.patch = (options?: RouteQueryOptions): RouteDefinition<"patch"> => ({
 
 /**
  * @see \App\Http\Controllers\AppController::reorder
- * @see /app/app/Http/Controllers/AppController.php:106
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:106
  * @route "/apps/reorder"
  */
 const reorderForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -51,7 +51,7 @@ const reorderForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =
 
 /**
  * @see \App\Http\Controllers\AppController::reorder
- * @see /app/app/Http/Controllers/AppController.php:106
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:106
  * @route "/apps/reorder"
  */
 reorderForm.patch = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -64,7 +64,7 @@ reorderForm.patch = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =
 reorder.form = reorderForm
 /**
  * @see \App\Http\Controllers\AppController::index
- * @see /app/app/Http/Controllers/AppController.php:18
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:18
  * @route "/apps"
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -79,7 +79,7 @@ index.definition = {
 
 /**
  * @see \App\Http\Controllers\AppController::index
- * @see /app/app/Http/Controllers/AppController.php:18
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:18
  * @route "/apps"
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -88,7 +88,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\AppController::index
- * @see /app/app/Http/Controllers/AppController.php:18
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:18
  * @route "/apps"
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -98,7 +98,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\AppController::index
- * @see /app/app/Http/Controllers/AppController.php:18
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:18
  * @route "/apps"
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -110,7 +110,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\AppController::index
- * @see /app/app/Http/Controllers/AppController.php:18
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:18
  * @route "/apps"
  */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -120,7 +120,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
 
 /**
  * @see \App\Http\Controllers\AppController::index
- * @see /app/app/Http/Controllers/AppController.php:18
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:18
  * @route "/apps"
  */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -130,7 +130,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\AppController::index
- * @see /app/app/Http/Controllers/AppController.php:18
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:18
  * @route "/apps"
  */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -143,7 +143,7 @@ indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 index.form = indexForm
 /**
  * @see \App\Http\Controllers\AppController::create
- * @see /app/app/Http/Controllers/AppController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:34
  * @route "/apps/create"
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -158,7 +158,7 @@ create.definition = {
 
 /**
  * @see \App\Http\Controllers\AppController::create
- * @see /app/app/Http/Controllers/AppController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:34
  * @route "/apps/create"
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -167,7 +167,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\AppController::create
- * @see /app/app/Http/Controllers/AppController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:34
  * @route "/apps/create"
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -177,7 +177,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\AppController::create
- * @see /app/app/Http/Controllers/AppController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:34
  * @route "/apps/create"
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -189,7 +189,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\AppController::create
- * @see /app/app/Http/Controllers/AppController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:34
  * @route "/apps/create"
  */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -199,7 +199,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => 
 
 /**
  * @see \App\Http\Controllers\AppController::create
- * @see /app/app/Http/Controllers/AppController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:34
  * @route "/apps/create"
  */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -209,7 +209,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\AppController::create
- * @see /app/app/Http/Controllers/AppController.php:34
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:34
  * @route "/apps/create"
  */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -222,7 +222,7 @@ createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
 create.form = createForm
 /**
  * @see \App\Http\Controllers\AppController::store
- * @see /app/app/Http/Controllers/AppController.php:42
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:42
  * @route "/apps"
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -237,7 +237,7 @@ store.definition = {
 
 /**
  * @see \App\Http\Controllers\AppController::store
- * @see /app/app/Http/Controllers/AppController.php:42
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:42
  * @route "/apps"
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -246,7 +246,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\AppController::store
- * @see /app/app/Http/Controllers/AppController.php:42
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:42
  * @route "/apps"
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -258,7 +258,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \App\Http\Controllers\AppController::store
- * @see /app/app/Http/Controllers/AppController.php:42
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:42
  * @route "/apps"
  */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -268,7 +268,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 
 /**
  * @see \App\Http\Controllers\AppController::store
- * @see /app/app/Http/Controllers/AppController.php:42
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:42
  * @route "/apps"
  */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -281,7 +281,7 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
 store.form = storeForm
 /**
  * @see \App\Http\Controllers\AppController::show
- * @see /app/app/Http/Controllers/AppController.php:64
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:64
  * @route "/apps/{app}"
  */
 export const show = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -296,23 +296,23 @@ show.definition = {
 
 /**
  * @see \App\Http\Controllers\AppController::show
- * @see /app/app/Http/Controllers/AppController.php:64
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:64
  * @route "/apps/{app}"
  */
 show.url = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions) => {
     if (typeof args === "string" || typeof args === "number") {
-        args = { app: args }
-    }
+    args = { app: args }
+}
     
     if (typeof args === "object" && !Array.isArray(args) && "id" in args) {
-        args = { app: args.id }
-    }
+    args = { app: args.id }
+}
     
     if (Array.isArray(args)) {
-        args = {
+    args = {
         app: args[0],
     }
-    }
+}
     
     args = applyUrlDefaults(args)
     
@@ -327,7 +327,7 @@ show.url = (args: { app: string | { id: string } } | [ app: string | { id: strin
 
 /**
  * @see \App\Http\Controllers\AppController::show
- * @see /app/app/Http/Controllers/AppController.php:64
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:64
  * @route "/apps/{app}"
  */
 show.get = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -337,7 +337,7 @@ show.get = (args: { app: string | { id: string } } | [ app: string | { id: strin
 
 /**
  * @see \App\Http\Controllers\AppController::show
- * @see /app/app/Http/Controllers/AppController.php:64
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:64
  * @route "/apps/{app}"
  */
 show.head = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -349,7 +349,7 @@ show.head = (args: { app: string | { id: string } } | [ app: string | { id: stri
 
 /**
  * @see \App\Http\Controllers\AppController::show
- * @see /app/app/Http/Controllers/AppController.php:64
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:64
  * @route "/apps/{app}"
  */
 const showForm = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -359,7 +359,7 @@ const showForm = (args: { app: string | { id: string } } | [ app: string | { id:
 
 /**
  * @see \App\Http\Controllers\AppController::show
- * @see /app/app/Http/Controllers/AppController.php:64
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:64
  * @route "/apps/{app}"
  */
 showForm.get = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -369,7 +369,7 @@ showForm.get = (args: { app: string | { id: string } } | [ app: string | { id: s
 
 /**
  * @see \App\Http\Controllers\AppController::show
- * @see /app/app/Http/Controllers/AppController.php:64
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:64
  * @route "/apps/{app}"
  */
 showForm.head = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -382,7 +382,7 @@ showForm.head = (args: { app: string | { id: string } } | [ app: string | { id: 
 show.form = showForm
 /**
  * @see \App\Http\Controllers\AppController::edit
- * @see /app/app/Http/Controllers/AppController.php:74
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:74
  * @route "/apps/{app}/edit"
  */
 export const edit = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -397,23 +397,23 @@ edit.definition = {
 
 /**
  * @see \App\Http\Controllers\AppController::edit
- * @see /app/app/Http/Controllers/AppController.php:74
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:74
  * @route "/apps/{app}/edit"
  */
 edit.url = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions) => {
     if (typeof args === "string" || typeof args === "number") {
-        args = { app: args }
-    }
+    args = { app: args }
+}
     
     if (typeof args === "object" && !Array.isArray(args) && "id" in args) {
-        args = { app: args.id }
-    }
+    args = { app: args.id }
+}
     
     if (Array.isArray(args)) {
-        args = {
+    args = {
         app: args[0],
     }
-    }
+}
     
     args = applyUrlDefaults(args)
     
@@ -428,7 +428,7 @@ edit.url = (args: { app: string | { id: string } } | [ app: string | { id: strin
 
 /**
  * @see \App\Http\Controllers\AppController::edit
- * @see /app/app/Http/Controllers/AppController.php:74
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:74
  * @route "/apps/{app}/edit"
  */
 edit.get = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -438,7 +438,7 @@ edit.get = (args: { app: string | { id: string } } | [ app: string | { id: strin
 
 /**
  * @see \App\Http\Controllers\AppController::edit
- * @see /app/app/Http/Controllers/AppController.php:74
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:74
  * @route "/apps/{app}/edit"
  */
 edit.head = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -450,7 +450,7 @@ edit.head = (args: { app: string | { id: string } } | [ app: string | { id: stri
 
 /**
  * @see \App\Http\Controllers\AppController::edit
- * @see /app/app/Http/Controllers/AppController.php:74
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:74
  * @route "/apps/{app}/edit"
  */
 const editForm = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -460,7 +460,7 @@ const editForm = (args: { app: string | { id: string } } | [ app: string | { id:
 
 /**
  * @see \App\Http\Controllers\AppController::edit
- * @see /app/app/Http/Controllers/AppController.php:74
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:74
  * @route "/apps/{app}/edit"
  */
 editForm.get = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -470,7 +470,7 @@ editForm.get = (args: { app: string | { id: string } } | [ app: string | { id: s
 
 /**
  * @see \App\Http\Controllers\AppController::edit
- * @see /app/app/Http/Controllers/AppController.php:74
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:74
  * @route "/apps/{app}/edit"
  */
 editForm.head = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -483,7 +483,7 @@ editForm.head = (args: { app: string | { id: string } } | [ app: string | { id: 
 edit.form = editForm
 /**
  * @see \App\Http\Controllers\AppController::update
- * @see /app/app/Http/Controllers/AppController.php:84
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:84
  * @route "/apps/{app}"
  */
 export const update = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteDefinition<"put"> => ({
@@ -498,23 +498,23 @@ update.definition = {
 
 /**
  * @see \App\Http\Controllers\AppController::update
- * @see /app/app/Http/Controllers/AppController.php:84
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:84
  * @route "/apps/{app}"
  */
 update.url = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions) => {
     if (typeof args === "string" || typeof args === "number") {
-        args = { app: args }
-    }
+    args = { app: args }
+}
     
     if (typeof args === "object" && !Array.isArray(args) && "id" in args) {
-        args = { app: args.id }
-    }
+    args = { app: args.id }
+}
     
     if (Array.isArray(args)) {
-        args = {
+    args = {
         app: args[0],
     }
-    }
+}
     
     args = applyUrlDefaults(args)
     
@@ -529,7 +529,7 @@ update.url = (args: { app: string | { id: string } } | [ app: string | { id: str
 
 /**
  * @see \App\Http\Controllers\AppController::update
- * @see /app/app/Http/Controllers/AppController.php:84
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:84
  * @route "/apps/{app}"
  */
 update.put = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteDefinition<"put"> => ({
@@ -539,7 +539,7 @@ update.put = (args: { app: string | { id: string } } | [ app: string | { id: str
 
 /**
  * @see \App\Http\Controllers\AppController::update
- * @see /app/app/Http/Controllers/AppController.php:84
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:84
  * @route "/apps/{app}"
  */
 update.patch = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteDefinition<"patch"> => ({
@@ -551,7 +551,7 @@ update.patch = (args: { app: string | { id: string } } | [ app: string | { id: s
 
 /**
  * @see \App\Http\Controllers\AppController::update
- * @see /app/app/Http/Controllers/AppController.php:84
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:84
  * @route "/apps/{app}"
  */
 const updateForm = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -561,7 +561,7 @@ const updateForm = (args: { app: string | { id: string } } | [ app: string | { i
 
 /**
  * @see \App\Http\Controllers\AppController::update
- * @see /app/app/Http/Controllers/AppController.php:84
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:84
  * @route "/apps/{app}"
  */
 updateForm.put = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -571,7 +571,7 @@ updateForm.put = (args: { app: string | { id: string } } | [ app: string | { id:
 
 /**
  * @see \App\Http\Controllers\AppController::update
- * @see /app/app/Http/Controllers/AppController.php:84
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:84
  * @route "/apps/{app}"
  */
 updateForm.patch = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -584,7 +584,7 @@ updateForm.patch = (args: { app: string | { id: string } } | [ app: string | { i
 update.form = updateForm
 /**
  * @see \App\Http\Controllers\AppController::destroy
- * @see /app/app/Http/Controllers/AppController.php:94
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:94
  * @route "/apps/{app}"
  */
 export const destroy = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
@@ -599,23 +599,23 @@ destroy.definition = {
 
 /**
  * @see \App\Http\Controllers\AppController::destroy
- * @see /app/app/Http/Controllers/AppController.php:94
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:94
  * @route "/apps/{app}"
  */
 destroy.url = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions) => {
     if (typeof args === "string" || typeof args === "number") {
-        args = { app: args }
-    }
+    args = { app: args }
+}
     
     if (typeof args === "object" && !Array.isArray(args) && "id" in args) {
-        args = { app: args.id }
-    }
+    args = { app: args.id }
+}
     
     if (Array.isArray(args)) {
-        args = {
+    args = {
         app: args[0],
     }
-    }
+}
     
     args = applyUrlDefaults(args)
     
@@ -630,7 +630,7 @@ destroy.url = (args: { app: string | { id: string } } | [ app: string | { id: st
 
 /**
  * @see \App\Http\Controllers\AppController::destroy
- * @see /app/app/Http/Controllers/AppController.php:94
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:94
  * @route "/apps/{app}"
  */
 destroy.delete = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteDefinition<"delete"> => ({
@@ -642,7 +642,7 @@ destroy.delete = (args: { app: string | { id: string } } | [ app: string | { id:
 
 /**
  * @see \App\Http\Controllers\AppController::destroy
- * @see /app/app/Http/Controllers/AppController.php:94
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:94
  * @route "/apps/{app}"
  */
 const destroyForm = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -652,7 +652,7 @@ const destroyForm = (args: { app: string | { id: string } } | [ app: string | { 
 
 /**
  * @see \App\Http\Controllers\AppController::destroy
- * @see /app/app/Http/Controllers/AppController.php:94
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php:94
  * @route "/apps/{app}"
  */
 destroyForm.delete = (args: { app: string | { id: string } } | [ app: string | { id: string } ] | string | { id: string }, options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
