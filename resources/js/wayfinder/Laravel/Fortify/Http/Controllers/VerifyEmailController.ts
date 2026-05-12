@@ -5,7 +5,7 @@ import { applyUrlDefaults, formSafeOptions, queryParams, type RouteDefinition, t
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 export const __invoke = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -20,16 +20,16 @@ __invoke.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 __invoke.url = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
-    args = {
+        args = {
         id: args[0],
         hash: args[1],
     }
-}
+    }
     
     args = applyUrlDefaults(args)
     
@@ -46,7 +46,7 @@ __invoke.url = (args: { id: string | number, hash: string | number } | [ id: str
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 __invoke.get = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -56,7 +56,7 @@ __invoke.get = (args: { id: string | number, hash: string | number } | [ id: str
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 __invoke.head = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -68,7 +68,7 @@ __invoke.head = (args: { id: string | number, hash: string | number } | [ id: st
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 const __invokeForm = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -78,7 +78,7 @@ const __invokeForm = (args: { id: string | number, hash: string | number } | [ i
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 __invokeForm.get = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -88,7 +88,7 @@ __invokeForm.get = (args: { id: string | number, hash: string | number } | [ id:
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 __invokeForm.head = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({

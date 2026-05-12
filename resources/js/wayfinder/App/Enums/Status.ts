@@ -6,7 +6,7 @@ export const Published = "published"
 export const Archived = "archived"
 
 /**
- * @see [App\Enums\Status](C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Enums\Status.php)
+ * @see [App\Enums\Status](/app/app/Enums/Status.php)
  */
 export const Status = { Draft, Published, Archived } as const
 

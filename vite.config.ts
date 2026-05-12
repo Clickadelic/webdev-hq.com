@@ -26,6 +26,17 @@ export default defineConfig({
             { find: '@/actions', replacement: path.resolve(__dirname, 'resources/js/wayfinder') },
         ],
     },
+    build: {
+        rollupOptions: {
+            watch: {
+                exclude: [
+                    'resources/js/wayfinder/**',
+                    'resources/js/actions/**',
+                    'resources/js/routes/**',
+                ],
+            },
+        },
+    },
     server: {
         host: '0.0.0.0',
         port: 5173,
@@ -37,6 +48,11 @@ export default defineConfig({
         watch: {
             usePolling: true,
             interval: 100,
+            ignored: [
+                '**/resources/js/wayfinder/**',
+                '**/resources/js/actions/**',
+                '**/resources/js/routes/**',
+            ],
         },
     },
 });
