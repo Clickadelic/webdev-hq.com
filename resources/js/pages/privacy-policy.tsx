@@ -60,7 +60,6 @@ export default function PrivacyPolicy({
                     </p>
                 </section>
             </article>
-
             <p>
                 Users may register using traditional login methods or
                 third-party authentication providers (e.g., Google, GitHub).

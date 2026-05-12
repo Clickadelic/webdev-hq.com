@@ -27,7 +27,7 @@ export default function PublicLayout({
     return (
         <>
             <Head title={title} />
-            <div className="grid min-h-svh grid-rows-[auto_auto_1fr_auto]">
+            <div className="grid min-h-svh grid-rows-[auto_auto_1fr_auto] bg-[url('/images/bg-noise.png')] bg-cover">
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
                 <div className="container mx-auto">{children}</div>

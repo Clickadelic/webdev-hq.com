@@ -7,9 +7,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner"
 import { LoaderCircle, LucideLink } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-
-import { Bold, Italic, Underline } from "lucide-react"
+import { CategoryComboBox } from "@/components/forms/category-combobox";
 
 import { cn } from "@/lib/utils";
 
@@ -23,6 +21,7 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
         title: "",
         url: "",
         description: "",
+        category: "", // Can be numeric ID or category name for new categories
         status: "published",
     });
 
@@ -78,6 +77,16 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
                     onChange={e => setData("description", e.target.value)}
                 />
                 {errors.description && <p className="text-sm text-destructive">{errors.description}</p>}
+            </div>
+
+            {/* Category */}
+            <div className="grid gap-2">
+                <Label>Category</Label>
+                <CategoryComboBox
+                    value={data.category}
+                    onChange={(value) => setData("category", value)}
+                />
+                {errors.category && <p className="text-sm text-destructive">{errors.category}</p>}
             </div>
 
             {/* Status (Select) */}

@@ -19,7 +19,7 @@ class StoreHyperlinkRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'url' => ['required', 'url', 'max:255'],
             'description' => ['nullable', 'string'],
-            'category_id' => ['nullable', 'exists:categories,id'],
+            'category' => ['nullable', 'string', 'max:255'], // Can be numeric ID or category name
             'status' => ['required', Rule::enum(Status::class)],
             'tags' => ['nullable', 'array'],
             'tags.*' => ['exists:tags,id'],

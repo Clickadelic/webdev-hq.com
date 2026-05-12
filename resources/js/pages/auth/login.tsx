@@ -26,10 +26,7 @@ export default function Login({
     canRegister,
 }: LoginProps) {
     return (
-        <AuthLayout
-            title="Log in"
-            description="Welcome back"
-        >
+        <AuthLayout title="Log in" description="Welcome back">
             <Head title="Log in" />
 
             <Form
@@ -41,7 +38,7 @@ export default function Login({
                     <>
                         <div className="grid gap-6">
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
+                                <Label htmlFor="email">E-mail address</Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -58,7 +55,6 @@ export default function Login({
                             <div className="grid gap-2">
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Password</Label>
-                                    
                                 </div>
                                 <Input
                                     id="password"
@@ -92,7 +88,7 @@ export default function Login({
                                 Log in
                             </Button>
                         </div>
-                        
+
                         {canResetPassword && (
                             <TextLink
                                 href={request()}
@@ -107,7 +103,7 @@ export default function Login({
                             <div className="text-center text-sm text-muted-foreground">
                                 Don't have an account?{' '}
                                 <TextLink href={register()} tabIndex={5}>
-                                    Sign up
+                                    Register
                                 </TextLink>
                             </div>
                         )}

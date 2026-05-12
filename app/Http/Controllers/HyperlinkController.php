@@ -7,6 +7,7 @@ use App\Models\Hyperlink;
 use App\Models\Tag;
 use App\Http\Requests\StoreHyperlinkRequest;
 use App\Http\Requests\UpdateHyperlinkRequest;
+use Illuminate\Support\Str;
 
 class HyperlinkController extends Controller
 {
@@ -38,7 +39,24 @@ class HyperlinkController extends Controller
      */
     public function store(StoreHyperlinkRequest $request)
     {
-        $hyperlink = Hyperlink::create($request->safe()->except('tags'));
+        $data = $request->safe()->except(['tags', 'category']);
+
+        // Handle category: can be numeric ID or new category name
+        $categoryValue = $request->validated('category');
+        if ($categoryValue) {
+            if (is_numeric($categoryValue)) {
+                $data['category_id'] = (int) $categoryValue;
+            } else {
+                // Create new category or find existing by name
+                $category = Category::firstOrCreate(
+                    ['name' => $categoryValue],
+                    ['slug' => Str::slug($categoryValue)]
+                );
+                $data['category_id'] = $category->id;
+            }
+        }
+
+        $hyperlink = Hyperlink::create($data);
 
         if ($request->validated('tags')) {
             $hyperlink->tags()->sync($request->validated('tags'));

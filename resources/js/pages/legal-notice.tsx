@@ -41,8 +41,8 @@ export default function LegalNotice({
                         unaffected.
                     </p>
                 </section>
-                <h3>Responsibility for Links</h3>
                 <section>
+                    <h3>Responsibility for Links</h3>
                     <p>
                         This platform contains links and content created by
                         users (user-generated content). We no control over the
@@ -54,8 +54,8 @@ export default function LegalNotice({
                         be removed immediately.
                     </p>
                 </section>
-                <h3>Copyright</h3>
                 <section>
+                    <h3>Copyright</h3>
                     <p>
                         The content created by the site operator on this
                         platform is subject to copyright law. Contributions by

@@ -20,13 +20,27 @@ export default function PublicHeader({
     return (
         <div
             className={cn(
-                'w-full bg-neutral-300 shadow dark:bg-neutral-900',
+                'w-full bg-white shadow dark:bg-neutral-900',
                 className,
             )}
         >
             <header className="container mx-auto flex items-center justify-between">
                 <AppLogo />
-                <nav className="flex items-center justify-end gap-4">
+                <nav className="flex w-full items-center justify-center gap-4">
+                    <ul className="flex items-start gap-4">
+                        <li>
+                            <Link href="#">Link</Link>
+                        </li>
+                        <li>
+                            <Link href="#">Link</Link>
+                        </li>
+                        <li>
+                            <Link href="#">Link</Link>
+                        </li>
+                        <li>
+                            <Link href="#">Link</Link>
+                        </li>
+                    </ul>
                     {auth.user ? (
                         <Link
                             href={dashboard()}

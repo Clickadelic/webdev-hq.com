@@ -3,8 +3,8 @@
 import PublicLayout from '@/layouts/public-layout';
 import { type Hyperlink } from '@/types';
 
+import { CategoryComboBox } from '@/components/forms/category-combobox';
 import { ExternalLink } from 'lucide-react';
-
 export default function Welcome({
     hyperlinks,
     canRegister = true,
@@ -14,9 +14,10 @@ export default function Welcome({
 }) {
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
-            <div className="my-8 rounded-2xl bg-slate-100 p-8 text-center text-slate-950 shadow-lg dark:bg-slate-800 dark:text-slate-100">
-                <h2 className="text-center text-3xl font-medium">Suche</h2>
+            <div className="my-3 rounded-lg border border-sky-400 bg-white/30 p-1 backdrop-blur">
+                <h2 className="text-center font-medium">Suche</h2>
             </div>
+            <CategoryComboBox value="" onChange={() => {}} />
             {hyperlinks && hyperlinks.length > 0 ? (
                 <div className="flex-start flex w-full gap-4">
                     {hyperlinks.map((hyperlink) => (
