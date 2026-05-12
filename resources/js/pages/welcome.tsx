@@ -14,10 +14,7 @@ export default function Welcome({
 }) {
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
-            <div className="my-8 rounded-2xl bg-amber-400 p-8 text-center text-slate-950 shadow-lg">
-                <p className="mb-2 text-sm font-semibold tracking-[0.3em] uppercase">
-                    HMR Working, yeehaw! 🚀
-                </p>
+            <div className="my-8 rounded-2xl bg-slate-100 p-8 text-center text-slate-950 shadow-lg dark:bg-slate-800 dark:text-slate-100">
                 <h2 className="text-center text-3xl font-medium">Suche</h2>
             </div>
             {hyperlinks && hyperlinks.length > 0 ? (
