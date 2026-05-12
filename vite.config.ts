@@ -18,13 +18,27 @@ export default defineConfig({
             },
         }),
         tailwindcss(),
-        // wayfinder(),
+        wayfinder(),
     ],
     resolve: {
         alias: [
             { find: '@/routes', replacement: path.resolve(__dirname, 'resources/js/wayfinder/routes') },
             { find: '@/actions', replacement: path.resolve(__dirname, 'resources/js/wayfinder') },
         ],
+    },
+    build: {
+        rollupOptions: {
+            watch: {
+                // Exclude wayfinder output directories to prevent infinite rebuild loop.
+                // The wayfinder plugin regenerates routes which triggers Vite to rebuild,
+                // which in turn triggers wayfinder again. This exclusion breaks the cycle.
+                exclude: [
+                    'resources/js/wayfinder/**',
+                    'resources/js/actions/**',
+                    'resources/js/routes/**',
+                ],
+            },
+        },
     },
     server: {
         host: '0.0.0.0',
@@ -37,6 +51,12 @@ export default defineConfig({
         watch: {
             usePolling: true,
             interval: 100,
+            // Ignore wayfinder output to prevent HMR infinite loop during dev
+            ignored: [
+                '**/resources/js/wayfinder/**',
+                '**/resources/js/actions/**',
+                '**/resources/js/routes/**',
+            ],
         },
     },
 });
