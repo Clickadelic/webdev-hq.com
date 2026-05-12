@@ -55,6 +55,10 @@ services:
           target: /var/www/html/database
           initial_sync: true
         - action: sync
+          path: ./tests
+          target: /var/www/html/tests
+          initial_sync: true
+        - action: sync
           path: ./public
           target: /var/www/html/public
           initial_sync: true
