@@ -14,7 +14,10 @@ export default function Welcome({
 }) {
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
-            <div className="bg-linear-to-br from-indigo-500 to-sky-400 bg-clip-text text-center py-12">
+            <div className="my-8 rounded-2xl bg-sky-300 p-8 text-center text-slate-950 shadow-lg">
+                <p className="mb-2 text-sm font-semibold tracking-[0.3em] uppercase">
+                    HMR Test Active
+                </p>
                 <h2 className="text-center text-3xl font-medium">Suche</h2>
             </div>
             {hyperlinks && hyperlinks.length > 0 ? (
@@ -25,7 +28,7 @@ export default function Welcome({
                             href={hyperlink.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-64 rounded-lg border bg-white dark:bg-neutral-900 p-3 shadow transition-colors hover:shadow-lg"
+                            className="w-64 rounded-lg border bg-white p-3 shadow transition-colors hover:shadow-lg dark:bg-neutral-900"
                         >
                             <h3 className="text-md font-semibold text-neutral-800">
                                 {hyperlink.title}
