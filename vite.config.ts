@@ -18,13 +18,24 @@ export default defineConfig({
             },
         }),
         tailwindcss(),
-        // wayfinder(),
+        wayfinder(),
     ],
     resolve: {
         alias: [
             { find: '@/routes', replacement: path.resolve(__dirname, 'resources/js/wayfinder/routes') },
             { find: '@/actions', replacement: path.resolve(__dirname, 'resources/js/wayfinder') },
         ],
+    },
+    build: {
+        rollupOptions: {
+            watch: {
+                exclude: [
+                    'resources/js/wayfinder/**',
+                    'resources/js/actions/**',
+                    'resources/js/routes/**',
+                ],
+            },
+        },
     },
     server: {
         host: '0.0.0.0',
@@ -37,6 +48,11 @@ export default defineConfig({
         watch: {
             usePolling: true,
             interval: 100,
+            ignored: [
+                '**/resources/js/wayfinder/**',
+                '**/resources/js/actions/**',
+                '**/resources/js/routes/**',
+            ],
         },
     },
 });

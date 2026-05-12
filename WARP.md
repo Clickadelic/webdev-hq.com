@@ -67,7 +67,7 @@ Repository structure (big picture)
 Conventions and gotchas specific to this repo
 - TS alias `@/*` resolves to `resources/js/*` (defined in `tsconfig.json`).
 - ESLint ignores: `vendor`, `node_modules`, `public`, `bootstrap/ssr`, and `tailwind.config.js`.
-- The Wayfinder Vite plugin is enabled with `{ formVariants: true }` and Laravel Wayfinder is required in `composer.json`.
+- The Wayfinder Vite plugin is enabled in `vite.config.ts`, and Laravel Wayfinder is required in `composer.json`.
 
 References
 - High-level README: `README.md` (states stack: Laravel, Inertia, React shadcn).
