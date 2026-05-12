@@ -5,7 +5,7 @@ import { formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefin
 
 /**
  * @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php:28
+ * @see /app/app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:28
  * @route "/settings/two-factor"
  */
 export const show = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -20,7 +20,7 @@ show.definition = {
 
 /**
  * @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php:28
+ * @see /app/app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:28
  * @route "/settings/two-factor"
  */
 show.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ show.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php:28
+ * @see /app/app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:28
  * @route "/settings/two-factor"
  */
 show.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -39,7 +39,7 @@ show.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php:28
+ * @see /app/app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:28
  * @route "/settings/two-factor"
  */
 show.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -51,7 +51,7 @@ show.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php:28
+ * @see /app/app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:28
  * @route "/settings/two-factor"
  */
 const showForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -61,7 +61,7 @@ const showForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php:28
+ * @see /app/app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:28
  * @route "/settings/two-factor"
  */
 showForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -71,7 +71,7 @@ showForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php:28
+ * @see /app/app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:28
  * @route "/settings/two-factor"
  */
 showForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({

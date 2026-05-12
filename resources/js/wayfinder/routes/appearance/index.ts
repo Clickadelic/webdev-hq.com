@@ -4,7 +4,7 @@
 import { formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefinition, type RouteQueryOptions } from "./../../index";
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\settings.php:22
+ * @see /app/routes/settings.php:22
  * @route "/settings/appearance"
  */
 export const edit = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -18,7 +18,7 @@ edit.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\settings.php:22
+ * @see /app/routes/settings.php:22
  * @route "/settings/appearance"
  */
 edit.url = (options?: RouteQueryOptions) => {
@@ -26,7 +26,7 @@ edit.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\settings.php:22
+ * @see /app/routes/settings.php:22
  * @route "/settings/appearance"
  */
 edit.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -35,7 +35,7 @@ edit.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\settings.php:22
+ * @see /app/routes/settings.php:22
  * @route "/settings/appearance"
  */
 edit.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -46,7 +46,7 @@ edit.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\settings.php:22
+ * @see /app/routes/settings.php:22
  * @route "/settings/appearance"
  */
 const editForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -55,7 +55,7 @@ const editForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\settings.php:22
+ * @see /app/routes/settings.php:22
  * @route "/settings/appearance"
  */
 editForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -64,7 +64,7 @@ editForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 })
 
 /**
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\routes\settings.php:22
+ * @see /app/routes/settings.php:22
  * @route "/settings/appearance"
  */
 editForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({

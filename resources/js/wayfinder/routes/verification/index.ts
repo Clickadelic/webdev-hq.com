@@ -5,7 +5,7 @@ import { applyUrlDefaults, formSafeOptions, queryParams, type RouteDefinition, t
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationPromptController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationPromptController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationPromptController.php:18
  * @route "/email/verify"
  */
 export const notice = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -20,7 +20,7 @@ notice.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationPromptController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationPromptController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationPromptController.php:18
  * @route "/email/verify"
  */
 notice.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ notice.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationPromptController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationPromptController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationPromptController.php:18
  * @route "/email/verify"
  */
 notice.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -39,7 +39,7 @@ notice.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationPromptController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationPromptController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationPromptController.php:18
  * @route "/email/verify"
  */
 notice.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -51,7 +51,7 @@ notice.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationPromptController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationPromptController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationPromptController.php:18
  * @route "/email/verify"
  */
 const noticeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -61,7 +61,7 @@ const noticeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationPromptController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationPromptController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationPromptController.php:18
  * @route "/email/verify"
  */
 noticeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -71,7 +71,7 @@ noticeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationPromptController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationPromptController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationPromptController.php:18
  * @route "/email/verify"
  */
 noticeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -84,7 +84,7 @@ noticeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
 notice.form = noticeForm
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 export const verify = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -99,16 +99,16 @@ verify.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 verify.url = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
-    args = {
+        args = {
         id: args[0],
         hash: args[1],
     }
-}
+    }
     
     args = applyUrlDefaults(args)
     
@@ -125,7 +125,7 @@ verify.url = (args: { id: string | number, hash: string | number } | [ id: strin
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 verify.get = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -135,7 +135,7 @@ verify.get = (args: { id: string | number, hash: string | number } | [ id: strin
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 verify.head = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -147,7 +147,7 @@ verify.head = (args: { id: string | number, hash: string | number } | [ id: stri
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 const verifyForm = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -157,7 +157,7 @@ const verifyForm = (args: { id: string | number, hash: string | number } | [ id:
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 verifyForm.get = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -167,7 +167,7 @@ verifyForm.get = (args: { id: string | number, hash: string | number } | [ id: s
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php:18
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php:18
  * @route "/email/verify/{id}/{hash}"
  */
 verifyForm.head = (args: { id: string | number, hash: string | number } | [ id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -180,7 +180,7 @@ verifyForm.head = (args: { id: string | number, hash: string | number } | [ id: 
 verify.form = verifyForm
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationNotificationController.php:19
  * @route "/email/verification-notification"
  */
 export const send = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -195,7 +195,7 @@ send.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationNotificationController.php:19
  * @route "/email/verification-notification"
  */
 send.url = (options?: RouteQueryOptions) => {
@@ -204,7 +204,7 @@ send.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationNotificationController.php:19
  * @route "/email/verification-notification"
  */
 send.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -216,7 +216,7 @@ send.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationNotificationController.php:19
  * @route "/email/verification-notification"
  */
 const sendForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -226,7 +226,7 @@ const sendForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationNotificationController.php:19
  * @route "/email/verification-notification"
  */
 sendForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({

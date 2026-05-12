@@ -1,11 +1,45 @@
 # webdev-hq.com
 Main domain of webdev-hq.com — Laravel 12, Inertia.js, React, ShadCN UI, MySQL.
 ## Local Development Setup
-### Requirements
+
+### Docker (Recommended)
+
+The project includes a Docker Compose setup with hot module replacement (HMR) for fast frontend development.
+
+**Requirements:**
+- Docker Desktop with Compose v2
+
+**Start the development environment:**
+```bash
+docker compose up --watch
+```
+
+This starts:
+- **Laravel app** at http://localhost:8000 (PHP-FPM + Nginx)
+- **Vite dev server** at http://localhost:5173 (HMR enabled)
+- **MySQL 8** at localhost:3306
+- **phpMyAdmin** at http://localhost:8080
+
+**How it works:**
+- Frontend code (`resources/`, `public/`) uses bind mounts for instant HMR updates
+- Backend code (`app/`, `routes/`, `config/`) uses Compose Watch sync
+- The Vite `hot` file is shared between containers so Laravel knows to use the dev server
+
+**Rebuild after dependency changes:**
+```bash
+docker compose down
+docker compose build --no-cache
+docker compose up --watch
+```
+
+### Native (without Docker)
+
+**Requirements:**
 - PHP 8.4
 - Composer
 - MySQL
-### Install
+
+**Install:**
 ```bash
 composer install
 cp .env.example .env
