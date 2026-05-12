@@ -149,3 +149,5 @@ If you want to connect to the Docker MySQL from a local GUI tool (e.g. TablePlus
 **Windows line endings:** Shell scripts may have CRLF line endings on Windows. The Dockerfile handles this automatically via `sed`, but if you add new scripts, ensure they are converted or add a similar `sed` step.
 
 **Stale node_modules:** If npm packages seem outdated, remove the volume: `docker compose down -v` and restart.
+
+**Wayfinder route generation:** The `@laravel/vite-plugin-wayfinder` automatically regenerates TypeScript route types when PHP route files change. To prevent an infinite rebuild loop (where generated files trigger another build), `vite.config.ts` excludes the wayfinder output directories from Vite's file watcher. If you see infinite rebuilds, verify these exclusions are in place under `build.rollupOptions.watch.exclude` and `server.watch.ignored`.
