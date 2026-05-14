@@ -19,21 +19,15 @@ Route::get('/privacy-policy', [PageController::class, 'privatePolicy'])->name('p
 Route::get('/terms-of-service', [PageController::class, 'termsOfService'])->name('terms-of-service');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-	Route::get('dashboard', function () {
-		$apps = AppModel::query()
-			->where('created_by', Auth::id())
-			->orderBy('position')
-			->get();
-
-		return Inertia::render('dashboard', [
-			'apps' => $apps,
-		]);
-	})->name('dashboard');
-
+	// Dashboard
+	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+	// Apps
 	Route::patch('/apps/reorder', [AppController::class, 'reorder'])->name('apps.reorder');
-	Route::resource('/apps', AppController::class);
-	Route::resource('/hyperlinks', HyperlinkController::class);
-	Route::resource('/categories', CategoryController::class);
+	Route::resource('/apps', AppController::class)->name('apps.index');
+	// Hyperlinks
+	Route::resource('/hyperlinks', HyperlinkController::class)->name('hyperlinks.index');
+	// Categories
+	Route::resource('/categories', CategoryController::class)->name('categories.index');
 });
 
 require __DIR__ . '/settings.php';

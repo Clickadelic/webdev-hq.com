@@ -20,7 +20,7 @@ export default function PublicHeader({
     return (
         <div
             className={cn(
-                'w-full bg-neutral-300 shadow dark:bg-neutral-900',
+                'w-full bg-white shadow dark:bg-neutral-950',
                 className,
             )}
         >

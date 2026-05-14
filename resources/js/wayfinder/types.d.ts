@@ -16,7 +16,7 @@ export namespace App {
         /**
          * @see [\App\Models\User](/app/app/Models/User.php)
          */
-        export type User = { id: number, name: string, email: string, email_verified_at: string | null, password: string, two_factor_secret: string | null, two_factor_recovery_codes: string | null, two_factor_confirmed_at: string | null, remember_token: string | null, created_at: string | null, updated_at: string | null, notifications?: Illuminate.Notifications.DatabaseNotification[], tokens?: Laravel.Sanctum.PersonalAccessToken[] }
+        export type User = { notifications?: Illuminate.Notifications.DatabaseNotification[], tokens?: Laravel.Sanctum.PersonalAccessToken[] }
 
         /**
          * @see [\App\Models\Tag](/app/app/Models/Tag.php)
@@ -26,7 +26,7 @@ export namespace App {
         /**
          * @see [\App\Models\App](/app/app/Models/App.php)
          */
-        export type App = { id: string, title: string, url: string, target: string, position: number, created_by: number | null, created_at: string | null, updated_at: string | null, creator?: App.Models.User | null }
+        export type App = { creator?: App.Models.User | null }
     }
 
     export namespace Enums {
