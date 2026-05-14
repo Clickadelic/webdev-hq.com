@@ -5,7 +5,7 @@ import { formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefin
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::login
- * @see /app/app/Http/Controllers/Api/AuthController.php:16
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:16
  * @route "/api/login"
  */
 export const login = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -20,7 +20,7 @@ login.definition = {
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::login
- * @see /app/app/Http/Controllers/Api/AuthController.php:16
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:16
  * @route "/api/login"
  */
 login.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ login.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::login
- * @see /app/app/Http/Controllers/Api/AuthController.php:16
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:16
  * @route "/api/login"
  */
 login.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -41,7 +41,7 @@ login.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::login
- * @see /app/app/Http/Controllers/Api/AuthController.php:16
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:16
  * @route "/api/login"
  */
 const loginForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -51,7 +51,7 @@ const loginForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::login
- * @see /app/app/Http/Controllers/Api/AuthController.php:16
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:16
  * @route "/api/login"
  */
 loginForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -64,7 +64,7 @@ loginForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => (
 login.form = loginForm
 /**
  * @see \App\Http\Controllers\Api\AuthController::me
- * @see /app/app/Http/Controllers/Api/AuthController.php:62
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:62
  * @route "/api/me"
  */
 export const me = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -79,7 +79,7 @@ me.definition = {
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::me
- * @see /app/app/Http/Controllers/Api/AuthController.php:62
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:62
  * @route "/api/me"
  */
 me.url = (options?: RouteQueryOptions) => {
@@ -88,7 +88,7 @@ me.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::me
- * @see /app/app/Http/Controllers/Api/AuthController.php:62
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:62
  * @route "/api/me"
  */
 me.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -98,7 +98,7 @@ me.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::me
- * @see /app/app/Http/Controllers/Api/AuthController.php:62
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:62
  * @route "/api/me"
  */
 me.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -110,7 +110,7 @@ me.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::me
- * @see /app/app/Http/Controllers/Api/AuthController.php:62
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:62
  * @route "/api/me"
  */
 const meForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -120,7 +120,7 @@ const meForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::me
- * @see /app/app/Http/Controllers/Api/AuthController.php:62
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:62
  * @route "/api/me"
  */
 meForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -130,7 +130,7 @@ meForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::me
- * @see /app/app/Http/Controllers/Api/AuthController.php:62
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:62
  * @route "/api/me"
  */
 meForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -143,7 +143,7 @@ meForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 me.form = meForm
 /**
  * @see \App\Http\Controllers\Api\AuthController::logout
- * @see /app/app/Http/Controllers/Api/AuthController.php:52
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:52
  * @route "/api/logout"
  */
 export const logout = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -158,7 +158,7 @@ logout.definition = {
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::logout
- * @see /app/app/Http/Controllers/Api/AuthController.php:52
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:52
  * @route "/api/logout"
  */
 logout.url = (options?: RouteQueryOptions) => {
@@ -167,7 +167,7 @@ logout.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::logout
- * @see /app/app/Http/Controllers/Api/AuthController.php:52
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:52
  * @route "/api/logout"
  */
 logout.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -179,7 +179,7 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::logout
- * @see /app/app/Http/Controllers/Api/AuthController.php:52
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:52
  * @route "/api/logout"
  */
 const logoutForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -189,7 +189,7 @@ const logoutForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> =>
 
 /**
  * @see \App\Http\Controllers\Api\AuthController::logout
- * @see /app/app/Http/Controllers/Api/AuthController.php:52
+ * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php:52
  * @route "/api/logout"
  */
 logoutForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({

@@ -4,39 +4,39 @@
 export namespace App {
     export namespace Models {
         /**
-         * @see [\App\Models\Category](/app/app/Models/Category.php)
+         * @see [\App\Models\App](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\App.php)
          */
-        export type Category = { hyperlinks?: App.Models.Hyperlink[] }
+        export type App = { id: string, title: string, url: string, target: string, position: number, created_by: number | null, created_at: string | null, updated_at: string | null, creator?: App.Models.User | null }
 
         /**
-         * @see [\App\Models\Hyperlink](/app/app/Models/Hyperlink.php)
-         */
-        export type Hyperlink = { category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
-
-        /**
-         * @see [\App\Models\User](/app/app/Models/User.php)
+         * @see [\App\Models\User](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\User.php)
          */
         export type User = { id: number, name: string, email: string, email_verified_at: string | null, password: string, two_factor_secret: string | null, two_factor_recovery_codes: string | null, two_factor_confirmed_at: string | null, remember_token: string | null, created_at: string | null, updated_at: string | null, notifications?: Illuminate.Notifications.DatabaseNotification[], tokens?: Laravel.Sanctum.PersonalAccessToken[] }
 
         /**
-         * @see [\App\Models\Tag](/app/app/Models/Tag.php)
+         * @see [\App\Models\Category](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Category.php)
          */
-        export type Tag = Record<string, never>
+        export type Category = { id: number, name: string, slug: string, created_at: string | null, updated_at: string | null, hyperlinks?: App.Models.Hyperlink[] }
 
         /**
-         * @see [\App\Models\App](/app/app/Models/App.php)
+         * @see [\App\Models\Hyperlink](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Hyperlink.php)
          */
-        export type App = { id: string, title: string, url: string, target: string, position: number, created_by: number | null, created_at: string | null, updated_at: string | null, creator?: App.Models.User | null }
+        export type Hyperlink = { id: number, title: string, url: string, description: string | null, category_id: number | null, status: App.Enums.Status, created_at: string | null, updated_at: string | null, category?: App.Models.Category | null, author?: App.Models.User | null, tags?: App.Models.Tag[] }
+
+        /**
+         * @see [\App\Models\Tag](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Models\Tag.php)
+         */
+        export type Tag = Record<string, never>
     }
 
     export namespace Enums {
         /**
-         * @see [\App\Enums\Season](/app/app/Enums/Season.php)
+         * @see [\App\Enums\Season](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Enums\Season.php)
          */
         export type Season = 'spring' | 'summer' | 'autumn' | 'winter'
 
         /**
-         * @see [\App\Enums\Status](/app/app/Enums/Status.php)
+         * @see [\App\Enums\Status](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Enums\Status.php)
          */
         export type Status = 'draft' | 'published' | 'archived'
     }
@@ -46,47 +46,47 @@ export namespace App {
             export namespace PageController {
                 export namespace Index {
                     /**
-                     * @see [\App\Http\Controllers\PageController::index](/app/app/Http/Controllers/PageController.php)
+                     * @see [\App\Http\Controllers\PageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
                      */
                     export type Response = Inertia.Pages.Welcome
 
                     /**
-                     * @see [\App\Http\Controllers\PageController::index](/app/app/Http/Controllers/PageController.php)
+                     * @see [\App\Http\Controllers\PageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace CookiePolicy {
                     /**
-                     * @see [\App\Http\Controllers\PageController::cookiePolicy](/app/app/Http/Controllers/PageController.php)
+                     * @see [\App\Http\Controllers\PageController::cookiePolicy](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace Disclaimer {
                     /**
-                     * @see [\App\Http\Controllers\PageController::disclaimer](/app/app/Http/Controllers/PageController.php)
+                     * @see [\App\Http\Controllers\PageController::disclaimer](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace LegalNotice {
                     /**
-                     * @see [\App\Http\Controllers\PageController::legalNotice](/app/app/Http/Controllers/PageController.php)
+                     * @see [\App\Http\Controllers\PageController::legalNotice](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace PrivatePolicy {
                     /**
-                     * @see [\App\Http\Controllers\PageController::privatePolicy](/app/app/Http/Controllers/PageController.php)
+                     * @see [\App\Http\Controllers\PageController::privatePolicy](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace TermsOfService {
                     /**
-                     * @see [\App\Http\Controllers\PageController::termsOfService](/app/app/Http/Controllers/PageController.php)
+                     * @see [\App\Http\Controllers\PageController::termsOfService](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
@@ -95,55 +95,55 @@ export namespace App {
             export namespace AppController {
                 export namespace Index {
                     /**
-                     * @see [\App\Http\Controllers\AppController::index](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Response = Inertia.Pages.Apps.Index
 
                     /**
-                     * @see [\App\Http\Controllers\AppController::index](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace Create {
                     /**
-                     * @see [\App\Http\Controllers\AppController::create](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Response = Inertia.Pages.Apps.Create
 
                     /**
-                     * @see [\App\Http\Controllers\AppController::create](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace Show {
                     /**
-                     * @see [\App\Http\Controllers\AppController::show](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Response = Inertia.Pages.Apps.Show
 
                     /**
-                     * @see [\App\Http\Controllers\AppController::show](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace Edit {
                     /**
-                     * @see [\App\Http\Controllers\AppController::edit](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Response = Inertia.Pages.Apps.Edit
 
                     /**
-                     * @see [\App\Http\Controllers\AppController::edit](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace Reorder {
                     /**
-                     * @see [\App\Http\Controllers\AppController::reorder](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::reorder](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Request = {    order: unknown[];
                         "order.*"?: string;}
@@ -151,7 +151,7 @@ export namespace App {
 
                 export namespace Store {
                     /**
-                     * @see [\App\Http\Controllers\AppController::store](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Request = {    title: string;
                         url: string;
@@ -161,7 +161,7 @@ export namespace App {
 
                 export namespace Update {
                     /**
-                     * @see [\App\Http\Controllers\AppController::update](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::update](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Request = {    title?: string;
                         url?: string;
@@ -171,7 +171,7 @@ export namespace App {
 
                 export namespace Destroy {
                     /**
-                     * @see [\App\Http\Controllers\AppController::destroy](/app/app/Http/Controllers/AppController.php)
+                     * @see [\App\Http\Controllers\AppController::destroy](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
@@ -180,60 +180,60 @@ export namespace App {
             export namespace HyperlinkController {
                 export namespace Index {
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::index](/app/app/Http/Controllers/HyperlinkController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Response = Inertia.Pages.Hyperlinks.Index
 
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::index](/app/app/Http/Controllers/HyperlinkController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace Create {
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::create](/app/app/Http/Controllers/HyperlinkController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Response = Inertia.Pages.Hyperlinks.Create
 
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::create](/app/app/Http/Controllers/HyperlinkController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace Show {
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::show](/app/app/Http/Controllers/HyperlinkController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Response = Inertia.Pages.Hyperlinks.Show
 
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::show](/app/app/Http/Controllers/HyperlinkController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace Edit {
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::edit](/app/app/Http/Controllers/HyperlinkController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Response = Inertia.Pages.Hyperlinks.Edit
 
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::edit](/app/app/Http/Controllers/HyperlinkController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
 
                 export namespace Store {
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::store](/app/app/Http/Controllers/HyperlinkController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Request = {    title: string;
                         url: string;
                         description?: string | null;
-                        category_id?: string | null;
+                        category?: string | null;
                         status: string;
                         tags?: unknown[] | null;
                         "tags.*"?: string;}
@@ -241,7 +241,7 @@ export namespace App {
 
                 export namespace Update {
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::update](/app/app/Http/Controllers/HyperlinkController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::update](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Request = {    title: string;
                         url: string;
@@ -254,63 +254,7 @@ export namespace App {
 
                 export namespace Destroy {
                     /**
-                     * @see [\App\Http\Controllers\HyperlinkController::destroy](/app/app/Http/Controllers/HyperlinkController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-            }
-
-            export namespace CategoryController {
-                export namespace Index {
-                    /**
-                     * @see [\App\Http\Controllers\CategoryController::index](/app/app/Http/Controllers/CategoryController.php)
-                     */
-                    export type Response = Inertia.Pages.Categories.Index
-
-                    /**
-                     * @see [\App\Http\Controllers\CategoryController::index](/app/app/Http/Controllers/CategoryController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Create {
-                    /**
-                     * @see [\App\Http\Controllers\CategoryController::create](/app/app/Http/Controllers/CategoryController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Store {
-                    /**
-                     * @see [\App\Http\Controllers\CategoryController::store](/app/app/Http/Controllers/CategoryController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Show {
-                    /**
-                     * @see [\App\Http\Controllers\CategoryController::show](/app/app/Http/Controllers/CategoryController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Edit {
-                    /**
-                     * @see [\App\Http\Controllers\CategoryController::edit](/app/app/Http/Controllers/CategoryController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Update {
-                    /**
-                     * @see [\App\Http\Controllers\CategoryController::update](/app/app/Http/Controllers/CategoryController.php)
-                     */
-                    export type Request = Record<string, unknown>
-                }
-
-                export namespace Destroy {
-                    /**
-                     * @see [\App\Http\Controllers\CategoryController::destroy](/app/app/Http/Controllers/CategoryController.php)
+                     * @see [\App\Http\Controllers\HyperlinkController::destroy](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
                      */
                     export type Request = Record<string, unknown>
                 }
@@ -320,19 +264,19 @@ export namespace App {
                 export namespace ProfileController {
                     export namespace Edit {
                         /**
-                         * @see [\App\Http\Controllers\Settings\ProfileController::edit](/app/app/Http/Controllers/Settings/ProfileController.php)
+                         * @see [\App\Http\Controllers\Settings\ProfileController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php)
                          */
                         export type Response = Inertia.Pages.Settings.Profile
 
                         /**
-                         * @see [\App\Http\Controllers\Settings\ProfileController::edit](/app/app/Http/Controllers/Settings/ProfileController.php)
+                         * @see [\App\Http\Controllers\Settings\ProfileController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
 
                     export namespace Update {
                         /**
-                         * @see [\App\Http\Controllers\Settings\ProfileController::update](/app/app/Http/Controllers/Settings/ProfileController.php)
+                         * @see [\App\Http\Controllers\Settings\ProfileController::update](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php)
                          */
                         export type Request = {    name: string;
                             email: string;}
@@ -340,7 +284,7 @@ export namespace App {
 
                     export namespace Destroy {
                         /**
-                         * @see [\App\Http\Controllers\Settings\ProfileController::destroy](/app/app/Http/Controllers/Settings/ProfileController.php)
+                         * @see [\App\Http\Controllers\Settings\ProfileController::destroy](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php)
                          */
                         export type Request = {    password: string;}
                     }
@@ -349,19 +293,19 @@ export namespace App {
                 export namespace PasswordController {
                     export namespace Edit {
                         /**
-                         * @see [\App\Http\Controllers\Settings\PasswordController::edit](/app/app/Http/Controllers/Settings/PasswordController.php)
+                         * @see [\App\Http\Controllers\Settings\PasswordController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\PasswordController.php)
                          */
                         export type Response = Inertia.Pages.Settings.Password
 
                         /**
-                         * @see [\App\Http\Controllers\Settings\PasswordController::edit](/app/app/Http/Controllers/Settings/PasswordController.php)
+                         * @see [\App\Http\Controllers\Settings\PasswordController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\PasswordController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
 
                     export namespace Update {
                         /**
-                         * @see [\App\Http\Controllers\Settings\PasswordController::update](/app/app/Http/Controllers/Settings/PasswordController.php)
+                         * @see [\App\Http\Controllers\Settings\PasswordController::update](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\PasswordController.php)
                          */
                         export type Request = {    current_password: string;
                             password: string;}
@@ -371,12 +315,12 @@ export namespace App {
                 export namespace TwoFactorAuthenticationController {
                     export namespace Show {
                         /**
-                         * @see [\App\Http\Controllers\Settings\TwoFactorAuthenticationController::show](/app/app/Http/Controllers/Settings/TwoFactorAuthenticationController.php)
+                         * @see [\App\Http\Controllers\Settings\TwoFactorAuthenticationController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php)
                          */
                         export type Response = Inertia.Pages.Settings.TwoFactor
 
                         /**
-                         * @see [\App\Http\Controllers\Settings\TwoFactorAuthenticationController::show](/app/app/Http/Controllers/Settings/TwoFactorAuthenticationController.php)
+                         * @see [\App\Http\Controllers\Settings\TwoFactorAuthenticationController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -387,7 +331,7 @@ export namespace App {
                 export namespace AuthController {
                     export namespace Login {
                         /**
-                         * @see [\App\Http\Controllers\Api\AuthController::login](/app/app/Http/Controllers/Api/AuthController.php)
+                         * @see [\App\Http\Controllers\Api\AuthController::login](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php)
                          */
                         export type Request = {    email: string;
                             password: string;
@@ -396,14 +340,14 @@ export namespace App {
 
                     export namespace Me {
                         /**
-                         * @see [\App\Http\Controllers\Api\AuthController::me](/app/app/Http/Controllers/Api/AuthController.php)
+                         * @see [\App\Http\Controllers\Api\AuthController::me](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
 
                     export namespace Logout {
                         /**
-                         * @see [\App\Http\Controllers\Api\AuthController::logout](/app/app/Http/Controllers/Api/AuthController.php)
+                         * @see [\App\Http\Controllers\Api\AuthController::logout](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\AuthController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -412,7 +356,7 @@ export namespace App {
                 export namespace ImageController {
                     export namespace Seasonal {
                         /**
-                         * @see [\App\Http\Controllers\Api\ImageController::seasonal](/app/app/Http/Controllers/Api/ImageController.php)
+                         * @see [\App\Http\Controllers\Api\ImageController::seasonal](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\ImageController.php)
                          */
                         export type Request = {    season?: string | null;
                             collection_id?: string;
@@ -423,7 +367,7 @@ export namespace App {
 
                     export namespace General {
                         /**
-                         * @see [\App\Http\Controllers\Api\ImageController::general](/app/app/Http/Controllers/Api/ImageController.php)
+                         * @see [\App\Http\Controllers\Api\ImageController::general](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Api\ImageController.php)
                          */
                         export type Request = {    collection_id?: string;
                             collections?: string;
@@ -439,7 +383,7 @@ export namespace App {
 export namespace Illuminate {
     export namespace Notifications {
         /**
-         * @see [\Illuminate\Notifications\DatabaseNotification](/app/vendor/laravel/framework/src/Illuminate/Notifications/DatabaseNotification.php)
+         * @see [\Illuminate\Notifications\DatabaseNotification](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Notifications\DatabaseNotification.php)
          */
         export type DatabaseNotification = { incrementing: boolean, notifiable?: Illuminate.Notifications.DatabaseNotification | null }
     }
@@ -448,7 +392,7 @@ export namespace Illuminate {
         export namespace RedirectController {
             export namespace __invoke {
                 /**
-                 * @see [\Illuminate\Routing\RedirectController::__invoke](/app/vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php)
+                 * @see [\Illuminate\Routing\RedirectController::__invoke](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\framework\src\Illuminate\Routing\RedirectController.php)
                  */
                 export type Request = Record<string, unknown>
             }
@@ -459,7 +403,7 @@ export namespace Illuminate {
 export namespace Laravel {
     export namespace Sanctum {
         /**
-         * @see [\Laravel\Sanctum\PersonalAccessToken](/app/vendor/laravel/sanctum/src/PersonalAccessToken.php)
+         * @see [\Laravel\Sanctum\PersonalAccessToken](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\PersonalAccessToken.php)
          */
         export type PersonalAccessToken = { tokenable?: Laravel.Sanctum.PersonalAccessToken | null }
 
@@ -468,7 +412,7 @@ export namespace Laravel {
                 export namespace CsrfCookieController {
                     export namespace Show {
                         /**
-                         * @see [\Laravel\Sanctum\Http\Controllers\CsrfCookieController::show](/app/vendor/laravel/sanctum/src/Http/Controllers/CsrfCookieController.php)
+                         * @see [\Laravel\Sanctum\Http\Controllers\CsrfCookieController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\sanctum\src\Http\Controllers\CsrfCookieController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -483,12 +427,12 @@ export namespace Laravel {
                 export namespace TwoFactorQrCodeController {
                     export namespace Show {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorQrCodeController::show](/app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorQrCodeController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorQrCodeController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorQrCodeController.php)
                          */
                         export type Response = Record<string, never>
 
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorQrCodeController::show](/app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorQrCodeController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorQrCodeController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorQrCodeController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -497,19 +441,19 @@ export namespace Laravel {
                 export namespace RecoveryCodeController {
                     export namespace Index {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\RecoveryCodeController::index](/app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\RecoveryCodeController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php)
                          */
                         export type Response = Record<string, never>
 
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\RecoveryCodeController::index](/app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\RecoveryCodeController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
 
                     export namespace Store {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\RecoveryCodeController::store](/app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\RecoveryCodeController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -518,7 +462,7 @@ export namespace Laravel {
                 export namespace AuthenticatedSessionController {
                     export namespace Store {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::store](/app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php)
                          */
                         export type Request = {    "": string;
                             password: string;}
@@ -526,14 +470,14 @@ export namespace Laravel {
 
                     export namespace Create {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::create](/app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
 
                     export namespace Destroy {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::destroy](/app/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::destroy](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\AuthenticatedSessionController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -542,14 +486,14 @@ export namespace Laravel {
                 export namespace PasswordResetLinkController {
                     export namespace Store {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\PasswordResetLinkController::store](/app/vendor/laravel/fortify/src/Http/Controllers/PasswordResetLinkController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\PasswordResetLinkController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\PasswordResetLinkController.php)
                          */
                         export type Request = {    "": string;}
                     }
 
                     export namespace Create {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\PasswordResetLinkController::create](/app/vendor/laravel/fortify/src/Http/Controllers/PasswordResetLinkController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\PasswordResetLinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\PasswordResetLinkController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -558,7 +502,7 @@ export namespace Laravel {
                 export namespace NewPasswordController {
                     export namespace Store {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\NewPasswordController::store](/app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\NewPasswordController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php)
                          */
                         export type Request = {    token: string;
                             "": string;
@@ -567,7 +511,7 @@ export namespace Laravel {
 
                     export namespace Create {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\NewPasswordController::create](/app/vendor/laravel/fortify/src/Http/Controllers/NewPasswordController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\NewPasswordController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\NewPasswordController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -576,7 +520,7 @@ export namespace Laravel {
                 export namespace TwoFactorAuthenticatedSessionController {
                     export namespace Create {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::create](/app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php)
                          */
                         export type Request = {    code?: string | null;
                             recovery_code?: string | null;}
@@ -584,7 +528,7 @@ export namespace Laravel {
 
                     export namespace Store {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::store](/app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticatedSessionController.php)
                          */
                         export type Request = {    code?: string | null;
                             recovery_code?: string | null;}
@@ -594,14 +538,14 @@ export namespace Laravel {
                 export namespace RegisteredUserController {
                     export namespace Create {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\RegisteredUserController::create](/app/vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\RegisteredUserController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
 
                     export namespace Store {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\RegisteredUserController::store](/app/vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\RegisteredUserController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -610,7 +554,7 @@ export namespace Laravel {
                 export namespace EmailVerificationPromptController {
                     export namespace __invoke {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\EmailVerificationPromptController::__invoke](/app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationPromptController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\EmailVerificationPromptController::__invoke](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationPromptController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -619,7 +563,7 @@ export namespace Laravel {
                 export namespace VerifyEmailController {
                     export namespace __invoke {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke](/app/vendor/laravel/fortify/src/Http/Controllers/VerifyEmailController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\VerifyEmailController::__invoke](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\VerifyEmailController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -628,7 +572,7 @@ export namespace Laravel {
                 export namespace EmailVerificationNotificationController {
                     export namespace Store {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store](/app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationNotificationController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -637,14 +581,14 @@ export namespace Laravel {
                 export namespace ConfirmablePasswordController {
                     export namespace Show {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::show](/app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
 
                     export namespace Store {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::store](/app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -653,7 +597,7 @@ export namespace Laravel {
                 export namespace ConfirmedPasswordStatusController {
                     export namespace Show {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\ConfirmedPasswordStatusController::show](/app/vendor/laravel/fortify/src/Http/Controllers/ConfirmedPasswordStatusController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\ConfirmedPasswordStatusController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmedPasswordStatusController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -662,14 +606,14 @@ export namespace Laravel {
                 export namespace TwoFactorAuthenticationController {
                     export namespace Store {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::store](/app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
 
                     export namespace Destroy {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::destroy](/app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::destroy](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorAuthenticationController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -678,7 +622,7 @@ export namespace Laravel {
                 export namespace ConfirmedTwoFactorAuthenticationController {
                     export namespace Store {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\ConfirmedTwoFactorAuthenticationController::store](/app/vendor/laravel/fortify/src/Http/Controllers/ConfirmedTwoFactorAuthenticationController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\ConfirmedTwoFactorAuthenticationController::store](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmedTwoFactorAuthenticationController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -687,7 +631,7 @@ export namespace Laravel {
                 export namespace TwoFactorSecretKeyController {
                     export namespace Show {
                         /**
-                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorSecretKeyController::show](/app/vendor/laravel/fortify/src/Http/Controllers/TwoFactorSecretKeyController.php)
+                         * @see [\Laravel\Fortify\Http\Controllers\TwoFactorSecretKeyController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\TwoFactorSecretKeyController.php)
                          */
                         export type Request = Record<string, unknown>
                     }
@@ -698,80 +642,128 @@ export namespace Laravel {
 }
 
 export namespace Inertia {
-    export type SharedData = {auth: {user: App.Models.User | null }, sidebarOpen: boolean }
+    export type SharedData = {auth: {user: App.Models.User | null }, sidebarOpen: boolean, categories: unknown }
 
     export namespace Pages {
         /**
-         * @see [\App\Http\Controllers\PageController::index](/app/app/Http/Controllers/PageController.php)
+         * @see [\App\Http\Controllers\PageController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\PageController.php)
          */
         export type Welcome = Inertia.SharedData & { hyperlinks: unknown, canRegister: true }
 
         export namespace Apps {
             /**
-             * @see [\App\Http\Controllers\AppController::index](/app/app/Http/Controllers/AppController.php)
+             * @see [\App\Http\Controllers\AppController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
              */
             export type Index = Inertia.SharedData & { apps: unknown }
 
             /**
-             * @see [\App\Http\Controllers\AppController::create](/app/app/Http/Controllers/AppController.php)
+             * @see [\App\Http\Controllers\AppController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
              */
             export type Create = Inertia.SharedData
 
             /**
-             * @see [\App\Http\Controllers\AppController::show](/app/app/Http/Controllers/AppController.php)
+             * @see [\App\Http\Controllers\AppController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
              */
             export type Show = Inertia.SharedData & { app: App.Models.App }
 
             /**
-             * @see [\App\Http\Controllers\AppController::edit](/app/app/Http/Controllers/AppController.php)
+             * @see [\App\Http\Controllers\AppController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\AppController.php)
              */
             export type Edit = Inertia.SharedData & { app: App.Models.App }
         }
 
         export namespace Hyperlinks {
             /**
-             * @see [\App\Http\Controllers\HyperlinkController::index](/app/app/Http/Controllers/HyperlinkController.php)
+             * @see [\App\Http\Controllers\HyperlinkController::index](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
             export type Index = Inertia.SharedData & { hyperlinks: Illuminate.Pagination.LengthAwarePaginator }
 
             /**
-             * @see [\App\Http\Controllers\HyperlinkController::create](/app/app/Http/Controllers/HyperlinkController.php)
+             * @see [\App\Http\Controllers\HyperlinkController::create](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
             export type Create = Inertia.SharedData & { categories: unknown, tags: unknown }
 
             /**
-             * @see [\App\Http\Controllers\HyperlinkController::show](/app/app/Http/Controllers/HyperlinkController.php)
+             * @see [\App\Http\Controllers\HyperlinkController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
             export type Show = Inertia.SharedData & { hyperlink: App.Models.Hyperlink }
 
             /**
-             * @see [\App\Http\Controllers\HyperlinkController::edit](/app/app/Http/Controllers/HyperlinkController.php)
+             * @see [\App\Http\Controllers\HyperlinkController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\HyperlinkController.php)
              */
             export type Edit = Inertia.SharedData & { hyperlink: App.Models.Hyperlink, categories: unknown, tags: unknown }
         }
 
-        export namespace Categories {
-            /**
-             * @see [\App\Http\Controllers\CategoryController::index](/app/app/Http/Controllers/CategoryController.php)
-             */
-            export type Index = Inertia.SharedData & { categories: Illuminate.Pagination.LengthAwarePaginator }
-        }
-
         export namespace Settings {
             /**
-             * @see [\App\Http\Controllers\Settings\ProfileController::edit](/app/app/Http/Controllers/Settings/ProfileController.php)
+             * @see [\App\Http\Controllers\Settings\ProfileController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\ProfileController.php)
              */
             export type Profile = Inertia.SharedData & { mustVerifyEmail: boolean, status: unknown }
 
             /**
-             * @see [\App\Http\Controllers\Settings\PasswordController::edit](/app/app/Http/Controllers/Settings/PasswordController.php)
+             * @see [\App\Http\Controllers\Settings\PasswordController::edit](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\PasswordController.php)
              */
             export type Password = Inertia.SharedData
 
             /**
-             * @see [\App\Http\Controllers\Settings\TwoFactorAuthenticationController::show](/app/app/Http/Controllers/Settings/TwoFactorAuthenticationController.php)
+             * @see [\App\Http\Controllers\Settings\TwoFactorAuthenticationController::show](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\app\Http\Controllers\Settings\TwoFactorAuthenticationController.php)
              */
             export type TwoFactor = Inertia.SharedData & { twoFactorEnabled: unknown, requiresConfirmation: boolean }
+        }
+    }
+}
+
+export namespace Fruitcake {
+    export namespace LaravelDebugbar {
+        export namespace Controllers {
+            export namespace OpenHandlerController {
+                export namespace Handle {
+                    /**
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\OpenHandlerController::handle](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php)
+                     */
+                    export type Request = {    op?: string | null;}
+                }
+
+                export namespace Clockwork {
+                    /**
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\OpenHandlerController::clockwork](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\OpenHandlerController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+            }
+
+            export namespace CacheController {
+                export namespace Delete {
+                    /**
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\CacheController::delete](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\CacheController.php)
+                     */
+                    export type Request = {    tags?: unknown[];
+                        "tags.*"?: string;}
+                }
+            }
+
+            export namespace QueriesController {
+                export namespace Explain {
+                    /**
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\QueriesController::explain](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\QueriesController.php)
+                     */
+                    export type Request = {    connection: string;
+                        query: string;
+                        bindings?: unknown[] | null;
+                        hash: string;
+                        mode?: "explain" | "visual" | "result" | null;
+                        format?: string | null;}
+                }
+            }
+
+            export namespace AssetController {
+                export namespace GetAssets {
+                    /**
+                     * @see [\Fruitcake\LaravelDebugbar\Controllers\AssetController::getAssets](\C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\barryvdh\laravel-debugbar\src\Controllers\AssetController.php)
+                     */
+                    export type Request = {    type: "js" | "css";}
+                }
+            }
         }
     }
 }
@@ -779,7 +771,7 @@ export namespace Inertia {
 export namespace Closure {
     export namespace __invoke {
         /**
-         * @see [\Closure::__invoke](/app/routes/api.php)
+         * @see [\Closure::__invoke](\[serialized-closure])
          */
         export type Request = Record<string, unknown>
     }
