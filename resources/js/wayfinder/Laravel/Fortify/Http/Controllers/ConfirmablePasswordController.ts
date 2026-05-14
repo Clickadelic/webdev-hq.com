@@ -5,7 +5,7 @@ import { formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefin
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:40
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
  * @route "/user/confirm-password"
  */
 export const show = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -20,7 +20,7 @@ show.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:40
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
  * @route "/user/confirm-password"
  */
 show.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ show.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:40
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
  * @route "/user/confirm-password"
  */
 show.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -39,7 +39,7 @@ show.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:40
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
  * @route "/user/confirm-password"
  */
 show.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -51,7 +51,7 @@ show.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:40
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
  * @route "/user/confirm-password"
  */
 const showForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -61,7 +61,7 @@ const showForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:40
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
  * @route "/user/confirm-password"
  */
 showForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -71,7 +71,7 @@ showForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::show
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:40
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
  * @route "/user/confirm-password"
  */
 showForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -84,7 +84,7 @@ showForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 show.form = showForm
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:51
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:51
  * @route "/user/confirm-password"
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -99,7 +99,7 @@ store.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:51
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:51
  * @route "/user/confirm-password"
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -108,7 +108,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:51
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:51
  * @route "/user/confirm-password"
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -120,7 +120,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:51
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:51
  * @route "/user/confirm-password"
  */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -130,7 +130,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\ConfirmablePasswordController.php:51
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:51
  * @route "/user/confirm-password"
  */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({

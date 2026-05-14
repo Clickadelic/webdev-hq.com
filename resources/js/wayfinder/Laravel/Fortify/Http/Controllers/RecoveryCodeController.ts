@@ -5,7 +5,7 @@ import { formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefin
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:19
  * @route "/user/two-factor-recovery-codes"
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -20,7 +20,7 @@ index.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:19
  * @route "/user/two-factor-recovery-codes"
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:19
  * @route "/user/two-factor-recovery-codes"
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -39,7 +39,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:19
  * @route "/user/two-factor-recovery-codes"
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -51,7 +51,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:19
  * @route "/user/two-factor-recovery-codes"
  */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -61,7 +61,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => (
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:19
  * @route "/user/two-factor-recovery-codes"
  */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -71,7 +71,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::index
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:19
  * @route "/user/two-factor-recovery-codes"
  */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -84,7 +84,7 @@ indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 index.form = indexForm
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:38
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:38
  * @route "/user/two-factor-recovery-codes"
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -99,7 +99,7 @@ store.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:38
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:38
  * @route "/user/two-factor-recovery-codes"
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -108,7 +108,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:38
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:38
  * @route "/user/two-factor-recovery-codes"
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -120,7 +120,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:38
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:38
  * @route "/user/two-factor-recovery-codes"
  */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -130,7 +130,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\RecoveryCodeController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\RecoveryCodeController.php:38
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/RecoveryCodeController.php:38
  * @route "/user/two-factor-recovery-codes"
  */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({

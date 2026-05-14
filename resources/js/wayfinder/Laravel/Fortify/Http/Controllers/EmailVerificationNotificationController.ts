@@ -5,7 +5,7 @@ import { queryParams, type RouteDefinition, type RouteFormDefinition, type Route
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationNotificationController.php:19
  * @route "/email/verification-notification"
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -20,7 +20,7 @@ store.definition = {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationNotificationController.php:19
  * @route "/email/verification-notification"
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -29,7 +29,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationNotificationController.php:19
  * @route "/email/verification-notification"
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
@@ -41,7 +41,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationNotificationController.php:19
  * @route "/email/verification-notification"
  */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
@@ -51,7 +51,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => 
 
 /**
  * @see \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController::store
- * @see \C:\Users\Clickadelic\dev-station\webdev-hq.com\webdev-hq.com\vendor\laravel\fortify\src\Http\Controllers\EmailVerificationNotificationController.php:19
+ * @see /app/vendor/laravel/fortify/src/Http/Controllers/EmailVerificationNotificationController.php:19
  * @route "/email/verification-notification"
  */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
