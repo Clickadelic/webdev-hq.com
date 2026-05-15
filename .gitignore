@@ -8,7 +8,7 @@
 /public/storage
 
 # Wayfinder generated files (auto-generated on each build)
-/resources/js/wayfinder
+# Note: wayfinder directory is committed to ensure builds work without PHP locally
 /resources/js/actions
 /resources/js/routes
 
