@@ -1,6 +1,7 @@
 import { wayfinder } from '@laravel/vite-plugin-wayfinder';
+import babel from '@rolldown/plugin-babel';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
 import path from 'path';
 import { defineConfig } from 'vite';
@@ -12,11 +13,10 @@ export default defineConfig({
             ssr: 'resources/js/ssr.tsx',
             refresh: true,
         }),
-        react({
-            babel: {
-                plugins: ['babel-plugin-react-compiler'],
-            },
+        babel({
+            presets: [reactCompilerPreset()],
         }),
+        react(),
         tailwindcss(),
         wayfinder(),
     ],
@@ -27,7 +27,7 @@ export default defineConfig({
         ],
     },
     build: {
-        rollupOptions: {
+        rolldownOptions: {
             watch: {
                 exclude: [
                     'resources/js/wayfinder/**',
