@@ -27,7 +27,7 @@ RUN composer install \
 
 # Install Node dependencies
 COPY package.json package-lock.json ./
-RUN npm ci --ignore-scripts
+RUN npm ci --ignore-scripts --legacy-peer-deps
 
 # Copy full source and build frontend assets
 COPY . .
