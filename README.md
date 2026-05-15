@@ -108,4 +108,7 @@ Responses are cached for 24 hours per season/collection combination.
 php artisan test
 ```
 
-## Test
+## Wayfinder alias
+Da Wayfinder voraussichtlich oft gebraucht wird, lohnt es sich, einen Alias in deiner .zshrc in WSL anzulegen:
+alias pa="docker exec -it webdevhq-app php artisan"
+Dann einfach "pa wayfinder:generate" tippen um routen zu generieren.
