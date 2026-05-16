@@ -19,22 +19,22 @@ class PageController extends Controller
 	}
 	public function legalNotice()
 	{
-		return Inertia('legal-notice');
+		return Inertia::render('legal-notice');
 	}
 	public function disclaimer()
 	{
-		return Inertia('disclaimer');
+		return Inertia::render('disclaimer');
 	}
 	public function cookiePolicy()
 	{
-		return Inertia('cookie-policy');
+		return Inertia::render('cookie-policy');
 	}
 	public function privatePolicy()
 	{
-		return Inertia('privacy-policy');
+		return Inertia::render('privacy-policy');
 	}
 	public function termsOfService()
 	{
-		return Inertia('terms-of-service');
+		return Inertia::render('terms-of-service');
 	}
 }
