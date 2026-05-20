@@ -10,7 +10,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard, home } from '@/routes';
+import { dashboard, welcome } from '@/routes';
 import { Link } from '@inertiajs/react';
 import {
     BookOpen,
@@ -28,7 +28,7 @@ import { type NavItem } from '@/types';
 const mainNavItems: NavItem[] = [
     {
         title: 'Home',
-        href: home(),
+        href: welcome(),
         icon: Home,
     },
     {
@@ -68,7 +68,7 @@ export function AppSidebar() {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href={home()} prefetch>
+                            <Link href={welcome()} prefetch>
                                 <AppLogo />
                             </Link>
                         </SidebarMenuButton>
