@@ -14,10 +14,9 @@ export default function AuthSimpleLayout({
     description,
 }: PropsWithChildren<AuthLayoutProps>) {
     // Use API JSON mode and preload the image to avoid first-paint flicker.
-    const apiBase = import.meta.env.APP_URL;
     const today = new Date().toISOString().slice(0, 10);
-    const jsonUrl = `${apiBase}/api/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&response=json&d=${encodeURIComponent(today)}`;
-    const redirectUrl = `${apiBase}/api/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&d=${encodeURIComponent(today)}`;
+    const jsonUrl = `/api/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&response=json&d=${encodeURIComponent(today)}`;
+    const redirectUrl = `/api/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&d=${encodeURIComponent(today)}`;
     const [bgUrl, setBgUrl] = useState<string | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [attribution, setAttribution] = useState<{
@@ -46,10 +45,11 @@ export default function AuthSimpleLayout({
                 });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
+                const photo = data?.data; // Photo data is under 'data' key
 
                 // Set blurred low-res preview immediately if available
-                const low = (data?.photo?.urls?.small ??
-                    data?.photo?.urls?.thumb) as string | undefined;
+                const low = (photo?.urls?.small ??
+                    photo?.urls?.thumb) as string | undefined;
                 if (low && !canceled) {
                     const sepLow = low.includes('?') ? '&' : '?';
                     setPreviewUrl(
@@ -58,18 +58,19 @@ export default function AuthSimpleLayout({
                 }
 
                 // Extract Unsplash attribution
-                const authorName = data?.photo?.user?.name as
+                const authorName = photo?.user?.name as
                     | string
                     | undefined;
-                const authorUrl = data?.photo?.user?.links?.html as
+                const authorUrl = photo?.user?.links?.html as
                     | string
                     | undefined;
-                const photoUrl = data?.photo?.links?.html as string | undefined;
+                const photoUrl = photo?.links?.html as string | undefined;
                 if (authorName && authorUrl && photoUrl && !canceled) {
                     setAttribution({ authorName, authorUrl, photoUrl });
                 }
 
-                let url: string = data?.url ?? redirectUrl;
+                // Use full-size URL from photo data
+                let url: string = photo?.urls?.full ?? photo?.urls?.regular ?? redirectUrl;
                 const sep = url.includes('?') ? '&' : '?';
                 url = `${url}${sep}d=${encodeURIComponent(today)}`;
                 await preload(url);

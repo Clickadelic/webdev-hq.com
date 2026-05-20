@@ -59,6 +59,46 @@ class UnsplashImageService
     }
 
     /**
+     * Pick a random photo (no collection filter). Optionally cache.
+     * Uses Unsplash search query for seasonal relevance.
+     */
+    public function getRandomPhoto(array $filters = [], ?string $cacheKey = null, int $ttlSeconds = 0): array
+    {
+        $this->initializeClient();
+
+        $doFetch = function () use ($filters): array {
+            $filters = array_filter($filters, static fn ($v) => $v !== null && $v !== '');
+
+            $photo = UnsplashPhoto::random($filters);
+            $photoArr = $photo->toArray();
+
+            return [
+                'id' => Arr::get($photoArr, 'id'),
+                'description' => Arr::get($photoArr, 'description'),
+                'alt_description' => Arr::get($photoArr, 'alt_description'),
+                'width' => Arr::get($photoArr, 'width'),
+                'height' => Arr::get($photoArr, 'height'),
+                'color' => Arr::get($photoArr, 'color'),
+                'blur_hash' => Arr::get($photoArr, 'blur_hash'),
+                'created_at' => Arr::get($photoArr, 'created_at'),
+                'urls' => Arr::only(Arr::get($photoArr, 'urls', []), ['raw', 'full', 'regular', 'small', 'thumb']),
+                'links' => Arr::get($photoArr, 'links', []),
+                'user' => [
+                    'name' => Arr::get($photoArr, 'user.name'),
+                    'username' => Arr::get($photoArr, 'user.username'),
+                    'links' => Arr::get($photoArr, 'user.links', []),
+                ],
+            ];
+        };
+
+        if ($cacheKey && $ttlSeconds > 0) {
+            return Cache::remember($cacheKey, $ttlSeconds, $doFetch);
+        }
+
+        return $doFetch();
+    }
+
+    /**
      * Pick a random photo across the given collections. Optionally cache (e.g. for daily strategy).
      * Returns formatted photo array (same shape as formatPhoto) without collection_id.
      */
