@@ -106,6 +106,49 @@ return [
 
         'ensure_pages_exist' => true,
 
+        'page_paths' => [
+
+            resource_path('js/pages'),
+
+        ],
+
+        'page_extensions' => [
+
+            'js',
+            'jsx',
+            'svelte',
+            'ts',
+            'tsx',
+            'vue',
+
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Page Paths (Legacy)
+    |--------------------------------------------------------------------------
+    |
+    | These are required by the Inertia service provider for view finding.
+    |
+    */
+
+    'page_paths' => [
+
+        resource_path('js/pages'),
+
+    ],
+
+    'page_extensions' => [
+
+        'js',
+        'jsx',
+        'svelte',
+        'ts',
+        'tsx',
+        'vue',
+
     ],
 
     /*
@@ -138,5 +181,18 @@ return [
         'encrypt' => (bool) env('INERTIA_ENCRYPT_HISTORY', false),
 
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Initial Page Format
+    |--------------------------------------------------------------------------
+    |
+    | When enabled, the initial page data is rendered as a script element
+    | instead of a data-page attribute on the root div. Required for
+    | @inertiajs/react v3+.
+    |
+    */
+
+    'use_script_element_for_initial_page' => true,
 
 ];
