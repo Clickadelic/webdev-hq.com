@@ -74,28 +74,36 @@ class ImageController extends Controller
 			// Get collection IDs from request or fall back to season default
 			$collectionIds = $validated['collection_ids'] ?? [];
 
+			$useCollections = true;
 			if (blank($collectionIds)) {
 				$collectionId = $season->collectionId();
 
 				if (blank($collectionId)) {
-					return response()->json([
-						'message' => "No collection ID configured for season: {$season->value}",
-					], 422);
+					// No collection configured - fall back to random photo without collection filter
+					$useCollections = false;
+				} else {
+					$collectionIds = [$collectionId];
 				}
-
-				$collectionIds = [$collectionId];
 			}
 
-			// Cache key based on season and collection IDs
-			$cacheKey = "unsplash:seasonal:{$season->value}:" . md5(implode(',', $collectionIds));
+			// Cache key based on season and collection IDs (or 'random' fallback)
+			$cacheKey = $useCollections
+				? "unsplash:seasonal:{$season->value}:" . md5(implode(',', $collectionIds))
+				: "unsplash:seasonal:{$season->value}:random";
 			$ttlSeconds = 24 * 60 * 60; // 24 hours
 
-			$image = $unsplashImageService->getRandomPhotoFromCollections(
-				$collectionIds,
-				[],
-				$cacheKey,
-				$ttlSeconds
-			);
+			$image = $useCollections
+				? $unsplashImageService->getRandomPhotoFromCollections(
+					$collectionIds,
+					[],
+					$cacheKey,
+					$ttlSeconds
+				)
+				: $unsplashImageService->getRandomPhoto(
+					['query' => $season->value],
+					$cacheKey,
+					$ttlSeconds
+				);
 
 			return response()->json([
 				'data' => $image,
