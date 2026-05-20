@@ -94,7 +94,7 @@ export default function AuthSimpleLayout({
     }, [jsonUrl, redirectUrl, today]);
 
     return (
-        <div className="relative z-0 flex min-h-svh flex-col items-center justify-center gap-6 overflow-hidden bg-background p-6 md:p-10">
+        <div className="relative z-0 flex min-h-svh flex-col items-center justify-center gap-6 overflow-hidden bg-neutral-200 p-6 md:p-10">
             {/* Blurred low-res background layer */}
             <div
                 aria-hidden
@@ -125,15 +125,15 @@ export default function AuthSimpleLayout({
                 }}
             />
             <div className="w-full max-w-sm">
-                <div className="rounded-xl bg-white/30 p-2 dark:bg-neutral-900/30">
-                    <div className="flex flex-col gap-8 rounded-md bg-neutral-100 p-8 dark:bg-neutral-900">
+                <div className="dark:bg-neutral rounded-xl bg-white/30 p-2 shadow-lg">
+                    <div className="flex flex-col gap-8 rounded-md bg-white p-8 dark:bg-neutral-900">
                         <div className="flex flex-col items-center gap-4">
                             <Link
                                 href={home()}
                                 className="flex flex-col items-center gap-2 font-medium"
                             >
                                 <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-md">
-                                    <AppLogoIcon className="size-9 fill-current text-[var(--foreground)] dark:text-white" />
+                                    <AppLogoIcon className="size-9 fill-current text-(--foreground) dark:text-white" />
                                 </div>
                                 <span className="sr-only">{title}</span>
                             </Link>
