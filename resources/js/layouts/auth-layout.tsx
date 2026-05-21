@@ -1,7 +1,6 @@
-import AppLogoIcon from '@/components/app-logo-icon';
-import { welcome } from '@/routes';
-import { Link } from '@inertiajs/react';
+import AppLogo from '@/components/app-logo';
 import { type PropsWithChildren, useEffect, useState } from 'react';
+
 interface AuthLayoutProps {
     name?: string;
     title?: string;
@@ -48,8 +47,9 @@ export default function AuthSimpleLayout({
                 const photo = data?.data; // Photo data is under 'data' key
 
                 // Set blurred low-res preview immediately if available
-                const low = (photo?.urls?.small ??
-                    photo?.urls?.thumb) as string | undefined;
+                const low = (photo?.urls?.small ?? photo?.urls?.thumb) as
+                    | string
+                    | undefined;
                 if (low && !canceled) {
                     const sepLow = low.includes('?') ? '&' : '?';
                     setPreviewUrl(
@@ -58,9 +58,7 @@ export default function AuthSimpleLayout({
                 }
 
                 // Extract Unsplash attribution
-                const authorName = photo?.user?.name as
-                    | string
-                    | undefined;
+                const authorName = photo?.user?.name as string | undefined;
                 const authorUrl = photo?.user?.links?.html as
                     | string
                     | undefined;
@@ -70,7 +68,8 @@ export default function AuthSimpleLayout({
                 }
 
                 // Use full-size URL from photo data
-                let url: string = photo?.urls?.full ?? photo?.urls?.regular ?? redirectUrl;
+                let url: string =
+                    photo?.urls?.full ?? photo?.urls?.regular ?? redirectUrl;
                 const sep = url.includes('?') ? '&' : '?';
                 url = `${url}${sep}d=${encodeURIComponent(today)}`;
                 await preload(url);
@@ -95,7 +94,7 @@ export default function AuthSimpleLayout({
     }, [jsonUrl, redirectUrl, today]);
 
     return (
-        <div className="relative z-0 flex min-h-svh flex-col items-center justify-center gap-6 overflow-hidden bg-neutral-200 p-6 md:p-10">
+        <div className="relative z-0 flex min-h-svh flex-col items-center justify-center gap-6 overflow-hidden bg-neutral-200 p-6 md:p-10 dark:bg-neutral-900">
             {/* Blurred low-res background layer */}
             <div
                 aria-hidden
@@ -129,15 +128,10 @@ export default function AuthSimpleLayout({
                 <div className="dark:bg-neutral rounded-xl bg-white/30 p-2 shadow-lg">
                     <div className="flex flex-col gap-8 rounded-md bg-white p-8 dark:bg-neutral-900">
                         <div className="flex flex-col items-center gap-4">
-                            <Link
-                                href={welcome()}
-                                className="flex flex-col items-center gap-2 font-medium"
-                            >
-                                <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-md">
-                                    <AppLogoIcon className="size-9 fill-current text-(--foreground) dark:text-white" />
-                                </div>
-                                <span className="sr-only">{title}</span>
-                            </Link>
+                            <div className="mb-1 flex items-center justify-center">
+                                <AppLogo className="p-2" />
+                            </div>
+                            <span className="sr-only">{title}</span>
 
                             <div className="space-y-2 text-center">
                                 <h1 className="text-xl font-medium">{title}</h1>
