@@ -129,7 +129,10 @@ export default function AuthSimpleLayout({
                     <div className="flex flex-col gap-8 rounded-md bg-white p-8 dark:bg-neutral-900">
                         <div className="flex flex-col items-center gap-4">
                             <div className="mb-1 flex items-center justify-center">
-                                <AppLogo className="p-2" />
+                                <AppLogo
+                                    className="p-2"
+                                    logoClassName="size-8"
+                                />
                             </div>
                             <span className="sr-only">{title}</span>
 
