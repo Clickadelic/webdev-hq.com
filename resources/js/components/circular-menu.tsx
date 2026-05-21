@@ -1,10 +1,4 @@
 import HyperlinkForm from '@/components/forms/hyperlink-form';
-import { useState } from 'react';
-import * as z from 'zod';
-
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-
 import {
     Dialog,
     DialogContent,
@@ -13,6 +7,12 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
+import { type SharedData } from '@/types';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { usePage } from '@inertiajs/react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 
 import { HyperlinkSchema } from '@/schemas';
 import { Link, Link as LinkIcon } from 'lucide-react';
@@ -33,6 +33,7 @@ import { cn } from '@/lib/utils';
  * It contains buttons to create a new recipe and to view all ingredients.
  */
 export function CircularMenu() {
+    const { auth } = usePage<SharedData>().props;
     // States
     const [showCircularMenu, setShowCircularMenu] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -67,6 +68,10 @@ export function CircularMenu() {
     const onAddSubmit = (values: z.infer<typeof HyperlinkSchema>) => {
         alert('Yo');
     };
+
+    if (!auth.user) {
+        return null;
+    }
     return (
         <div className="fixed right-4 bottom-4 z-20 max-w-12 md:right-8 md:bottom-8 lg:right-12 lg:bottom-12">
             <div
