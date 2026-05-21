@@ -1,16 +1,23 @@
 import AppLogoIcon from './app-logo-icon';
 
+import { cn } from '@/lib/utils';
 import { Link } from '@inertiajs/react';
 
-export default function AppLogo() {
+interface AppLogoProps {
+    className?: string;
+}
+export default function AppLogo({ className }: AppLogoProps) {
     return (
         <Link href="/" prefetch>
-            <div className="flex items-center" id="logo" title="WebDev HQ">
-                <div className="flex aspect-square size-8 items-center justify-center">
-                    <AppLogoIcon className="size-6" />
-                </div>
+            <div
+                className={cn('mr-4 flex items-center', className)}
+                id="logo"
+                title="WebDev HQ"
+            >
+                <AppLogoIcon className="mr-2 size-8 fill-current" />
+
                 <div className="ml-1 grid flex-1 text-left text-sm">
-                    <h1 className="my-3 max-w-[180px] text-2xl">
+                    <h1 className="my-3 max-w-45 text-2xl">
                         <div
                             className="flex font-light hover:text-neutral-500"
                             id="logo-text"
