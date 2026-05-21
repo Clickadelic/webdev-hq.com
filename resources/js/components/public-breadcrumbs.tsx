@@ -1,6 +1,10 @@
+import { cn } from '@/lib/utils';
 import { Link, usePage } from '@inertiajs/react';
 import { ChevronRight } from 'lucide-react'; // ShadCN Icons
 import { RiHomeLine } from 'react-icons/ri';
+interface BreadCrumbProps {
+    className?: string;
+}
 
 /**
  * BreadcrumbNav component.
@@ -14,7 +18,7 @@ import { RiHomeLine } from 'react-icons/ri';
  *
  * @returns {JSX.Element} The breadcrumb navigation component.
  */
-const PublicBreadcrumbs = () => {
+const PublicBreadcrumbs = ({ className }: BreadCrumbProps) => {
     const { url } = usePage(); // aktueller Pfad z.B. /gerichte/1/edit
 
     // Auf der Startseite nichts anzeigen
@@ -34,7 +38,7 @@ const PublicBreadcrumbs = () => {
     });
 
     return (
-        <div className="container mx-auto w-full px-2 md:px-0">
+        <div className={cn('container mx-auto w-full px-2 md:px-0', className)}>
             <ul className="flex items-center gap-2 border-b border-neutral-200 pb-3 text-sm text-neutral-600 dark:border-neutral-700 dark:text-neutral-200">
                 {/* Home */}
                 <li>

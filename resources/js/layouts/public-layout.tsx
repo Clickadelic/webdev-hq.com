@@ -29,7 +29,7 @@ export default function PublicLayout({
             <Head title={title} />
             <div className="grid min-h-svh grid-rows-[auto_auto_1fr_auto] bg-[url('/images/bg-noise.png')] bg-cover">
                 <PublicHeader canRegister={canRegister} />
-                <PublicBreadcrumbs />
+                <PublicBreadcrumbs className="mb-3 border-b border-neutral-300" />
                 <div className="container mx-auto">{children}</div>
                 <Toaster />
                 <CircularMenu />
