@@ -1,21 +1,20 @@
 <?php
 
-use App\Models\App as AppModel;
-use Illuminate\Support\Facades\Auth;
-// use Laravel\Fortify\Features;
-
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        $apps = AppModel::query()
-            ->where('created_by', Auth::id())
-            ->orderBy('position', 'asc')
-            ->get();
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactSubmissionMail;
 
-        return Inertia::render('dashboard', [
-            'apps' => $apps,
-        ]);
-    })->name('dashboard');
+// use App\Models\ContactSubmission;
+// use App\Http\Requests\StoreContactSubmissionRequest;
+
+Route::get('/emails/templates/contact-submissions/trigger', function () {
+	Mail::to(config('mail.from.address'))
+		->queue(new ContactSubmissionMail());
+	return response()->json("OK", 200);
+});
+
+Route::get('/emails/templates/contact-submissions/preview', function () {
+	$mail = new ContactSubmissionMail();
+	return $mail->render();
 });
