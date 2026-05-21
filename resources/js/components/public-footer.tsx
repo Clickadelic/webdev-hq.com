@@ -9,7 +9,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
     return (
         <div
             className={cn(
-                'w-full border-t-2 border-neutral-200 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-700',
+                'w-full bg-white shadow dark:bg-neutral-900',
                 className,
             )}
         >
