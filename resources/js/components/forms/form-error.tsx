@@ -1,0 +1,15 @@
+import { BsExclamationCircle } from 'react-icons/bs';
+interface FormErrorProps {
+    message?: string;
+}
+
+export const FormError = ({ message }: FormErrorProps) => {
+    if (!message) return null;
+
+    return (
+        <div className="flex items-center gap-x-2 rounded bg-destructive/15 p-2 text-sm text-destructive">
+            <BsExclamationCircle className="size-4" />
+            <p>{message}</p>
+        </div>
+    );
+};

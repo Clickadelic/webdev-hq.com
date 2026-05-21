@@ -17,16 +17,14 @@ export default function Welcome({
                     <input
                         type="text"
                         placeholder="Search for a resource"
-                        className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none sm:text-sm"
+                        className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-primary focus:ring-primary focus:outline-none sm:text-sm"
                     />
                 </form>
             </div>
             {hyperlinks.length === 0 && (
-                <div className="my-3 rounded-lg border border-amber-400 bg-white/30 p-1 backdrop-blur">
-                    <h2 className="text-center font-medium">
-                        Keine Hyperlinks gefunden
-                    </h2>
-                </div>
+                <h2 className="my-12 text-center font-medium">
+                    Keine Hyperlinks gefunden
+                </h2>
             )}
         </PublicLayout>
     );

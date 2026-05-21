@@ -69,8 +69,8 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                 </div>
                 <div className="cursor-default text-center text-sm text-neutral-600 dark:text-neutral-200">
                     <p>
-                        WebDev HQ &middot; All rights reserved{' '}
-                        {new Date().getFullYear()} &copy;.
+                        WebDev HQ &middot; All rights reserved &copy;&nbsp;
+                        {new Date().getFullYear()}.
                     </p>
                 </div>
             </footer>
