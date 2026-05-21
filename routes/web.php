@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\AppController;
+
+use App\Models\App as AppModel;
 use App\Http\Controllers\HyperlinkController;
 use App\Http\Controllers\CategoryController;
-
 use App\Http\Controllers\PageController;
-use App\Models\App as AppModel;
+use App\Http\Controllers\DashboardController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,17 +20,7 @@ Route::get('/privacy-policy', [PageController::class, 'privatePolicy'])->name('p
 Route::get('/terms-of-service', [PageController::class, 'termsOfService'])->name('terms-of-service');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-	Route::get('dashboard', function () {
-		$apps = AppModel::query()
-			->where('created_by', Auth::id())
-			->orderBy('position', 'asc')
-			->get();
-
-		return Inertia::render('dashboard', [
-			'apps' => $apps,
-		]);
-	})->name('dashboard');
-
+	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 	Route::patch('/apps/reorder', [AppController::class, 'reorder'])->name('apps.reorder');
 	Route::resource('/apps', AppController::class);
 	Route::resource('/hyperlinks', HyperlinkController::class);

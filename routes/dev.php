@@ -11,7 +11,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         $apps = AppModel::query()
             ->where('created_by', Auth::id())
-            ->orderBy('position')
+            ->orderBy('position', 'asc')
             ->get();
 
         return Inertia::render('dashboard', [
