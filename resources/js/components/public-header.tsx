@@ -34,12 +34,6 @@ export default function PublicHeader({
                         <li>
                             <Link href="/hyperlinks">Hyperlinks</Link>
                         </li>
-                        <li>
-                            <Link href="#">Link</Link>
-                        </li>
-                        <li>
-                            <Link href="#">Link</Link>
-                        </li>
                     </ul>
                     {auth.user ? (
                         <ul className="flex-end flex items-center gap-4">
