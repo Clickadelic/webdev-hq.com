@@ -25,7 +25,7 @@ export default function PublicHeader({
             )}
         >
             <header className="container mx-auto flex items-center justify-between">
-                <AppLogo className="lg:mr-24" />
+                <AppLogo className="lg:mr-24" logoClassName="size-7 mr-3" />
                 <nav className="flex w-full items-center justify-between gap-4">
                     <ul className="flex items-start gap-4">
                         <li>
@@ -34,7 +34,13 @@ export default function PublicHeader({
                             </Link>
                         </li>
                         <li>
-                            <Link href="/hyperlinks">Hyperlinks</Link>
+                            <Link
+                                href="/hyperlinks"
+                                className="font-medium"
+                                title="Hyperlinks"
+                            >
+                                Hyperlinks
+                            </Link>
                         </li>
                     </ul>
                     {auth.user ? (

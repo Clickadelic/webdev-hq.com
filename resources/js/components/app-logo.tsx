@@ -4,12 +4,19 @@ import { cn } from '@/lib/utils';
 import { Link } from '@inertiajs/react';
 
 interface AppLogoProps {
+    logoClassName?: string;
     className?: string;
 }
-export default function AppLogo({ className }: AppLogoProps) {
+
+export default function AppLogo({ logoClassName, className }: AppLogoProps) {
     return (
-        <Link href="/" className={cn('flex items-center', className)} prefetch>
-            <AppLogoIcon className="mr-3 size-8 fill-current hover:opacity-50" />
+        <Link
+            href="/"
+            className={cn('flex items-center gap-2', className)}
+            title="Home"
+            prefetch
+        >
+            <AppLogoIcon className={cn('flex', logoClassName)} />
 
             <div className="grid flex-1 text-left text-sm">
                 <h1 className="my-3 max-w-45 text-2xl">
