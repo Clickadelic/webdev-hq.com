@@ -1,10 +1,10 @@
-import { Head } from '@inertiajs/react';
 import AppLayoutTemplate from '@/layouts/app/app-sidebar-layout';
 import { type BreadcrumbItem } from '@/types';
+import { Head } from '@inertiajs/react';
 import { type ReactNode } from 'react';
 
-import { Toaster } from "@/components/ui/sonner"
-
+import CircularMenu from '@/components/circular-menu';
+import { Toaster } from '@/components/ui/sonner';
 
 interface AppLayoutProps {
     children: ReactNode;
@@ -16,5 +16,6 @@ export default ({ children, breadcrumbs, ...props }: AppLayoutProps) => (
         <Head title={breadcrumbs?.[breadcrumbs.length - 1]?.title} />
         {children}
         <Toaster />
+        <CircularMenu />
     </AppLayoutTemplate>
 );
