@@ -1,6 +1,8 @@
 import { Hyperlink } from '@/types';
 import { Link } from '@inertiajs/react';
 
+import ContextMenu from '@/components/context-menu';
+
 interface HyperlinkCardProps {
     hyperlink: Hyperlink;
 }
@@ -13,18 +15,13 @@ export default function HyperlinkCard({ hyperlink }: HyperlinkCardProps) {
             rel="noopener noreferrer"
             className="w-72 rounded-lg bg-white px-2 py-1 shadow hover:bg-gray-50 dark:bg-neutral-950 dark:hover:bg-neutral-900"
         >
-            <h3 className="font-medium">{hyperlink.title}</h3>
+            <div className="flex items-end justify-between gap-2">
+                <h3 className="font-medium">{hyperlink.title}</h3>
+                <ContextMenu />
+            </div>
             <p className="mt-1 text-sm text-gray-500">
                 {hyperlink.description}
             </p>
-            <button
-                onClick={
-                    () => console.log('Delete hyperlink with ID:', hyperlink.id) // Implement this function to handle deletion
-                }
-                className="mt-2 rounded-md bg-red-500 px-4 py-2 text-white hover:bg-red-600"
-            >
-                Delete
-            </button>
         </Link>
     );
 }
