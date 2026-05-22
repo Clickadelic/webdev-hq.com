@@ -113,7 +113,7 @@ export default function RecipeContextMenu({
                             onClick={(e) => e.stopPropagation()}
                         >
                             <MdOutlineEdit className="mr-2 size-5" />
-                            Bearbeiten
+                            Edit
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={(e) => e.stopPropagation()}>
@@ -123,7 +123,7 @@ export default function RecipeContextMenu({
                                 onClick={toggleCopyDialog}
                             >
                                 <PiCopySimpleLight className="size-5" />
-                                <span>Kopieren</span>
+                                <span>Copy</span>
                             </AlertDialogTrigger>
                             <AlertDialogContent className="bg-gray-100 dark:bg-gray-900">
                                 <AlertDialogHeader>
@@ -174,7 +174,7 @@ export default function RecipeContextMenu({
                                         }}
                                     >
                                         <PiCopySimpleLight className="size-5" />
-                                        Kopieren
+                                        Copy
                                     </AlertDialogAction>
                                 </AlertDialogFooter>
                             </AlertDialogContent>
@@ -186,8 +186,8 @@ export default function RecipeContextMenu({
                                 className="items-between flex w-full flex-row gap-2 text-rose-600 hover:cursor-pointer hover:text-rose-700"
                                 onClick={toggleCopyDialog}
                             >
-                                <GoTrash className="mt-px ml-0.5 size-4" />
-                                <span>Löschen</span>
+                                <GoTrash className="mt-px ml-0.5 size-4 text-rose-600" />
+                                <span>Delete</span>
                             </AlertDialogTrigger>
                             <AlertDialogContent className="bg-gray-100 dark:bg-gray-900">
                                 <AlertDialogHeader>
@@ -209,14 +209,14 @@ export default function RecipeContextMenu({
                                         className="dark:text-gray-200"
                                         onClick={toggleCopyDialog}
                                     >
-                                        Abbrechen
+                                        Cancel
                                     </AlertDialogCancel>
                                     <AlertDialogAction
                                         className="bg-rose-700 text-white hover:bg-rose-500"
                                         onClick={deleteRecipe}
                                     >
                                         <GoTrash className="size-5" />
-                                        Löschen
+                                        Delete
                                     </AlertDialogAction>
                                 </AlertDialogFooter>
                             </AlertDialogContent>
@@ -230,7 +230,7 @@ export default function RecipeContextMenu({
                                 onClick={toggleSocialShareDialog}
                             >
                                 <IoShareSocialOutline className="size-5" />
-                                <span>Teilen</span>
+                                <span>Share</span>
                             </AlertDialogTrigger>
                             <AlertDialogContent className="bg-gray-100 dark:bg-gray-900">
                                 <AlertDialogHeader>
@@ -259,14 +259,14 @@ export default function RecipeContextMenu({
                                         className="dark:text-gray-200"
                                         onClick={toggleSocialShareDialog}
                                     >
-                                        Abbrechen
+                                        Cancel
                                     </AlertDialogCancel>
                                     <AlertDialogAction
                                         className="border border-primary bg-primary text-white hover:bg-emerald-700 hover:text-white"
                                         // onClick={return toggleCopyDialog}
                                     >
                                         <RxClipboardCopy className="size-5" />
-                                        Link kopieren
+                                        Copy hyperlink
                                     </AlertDialogAction>
                                 </AlertDialogFooter>
                             </AlertDialogContent>
