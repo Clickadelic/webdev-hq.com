@@ -1,3 +1,4 @@
+import AppForm from '@/components/forms/app-form';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
 import {
     Dialog,
@@ -7,15 +8,14 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
+import { HyperlinkSchema } from '@/schemas';
 import { type SharedData } from '@/types';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { usePage } from '@inertiajs/react';
+import { Link, Link as LinkIcon } from 'lucide-react';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
-import { HyperlinkSchema } from '@/schemas';
-import { Link, Link as LinkIcon } from 'lucide-react';
+import { ScreenShare } from 'lucide-react';
 
 import {
     Tooltip,
@@ -46,13 +46,6 @@ export function CircularMenu() {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const form = useForm<z.infer<typeof HyperlinkSchema>>({
-        resolver: zodResolver(HyperlinkSchema),
-        defaultValues: { title: '', url: '' },
-    });
-
-    const { handleSubmit } = form;
-
     const openCircularMenu = () => {
         setShowCircularMenu(true);
     };
@@ -73,7 +66,7 @@ export function CircularMenu() {
         return null;
     }
     return (
-        <div className="fixed right-4 bottom-4 z-20 max-w-12 md:right-8 md:bottom-8 lg:right-12 lg:bottom-12">
+        <div className="fixed right-3 bottom-3 z-20 max-w-12 md:right-8 md:bottom-8 lg:right-12 lg:bottom-12">
             <div
                 className={cn(
                     'absolute -top-20 left-1 flex flex-col items-center space-y-2 transition-all',
@@ -100,12 +93,55 @@ export function CircularMenu() {
                                     onClick={() => setIsModalOpen(true)}
                                     className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
                                 >
-                                    <LinkIcon />
+                                    <ScreenShare className="size-4" />
                                 </DialogTrigger>
                                 <DialogContent className="rounded">
                                     <DialogHeader>
                                         <DialogTitle className="flex items-start gap-2">
-                                            <Link />
+                                            <Link className="size-3" />
+                                            {isEditing ? 'Edit App' : 'Add App'}
+                                        </DialogTitle>
+                                        <DialogDescription>
+                                            {isEditing
+                                                ? 'Edit the app'
+                                                : 'Add a new app'}
+                                        </DialogDescription>
+                                    </DialogHeader>
+                                    <AppForm className="w-full" />
+                                </DialogContent>
+                            </Dialog>
+                        </TooltipTrigger>
+                        <TooltipContent side="left" className="text-white">
+                            <p>{'Create new app'}</p>
+                            <TooltipArrow className="fill-primary dark:fill-primary" />
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
+
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild data-state="instant-open">
+                            <Dialog
+                                open={isModalOpen}
+                                onOpenChange={(open) => {
+                                    setIsModalOpen(open);
+                                    if (!open) {
+                                        setIsEditing(false);
+                                        setEditingAppId(null);
+                                        form.reset();
+                                    }
+                                }}
+                            >
+                                <DialogTrigger
+                                    onClick={() => setIsModalOpen(true)}
+                                    className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
+                                >
+                                    <LinkIcon className="size-4" />
+                                </DialogTrigger>
+                                <DialogContent className="rounded">
+                                    <DialogHeader>
+                                        <DialogTitle className="flex items-start gap-2">
+                                            <Link className="size-3" />
                                             {isEditing
                                                 ? 'Edit Hyperlink'
                                                 : 'Add Hyperlink'}
@@ -122,23 +158,6 @@ export function CircularMenu() {
                         </TooltipTrigger>
                         <TooltipContent side="left" className="text-white">
                             <p>{'Create new hyperlink'}</p>
-                            <TooltipArrow className="fill-primary dark:fill-primary" />
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
-
-                <TooltipProvider>
-                    <Tooltip>
-                        <TooltipTrigger asChild data-state="instant-open">
-                            <a
-                                className="rounded-full bg-primary p-3 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
-                                href="#"
-                            >
-                                <LinkIcon className="size-4" />
-                            </a>
-                        </TooltipTrigger>
-                        <TooltipContent side="left" className="text-white">
-                            <p>Neue Zutat</p>
                             <TooltipArrow className="fill-primary dark:fill-primary" />
                         </TooltipContent>
                     </Tooltip>

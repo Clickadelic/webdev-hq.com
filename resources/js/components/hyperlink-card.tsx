@@ -11,9 +11,9 @@ export default function HyperlinkCard({ hyperlink }: HyperlinkCardProps) {
             href={hyperlink.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-72 rounded-lg bg-white p-4 shadow hover:bg-gray-50 dark:bg-neutral-950 dark:hover:bg-neutral-900"
+            className="w-72 rounded-lg bg-white px-2 py-1 shadow hover:bg-gray-50 dark:bg-neutral-950 dark:hover:bg-neutral-900"
         >
-            <h3 className="text-lg font-medium">{hyperlink.title}</h3>
+            <h3 className="font-medium">{hyperlink.title}</h3>
             <p className="mt-1 text-sm text-gray-500">
                 {hyperlink.description}
             </p>
