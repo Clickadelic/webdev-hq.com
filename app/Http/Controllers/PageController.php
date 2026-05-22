@@ -12,7 +12,7 @@ class PageController extends Controller
 	{
 		$hyperlinks = Hyperlink::published()->get();
 
-		return Inertia::render('welcome', [
+		return Inertia::render('home', [
 			'hyperlinks' => $hyperlinks,
 			'canRegister' => true, // Registration is always enabled
 		]);
