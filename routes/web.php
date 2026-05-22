@@ -2,17 +2,14 @@
 
 use App\Http\Controllers\AppController;
 
-use App\Models\App as AppModel;
 use App\Http\Controllers\HyperlinkController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\DashboardController;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::get('/', [PageController::class, 'index'])->name('welcome');
+Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/cookie-policy', [PageController::class, 'cookiePolicy'])->name('cookie-policy');
 Route::get('/disclaimer', [PageController::class, 'disclaimer'])->name('disclaimer');
 Route::get('/legal-notice', [PageController::class, 'legalNotice'])->name('legal-notice');
@@ -28,4 +25,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 require __DIR__ . '/settings.php';
-// require __DIR__ . '/dev.php';
+
+if (config('app.debug')) {
+	require __DIR__ . '/dev.php';
+}
