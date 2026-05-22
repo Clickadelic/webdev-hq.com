@@ -10,7 +10,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard, welcome } from '@/routes';
+import { dashboard, home } from '@/routes';
 import {
     BookOpen,
     GalleryHorizontal,
@@ -27,7 +27,7 @@ import { type NavItem } from '@/types';
 const mainNavItems: NavItem[] = [
     {
         title: 'Home',
-        href: welcome(),
+        href: home(),
         icon: Home,
     },
     {

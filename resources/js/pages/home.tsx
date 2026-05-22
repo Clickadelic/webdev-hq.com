@@ -3,7 +3,7 @@
 import PublicLayout from '@/layouts/public-layout';
 import { type Hyperlink } from '@/types';
 
-export default function Welcome({
+export default function Home({
     hyperlinks,
     canRegister = true,
 }: {
@@ -17,7 +17,7 @@ export default function Welcome({
                     <input
                         type="text"
                         placeholder="Search for a resource"
-                        className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-primary focus:ring-primary focus:outline-none sm:text-sm"
+                        className="w-full rounded-md px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-primary focus:ring-primary focus:outline-none sm:text-sm"
                     />
                 </form>
             </div>
