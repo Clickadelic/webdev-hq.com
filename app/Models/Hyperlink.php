@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Enums\Status;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Hyperlink extends Model
 {
@@ -56,5 +56,17 @@ class Hyperlink extends Model
     public function scopePublished($query)
     {
         return $query->where('status', Status::Published->value);
+    }
+
+    public function scopeForAppListing($query)
+    {
+        return $query->latest();
+    }
+
+    public static function appListing(int $perPage = 15)
+    {
+        return static::query()
+            ->forAppListing()
+            ->paginate($perPage);
     }
 }

@@ -1,15 +1,15 @@
-import { useForm } from "@inertiajs/react";
-import { store } from "@/actions/App/Http/Controllers/HyperlinkController";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { toast } from "sonner"
+import { store } from '@/actions/App/Http/Controllers/HyperlinkController';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { useForm } from '@inertiajs/react';
 import { LoaderCircle, LucideLink } from 'lucide-react';
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { CategoryComboBox } from "@/components/forms/category-combobox";
+import { toast } from 'sonner';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
+import { CategoryComboBox } from './category-combobox';
 
 interface HyperlinkFormProps {
     className?: string;
@@ -18,11 +18,11 @@ interface HyperlinkFormProps {
 export default function HyperlinkForm({ className }: HyperlinkFormProps) {
     // Inertia's useForm Hook
     const { data, setData, post, processing, errors, reset } = useForm({
-        title: "",
-        url: "",
-        description: "",
-        category: "", // Can be numeric ID or category name for new categories
-        status: "published",
+        title: '',
+        url: '',
+        description: '',
+        category: '', // Can be numeric ID or category name for new categories
+        status: 'published',
     });
 
     function handleSubmit(e: React.FormEvent) {
@@ -30,41 +30,62 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
         // Wir senden die Daten an die Wayfinder-Route
         post(store.url(), {
             onSuccess: () => {
-                reset()
-                toast.success("Hyperlink created!")
+                reset();
+                toast.success('Hyperlink created!');
             },
             onError: () => {
-                toast.error("Hyperlink creation failed!")
-            }
+                toast.error('Hyperlink creation failed!');
+            },
         });
     }
 
     return (
-        <form onSubmit={handleSubmit} className={cn("flex flex-col gap-4", className)}>
+        <form
+            onSubmit={handleSubmit}
+            className={cn('flex flex-col gap-4', className)}
+        >
             {/* Title */}
             <div className="grid gap-2">
                 <Label htmlFor="title">Title</Label>
-                <Input 
+                <Input
                     id="title"
                     value={data.title}
                     required
                     placeholder="Title"
-                    onChange={e => setData("title", e.target.value)}
+                    onChange={(e) => setData('title', e.target.value)}
                 />
-                {errors.title && <p className="text-sm text-destructive">{errors.title}</p>}
+                {errors.title && (
+                    <p className="text-sm text-destructive">{errors.title}</p>
+                )}
+            </div>
+
+            {/* Category */}
+            <div className="grid gap-2">
+                <Label>Category</Label>
+                <CategoryComboBox
+                    value={data.category}
+                    onChange={(value) => setData('category', value)}
+                />
+                {errors.category && (
+                    <p className="text-sm text-destructive">
+                        {errors.category}
+                    </p>
+                )}
             </div>
 
             {/* URL */}
             <div className="grid gap-2">
                 <Label htmlFor="url">URL</Label>
-                <Input 
+                <Input
                     id="url"
                     value={data.url}
                     required
                     placeholder="https://example.com"
-                    onChange={e => setData("url", e.target.value)}
+                    onChange={(e) => setData('url', e.target.value)}
                 />
-                {errors.url && <p className="text-sm text-destructive">{errors.url}</p>}
+                {errors.url && (
+                    <p className="text-sm text-destructive">{errors.url}</p>
+                )}
             </div>
 
             {/* Description */}
@@ -74,36 +95,45 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
                     id="description"
                     placeholder="Description"
                     value={data.description}
-                    onChange={e => setData("description", e.target.value)}
+                    onChange={(e) => setData('description', e.target.value)}
                 />
-                {errors.description && <p className="text-sm text-destructive">{errors.description}</p>}
-            </div>
-
-            {/* Category */}
-            <div className="grid gap-2">
-                <Label>Category</Label>
-                <CategoryComboBox
-                    value={data.category}
-                    onChange={(value) => setData("category", value)}
-                />
-                {errors.category && <p className="text-sm text-destructive">{errors.category}</p>}
+                {errors.description && (
+                    <p className="text-sm text-destructive">
+                        {errors.description}
+                    </p>
+                )}
             </div>
 
             {/* Status (Select) */}
             <div className="grid gap-2">
                 <Label>Status</Label>
-                <ToggleGroup size="sm" variant="outline" type="single" defaultValue="published" onValueChange={(value) => setData("status", value)} className="asd">
+                <ToggleGroup
+                    size="sm"
+                    variant="outline"
+                    type="single"
+                    defaultValue="published"
+                    onValueChange={(value) => setData('status', value)}
+                    className="asd"
+                >
                     <ToggleGroupItem value="draft">Draft</ToggleGroupItem>
-                    <ToggleGroupItem value="published">Published</ToggleGroupItem>
+                    <ToggleGroupItem value="published">
+                        Published
+                    </ToggleGroupItem>
                     <ToggleGroupItem value="archived">Archived</ToggleGroupItem>
                 </ToggleGroup>
-                
-                {errors.status && <p className="text-sm text-destructive">{errors.status}</p>}
+
+                {errors.status && (
+                    <p className="text-sm text-destructive">{errors.status}</p>
+                )}
             </div>
 
             <Button type="submit" disabled={processing}>
-                {processing ? <LoaderCircle /> : <LucideLink size={8} className="mr-2" />}
-                {processing ? "Loading" : "Save Hyperlink"}
+                {processing ? (
+                    <LoaderCircle />
+                ) : (
+                    <LucideLink size={8} className="mr-2" />
+                )}
+                {processing ? 'Loading' : 'Save Hyperlink'}
             </Button>
         </form>
     );
