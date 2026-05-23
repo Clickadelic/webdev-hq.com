@@ -1,6 +1,8 @@
 'use client';
 
+import HyperlinkCard from '@/components/hyperlink-card';
 import PublicLayout from '@/layouts/public-layout';
+
 import { type Hyperlink } from '@/types';
 
 export default function Home({
@@ -21,8 +23,18 @@ export default function Home({
                     />
                 </form>
             </div>
+            {hyperlinks.length > 0 && (
+                <div className="mt-6 flex flex-wrap gap-6">
+                    {hyperlinks.map((hyperlink) => (
+                        <HyperlinkCard
+                            key={hyperlink.id}
+                            hyperlink={hyperlink}
+                        />
+                    ))}
+                </div>
+            )}
             {hyperlinks.length === 0 && (
-                <h2 className="my-12 text-center font-medium">
+                <h2 className="my-24 text-center font-medium">
                     Keine Hyperlinks gefunden
                 </h2>
             )}

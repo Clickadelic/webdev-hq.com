@@ -38,12 +38,7 @@ const PublicBreadcrumbs = ({ className }: BreadCrumbProps) => {
     });
 
     return (
-        <div
-            className={cn(
-                'container mx-auto mb-4 w-full px-2 md:px-0',
-                className,
-            )}
-        >
+        <div className={cn('container mx-auto w-full px-2 md:px-0', className)}>
             <ul className="flex items-center gap-2 border-b border-neutral-200 pb-3 text-sm text-neutral-600 dark:border-neutral-700 dark:text-neutral-200">
                 {/* Home */}
                 <li>

@@ -20,7 +20,7 @@ export default function PublicHeader({
     return (
         <div
             className={cn(
-                'mb-3 mb-3 w-full bg-white shadow dark:bg-neutral-900',
+                'mb-3 w-full bg-white shadow dark:bg-neutral-900',
                 className,
             )}
         >
@@ -29,7 +29,9 @@ export default function PublicHeader({
                 <nav className="flex w-full items-center justify-between gap-4">
                     <ul className="flex items-start gap-4">
                         <li>
-                            <Link href="#">Link</Link>
+                            <Link href="/" className="font-medium" title="Home">
+                                Home
+                            </Link>
                         </li>
                         <li>
                             <Link

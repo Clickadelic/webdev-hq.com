@@ -1,9 +1,11 @@
 <?php
 
+use Illuminate\Http\Request;
+use App\Models\User;
+
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ImageController;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\HyperlinkController;
 use Illuminate\Support\Facades\Route;
 
 // Public auth routes (no auth required)
@@ -41,4 +43,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 		return response()->json(['message' => 'Registered'], 201);
 	});
+});
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+	Route::apiResource('hyperlinks', HyperlinkController::class);
 });
