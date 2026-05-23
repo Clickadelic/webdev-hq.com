@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreHyperlinkRequest;
+use App\Http\Requests\UpdateHyperlinkRequest;
 use App\Models\Category;
 use App\Models\Hyperlink;
 use App\Models\Tag;
-use App\Http\Requests\StoreHyperlinkRequest;
-use App\Http\Requests\UpdateHyperlinkRequest;
 use Illuminate\Support\Str;
 
 class HyperlinkController extends Controller
@@ -16,10 +16,8 @@ class HyperlinkController extends Controller
      */
     public function index()
     {
-        $hyperlinks = Hyperlink::latest()->paginate(15);
-
         return inertia('hyperlinks/index', [
-            'hyperlinks' => $hyperlinks,
+            'hyperlinks' => Hyperlink::appListing(),
         ]);
     }
 

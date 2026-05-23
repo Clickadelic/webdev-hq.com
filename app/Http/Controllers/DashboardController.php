@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hyperlink;
+use App\Models\App;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
@@ -10,11 +10,14 @@ class DashboardController extends Controller
 
 	public function index()
 	{
-		$hyperlinks = Hyperlink::published()->get();
+		$apps = App::query()
+			->where('created_by', auth()->id())
+			->orderBy('position')
+			->latest('created_at')
+			->get();
 
-		return Inertia::render('welcome', [
-			'hyperlinks' => $hyperlinks,
-			'canRegister' => true, // Registration is always enabled
+		return Inertia::render('dashboard', [
+			'apps' => $apps,
 		]);
 	}
 	
