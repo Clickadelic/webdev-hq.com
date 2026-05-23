@@ -45,6 +45,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 	});
 });
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::middleware('auth:sanctum')->as('api.')->group(function () {
 	Route::apiResource('hyperlinks', HyperlinkController::class);
 });
