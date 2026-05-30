@@ -33,15 +33,6 @@ export default function PublicHeader({
                                 Home
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                href="/hyperlinks"
-                                className="font-medium"
-                                title="Hyperlinks"
-                            >
-                                Hyperlinks
-                            </Link>
-                        </li>
                     </ul>
                     {auth.user ? (
                         <ul className="flex-end flex items-center gap-4">
