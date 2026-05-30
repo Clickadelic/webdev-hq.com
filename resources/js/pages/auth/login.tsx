@@ -1,18 +1,18 @@
-import AuthLayout from '@/layouts/auth-layout';
-
 import InputError from '@/components/input-error';
 import TextLink from '@/components/text-link';
-
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
+import AuthLayout from '@/layouts/auth-layout';
+import { useState } from 'react';
 
 import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
 import { Form, Head } from '@inertiajs/react';
+import { Eye, EyeOff } from 'lucide-react';
 
 interface LoginProps {
     status?: string;
@@ -25,6 +25,7 @@ export default function Login({
     canResetPassword,
     canRegister,
 }: LoginProps) {
+    const [showPassword, setShowPassword] = useState<boolean>(false);
     return (
         <AuthLayout title="Log in" description="Welcome back">
             <Head title="Log in" />
@@ -38,7 +39,7 @@ export default function Login({
                     <>
                         <div className="grid gap-6">
                             <div className="grid gap-2">
-                                <Label htmlFor="email">E-mail address</Label>
+                                <Label htmlFor="email">E-Mail address</Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -48,6 +49,7 @@ export default function Login({
                                     tabIndex={1}
                                     autoComplete="email"
                                     placeholder="email@example.com"
+                                    className="dark:bg-input/30"
                                 />
                                 <InputError message={errors.email} />
                             </div>
@@ -56,19 +58,44 @@ export default function Login({
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Password</Label>
                                 </div>
-                                <Input
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    required
-                                    tabIndex={2}
-                                    autoComplete="current-password"
-                                    placeholder="Password"
-                                />
+                                <div className="flex-end flex rounded-md bg-[#2a3240]">
+                                    <Input
+                                        id="password"
+                                        type={
+                                            showPassword ? 'text' : 'password'
+                                        }
+                                        name="password"
+                                        required
+                                        tabIndex={2}
+                                        autoComplete="current-password"
+                                        placeholder="Password"
+                                        className="dark:bg-[#2a3240]"
+                                    />
+                                    <button
+                                        type="button"
+                                        className="rounded-tr rounded-br bg-transparent px-2 hover:cursor-pointer"
+                                    >
+                                        {showPassword ? (
+                                            <EyeOff
+                                                className="text-muted-foreground"
+                                                onClick={() =>
+                                                    setShowPassword(false)
+                                                }
+                                            />
+                                        ) : (
+                                            <Eye
+                                                className="text-muted-foreground"
+                                                onClick={() =>
+                                                    setShowPassword(true)
+                                                }
+                                            />
+                                        )}
+                                    </button>
+                                </div>
                                 <InputError message={errors.password} />
                             </div>
 
-                            <div className="flex items-center space-x-3">
+                            <div className="flex items-center space-x-2">
                                 <Checkbox
                                     id="remember"
                                     name="remember"

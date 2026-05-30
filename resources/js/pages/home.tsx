@@ -12,7 +12,7 @@ export default function Home({
 }) {
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
-            <div className="rounded-lg bg-white/30 p-1 backdrop-blur">
+            <div className="mx-auto my-24 w-96 rounded-lg bg-white/30 p-1 backdrop-blur">
                 <form className="rounded-lg bg-white p-1 dark:bg-neutral-950">
                     <input
                         type="text"
