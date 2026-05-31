@@ -1,4 +1,4 @@
-import PublicLayout from '@/layouts/public-layout';
+import PublicSidebarLeftLayout from '@/layouts/public-sidebar-left-layout';
 
 export default function Disclaimer({
     canRegister = true,
@@ -6,8 +6,8 @@ export default function Disclaimer({
     canRegister?: boolean;
 }) {
     return (
-        <PublicLayout canRegister={canRegister} title="Disclaimer">
-            <article>
+        <PublicSidebarLeftLayout canRegister={canRegister} title="Disclaimer">
+            <article className="space-y-5">
                 <section>
                     <h3 className="text-lg font-semibold">
                         User Generated Content
@@ -55,6 +55,6 @@ export default function Disclaimer({
                     </p>
                 </section>
             </article>
-        </PublicLayout>
+        </PublicSidebarLeftLayout>
     );
 }

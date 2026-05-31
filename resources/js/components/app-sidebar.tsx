@@ -16,8 +16,9 @@ import {
     GalleryHorizontal,
     Home,
     LayoutGrid,
-    Link2,
+    Link,
     ScreenShare,
+    Webhook,
 } from 'lucide-react';
 
 import AppLogo from './app-logo';
@@ -43,7 +44,12 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Hyperlinks',
         href: '/hyperlinks',
-        icon: Link2,
+        icon: Link,
+    },
+    {
+        title: 'Categories',
+        href: '/categories',
+        icon: Webhook,
     },
 ];
 

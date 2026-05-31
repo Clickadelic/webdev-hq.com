@@ -52,12 +52,23 @@ export interface App {
     created_at: string | null;
     updated_at: string | null;
 }
+export interface Tag {
+    id: number;
+    name: string;
+    slug: string;
+    hyperlinks_count?: number;
+    created_at: string;
+    updated_at: string;
+}
+
 export interface Hyperlink {
     id: number;
     title: string;
     url: string;
     description: string;
     category_id: number | null;
+    category?: Category | null;
+    tags?: Tag[];
     status: string;
     created_at: string;
     updated_at: string;
@@ -67,6 +78,7 @@ export interface Category {
     id: number;
     name: string;
     slug: string;
+    hyperlinks_count?: number;
     created_at: string;
     updated_at: string;
 }

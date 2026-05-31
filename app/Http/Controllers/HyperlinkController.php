@@ -16,8 +16,13 @@ class HyperlinkController extends Controller
      */
     public function index()
     {
+        $hyperlinks = Hyperlink::with(['category', 'tags'])
+            ->latest()
+            ->paginate(15);
+
         return inertia('hyperlinks/index', [
-            'hyperlinks' => Hyperlink::appListing(),
+            'hyperlinks' => $hyperlinks,
+            'tags' => Tag::orderBy('name')->get(),
         ]);
     }
 
