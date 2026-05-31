@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dialog';
 import { type SharedData } from '@/types';
 import { usePage } from '@inertiajs/react';
-import { Link, Link as LinkIcon, ScreenShare } from 'lucide-react';
+import { Link as LinkIcon, ScreenShare } from 'lucide-react';
 import { useState } from 'react';
 
 import {
