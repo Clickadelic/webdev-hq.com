@@ -192,12 +192,8 @@ export default function RecipeContextMenu({
                             <AlertDialogContent className="bg-gray-100 dark:bg-gray-900">
                                 <AlertDialogHeader>
                                     <AlertDialogTitle className="text-gray-800 dark:text-gray-200">
-                                        Are you sure, you want to delete{' '}
-                                        <span className="font-bold">
-                                            {hyperlink?.name}
-                                            Hyperlink name
-                                        </span>{' '}
-                                        löschen möchtest?
+                                        Are you sure you want to delete this
+                                        item? This action cannot be undone.
                                     </AlertDialogTitle>
                                     <AlertDialogDescription>
                                         Dies kann nicht rückgängig gemacht

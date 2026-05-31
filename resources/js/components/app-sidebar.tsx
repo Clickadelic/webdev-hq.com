@@ -18,6 +18,7 @@ import {
     LayoutGrid,
     Link,
     ScreenShare,
+    Tag,
     Webhook,
 } from 'lucide-react';
 
@@ -50,6 +51,11 @@ const mainNavItems: NavItem[] = [
         title: 'Categories',
         href: '/categories',
         icon: Webhook,
+    },
+    {
+        title: 'Tags',
+        href: '/tags',
+        icon: Tag,
     },
 ];
 

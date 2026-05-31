@@ -8,11 +8,12 @@ interface HyperlinkCardProps {
 
 export default function HyperlinkCard({ hyperlink }: HyperlinkCardProps) {
     return (
-        <div className="w-72 rounded-lg bg-white p-2 shadow hover:bg-gray-50 dark:bg-neutral-900">
+        <div className="w-72 rounded-lg bg-white p-2 shadow hover:bg-gray-50 dark:bg-rose-200">
             <div className="flex items-center justify-between gap-2">
                 <h3 className="font-medium">{hyperlink.title}</h3>
                 <ContextMenu />
             </div>
+            <p className="mt-1 text-sm text-gray-500">{hyperlink.url}</p>
             <p className="mt-1 text-sm text-gray-500">
                 {hyperlink.description}
             </p>
