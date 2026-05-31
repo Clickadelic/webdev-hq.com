@@ -8,14 +8,10 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { HyperlinkSchema } from '@/schemas';
 import { type SharedData } from '@/types';
 import { usePage } from '@inertiajs/react';
-import { Link, Link as LinkIcon } from 'lucide-react';
+import { Link, Link as LinkIcon, ScreenShare } from 'lucide-react';
 import { useState } from 'react';
-import * as z from 'zod';
-
-import { ScreenShare } from 'lucide-react';
 
 import {
     Tooltip,
@@ -36,31 +32,33 @@ export function CircularMenu() {
     const { auth } = usePage<SharedData>().props;
     // States
     const [showCircularMenu, setShowCircularMenu] = useState<boolean>(false);
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [isAppModalOpen, setIsAppModalOpen] = useState<boolean>(false);
+    const [isHyperlinkModalOpen, setIsHyperlinkModalOpen] =
+        useState<boolean>(false);
     const [isEditing, setIsEditing] = useState<boolean>(false);
-    const [editingAppId, setEditingAppId] = useState<string | null>(null);
-    const [isDeleting, setIsDeleting] = useState<boolean>(false);
+    // const [editingAppId, setEditingAppId] = useState<string | null>(null);
+    // const [isDeleting, setIsDeleting] = useState<boolean>(false);
 
-    const [error, setError] = useState<string | undefined>(undefined);
-    const [success, setSuccess] = useState<string | undefined>(undefined);
+    // const [error, setError] = useState<string | undefined>(undefined);
+    // const [success, setSuccess] = useState<string | undefined>(undefined);
 
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    // const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const openCircularMenu = () => {
-        setShowCircularMenu(true);
-    };
+    // const openCircularMenu = () => {
+    //     setShowCircularMenu(true);
+    // };
 
-    const closeCircularMenu = () => {
-        setShowCircularMenu(false);
-    };
+    // const closeCircularMenu = () => {
+    //     setShowCircularMenu(false);
+    // };
 
-    const onEditSubmit = (values: z.infer<typeof HyperlinkSchema>) => {
-        alert('Yo');
-    };
+    // const onEditSubmit = (values: z.infer<typeof HyperlinkSchema>) => {
+    //     alert('Yo');
+    // };
 
-    const onAddSubmit = (values: z.infer<typeof HyperlinkSchema>) => {
-        alert('Yo');
-    };
+    // const onAddSubmit = (values: z.infer<typeof HyperlinkSchema>) => {
+    //     alert('Yo');
+    // };
 
     if (!auth.user) {
         return null;
@@ -69,7 +67,7 @@ export function CircularMenu() {
         <div className="fixed right-3 bottom-3 z-20 max-w-12 md:right-8 md:bottom-8 lg:right-12 lg:bottom-12">
             <div
                 className={cn(
-                    'absolute -top-20 left-1 flex flex-col items-center space-y-2 transition-all',
+                    'absolute -top-20 left-2 flex flex-col items-center space-y-2 transition-all',
                     showCircularMenu
                         ? 'opacity-100'
                         : 'pointer-events-none opacity-0',
@@ -79,18 +77,16 @@ export function CircularMenu() {
                     <Tooltip>
                         <TooltipTrigger asChild data-state="instant-open">
                             <Dialog
-                                open={isModalOpen}
+                                open={isAppModalOpen}
                                 onOpenChange={(open) => {
-                                    setIsModalOpen(open);
+                                    setIsAppModalOpen(open);
                                     if (!open) {
                                         setIsEditing(false);
-                                        setEditingAppId(null);
-                                        form.reset();
                                     }
                                 }}
                             >
                                 <DialogTrigger
-                                    onClick={() => setIsModalOpen(true)}
+                                    onClick={() => setIsAppModalOpen(true)}
                                     className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
                                 >
                                     <ScreenShare className="size-4" />
@@ -103,8 +99,8 @@ export function CircularMenu() {
                                         </DialogTitle>
                                         <DialogDescription>
                                             {isEditing
-                                                ? 'Edit the app'
-                                                : 'Add a new app'}
+                                                ? 'Edit the App'
+                                                : 'Add a new App'}
                                         </DialogDescription>
                                     </DialogHeader>
                                     <AppForm className="w-full" />
@@ -112,28 +108,27 @@ export function CircularMenu() {
                             </Dialog>
                         </TooltipTrigger>
                         <TooltipContent side="left" className="text-white">
-                            <p>{'Create new app'}</p>
+                            <p>Create new hyperlink</p>
                             <TooltipArrow className="fill-primary dark:fill-primary" />
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
-
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild data-state="instant-open">
                             <Dialog
-                                open={isModalOpen}
+                                open={isHyperlinkModalOpen}
                                 onOpenChange={(open) => {
-                                    setIsModalOpen(open);
+                                    setIsHyperlinkModalOpen(open);
                                     if (!open) {
                                         setIsEditing(false);
-                                        setEditingAppId(null);
-                                        form.reset();
                                     }
                                 }}
                             >
                                 <DialogTrigger
-                                    onClick={() => setIsModalOpen(true)}
+                                    onClick={() =>
+                                        setIsHyperlinkModalOpen(true)
+                                    }
                                     className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
                                 >
                                     <LinkIcon className="size-4" />
@@ -157,7 +152,7 @@ export function CircularMenu() {
                             </Dialog>
                         </TooltipTrigger>
                         <TooltipContent side="left" className="text-white">
-                            <p>{'Create new hyperlink'}</p>
+                            <p>Create new hyperlink</p>
                             <TooltipArrow className="fill-primary dark:fill-primary" />
                         </TooltipContent>
                     </Tooltip>
@@ -171,7 +166,7 @@ export function CircularMenu() {
                         <button
                             aria-label={'Create new content'}
                             onClick={() => setShowCircularMenu((prev) => !prev)}
-                            className="rounded-full bg-primary p-4 text-lg text-white shadow-lg transition hover:cursor-pointer hover:bg-primary/90"
+                            className="rounded-full bg-primary p-4 text-lg text-white shadow-lg transition hover:cursor-pointer hover:bg-primary dark:bg-primary"
                         >
                             <FiPlus
                                 className={cn(
@@ -183,10 +178,10 @@ export function CircularMenu() {
                     </TooltipTrigger>
                     <TooltipContent
                         side="left"
-                        className="bg-primary text-white"
+                        className="bg-primary text-white dark:bg-primary"
                     >
                         <p>{'Create new content'}</p>
-                        <TooltipArrow className="fill-primary" />
+                        <TooltipArrow className="fill-primary dark:fill-primary" />
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>

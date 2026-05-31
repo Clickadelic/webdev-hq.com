@@ -13,7 +13,7 @@ export default function HyperlinkCard({ hyperlink }: HyperlinkCardProps) {
             href={hyperlink.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-72 rounded-lg bg-white px-2 py-1 shadow hover:bg-gray-50 dark:bg-neutral-950 dark:hover:bg-neutral-900"
+            className="w-72 rounded-lg bg-white shadow hover:bg-gray-50 dark:bg-neutral-900"
         >
             <div className="flex items-end justify-between gap-2">
                 <h3 className="font-medium">{hyperlink.title}</h3>
