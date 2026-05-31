@@ -12,6 +12,8 @@ export default function Home({
     hyperlinks: Hyperlink[];
     canRegister?: boolean;
 }) {
+    console.log(hyperlinks);
+
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
             <div className="mx-auto my-24 w-96 rounded-lg bg-white/30 p-1 backdrop-blur">
