@@ -94,7 +94,7 @@ export function CircularMenu() {
                                 <DialogContent className="rounded">
                                     <DialogHeader>
                                         <DialogTitle className="flex items-start gap-2">
-                                            <Link className="size-3" />
+                                            <ScreenShare className="size-4" />
                                             {isEditing ? 'Edit App' : 'Add App'}
                                         </DialogTitle>
                                         <DialogDescription>
@@ -136,7 +136,7 @@ export function CircularMenu() {
                                 <DialogContent className="rounded">
                                     <DialogHeader>
                                         <DialogTitle className="flex items-start gap-2">
-                                            <Link className="size-3" />
+                                            <LinkIcon className="size-4" />
                                             {isEditing
                                                 ? 'Edit Hyperlink'
                                                 : 'Add Hyperlink'}
