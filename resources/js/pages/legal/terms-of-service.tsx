@@ -1,4 +1,4 @@
-import PublicLayout from '@/layouts/public-layout';
+import PublicSidebarLeftLayout from '@/layouts/public-sidebar-left-layout';
 
 export default function TermsofService({
     canRegister = true,
@@ -6,10 +6,10 @@ export default function TermsofService({
     canRegister?: boolean;
 }) {
     return (
-        <PublicLayout canRegister={canRegister} title="Terms of Service">
+        <PublicSidebarLeftLayout canRegister={canRegister} title="Disclaimer">
             <article className="space-y-5">
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-2 text-lg font-semibold">
                         Scope of these Terms of Service
                     </h3>
                     <p>
@@ -20,7 +20,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-2 text-lg font-semibold">
                         Description of Service
                     </h3>
                     <p>
@@ -44,7 +44,9 @@ export default function TermsofService({
                     </ul>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">User Accounts</h3>
+                    <h3 className="mb-2 text-lg font-semibold">
+                        User Accounts
+                    </h3>
                     <p>
                         To access certain features, users may create a user
                         account. If you do so, you agree to:
@@ -62,7 +64,7 @@ export default function TermsofService({
                     </ul>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">Social Login</h3>
+                    <h3 className="mb-2 text-lg font-semibold">Social Login</h3>
                     <p>
                         The Platform may offer authentication via third-party
                         providers such as Google or GitHub. By using these
@@ -72,7 +74,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-2 text-lg font-semibold">
                         User-Generated Content
                     </h3>
                     <p>
@@ -85,7 +87,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-2 text-lg font-semibold">
                         Prohibited Content
                     </h3>
                     <p>
@@ -97,7 +99,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-2 text-lg font-semibold">
                         Moderation and Removal
                     </h3>
                     <p>
@@ -110,7 +112,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-2 text-lg font-semibold">
                         No Liability for User
                     </h3>
                     <p>
@@ -123,7 +125,9 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">External Links</h3>
+                    <h3 className="mb-2 text-lg font-semibold">
+                        External Links
+                    </h3>
                     <p>
                         The Platform may contain links to third-party websites.
                         The operator has no control over these websites and
@@ -131,7 +135,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-2 text-lg font-semibold">
                         Availability of the Service
                     </h3>
                     <p>
@@ -141,7 +145,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">Termination</h3>
+                    <h3 className="mb-2 text-lg font-semibold">Termination</h3>
                     <p>
                         The operator may suspend or terminate access to the
                         Platform at any time without prior notice. Users may
@@ -149,7 +153,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">Termination</h3>
+                    <h3 className="mb-2 text-lg font-semibold">Termination</h3>
                     <p>
                         The operator may suspend or terminate access to the
                         Platform at any time without prior notice. Users may
@@ -157,7 +161,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-2 text-lg font-semibold">
                         Changes to the Terms
                     </h3>
                     <p>
@@ -167,14 +171,16 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">Applicable Law</h3>
+                    <h3 className="mb-2 text-lg font-semibold">
+                        Applicable Law
+                    </h3>
                     <p>
                         These Terms are governed by the laws of the Federal
                         Republic of Germany.
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-2 text-lg font-semibold">
                         Contact for questions
                     </h3>
                     <p>
@@ -184,6 +190,6 @@ export default function TermsofService({
                     </p>
                 </section>
             </article>
-        </PublicLayout>
+        </PublicSidebarLeftLayout>
     );
 }

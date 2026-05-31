@@ -1,41 +1,81 @@
-import { store } from '@/actions/App/Http/Controllers/HyperlinkController';
+import { store, update } from '@/actions/App/Http/Controllers/HyperlinkController';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import { useForm } from '@inertiajs/react';
+import { useForm, usePage } from '@inertiajs/react';
 import { LoaderCircle, LucideLink } from 'lucide-react';
+import { useEffect } from 'react';
 import { toast } from 'sonner';
 
 import { cn } from '@/lib/utils';
+import { type Hyperlink, type SharedData, type Tag } from '@/types';
 import { CategoryComboBox } from './category-combobox';
 
 interface HyperlinkFormProps {
+    hyperlink?: Hyperlink;
     className?: string;
+    onSuccess?: () => void;
 }
 
-export default function HyperlinkForm({ className }: HyperlinkFormProps) {
-    // Inertia's useForm Hook
-    const { data, setData, post, processing, errors, reset } = useForm({
-        title: '',
-        url: '',
-        description: '',
-        category: '', // Can be numeric ID or category name for new categories
-        status: 'published',
+export default function HyperlinkForm({ hyperlink, className, onSuccess }: HyperlinkFormProps) {
+    const allTags: Tag[] = usePage<SharedData & { tags?: Tag[] }>().props.tags ?? [];
+
+    const { data, setData, post, put, processing, errors, reset } = useForm({
+        title: hyperlink?.title ?? '',
+        url: hyperlink?.url ?? '',
+        description: hyperlink?.description ?? '',
+        category: hyperlink?.category_id ? String(hyperlink.category_id) : '',
+        status: hyperlink?.status ?? 'published',
+        tags: (hyperlink?.tags ?? []).map((t) => t.id) as number[],
     });
+
+    useEffect(() => {
+        if (hyperlink) {
+            setData({
+                title: hyperlink.title,
+                url: hyperlink.url,
+                description: hyperlink.description ?? '',
+                category: hyperlink.category_id ? String(hyperlink.category_id) : '',
+                status: hyperlink.status,
+                tags: (hyperlink.tags ?? []).map((t) => t.id),
+            });
+        } else {
+            setData({ title: '', url: '', description: '', category: '', status: 'published', tags: [] });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [hyperlink?.id]);
+
+    function toggleTag(tagId: number) {
+        setData('tags', data.tags.includes(tagId)
+            ? data.tags.filter((id) => id !== tagId)
+            : [...data.tags, tagId]
+        );
+    }
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        // Wir senden die Daten an die Wayfinder-Route
+
+        if (hyperlink) {
+            put(update.url(hyperlink.id), {
+                preserveScroll: true,
+                onSuccess: () => {
+                    onSuccess?.();
+                    toast.success('Hyperlink updated!');
+                },
+                onError: () => toast.error('Hyperlink update failed!'),
+            });
+            return;
+        }
+
         post(store.url(), {
             onSuccess: () => {
                 reset();
+                onSuccess?.();
                 toast.success('Hyperlink created!');
             },
-            onError: () => {
-                toast.error('Hyperlink creation failed!');
-            },
+            onError: () => toast.error('Hyperlink creation failed!'),
         });
     }
 
@@ -104,24 +144,44 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
                 )}
             </div>
 
-            {/* Status (Select) */}
+            {/* Tags */}
+            {allTags.length > 0 && (
+                <div className="grid gap-2">
+                    <Label>Tags</Label>
+                    <div className="flex flex-wrap gap-2">
+                        {allTags.map((tag) => (
+                            <button
+                                key={tag.id}
+                                type="button"
+                                onClick={() => toggleTag(tag.id)}
+                                className={cn(
+                                    'rounded-full border px-3 py-1 text-xs font-medium transition-colors',
+                                    data.tags.includes(tag.id)
+                                        ? 'border-primary bg-primary text-white'
+                                        : 'border-muted-foreground/30 bg-transparent text-muted-foreground hover:border-primary/50',
+                                )}
+                            >
+                                {tag.name}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Status */}
             <div className="grid gap-2">
                 <Label>Status</Label>
                 <ToggleGroup
                     size="sm"
                     variant="outline"
                     type="single"
-                    defaultValue="published"
-                    onValueChange={(value) => setData('status', value)}
-                    className="asd"
+                    value={data.status}
+                    onValueChange={(value) => { if (value) setData('status', value); }}
                 >
                     <ToggleGroupItem value="draft">Draft</ToggleGroupItem>
-                    <ToggleGroupItem value="published">
-                        Published
-                    </ToggleGroupItem>
+                    <ToggleGroupItem value="published">Published</ToggleGroupItem>
                     <ToggleGroupItem value="archived">Archived</ToggleGroupItem>
                 </ToggleGroup>
-
                 {errors.status && (
                     <p className="text-sm text-destructive">{errors.status}</p>
                 )}
@@ -133,7 +193,7 @@ export default function HyperlinkForm({ className }: HyperlinkFormProps) {
                 ) : (
                     <LucideLink size={8} className="mr-2" />
                 )}
-                {processing ? 'Loading' : 'Save Hyperlink'}
+                {processing ? 'Loading' : hyperlink ? 'Save Changes' : 'Save Hyperlink'}
             </Button>
         </form>
     );

@@ -8,50 +8,42 @@ import { LoaderCircle } from 'lucide-react';
 import { BsPlusLg } from 'react-icons/bs';
 import { toast } from 'sonner';
 
-import { store, update } from '@/actions/App/Http/Controllers/CategoryController';
-import { type Category } from '@/types';
+import { store, update } from '@/actions/App/Http/Controllers/TagController';
+import { type Tag } from '@/types';
 
 import { cn } from '@/lib/utils';
 
-interface CategoryFormProps {
-    category?: Category;
+interface TagFormProps {
+    tag?: Tag;
     className?: string;
     onSuccess?: () => void;
 }
 
-export default function CategoryForm({
-    category,
-    className,
-    onSuccess,
-}: CategoryFormProps) {
+export default function TagForm({ tag, className, onSuccess }: TagFormProps) {
     const { data, setData, post, put, processing, errors, reset } = useForm({
-        name: category?.name ?? '',
-        slug: category?.slug ?? '',
+        name: tag?.name ?? '',
     });
 
     useEffect(() => {
-        if (category) {
-            setData({
-                name: category.name,
-                slug: category.slug,
-            });
+        if (tag) {
+            setData({ name: tag.name });
         } else {
-            setData({ name: '', slug: '' });
+            setData({ name: '' });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [category?.id]);
+    }, [tag?.id]);
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
 
-        if (category) {
-            put(update.url(category.id), {
+        if (tag) {
+            put(update.url(tag.id), {
                 preserveScroll: true,
                 onSuccess: () => {
                     onSuccess?.();
-                    toast.success('Category updated!');
+                    toast.success('Tag updated!');
                 },
-                onError: () => toast.error('Category update failed!'),
+                onError: () => toast.error('Tag update failed!'),
             });
             return;
         }
@@ -61,9 +53,9 @@ export default function CategoryForm({
             onSuccess: () => {
                 reset();
                 onSuccess?.();
-                toast.success('Category created!');
+                toast.success('Tag created!');
             },
-            onError: () => toast.error('Category creation failed!'),
+            onError: () => toast.error('Tag creation failed!'),
         });
     }
 
@@ -72,33 +64,17 @@ export default function CategoryForm({
             onSubmit={handleSubmit}
             className={cn('flex flex-col gap-4', className)}
         >
-            {/* Name */}
             <div className="grid gap-2">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="tag-name">Name</Label>
                 <Input
-                    id="name"
+                    id="tag-name"
                     value={data.name}
                     required
-                    placeholder="Name"
+                    placeholder="Tag name"
                     onChange={(e) => setData('name', e.target.value)}
                 />
                 {errors.name && (
                     <p className="text-sm text-destructive">{errors.name}</p>
-                )}
-            </div>
-
-            {/* Slug */}
-            <div className="grid gap-2">
-                <Label htmlFor="slug">Slug</Label>
-                <Input
-                    id="slug"
-                    value={data.slug}
-                    required
-                    placeholder="slug"
-                    onChange={(e) => setData('slug', e.target.value)}
-                />
-                {errors.slug && (
-                    <p className="text-sm text-destructive">{errors.slug}</p>
                 )}
             </div>
 
@@ -110,9 +86,9 @@ export default function CategoryForm({
                 )}
                 {processing
                     ? 'Loading'
-                    : category
+                    : tag
                       ? 'Save Changes'
-                      : 'Add Category'}
+                      : 'Add Tag'}
             </Button>
         </form>
     );

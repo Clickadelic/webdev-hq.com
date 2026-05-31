@@ -23,7 +23,7 @@ export default function Home({
             </div>
             {hyperlinks.length === 0 && (
                 <h2 className="my-12 text-center font-medium">
-                    Keine Hyperlinks gefunden
+                    No hyperlinks found.
                 </h2>
             )}
         </PublicLayout>
