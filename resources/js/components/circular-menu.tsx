@@ -71,6 +71,56 @@ export function CircularMenu() {
                         : 'pointer-events-none opacity-0',
                 )}
             >
+<<<<<<< HEAD
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild data-state="instant-open">
+                            <Dialog
+                                open={isAppModalOpen}
+                                onOpenChange={(open) => {
+                                    setIsAppModalOpen(open);
+                                    if (!open) {
+                                        setIsEditing(false);
+                                    }
+                                }}
+                            >
+                                <DialogTrigger
+                                    onClick={() => setIsAppModalOpen(true)}
+                                    className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
+                                >
+                                    <LinkIcon />
+                                </DialogTrigger>
+                                <DialogContent className="rounded">
+                                    <DialogHeader>
+                                        <DialogTitle className="flex items-start gap-2">
+                                            <Link />
+                                            {isEditing
+                                                ? 'Edit Hyperlink'
+                                                : 'Add Hyperlink'}
+                                        </DialogTitle>
+                                        <DialogDescription>
+                                            {isEditing
+                                                ? 'Edit the hyperlink'
+                                                : 'Add a new hyperlink'}
+                                        </DialogDescription>
+                                    </DialogHeader>
+                                    <HyperlinkForm className="w-full" />
+                                </DialogContent>
+                            </Dialog>
+                            <Dialog
+                                open={isAppModalOpen}
+                                onOpenChange={(open) => {
+                                    setIsAppModalOpen(open);
+                                    if (!open) {
+                                        setIsEditing(false);
+                                    }
+                                }}
+                            >
+                                <DialogTrigger
+                                    onClick={() => setIsAppModalOpen(true)}
+                                    className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
+                                >
+=======
                 <Dialog
                     open={isAppModalOpen}
                     onOpenChange={(open) => {
@@ -82,6 +132,7 @@ export function CircularMenu() {
                         <Tooltip>
                             <TooltipTrigger asChild data-state="instant-open">
                                 <DialogTrigger className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90">
+>>>>>>> 865784dc78c165bba03dc3479fe073840d5b9a97
                                     <ScreenShare className="size-4" />
                                 </DialogTrigger>
                             </TooltipTrigger>
