@@ -1,7 +1,7 @@
 # ============================================================
 # Stage 1: Install PHP + Composer + Node, build everything
 # ============================================================
-FROM node:20-alpine AS build
+FROM node:22-alpine AS build
 
 # Install PHP 84 CLI (needed for Composer + wayfinder:generate during Vite build)
 RUN apk add --no-cache \
@@ -27,7 +27,7 @@ RUN composer install \
 
 # Install Node dependencies
 COPY package.json package-lock.json ./
-RUN npm ci --ignore-scripts
+RUN npm ci --ignore-scripts --legacy-peer-deps
 
 # Copy full source and build frontend assets
 COPY . .
