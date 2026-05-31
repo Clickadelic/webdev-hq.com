@@ -9,7 +9,7 @@ export default function TermsofService({
         <PublicSidebarLeftLayout canRegister={canRegister} title="Disclaimer">
             <article className="space-y-5">
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         Scope of these Terms of Service
                     </h3>
                     <p>
@@ -20,7 +20,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         Description of Service
                     </h3>
                     <p>
@@ -44,7 +44,7 @@ export default function TermsofService({
                     </ul>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         User Accounts
                     </h3>
                     <p>
@@ -64,7 +64,7 @@ export default function TermsofService({
                     </ul>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">Social Login</h3>
+                    <h3 className="mb-1 text-lg font-semibold">Social Login</h3>
                     <p>
                         The Platform may offer authentication via third-party
                         providers such as Google or GitHub. By using these
@@ -74,7 +74,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         User-Generated Content
                     </h3>
                     <p>
@@ -87,7 +87,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         Prohibited Content
                     </h3>
                     <p>
@@ -99,7 +99,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         Moderation and Removal
                     </h3>
                     <p>
@@ -112,7 +112,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         No Liability for User
                     </h3>
                     <p>
@@ -125,7 +125,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         External Links
                     </h3>
                     <p>
@@ -135,7 +135,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         Availability of the Service
                     </h3>
                     <p>
@@ -145,7 +145,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">Termination</h3>
+                    <h3 className="mb-1 text-lg font-semibold">Termination</h3>
                     <p>
                         The operator may suspend or terminate access to the
                         Platform at any time without prior notice. Users may
@@ -153,7 +153,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">Termination</h3>
+                    <h3 className="mb-1 text-lg font-semibold">Termination</h3>
                     <p>
                         The operator may suspend or terminate access to the
                         Platform at any time without prior notice. Users may
@@ -161,7 +161,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         Changes to the Terms
                     </h3>
                     <p>
@@ -171,7 +171,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         Applicable Law
                     </h3>
                     <p>
@@ -180,7 +180,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-2 text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         Contact for questions
                     </h3>
                     <p>

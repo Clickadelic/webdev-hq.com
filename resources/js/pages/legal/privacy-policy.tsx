@@ -12,7 +12,7 @@ export default function PrivacyPolicy({
         >
             <article>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         General Information
                     </h3>
                     <p>
@@ -22,7 +22,9 @@ export default function PrivacyPolicy({
                     </p>
                 </section>
                 <section>
-                    <h3>Data Controller</h3>
+                    <h3 className="mb-1 text-lg font-semibold">
+                        Data Controller
+                    </h3>
                     <ul>
                         <li>Tobias Hopp</li>
                         <li>
@@ -31,7 +33,9 @@ export default function PrivacyPolicy({
                     </ul>
                 </section>
                 <section>
-                    <h3>Data Collection</h3>
+                    <h3 className="mb-1 text-lg font-semibold">
+                        Data Collection
+                    </h3>
                     <p>
                         We only collect data necessary to operate the platform:
                         * Account information (e.g., username, email address) *
@@ -41,7 +45,9 @@ export default function PrivacyPolicy({
                     </p>
                 </section>
                 <section>
-                    <h3>Server Hosting</h3>
+                    <h3 className="mb-1 text-lg font-semibold">
+                        Server Hosting
+                    </h3>
                     <p>
                         This website is hosted by a provider located in Germany.
                         Server logs may be automatically collected and stored by
@@ -52,7 +58,9 @@ export default function PrivacyPolicy({
                     </p>
                 </section>
                 <section>
-                    <h3>Authentication & Social Login</h3>
+                    <h3 className="mb-1 text-lg font-semibold">
+                        Authentication & Social Login
+                    </h3>
                     <p>
                         This website is hosted by a provider located in Germany.
                         Server logs may be automatically collected and stored by
@@ -62,27 +70,35 @@ export default function PrivacyPolicy({
                         requirements.
                     </p>
                 </section>
+                <section>
+                    <h3 className="mb-1 text-lg font-semibold">
+                        Authentication & Social Login
+                    </h3>
+                    <p>
+                        Users may register using traditional login methods or
+                        third-party authentication providers (e.g., Google,
+                        GitHub). When using social login, certain data may be
+                        transferred from these providers. Please refer to their
+                        privacy policies: * Google * GitHub ### 6. Cookies This
+                        website uses essential cookies required for
+                        functionality, such as: * Session management (login
+                        status) * Security purposes No tracking or advertising
+                        cookies are used. ### 7. Donations If you choose to make
+                        a voluntary donation via PayPal, your payment data will
+                        be processed by PayPal. The operator does not store
+                        payment information. ### 8. Your Rights (GDPR) You have
+                        the right to: * Access your data * Request correction or
+                        deletion * Restrict processing * Object to processing To
+                        exercise your rights, contact:
+                        [admin@webdev-hq.com](mailto:admin@webdev-hq.com) ### 9.
+                        Data Retention Personal data is stored only as long as
+                        necessary for the operation of the platform or as
+                        required by law. ### 10. Changes This privacy policy may
+                        be updated to reflect changes in functionality or legal
+                        requirements.
+                    </p>
+                </section>
             </article>
-            <p>
-                Users may register using traditional login methods or
-                third-party authentication providers (e.g., Google, GitHub).
-                When using social login, certain data may be transferred from
-                these providers. Please refer to their privacy policies: *
-                Google * GitHub ### 6. Cookies This website uses essential
-                cookies required for functionality, such as: * Session
-                management (login status) * Security purposes No tracking or
-                advertising cookies are used. ### 7. Donations If you choose to
-                make a voluntary donation via PayPal, your payment data will be
-                processed by PayPal. The operator does not store payment
-                information. ### 8. Your Rights (GDPR) You have the right to: *
-                Access your data * Request correction or deletion * Restrict
-                processing * Object to processing To exercise your rights,
-                contact: [admin@webdev-hq.com](mailto:admin@webdev-hq.com) ###
-                9. Data Retention Personal data is stored only as long as
-                necessary for the operation of the platform or as required by
-                law. ### 10. Changes This privacy policy may be updated to
-                reflect changes in functionality or legal requirements.
-            </p>
         </PublicSidebarLeftLayout>
     );
 }

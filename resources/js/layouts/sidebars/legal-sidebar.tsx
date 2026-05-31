@@ -8,7 +8,7 @@ export default function LeftSidebar() {
                 <li>
                     <Link
                         href="/disclaimer"
-                        className="flex flex-row gap-2 hover:text-white hover:underline hover:underline-offset-2"
+                        className="flex flex-row gap-2 hover:text-primary hover:underline hover:underline-offset-2"
                         title="Disclaimer"
                     >
                         <ChevronRight /> Disclaimer
@@ -17,7 +17,7 @@ export default function LeftSidebar() {
                 <li>
                     <Link
                         href="/cookie-policy"
-                        className="flex flex-row gap-2 hover:text-white hover:underline hover:underline-offset-2"
+                        className="flex flex-row gap-2 hover:text-primary hover:underline hover:underline-offset-2"
                         title="Cookie Policy"
                     >
                         <ChevronRight /> Cookie Policy
@@ -25,38 +25,29 @@ export default function LeftSidebar() {
                 </li>
                 <li>
                     <Link
-                        href="#"
-                        className="flex flex-row gap-2 hover:text-white hover:underline hover:underline-offset-2"
-                        title="LinkTitle"
+                        href="/legal/legal-notice"
+                        className="flex flex-row gap-2 hover:text-primary hover:underline hover:underline-offset-2"
+                        title="Legal Notice"
                     >
-                        <ChevronRight /> Link
+                        <ChevronRight /> Legal Notice
                     </Link>
                 </li>
                 <li>
                     <Link
-                        href="#"
-                        className="flex flex-row gap-2 hover:text-white hover:underline hover:underline-offset-2"
-                        title="LinkTitle"
+                        href="/legal/privacy-policy"
+                        className="flex flex-row gap-2 hover:text-primary hover:underline hover:underline-offset-2"
+                        title="Privacy Policy"
                     >
-                        <ChevronRight /> Link
+                        <ChevronRight /> Privacy Policy
                     </Link>
                 </li>
                 <li>
                     <Link
-                        href="#"
-                        className="flex flex-row gap-2 hover:text-white hover:underline hover:underline-offset-2"
-                        title="LinkTitle"
+                        href="/legal/terms-of-service"
+                        className="flex flex-row gap-2 hover:text-primary hover:underline hover:underline-offset-2"
+                        title="Terms of Service"
                     >
-                        <ChevronRight /> Link
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        href="#"
-                        className="flex flex-row gap-2 hover:text-white hover:underline hover:underline-offset-2"
-                        title="LinkTitle"
-                    >
-                        <ChevronRight /> Link
+                        <ChevronRight /> Terms of Service
                     </Link>
                 </li>
             </ul>

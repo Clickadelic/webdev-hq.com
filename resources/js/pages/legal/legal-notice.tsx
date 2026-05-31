@@ -9,7 +9,7 @@ export default function LegalNotice({
         <PublicSidebarLeftLayout canRegister={canRegister} title="Legal Notice">
             <article className="space-y-5">
                 <section>
-                    <h3 className="text-lg font-semibold">Legal Notice</h3>
+                    <h3 className="mb-1 text-lg font-semibold">Legal Notice</h3>
                     <p>
                         All information in accordance with section 5 TMG (German
                         Telemedia Act):
@@ -32,7 +32,7 @@ export default function LegalNotice({
                     </ul>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         Responsibility for Content
                     </h3>
                     <p>
@@ -46,7 +46,7 @@ export default function LegalNotice({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         Responsibility for Links
                     </h3>
                     <p>
@@ -61,7 +61,7 @@ export default function LegalNotice({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">Copyright</h3>
+                    <h3 className="mb-1 text-lg font-semibold">Copyright</h3>
                     <p>
                         The content created by the site operator on this
                         platform is subject to copyright law. Contributions by

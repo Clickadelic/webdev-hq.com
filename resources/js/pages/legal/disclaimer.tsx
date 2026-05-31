@@ -9,7 +9,7 @@ export default function Disclaimer({
         <PublicSidebarLeftLayout canRegister={canRegister} title="Disclaimer">
             <article className="space-y-5">
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         User Generated Content
                     </h3>
                     <p>
@@ -22,7 +22,7 @@ export default function Disclaimer({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         No Liability for External Links
                     </h3>
                     <p>
@@ -33,7 +33,7 @@ export default function Disclaimer({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         Notice of illegal content
                     </h3>
                     <p>
@@ -45,7 +45,7 @@ export default function Disclaimer({
                     </p>
                 </section>
                 <section>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="mb-1 text-lg font-semibold">
                         No professional advice
                     </h3>
                     <p>

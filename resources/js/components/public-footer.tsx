@@ -18,16 +18,6 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                     <ul className="mx-auto mb-4 space-y-3 text-center text-sm sm:flex sm:space-y-0 sm:space-x-3">
                         <li>
                             <Link
-                                href="/legal/cookie-policy"
-                                className="text-sm hover:text-primary"
-                                title="Cookie Policy"
-                            >
-                                Cookie Policy
-                            </Link>
-                        </li>
-                        <li className="hidden sm:inline-block">&middot;</li>
-                        <li>
-                            <Link
                                 href="/legal/disclaimer"
                                 className="text-sm hover:text-primary"
                                 title="Disclaimer"
@@ -35,6 +25,17 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                                 Disclaimer
                             </Link>
                         </li>
+                        <li className="hidden sm:inline-block">&middot;</li>
+                        <li>
+                            <Link
+                                href="/legal/cookie-policy"
+                                className="text-sm hover:text-primary"
+                                title="Cookie Policy"
+                            >
+                                Cookie Policy
+                            </Link>
+                        </li>
+
                         <li className="hidden sm:inline-block">&middot;</li>
                         <li>
                             <Link
