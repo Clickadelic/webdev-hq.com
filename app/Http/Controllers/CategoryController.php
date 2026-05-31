@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,7 @@ class CategoryController extends Controller
 	 */
 	public function index()
 	{
-		$categories = Category::latest()->paginate(15);
+		$categories = Category::withCount('hyperlinks')->latest()->paginate(15);
 
 		return inertia('categories/index', [
 			'categories' => $categories,
@@ -21,35 +22,16 @@ class CategoryController extends Controller
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
 	 * Store a newly created resource in storage.
 	 */
 	public function store(StoreCategoryRequest $request)
 	{
-		//
-	}
+		$data = $request->validated();
+		$data['slug'] = $data['slug'] ?? Str::slug($data['name']);
 
-	/**
-	 * Display the specified resource.
-	 */
-	public function show(Category $category)
-	{
-		//
-	}
+		Category::create($data);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 */
-	public function edit(Category $category)
-	{
-		//
+		return back()->with('success', 'Category successfully created.');
 	}
 
 	/**
@@ -57,7 +39,12 @@ class CategoryController extends Controller
 	 */
 	public function update(UpdateCategoryRequest $request, Category $category)
 	{
-		//
+		$data = $request->validated();
+		$data['slug'] = $data['slug'] ?? Str::slug($data['name']);
+
+		$category->update($data);
+
+		return back()->with('success', 'Category successfully updated.');
 	}
 
 	/**
@@ -65,6 +52,8 @@ class CategoryController extends Controller
 	 */
 	public function destroy(Category $category)
 	{
-		//
+		$category->delete();
+
+		return back()->with('success', 'Category successfully deleted.');
 	}
 }

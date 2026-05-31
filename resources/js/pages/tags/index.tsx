@@ -1,10 +1,7 @@
 'use client';
 
-import {
-    destroy,
-    index,
-} from '@/actions/App/Http/Controllers/CategoryController';
-import CategoryForm from '@/components/forms/category-form';
+import { destroy, index } from '@/actions/App/Http/Controllers/TagController';
+import TagForm from '@/components/forms/tag-form';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -17,7 +14,7 @@ import {
     DialogTrigger,
 } from '@/components/ui/dialog';
 import AppLayout from '@/layouts/app-layout';
-import { Category, type BreadcrumbItem } from '@/types';
+import { Tag, type BreadcrumbItem } from '@/types';
 import { router, usePage } from '@inertiajs/react';
 import { Pencil, Trash2 } from 'lucide-react';
 import { useState } from 'react';
@@ -25,64 +22,58 @@ import { toast } from 'sonner';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Categories',
+        title: 'Tags',
         href: index.url(),
     },
 ];
 
-export default function Categories() {
-    const { categories } = usePage<{ categories: { data: Category[] } }>()
-        .props;
-    const items = categories.data;
+export default function Tags() {
+    const { tags } = usePage<{ tags: { data: Tag[] } }>().props;
+    const items = tags.data;
 
-    const [editingCategory, setEditingCategory] = useState<
-        Category | undefined
-    >(undefined);
+    const [editingTag, setEditingTag] = useState<Tag | undefined>(undefined);
     const [isEditOpen, setIsEditOpen] = useState(false);
 
     function handleDelete(id: number) {
         router.delete(destroy.url(id), {
             preserveScroll: true,
-            onSuccess: () => toast.success('Category deleted!'),
-            onError: () => toast.error('Failed to delete category.'),
+            onSuccess: () => toast.success('Tag deleted!'),
+            onError: () => toast.error('Failed to delete tag.'),
         });
     }
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className="flex flex-col gap-8 p-4">
-                {/* Add Category Form */}
+                {/* Add Tag Form */}
                 <div className="max-w-96">
-                    <h2 className="mb-4 text-lg font-medium">Add a Category</h2>
-                    <CategoryForm className="rounded-xl border bg-white p-6 shadow-sm dark:bg-neutral-900" />
+                    <h2 className="mb-4 text-lg font-medium">Add a Tag</h2>
+                    <TagForm className="rounded-xl border bg-white p-6 shadow-sm dark:bg-neutral-900" />
                 </div>
 
                 <hr className="border-sidebar-border" />
 
-                {/* Category List */}
+                {/* Tag List */}
                 <div className="w-full">
-                    <h2 className="mb-4 text-lg font-medium">Categories</h2>
+                    <h2 className="mb-4 text-lg font-medium">Tags</h2>
                     <div className="flex flex-row flex-wrap gap-5">
                         {items && items.length > 0 ? (
-                            items.map((cat: Category) => (
+                            items.map((tag: Tag) => (
                                 <div
-                                    key={cat.id}
+                                    key={tag.id}
                                     className="flex w-96 flex-col gap-3 rounded-xl border border-sidebar-border bg-white p-4 shadow-sm transition-all hover:border-primary/50 dark:bg-neutral-900"
                                 >
                                     <h3 className="w-full truncate pr-2 text-lg leading-tight font-semibold">
-                                        {cat.name}
+                                        {tag.name}
                                     </h3>
 
                                     <div className="flex gap-2">
                                         <span className="rounded-md border border-primary/20 bg-primary/10 px-2 py-1 text-[10px] font-bold text-primary lowercase">
-                                            {cat.slug}
+                                            {tag.slug}
                                         </span>
-                                        {cat.hyperlinks_count !== undefined && (
+                                        {tag.hyperlinks_count !== undefined && (
                                             <span className="rounded-md border border-muted bg-muted px-2 py-1 text-[10px] font-bold text-muted-foreground">
-                                                {cat.hyperlinks_count} hyperlink
-                                                {cat.hyperlinks_count !== 1
-                                                    ? 's'
-                                                    : ''}
+                                                {tag.hyperlinks_count} hyperlink{tag.hyperlinks_count !== 1 ? 's' : ''}
                                             </span>
                                         )}
                                     </div>
@@ -92,7 +83,7 @@ export default function Categories() {
                                             variant="outline"
                                             size="sm"
                                             onClick={() => {
-                                                setEditingCategory(cat);
+                                                setEditingTag(tag);
                                                 setIsEditOpen(true);
                                             }}
                                         >
@@ -103,42 +94,24 @@ export default function Categories() {
                                         {/* Delete Button */}
                                         <Dialog>
                                             <DialogTrigger asChild>
-                                                <Button
-                                                    variant="destructive"
-                                                    size="sm"
-                                                >
+                                                <Button variant="destructive" size="sm">
                                                     <Trash2 className="mr-1 size-3" />
                                                     Delete
                                                 </Button>
                                             </DialogTrigger>
                                             <DialogContent className="sm:max-w-[425px]">
                                                 <DialogHeader>
-                                                    <DialogTitle>
-                                                        Delete Category
-                                                    </DialogTitle>
+                                                    <DialogTitle>Delete Tag</DialogTitle>
                                                     <DialogDescription>
-                                                        Are you sure you want to
-                                                        delete &quot;{cat.name}
-                                                        &quot;? Hyperlinks in
-                                                        this category will
-                                                        become uncategorized.
+                                                        Are you sure you want to delete &quot;{tag.name}&quot;? It will be removed from all hyperlinks.
                                                     </DialogDescription>
                                                 </DialogHeader>
                                                 <DialogFooter>
                                                     <DialogClose asChild>
-                                                        <Button variant="outline">
-                                                            Cancel
-                                                        </Button>
+                                                        <Button variant="outline">Cancel</Button>
                                                     </DialogClose>
                                                     <DialogClose asChild>
-                                                        <Button
-                                                            variant="destructive"
-                                                            onClick={() =>
-                                                                handleDelete(
-                                                                    cat.id,
-                                                                )
-                                                            }
-                                                        >
+                                                        <Button variant="destructive" onClick={() => handleDelete(tag.id)}>
                                                             Delete
                                                         </Button>
                                                     </DialogClose>
@@ -150,30 +123,24 @@ export default function Categories() {
                             ))
                         ) : (
                             <p className="text-muted-foreground italic">
-                                No categories yet. Add your first category using
-                                the form above!
+                                No tags yet. Add your first tag using the form above!
                             </p>
                         )}
                     </div>
                 </div>
 
                 {/* Edit Dialog */}
-                <Dialog
-                    open={isEditOpen}
-                    onOpenChange={(open) => {
-                        setIsEditOpen(open);
-                        if (!open) setEditingCategory(undefined);
-                    }}
-                >
+                <Dialog open={isEditOpen} onOpenChange={(open) => {
+                    setIsEditOpen(open);
+                    if (!open) setEditingTag(undefined);
+                }}>
                     <DialogContent className="rounded">
                         <DialogHeader>
-                            <DialogTitle>Edit Category</DialogTitle>
-                            <DialogDescription>
-                                Update the category details.
-                            </DialogDescription>
+                            <DialogTitle>Edit Tag</DialogTitle>
+                            <DialogDescription>Update the tag name.</DialogDescription>
                         </DialogHeader>
-                        <CategoryForm
-                            category={editingCategory}
+                        <TagForm
+                            tag={editingTag}
                             className="w-full"
                             onSuccess={() => setIsEditOpen(false)}
                         />

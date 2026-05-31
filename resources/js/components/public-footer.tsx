@@ -18,7 +18,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                     <ul className="mx-auto mb-4 space-y-3 text-center text-sm sm:flex sm:space-y-0 sm:space-x-3">
                         <li>
                             <Link
-                                href="/cookie-policy"
+                                href="/legal/cookie-policy"
                                 className="text-sm hover:text-primary"
                                 title="Cookie Policy"
                             >
@@ -28,7 +28,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                         <li className="hidden sm:inline-block">&middot;</li>
                         <li>
                             <Link
-                                href="/disclaimer"
+                                href="/legal/disclaimer"
                                 className="text-sm hover:text-primary"
                                 title="Disclaimer"
                             >
@@ -38,7 +38,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                         <li className="hidden sm:inline-block">&middot;</li>
                         <li>
                             <Link
-                                href="/legal-notice"
+                                href="/legal/legal-notice"
                                 className="text-sm hover:text-primary"
                                 title="Legal Notice"
                             >
@@ -48,7 +48,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                         <li className="hidden sm:inline-block">&middot;</li>
                         <li>
                             <Link
-                                href="/privacy-policy"
+                                href="/legal/privacy-policy"
                                 className="text-sm hover:text-primary"
                                 title="Privacy Policy"
                             >
@@ -58,7 +58,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                         <li className="hidden sm:inline-block">&middot;</li>
                         <li>
                             <Link
-                                href="/terms-of-service"
+                                href="/legal/terms-of-service"
                                 className="text-sm hover:text-primary"
                                 title="Terms of Service"
                             >

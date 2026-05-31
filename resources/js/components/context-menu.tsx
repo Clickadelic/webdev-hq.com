@@ -192,9 +192,9 @@ export default function RecipeContextMenu({
                             <AlertDialogContent className="bg-gray-100 dark:bg-gray-900">
                                 <AlertDialogHeader>
                                     <AlertDialogTitle className="text-gray-800 dark:text-gray-200">
-                                        Bist Du sicher, dass Du das Rezept{' '}
+                                        Are you sure, you want to delete{' '}
                                         <span className="font-bold">
-                                            {/* {recipe?.name} */}
+                                            {hyperlink?.name}
                                             Hyperlink name
                                         </span>{' '}
                                         löschen möchtest?

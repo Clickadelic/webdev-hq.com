@@ -73,90 +73,72 @@ export function CircularMenu() {
                         : 'pointer-events-none opacity-0',
                 )}
             >
-                <TooltipProvider>
-                    <Tooltip>
-                        <TooltipTrigger asChild data-state="instant-open">
-                            <Dialog
-                                open={isAppModalOpen}
-                                onOpenChange={(open) => {
-                                    setIsAppModalOpen(open);
-                                    if (!open) {
-                                        setIsEditing(false);
-                                    }
-                                }}
-                            >
-                                <DialogTrigger
-                                    onClick={() => setIsAppModalOpen(true)}
-                                    className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
-                                >
+                <Dialog
+                    open={isAppModalOpen}
+                    onOpenChange={(open) => {
+                        setIsAppModalOpen(open);
+                        if (!open) setIsEditing(false);
+                    }}
+                >
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger asChild data-state="instant-open">
+                                <DialogTrigger className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90">
                                     <ScreenShare className="size-4" />
                                 </DialogTrigger>
-                                <DialogContent className="rounded">
-                                    <DialogHeader>
-                                        <DialogTitle className="flex items-start gap-2">
-                                            <ScreenShare className="size-4" />
-                                            {isEditing ? 'Edit App' : 'Add App'}
-                                        </DialogTitle>
-                                        <DialogDescription>
-                                            {isEditing
-                                                ? 'Edit the App'
-                                                : 'Add a new App'}
-                                        </DialogDescription>
-                                    </DialogHeader>
-                                    <AppForm className="w-full" />
-                                </DialogContent>
-                            </Dialog>
-                        </TooltipTrigger>
-                        <TooltipContent side="left" className="text-white">
-                            <p>Create new hyperlink</p>
-                            <TooltipArrow className="fill-primary dark:fill-primary" />
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
-                <TooltipProvider>
-                    <Tooltip>
-                        <TooltipTrigger asChild data-state="instant-open">
-                            <Dialog
-                                open={isHyperlinkModalOpen}
-                                onOpenChange={(open) => {
-                                    setIsHyperlinkModalOpen(open);
-                                    if (!open) {
-                                        setIsEditing(false);
-                                    }
-                                }}
-                            >
-                                <DialogTrigger
-                                    onClick={() =>
-                                        setIsHyperlinkModalOpen(true)
-                                    }
-                                    className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
-                                >
+                            </TooltipTrigger>
+                            <TooltipContent side="left" className="text-white">
+                                <p>Create new app</p>
+                                <TooltipArrow className="fill-primary dark:fill-primary" />
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                    <DialogContent className="rounded">
+                        <DialogHeader>
+                            <DialogTitle className="flex items-start gap-2">
+                                <ScreenShare className="size-4" />
+                                {isEditing ? 'Edit App' : 'Add App'}
+                            </DialogTitle>
+                            <DialogDescription>
+                                {isEditing ? 'Edit the App' : 'Add a new App'}
+                            </DialogDescription>
+                        </DialogHeader>
+                        <AppForm className="w-full" />
+                    </DialogContent>
+                </Dialog>
+                <Dialog
+                    open={isHyperlinkModalOpen}
+                    onOpenChange={(open) => {
+                        setIsHyperlinkModalOpen(open);
+                        if (!open) setIsEditing(false);
+                    }}
+                >
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger asChild data-state="instant-open">
+                                <DialogTrigger className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90">
                                     <LinkIcon className="size-4" />
                                 </DialogTrigger>
-                                <DialogContent className="rounded">
-                                    <DialogHeader>
-                                        <DialogTitle className="flex items-start gap-2">
-                                            <LinkIcon className="size-4" />
-                                            {isEditing
-                                                ? 'Edit Hyperlink'
-                                                : 'Add Hyperlink'}
-                                        </DialogTitle>
-                                        <DialogDescription>
-                                            {isEditing
-                                                ? 'Edit the hyperlink'
-                                                : 'Add a new hyperlink'}
-                                        </DialogDescription>
-                                    </DialogHeader>
-                                    <HyperlinkForm className="w-full" />
-                                </DialogContent>
-                            </Dialog>
-                        </TooltipTrigger>
-                        <TooltipContent side="left" className="text-white">
-                            <p>Create new hyperlink</p>
-                            <TooltipArrow className="fill-primary dark:fill-primary" />
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
+                            </TooltipTrigger>
+                            <TooltipContent side="left" className="text-white">
+                                <p>Create new hyperlink</p>
+                                <TooltipArrow className="fill-primary dark:fill-primary" />
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                    <DialogContent className="rounded">
+                        <DialogHeader>
+                            <DialogTitle className="flex items-start gap-2">
+                                <LinkIcon className="size-4" />
+                                {isEditing ? 'Edit Hyperlink' : 'Add Hyperlink'}
+                            </DialogTitle>
+                            <DialogDescription>
+                                {isEditing ? 'Edit the hyperlink' : 'Add a new hyperlink'}
+                            </DialogDescription>
+                        </DialogHeader>
+                        <HyperlinkForm className="w-full" />
+                    </DialogContent>
+                </Dialog>
             </div>
 
             {/* Haupt-Button */}
@@ -180,7 +162,7 @@ export function CircularMenu() {
                         side="left"
                         className="bg-primary text-white dark:bg-primary"
                     >
-                        <p>{'Create new content'}</p>
+                        <p>Create new content.</p>
                         <TooltipArrow className="fill-primary dark:fill-primary" />
                     </TooltipContent>
                 </Tooltip>

@@ -1,11 +1,21 @@
 'use client';
 
 import { index } from '@/actions/App/Http/Controllers/HyperlinkController';
+import HyperlinkForm from '@/components/forms/hyperlink-form';
+import DeleteHyperlinkButton from '@/components/hyperlinks/delete-hyperlink-button';
+import { Button } from '@/components/ui/button';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from '@/components/ui/dialog';
 import AppLayout from '@/layouts/app-layout';
 import { Hyperlink, type BreadcrumbItem } from '@/types';
 import { usePage } from '@inertiajs/react';
-
-import DeleteHyperlinkButton from '@/components/hyperlinks/delete-hyperlink-button';
+import { Pencil } from 'lucide-react';
+import { useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -19,7 +29,8 @@ export default function Hyperlinks() {
         .props;
     const items = hyperlinks.data;
 
-    console.log('Items are', items);
+    const [editingHyperlink, setEditingHyperlink] = useState<Hyperlink | undefined>(undefined);
+    const [isEditOpen, setIsEditOpen] = useState(false);
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -41,9 +52,28 @@ export default function Hyperlinks() {
                                     </span>
                                 </div>
 
+                                {link.category && (
+                                    <span className="w-fit rounded-md border border-muted bg-muted px-2 py-0.5 text-[10px] font-bold text-muted-foreground">
+                                        {link.category.name}
+                                    </span>
+                                )}
+
                                 <p className="line-clamp-2 flex-1 font-mono text-sm text-muted-foreground italic">
                                     {link.description || 'Keine Beschreibung.'}
                                 </p>
+
+                                {link.tags && link.tags.length > 0 && (
+                                    <div className="flex flex-wrap gap-1">
+                                        {link.tags.map((tag) => (
+                                            <span
+                                                key={tag.id}
+                                                className="rounded-full border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-medium text-primary"
+                                            >
+                                                {tag.name}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
 
                                 <a
                                     href={link.url}
@@ -53,7 +83,21 @@ export default function Hyperlinks() {
                                 >
                                     {link.url.replace(/^https?:\/\//, '')}
                                 </a>
-                                <DeleteHyperlinkButton id={link.id} />
+
+                                <div className="flex gap-2">
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => {
+                                            setEditingHyperlink(link);
+                                            setIsEditOpen(true);
+                                        }}
+                                    >
+                                        <Pencil className="mr-1 size-3" />
+                                        Edit
+                                    </Button>
+                                    <DeleteHyperlinkButton id={link.id} />
+                                </div>
                             </div>
                         ))
                     ) : (
@@ -62,6 +106,24 @@ export default function Hyperlinks() {
                         </p>
                     )}
                 </div>
+
+                {/* Edit Dialog */}
+                <Dialog open={isEditOpen} onOpenChange={(open) => {
+                    setIsEditOpen(open);
+                    if (!open) setEditingHyperlink(undefined);
+                }}>
+                    <DialogContent className="max-h-[90vh] overflow-y-auto rounded">
+                        <DialogHeader>
+                            <DialogTitle>Edit Hyperlink</DialogTitle>
+                            <DialogDescription>Update the hyperlink details.</DialogDescription>
+                        </DialogHeader>
+                        <HyperlinkForm
+                            hyperlink={editingHyperlink}
+                            className="w-full"
+                            onSuccess={() => setIsEditOpen(false)}
+                        />
+                    </DialogContent>
+                </Dialog>
             </div>
         </AppLayout>
     );

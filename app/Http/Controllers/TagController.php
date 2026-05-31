@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use App\Http\Requests\StoreTagRequest;
 use App\Http\Requests\UpdateTagRequest;
+use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
@@ -13,15 +14,11 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $tags = Tag::withCount('hyperlinks')->latest()->paginate(15);
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return inertia('tags/index', [
+            'tags' => $tags,
+        ]);
     }
 
     /**
@@ -29,23 +26,12 @@ class TagController extends Controller
      */
     public function store(StoreTagRequest $request)
     {
-        //
-    }
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['name']);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Tag $tag)
-    {
-        //
-    }
+        Tag::create($data);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Tag $tag)
-    {
-        //
+        return back()->with('success', 'Tag successfully created.');
     }
 
     /**
@@ -53,7 +39,12 @@ class TagController extends Controller
      */
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        //
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['name']);
+
+        $tag->update($data);
+
+        return back()->with('success', 'Tag successfully updated.');
     }
 
     /**
@@ -61,6 +52,8 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+
+        return back()->with('success', 'Tag successfully deleted.');
     }
 }

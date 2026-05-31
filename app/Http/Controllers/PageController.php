@@ -10,7 +10,7 @@ class PageController extends Controller
 
 	public function index()
 	{
-		$hyperlinks = Hyperlink::published()->get();
+		$hyperlinks = Hyperlink::with(['category', 'tags'])->published()->get();
 
 		return Inertia::render('home', [
 			'hyperlinks' => $hyperlinks,
