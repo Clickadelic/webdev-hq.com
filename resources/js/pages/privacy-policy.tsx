@@ -1,4 +1,4 @@
-import PublicLayout from '@/layouts/public-layout';
+import PublicSidebarLeftLayout from '@/layouts/public-sidebar-left-layout';
 
 export default function PrivacyPolicy({
     canRegister = true,
@@ -6,7 +6,10 @@ export default function PrivacyPolicy({
     canRegister?: boolean;
 }) {
     return (
-        <PublicLayout canRegister={canRegister} title="Privacy Policy">
+        <PublicSidebarLeftLayout
+            canRegister={canRegister}
+            title="Privacy Policy"
+        >
             <article>
                 <section>
                     <h3 className="text-lg font-semibold">
@@ -80,6 +83,6 @@ export default function PrivacyPolicy({
                 law. ### 10. Changes This privacy policy may be updated to
                 reflect changes in functionality or legal requirements.
             </p>
-        </PublicLayout>
+        </PublicSidebarLeftLayout>
     );
 }

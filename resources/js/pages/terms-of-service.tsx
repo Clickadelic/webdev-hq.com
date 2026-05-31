@@ -1,4 +1,4 @@
-import PublicLayout from '@/layouts/public-layout';
+import PublicSidebarLeftLayout from '@/layouts/public-sidebar-left-layout';
 
 export default function TermsofService({
     canRegister = true,
@@ -6,7 +6,7 @@ export default function TermsofService({
     canRegister?: boolean;
 }) {
     return (
-        <PublicLayout canRegister={canRegister} title="Terms of Service">
+        <PublicSidebarLeftLayout canRegister={canRegister} title="Disclaimer">
             <article className="space-y-5">
                 <section>
                     <h3 className="text-lg font-semibold">
@@ -184,6 +184,6 @@ export default function TermsofService({
                     </p>
                 </section>
             </article>
-        </PublicLayout>
+        </PublicSidebarLeftLayout>
     );
 }

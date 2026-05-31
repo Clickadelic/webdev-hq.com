@@ -7,13 +7,13 @@ interface PublicFooterProps {
 
 export default function PublicFooter({ className }: PublicFooterProps) {
     return (
-        <div
+        <footer
             className={cn(
                 'w-full bg-white shadow dark:bg-neutral-900',
                 className,
             )}
         >
-            <footer className="container mx-auto py-6">
+            <div className="container mx-auto py-6">
                 <div className="flex flex-row items-center justify-center">
                     <ul className="mx-auto mb-4 space-y-3 text-center text-sm sm:flex sm:space-y-0 sm:space-x-3">
                         <li>
@@ -73,7 +73,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                         {new Date().getFullYear()}.
                     </p>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
     );
 }
