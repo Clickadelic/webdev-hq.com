@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('/legal', [PageController::class, 'legalIndex'])->name('legal-index');
 Route::get('/legal/cookie-policy', [PageController::class, 'cookiePolicy'])->name('cookie-policy');
 Route::get('/legal/disclaimer', [PageController::class, 'disclaimer'])->name('disclaimer');
 Route::get('/legal/legal-notice', [PageController::class, 'legalNotice'])->name('legal-notice');

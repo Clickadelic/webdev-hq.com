@@ -7,11 +7,11 @@ export default function TermsofService({
 }) {
     return (
         <PublicSidebarLeftLayout canRegister={canRegister} title="Disclaimer">
-            <article className="space-y-5">
+            <div className="space-y-5">
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Scope of these Terms of Service
-                    </h3>
+                    </h2>
                     <p>
                         These Terms of Service ("Terms") govern the use of this
                         website webdev-hq.com (the "Platform"), operated by a
@@ -20,9 +20,9 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Description of Service
-                    </h3>
+                    </h2>
                     <p>
                         WebDev HQ (webdev-hq.com) is a community-driven platform
                         that allows users to:
@@ -44,9 +44,9 @@ export default function TermsofService({
                     </ul>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         User Accounts
-                    </h3>
+                    </h2>
                     <p>
                         To access certain features, users may create a user
                         account. If you do so, you agree to:
@@ -64,7 +64,9 @@ export default function TermsofService({
                     </ul>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">Social Login</h3>
+                    <h2 className="mb-3 text-2xl font-semibold">
+                        Social Login
+                    </h2>
                     <p>
                         The Platform may offer authentication via third-party
                         providers such as Google or GitHub. By using these
@@ -74,9 +76,9 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         User-Generated Content
-                    </h3>
+                    </h2>
                     <p>
                         Users may submit content including links, posts, and (in
                         the future) comments. By submitting content, you: *
@@ -87,9 +89,9 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Prohibited Content
-                    </h3>
+                    </h2>
                     <p>
                         You agree not to publish content that: * Violates
                         applicable laws * Infringes intellectual property rights
@@ -99,9 +101,9 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Moderation and Removal
-                    </h3>
+                    </h2>
                     <p>
                         The operator is not obligated to monitor content but
                         reserves the right to: * Review user content * Remove or
@@ -112,9 +114,9 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         No Liability for User
-                    </h3>
+                    </h2>
                     <p>
                         No Liability for User Content The Platform acts as a
                         hosting provider for user-generated content. The
@@ -125,9 +127,9 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         External Links
-                    </h3>
+                    </h2>
                     <p>
                         The Platform may contain links to third-party websites.
                         The operator has no control over these websites and
@@ -135,17 +137,21 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Availability of the Service
-                    </h3>
+                    </h2>
                     <p>
                         The Platform is provided "as is" without warranties of
-                        any kind. The operator does not guarantee: * Continuous
-                        availability * Error-free operation * Data preservation.
+                        any kind. The operator does not guarantee:
                     </p>
+                    <ul className="my-3 list-inside list-disc">
+                        <li>Continuous availability</li>
+                        <li>Error-free operation</li>
+                        <li>Data preservation</li>
+                    </ul>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">Termination</h3>
+                    <h2 className="mb-3 text-2xl font-semibold">Termination</h2>
                     <p>
                         The operator may suspend or terminate access to the
                         Platform at any time without prior notice. Users may
@@ -153,7 +159,7 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">Termination</h3>
+                    <h2 className="mb-3 text-2xl font-semibold">Termination</h2>
                     <p>
                         The operator may suspend or terminate access to the
                         Platform at any time without prior notice. Users may
@@ -161,9 +167,9 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Changes to the Terms
-                    </h3>
+                    </h2>
                     <p>
                         These Terms may be updated at any time. Continued use of
                         the Platform constitutes acceptance of the updated
@@ -171,25 +177,25 @@ export default function TermsofService({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Applicable Law
-                    </h3>
+                    </h2>
                     <p>
                         These Terms are governed by the laws of the Federal
                         Republic of Germany.
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Contact for questions
-                    </h3>
+                    </h2>
                     <p>
                         For questions with regards to these terms, please
                         contact:
                         [admin@webdev-hq.com](mailto:admin@webdev-hq.com)
                     </p>
                 </section>
-            </article>
+            </div>
         </PublicSidebarLeftLayout>
     );
 }

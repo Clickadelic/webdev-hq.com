@@ -7,11 +7,11 @@ export default function Disclaimer({
 }) {
     return (
         <PublicSidebarLeftLayout canRegister={canRegister} title="Disclaimer">
-            <article className="space-y-5">
+            <div className="space-y-5">
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         User Generated Content
-                    </h3>
+                    </h2>
                     <p>
                         webdev-hq.com is a community-driven platform where users
                         can publish links, articles, and other content. The
@@ -22,9 +22,9 @@ export default function Disclaimer({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         No Liability for External Links
-                    </h3>
+                    </h2>
                     <p>
                         This platform may contain links to external websites.
                         The operator has no influence over the content of those
@@ -33,9 +33,9 @@ export default function Disclaimer({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Notice of illegal content
-                    </h3>
+                    </h2>
                     <p>
                         Notice and Takedown If you become aware of illegal,
                         harmful, or infringing content, please report it to:
@@ -45,16 +45,16 @@ export default function Disclaimer({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         No professional advice
-                    </h3>
+                    </h2>
                     <p>
                         The content provided on this platform is for
                         informational purposes only and does not constitute
                         professional advice of any kind.
                     </p>
                 </section>
-            </article>
+            </div>
         </PublicSidebarLeftLayout>
     );
 }

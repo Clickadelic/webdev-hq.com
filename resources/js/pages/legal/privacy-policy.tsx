@@ -10,11 +10,11 @@ export default function PrivacyPolicy({
             canRegister={canRegister}
             title="Privacy Policy"
         >
-            <article>
+            <div className="space-y-5">
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-medium">
                         General Information
-                    </h3>
+                    </h2>
                     <p>
                         Protecting your personal data is important to me. This
                         website is designed with a strong focus on privacy and
@@ -22,9 +22,9 @@ export default function PrivacyPolicy({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Data Controller
-                    </h3>
+                    </h2>
                     <ul>
                         <li>Tobias Hopp</li>
                         <li>
@@ -33,9 +33,9 @@ export default function PrivacyPolicy({
                     </ul>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Data Collection
-                    </h3>
+                    </h2>
                     <p>
                         We only collect data necessary to operate the platform:
                         * Account information (e.g., username, email address) *
@@ -45,9 +45,9 @@ export default function PrivacyPolicy({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Server Hosting
-                    </h3>
+                    </h2>
                     <p>
                         This website is hosted by a provider located in Germany.
                         Server logs may be automatically collected and stored by
@@ -58,9 +58,9 @@ export default function PrivacyPolicy({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Authentication & Social Login
-                    </h3>
+                    </h2>
                     <p>
                         This website is hosted by a provider located in Germany.
                         Server logs may be automatically collected and stored by
@@ -71,9 +71,9 @@ export default function PrivacyPolicy({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Authentication & Social Login
-                    </h3>
+                    </h2>
                     <p>
                         Users may register using traditional login methods or
                         third-party authentication providers (e.g., Google,
@@ -98,7 +98,7 @@ export default function PrivacyPolicy({
                         requirements.
                     </p>
                 </section>
-            </article>
+            </div>
         </PublicSidebarLeftLayout>
     );
 }

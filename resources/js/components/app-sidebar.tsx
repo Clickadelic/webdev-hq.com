@@ -10,14 +10,12 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard, home } from '@/routes';
+import { dashboard } from '@/routes';
 import {
     BookOpen,
     GalleryHorizontal,
-    Home,
     LayoutGrid,
     Link,
-    ScreenShare,
     Tag,
     Webhook,
 } from 'lucide-react';
@@ -28,19 +26,9 @@ import { type NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Home',
-        href: home(),
-        icon: Home,
-    },
-    {
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
-    },
-    {
-        title: 'Apps',
-        href: '/apps',
-        icon: ScreenShare,
     },
     {
         title: 'Hyperlinks',

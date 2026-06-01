@@ -3,11 +3,11 @@ import { ChevronRight } from 'lucide-react';
 export default function LeftSidebar() {
     return (
         <aside>
-            <h3 className="mb-2 text-lg font-medium">Navigation</h3>
+            <h3 className="mb-3 text-2xl font-medium">Navigation</h3>
             <ul className="list-inside">
                 <li>
                     <Link
-                        href="/disclaimer"
+                        href="/legal/disclaimer"
                         className="flex flex-row gap-2 hover:text-primary hover:underline hover:underline-offset-2"
                         title="Disclaimer"
                     >
@@ -16,7 +16,7 @@ export default function LeftSidebar() {
                 </li>
                 <li>
                     <Link
-                        href="/cookie-policy"
+                        href="/legal/cookie-policy"
                         className="flex flex-row gap-2 hover:text-primary hover:underline hover:underline-offset-2"
                         title="Cookie Policy"
                     >
