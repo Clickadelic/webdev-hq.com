@@ -8,18 +8,23 @@ use Inertia\Inertia;
 class PageController extends Controller
 {
 
+
 	public function index()
 	{
 		$hyperlinks = Hyperlink::with(['category', 'tags'])
-			->published()
-			->latest()
-			->paginate(18)
-			->withQueryString();
-
+		->published()
+		->latest()
+		->paginate(18)
+		->withQueryString();
+		
 		return Inertia::render('home', [
 			'hyperlinks' => $hyperlinks,
 			'canRegister' => true,
-		]);
+			]);
+	}
+	public function legalIndex()
+	{
+		return Inertia::render('legal/index');
 	}
 	public function legalNotice()
 	{

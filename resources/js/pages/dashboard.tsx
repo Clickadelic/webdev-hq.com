@@ -1,3 +1,4 @@
+import HyperlinkTable from '@/components/hyperlink-table';
 import { SortableAppTile } from '@/components/sortable-app-tile';
 import AppLayout from '@/layouts/app-layout';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -251,6 +252,9 @@ export default function Dashboard() {
                         ) : null}
                     </DragOverlay>
                 </DndContext>
+            </div>
+            <div>
+                <HyperlinkTable />
             </div>
         </AppLayout>
     );

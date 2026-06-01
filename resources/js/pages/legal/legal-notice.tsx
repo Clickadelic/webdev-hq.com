@@ -7,9 +7,9 @@ export default function LegalNotice({
 }) {
     return (
         <PublicSidebarLeftLayout canRegister={canRegister} title="Legal Notice">
-            <article className="space-y-5">
+            <div className="space-y-5">
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">Legal Notice</h3>
+                    <h2 className="mb-3 text-2xl font-medium">Legal Notice</h2>
                     <p>
                         All information in accordance with section 5 TMG (German
                         Telemedia Act):
@@ -32,9 +32,9 @@ export default function LegalNotice({
                     </ul>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Responsibility for Content
-                    </h3>
+                    </h2>
                     <p>
                         As a private individual, I am responsible for my own
                         content on this website in accordance with general laws.
@@ -46,9 +46,9 @@ export default function LegalNotice({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">
+                    <h2 className="mb-3 text-2xl font-semibold">
                         Responsibility for Links
-                    </h3>
+                    </h2>
                     <p>
                         This platform contains links and content created by
                         users (user-generated content). I have no control over
@@ -61,7 +61,7 @@ export default function LegalNotice({
                     </p>
                 </section>
                 <section>
-                    <h3 className="mb-1 text-lg font-semibold">Copyright</h3>
+                    <h2 className="mb-3 text-2xl font-semibold">Copyright</h2>
                     <p>
                         The content created by the site operator on this
                         platform is subject to copyright law. Contributions by
@@ -70,7 +70,7 @@ export default function LegalNotice({
                         please contact us via email.
                     </p>
                 </section>
-            </article>
+            </div>
         </PublicSidebarLeftLayout>
     );
 }
