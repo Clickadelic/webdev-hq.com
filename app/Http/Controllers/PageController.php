@@ -10,11 +10,15 @@ class PageController extends Controller
 
 	public function index()
 	{
-		$hyperlinks = Hyperlink::with(['category', 'tags'])->published()->get();
+		$hyperlinks = Hyperlink::with(['category', 'tags'])
+			->published()
+			->latest()
+			->paginate(18)
+			->withQueryString();
 
 		return Inertia::render('home', [
 			'hyperlinks' => $hyperlinks,
-			'canRegister' => true, // Registration is always enabled
+			'canRegister' => true,
 		]);
 	}
 	public function legalNotice()
