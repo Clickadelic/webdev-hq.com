@@ -28,6 +28,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 require __DIR__ . '/settings.php';
 
-if (config('app.debug')) {
+// if (config('app.debug')) {
 	require __DIR__ . '/dev.php';
-}
+// }
