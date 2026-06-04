@@ -43,27 +43,10 @@ class HyperlinkController extends Controller
     public function store(StoreHyperlinkRequest $request)
     {
         $data = $request->safe()->except(['tags', 'category']);
-
-        // Handle category: can be numeric ID or new category name
-        $categoryValue = $request->validated('category');
-        if ($categoryValue) {
-            if (is_numeric($categoryValue)) {
-                $data['category_id'] = (int) $categoryValue;
-            } else {
-                // Create new category or find existing by name
-                $category = Category::firstOrCreate(
-                    ['name' => $categoryValue],
-                    ['slug' => Str::slug($categoryValue)]
-                );
-                $data['category_id'] = $category->id;
-            }
-        }
+        $data['category_id'] = $this->resolveCategoryId($request->validated('category'));
 
         $hyperlink = Hyperlink::create($data);
-
-        if ($request->validated('tags')) {
-            $hyperlink->tags()->sync($request->validated('tags'));
-        }
+        $hyperlink->tags()->sync($this->resolveTagIds($request->validated('tags', [])));
 
         return redirect()
             ->route('hyperlinks.index')
@@ -97,12 +80,54 @@ class HyperlinkController extends Controller
      */
     public function update(UpdateHyperlinkRequest $request, Hyperlink $hyperlink)
     {
-        $hyperlink->update($request->safe()->except('tags'));
-        $hyperlink->tags()->sync($request->validated('tags', []));
+        $data = $request->safe()->except(['tags', 'category']);
+        $data['category_id'] = $this->resolveCategoryId($request->validated('category'));
+
+        $hyperlink->update($data);
+        $hyperlink->tags()->sync($this->resolveTagIds($request->validated('tags', [])));
 
         return redirect()
             ->route('hyperlinks.index')
             ->with('success', 'Hyperlink successfully updated.');
+    }
+
+    /**
+     * Resolve a category value (numeric ID or name) to a category ID.
+     */
+    private function resolveCategoryId(?string $value): ?int
+    {
+        if (! $value) {
+            return null;
+        }
+
+        if (is_numeric($value)) {
+            return (int) $value;
+        }
+
+        return Category::firstOrCreate(
+            ['name' => $value],
+            ['slug' => Str::slug($value)]
+        )->id;
+    }
+
+    /**
+     * Resolve an array of tag values (numeric IDs or names) to tag IDs.
+     *
+     * @param  array<int, string>  $values
+     * @return array<int, int>
+     */
+    private function resolveTagIds(array $values): array
+    {
+        return collect($values)->map(function (string $value) {
+            if (is_numeric($value)) {
+                return (int) $value;
+            }
+
+            return Tag::firstOrCreate(
+                ['name' => $value],
+                ['slug' => Str::slug($value)]
+            )->id;
+        })->all();
     }
 
     /**

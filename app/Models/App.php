@@ -15,6 +15,7 @@ class App extends Model
     protected $fillable = [
         'title',
         'url',
+        'favicon_url',
         'target',
         'position',
         'created_by',

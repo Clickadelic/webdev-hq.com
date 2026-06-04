@@ -27,6 +27,7 @@ export interface SharedData {
     auth: Auth;
     sidebarOpen: boolean;
     categories: Category[];
+    tags: Tag[];
     [key: string]: unknown;
 }
 
@@ -46,6 +47,7 @@ export interface App {
     id: string;
     title: string;
     url: string;
+    favicon_url: string | null;
     target: '_self' | '_blank';
     position: number;
     created_by: number | null;

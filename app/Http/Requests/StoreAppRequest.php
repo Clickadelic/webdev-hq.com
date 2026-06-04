@@ -25,6 +25,8 @@ class StoreAppRequest extends FormRequest
 
             'url' => ['required', 'url', 'max:2048'],
 
+            'favicon_url' => ['nullable', 'url', 'max:2048'],
+
             'target' => [
                 'required',
                 'string',
