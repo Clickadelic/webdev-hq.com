@@ -20,7 +20,7 @@ export default function HyperlinkCard({
             href={hyperlink.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex w-full flex-col gap-1 rounded-xl border border-border bg-white p-3 shadow-sm transition-all hover:border-primary/50 hover:shadow-md dark:bg-neutral-900"
+            className="group flex w-full flex-col gap-2 rounded-xl border border-border bg-white p-3 shadow-sm transition-all hover:border-primary/50 hover:shadow-md dark:bg-neutral-900"
         >
             <div className="flex items-start justify-between gap-2">
                 <div className="flex-start flex justify-start gap-2">
@@ -38,19 +38,13 @@ export default function HyperlinkCard({
             </div>
 
             {hyperlink.category && (
-                <span className="mb-3 w-fit rounded-md border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-bold">
+                <span className="w-fit rounded-md border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-bold">
                     {hyperlink.category.name}
                 </span>
             )}
 
-            {hyperlink.description && (
-                <p className="line-clamp-2 text-xs text-muted-foreground">
-                    {hyperlink.description}
-                </p>
-            )}
-
             {hyperlink.tags && hyperlink.tags.length > 0 && (
-                <div className="mb-3 flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                     {hyperlink.tags.map((tag) => (
                         <span
                             key={tag.id}
@@ -61,6 +55,13 @@ export default function HyperlinkCard({
                     ))}
                 </div>
             )}
+
+            {hyperlink.description && (
+                <p className="line-clamp-2 h-8 truncate text-xs text-muted-foreground">
+                    {hyperlink.description}
+                </p>
+            )}
+
             <p className="mt-auto truncate text-xs font-medium text-primary/70">
                 {hyperlink.url.replace(/^https?:\/\//, '')}
             </p>

@@ -18,7 +18,7 @@ class HyperlinkController extends Controller
     {
         $hyperlinks = Hyperlink::with(['category', 'tags'])
             ->latest()
-            ->paginate(15);
+            ->paginate(38);
 
         return inertia('hyperlinks/index', [
             'hyperlinks' => $hyperlinks,
