@@ -62,7 +62,7 @@ export default function HyperlinkForm({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [hyperlink?.id]);
 
-    function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
+    function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
 
         if (hyperlink) {

@@ -48,7 +48,7 @@ export default function AppForm({ app, className }: AppFormProps) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [app?.id]);
 
-    function handleSubmit(e: React.FormEvent) {
+    function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
 
         if (app) {

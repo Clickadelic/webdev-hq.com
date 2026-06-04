@@ -8,7 +8,10 @@ import { LoaderCircle } from 'lucide-react';
 import { BsPlusLg } from 'react-icons/bs';
 import { toast } from 'sonner';
 
-import { store, update } from '@/actions/App/Http/Controllers/CategoryController';
+import {
+    store,
+    update,
+} from '@/actions/App/Http/Controllers/CategoryController';
 import { type Category } from '@/types';
 
 import { cn } from '@/lib/utils';
@@ -41,7 +44,7 @@ export default function CategoryForm({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [category?.id]);
 
-    function handleSubmit(e: React.FormEvent) {
+    function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
 
         if (category) {

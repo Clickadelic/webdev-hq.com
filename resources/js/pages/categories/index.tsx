@@ -50,7 +50,7 @@ export default function Categories() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <div className="flex flex-col gap-8 p-4">
+            <div className="flex flex-col gap-3 p-4">
                 {/* Add Category Form */}
                 <div className="max-w-96">
                     <h2 className="mb-4 text-lg font-medium">Add a Category</h2>
