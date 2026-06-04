@@ -14,7 +14,7 @@ import PublicLayout from '@/layouts/public-layout';
 import { type Hyperlink } from '@/types';
 import { router, usePage } from '@inertiajs/react';
 import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
 import { toast } from 'sonner';
 interface PaginatedHyperlinks {
@@ -40,6 +40,28 @@ export default function Home({
     const [isEditOpen, setIsEditOpen] = useState(false);
     const isAuthenticated = !!usePage().props.auth?.user;
 
+    // Debounced live search
+    const debounceTimer = useRef<number | null>(null);
+    const search = useCallback((value: string) => {
+        if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
+        debounceTimer.current = window.setTimeout(() => {
+            router.get('/', value ? { search: value } : {}, {
+                preserveState: true,
+                preserveScroll: true,
+            });
+        }, 300);
+    }, []);
+
+    // Clean up timer on unmount
+    useEffect(() => () => {
+        if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
+    }, []);
+
+    function handleQueryChange(value: string) {
+        setQuery(value);
+        search(value);
+    }
+
     const handleEdit = (hyperlink: Hyperlink) => {
         setEditingHyperlink(hyperlink);
         setIsEditOpen(true);
@@ -53,27 +75,20 @@ export default function Home({
         });
     };
 
-    function handleSearch(e: React.ChangeEvent) {
-        e.preventDefault();
-        router.get('/', query ? { search: query } : {}, {
-            preserveState: true,
-        });
-    }
-
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
             {/* Search */}
             <div className="mx-auto mt-8 mb-10 w-full max-w-lg">
                 <div className="rounded-xl bg-white/30 p-1 backdrop-blur dark:bg-white/5">
                     <form
-                        onSubmit={handleSearch}
+                        onSubmit={(e) => e.preventDefault()}
                         className="relative rounded-lg bg-white dark:bg-neutral-950"
                     >
                         <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
                         <input
                             type="text"
                             value={query}
-                            onChange={(e) => setQuery(e.target.value)}
+                            onChange={(e) => handleQueryChange(e.target.value)}
                             placeholder="Search resources…"
                             className="w-full rounded-lg py-2.5 pr-3 pl-9 text-sm placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:outline-none dark:bg-neutral-950 dark:text-white"
                         />
