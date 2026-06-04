@@ -3,6 +3,7 @@
 import { destroy, index } from '@/actions/App/Http/Controllers/TagController';
 import TagForm from '@/components/forms/tag-form';
 import { Button } from '@/components/ui/button';
+import { ButtonGroup } from '@/components/ui/button-group';
 import {
     Dialog,
     DialogClose,
@@ -13,10 +14,23 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
+
+import { Trash2 } from 'lucide-react';
+
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+
+import { MoreHorizontalIcon } from 'lucide-react';
+
 import AppLayout from '@/layouts/app-layout';
 import { Tag, type BreadcrumbItem } from '@/types';
 import { router, usePage } from '@inertiajs/react';
-import { Pencil, Trash2 } from 'lucide-react';
+import { Pencil } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -61,11 +75,136 @@ export default function Tags() {
                             items.map((tag: Tag) => (
                                 <div
                                     key={tag.id}
-                                    className="flex w-96 flex-col gap-3 rounded-xl border border-sidebar-border bg-white p-4 shadow-sm transition-all hover:border-primary/50 dark:bg-neutral-900"
+                                    className="flex w-72 flex-col gap-3 rounded-xl border border-sidebar-border bg-white p-4 shadow-sm transition-all hover:border-primary/50 dark:bg-neutral-900"
                                 >
-                                    <h3 className="w-full truncate pr-2 text-lg leading-tight font-semibold">
-                                        {tag.name}
-                                    </h3>
+                                    <div className="flex flex-row items-center justify-between">
+                                        <h3 className="w-full truncate pr-2 text-lg leading-tight font-semibold">
+                                            {tag.name}
+                                        </h3>
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger asChild>
+                                                <Button
+                                                    variant="outline"
+                                                    size="icon"
+                                                    aria-label="Options"
+                                                >
+                                                    <MoreHorizontalIcon />
+                                                </Button>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent
+                                                align="end"
+                                                className="w-40"
+                                            >
+                                                <DropdownMenuGroup>
+                                                    <DropdownMenuItem>
+                                                        {/* Edit Dialog */}
+                                                        <Dialog
+                                                            open={isEditOpen}
+                                                            onOpenChange={(
+                                                                open,
+                                                            ) => {
+                                                                setIsEditOpen(
+                                                                    open,
+                                                                );
+                                                                if (!open)
+                                                                    setEditingTag(
+                                                                        undefined,
+                                                                    );
+                                                            }}
+                                                        >
+                                                            <DialogContent className="rounded">
+                                                                <DialogHeader>
+                                                                    <DialogTitle>
+                                                                        Edit Tag
+                                                                    </DialogTitle>
+                                                                    <DialogDescription>
+                                                                        Update
+                                                                        the tag
+                                                                        name.
+                                                                    </DialogDescription>
+                                                                </DialogHeader>
+                                                                <TagForm
+                                                                    tag={
+                                                                        editingTag
+                                                                    }
+                                                                    className="w-full"
+                                                                    onSuccess={() =>
+                                                                        setIsEditOpen(
+                                                                            false,
+                                                                        )
+                                                                    }
+                                                                />
+                                                            </DialogContent>
+                                                        </Dialog>
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem>
+                                                        {/* Delete Button */}
+                                                        <Dialog>
+                                                            <DialogTrigger
+                                                                asChild
+                                                            >
+                                                                <Button
+                                                                    variant="outline"
+                                                                    size="xs"
+                                                                    className="text-rose-500"
+                                                                >
+                                                                    <Trash2 className="mr-1 size-3 text-rose-500" />
+                                                                    Delete
+                                                                </Button>
+                                                            </DialogTrigger>
+                                                            <DialogContent className="sm:max-w-106.25">
+                                                                <DialogHeader>
+                                                                    <DialogTitle>
+                                                                        Delete
+                                                                        Tag
+                                                                    </DialogTitle>
+                                                                    <DialogDescription>
+                                                                        Are you
+                                                                        sure you
+                                                                        want to
+                                                                        delete
+                                                                        &quot;
+                                                                        {
+                                                                            tag.name
+                                                                        }
+                                                                        &quot;?
+                                                                        It will
+                                                                        be
+                                                                        removed
+                                                                        from all
+                                                                        hyperlinks.
+                                                                    </DialogDescription>
+                                                                </DialogHeader>
+                                                                <DialogFooter>
+                                                                    <DialogClose
+                                                                        asChild
+                                                                    >
+                                                                        <Button variant="outline">
+                                                                            Cancel
+                                                                        </Button>
+                                                                    </DialogClose>
+                                                                    <DialogClose
+                                                                        asChild
+                                                                    >
+                                                                        <Button
+                                                                            variant="destructive"
+                                                                            onClick={() =>
+                                                                                handleDelete(
+                                                                                    tag.id,
+                                                                                )
+                                                                            }
+                                                                        >
+                                                                            Delete
+                                                                        </Button>
+                                                                    </DialogClose>
+                                                                </DialogFooter>
+                                                            </DialogContent>
+                                                        </Dialog>
+                                                    </DropdownMenuItem>
+                                                </DropdownMenuGroup>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    </div>
 
                                     <div className="flex gap-2">
                                         <span className="rounded-md border border-primary/20 bg-primary/10 px-2 py-1 text-[10px] font-bold text-primary lowercase">
@@ -80,65 +219,21 @@ export default function Tags() {
                                             </span>
                                         )}
                                     </div>
-                                    <div className="flex w-full flex-row items-center justify-between">
-                                        {/* Edit Button */}
-                                        <Button
-                                            variant="outline"
-                                            size="sm"
-                                            onClick={() => {
-                                                setEditingTag(tag);
-                                                setIsEditOpen(true);
-                                            }}
-                                        >
-                                            <Pencil className="mr-1 size-3" />
-                                            Edit
-                                        </Button>
-
-                                        {/* Delete Button */}
-                                        <Dialog>
-                                            <DialogTrigger asChild>
-                                                <Button
-                                                    variant="destructive"
-                                                    size="sm"
-                                                >
-                                                    <Trash2 className="mr-1 size-3" />
-                                                    Delete
-                                                </Button>
-                                            </DialogTrigger>
-                                            <DialogContent className="sm:max-w-106.25">
-                                                <DialogHeader>
-                                                    <DialogTitle>
-                                                        Delete Tag
-                                                    </DialogTitle>
-                                                    <DialogDescription>
-                                                        Are you sure you want to
-                                                        delete &quot;{tag.name}
-                                                        &quot;? It will be
-                                                        removed from all
-                                                        hyperlinks.
-                                                    </DialogDescription>
-                                                </DialogHeader>
-                                                <DialogFooter>
-                                                    <DialogClose asChild>
-                                                        <Button variant="outline">
-                                                            Cancel
-                                                        </Button>
-                                                    </DialogClose>
-                                                    <DialogClose asChild>
-                                                        <Button
-                                                            variant="destructive"
-                                                            onClick={() =>
-                                                                handleDelete(
-                                                                    tag.id,
-                                                                )
-                                                            }
-                                                        >
-                                                            Delete
-                                                        </Button>
-                                                    </DialogClose>
-                                                </DialogFooter>
-                                            </DialogContent>
-                                        </Dialog>
+                                    <div className="flex w-full flex-row items-center justify-end">
+                                        <ButtonGroup>
+                                            {/* Edit Button */}
+                                            <Button
+                                                variant="outline"
+                                                size="xs"
+                                                onClick={() => {
+                                                    setEditingTag(tag);
+                                                    setIsEditOpen(true);
+                                                }}
+                                            >
+                                                <Pencil className="mr-1 size-3" />
+                                                Edit
+                                            </Button>
+                                        </ButtonGroup>
                                     </div>
                                 </div>
                             ))
@@ -150,29 +245,6 @@ export default function Tags() {
                         )}
                     </div>
                 </div>
-
-                {/* Edit Dialog */}
-                <Dialog
-                    open={isEditOpen}
-                    onOpenChange={(open) => {
-                        setIsEditOpen(open);
-                        if (!open) setEditingTag(undefined);
-                    }}
-                >
-                    <DialogContent className="rounded">
-                        <DialogHeader>
-                            <DialogTitle>Edit Tag</DialogTitle>
-                            <DialogDescription>
-                                Update the tag name.
-                            </DialogDescription>
-                        </DialogHeader>
-                        <TagForm
-                            tag={editingTag}
-                            className="w-full"
-                            onSuccess={() => setIsEditOpen(false)}
-                        />
-                    </DialogContent>
-                </Dialog>
             </div>
         </AppLayout>
     );
