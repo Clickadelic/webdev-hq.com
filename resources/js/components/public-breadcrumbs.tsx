@@ -20,12 +20,13 @@ interface BreadCrumbProps {
  */
 const PublicBreadcrumbs = ({ className }: BreadCrumbProps) => {
     const { url } = usePage(); // aktueller Pfad z.B. /gerichte/1/edit
+    const pathname = url.split('?')[0];
 
     // Auf der Startseite nichts anzeigen
-    if (url === '/') return null;
+    if (pathname === '/') return null;
 
     // Split path und filtern leere Strings
-    const segments = url.split('/').filter(Boolean);
+    const segments = pathname.split('/').filter(Boolean);
 
     // Pfade für Links zusammensetzen
     const crumbs = segments.map((segment, idx) => {
