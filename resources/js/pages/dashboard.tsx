@@ -38,6 +38,7 @@ import { router, usePage } from '@inertiajs/react';
 import { toast } from 'sonner';
 
 import AppForm from '@/components/forms/app-form';
+import { getFaviconUrl } from '@/lib/utils';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -45,15 +46,6 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: dashboard().url,
     },
 ];
-
-function faviconFor(url: string): string {
-    try {
-        const u = new URL(url);
-        return `${u.origin}/favicon.ico`;
-    } catch {
-        return '/favicon.ico';
-    }
-}
 
 export default function Dashboard() {
     const { apps } = usePage<{ apps: App[] }>().props;
@@ -65,7 +57,7 @@ export default function Dashboard() {
             id: a.id,
             title: a.title,
             url: a.url,
-            icon: faviconFor(a.url),
+            icon: a.favicon_url ?? getFaviconUrl(a.url),
         })),
     );
 
@@ -76,7 +68,7 @@ export default function Dashboard() {
                 id: a.id,
                 title: a.title,
                 url: a.url,
-                icon: faviconFor(a.url),
+                icon: a.favicon_url ?? getFaviconUrl(a.url),
             })),
         );
         // eslint-disable-next-line react-hooks/exhaustive-deps

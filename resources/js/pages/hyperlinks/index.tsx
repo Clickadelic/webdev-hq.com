@@ -29,7 +29,9 @@ export default function Hyperlinks() {
         .props;
     const items = hyperlinks.data;
 
-    const [editingHyperlink, setEditingHyperlink] = useState<Hyperlink | undefined>(undefined);
+    const [editingHyperlink, setEditingHyperlink] = useState<
+        Hyperlink | undefined
+    >(undefined);
     const [isEditOpen, setIsEditOpen] = useState(false);
 
     return (
@@ -102,20 +104,25 @@ export default function Hyperlinks() {
                         ))
                     ) : (
                         <p className="text-muted-foreground italic">
-                            Noch keine Links vorhanden.
+                            No hyperlinks yet.
                         </p>
                     )}
                 </div>
 
                 {/* Edit Dialog */}
-                <Dialog open={isEditOpen} onOpenChange={(open) => {
-                    setIsEditOpen(open);
-                    if (!open) setEditingHyperlink(undefined);
-                }}>
+                <Dialog
+                    open={isEditOpen}
+                    onOpenChange={(open) => {
+                        setIsEditOpen(open);
+                        if (!open) setEditingHyperlink(undefined);
+                    }}
+                >
                     <DialogContent className="max-h-[90vh] overflow-y-auto rounded">
                         <DialogHeader>
                             <DialogTitle>Edit Hyperlink</DialogTitle>
-                            <DialogDescription>Update the hyperlink details.</DialogDescription>
+                            <DialogDescription>
+                                Update the hyperlink details.
+                            </DialogDescription>
                         </DialogHeader>
                         <HyperlinkForm
                             hyperlink={editingHyperlink}
