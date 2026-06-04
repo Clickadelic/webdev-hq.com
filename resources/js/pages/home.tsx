@@ -1,7 +1,8 @@
 'use client';
 
-import HyperlinkCard from '@/components/hyperlink-card';
+import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
+import HyperlinkCard from '@/components/hyperlink-card';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -15,7 +16,6 @@ import { type Hyperlink } from '@/types';
 import { router, usePage } from '@inertiajs/react';
 import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
 import { toast } from 'sonner';
 interface PaginatedHyperlinks {
     data: Hyperlink[];
@@ -36,7 +36,9 @@ export default function Home({
 }) {
     const items = hyperlinks.data;
     const [query, setQuery] = useState<string>('');
-    const [editingHyperlink, setEditingHyperlink] = useState<Hyperlink | undefined>(undefined);
+    const [editingHyperlink, setEditingHyperlink] = useState<
+        Hyperlink | undefined
+    >(undefined);
     const [isEditOpen, setIsEditOpen] = useState(false);
     const isAuthenticated = !!usePage().props.auth?.user;
 
@@ -49,13 +51,17 @@ export default function Home({
                 preserveState: true,
                 preserveScroll: true,
             });
-        }, 300);
+        }, 200);
     }, []);
 
     // Clean up timer on unmount
-    useEffect(() => () => {
-        if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
-    }, []);
+    useEffect(
+        () => () => {
+            if (debounceTimer.current)
+                window.clearTimeout(debounceTimer.current);
+        },
+        [],
+    );
 
     function handleQueryChange(value: string) {
         setQuery(value);
@@ -108,8 +114,12 @@ export default function Home({
                             <HyperlinkCard
                                 key={link.id}
                                 hyperlink={link}
-                                onEdit={isAuthenticated ? handleEdit : undefined}
-                                onDelete={isAuthenticated ? handleDelete : undefined}
+                                onEdit={
+                                    isAuthenticated ? handleEdit : undefined
+                                }
+                                onDelete={
+                                    isAuthenticated ? handleDelete : undefined
+                                }
                             />
                         ))}
                     </div>
@@ -159,14 +169,19 @@ export default function Home({
             )}
             {/* Edit Dialog */}
             {isAuthenticated && (
-                <Dialog open={isEditOpen} onOpenChange={(open) => {
-                    setIsEditOpen(open);
-                    if (!open) setEditingHyperlink(undefined);
-                }}>
+                <Dialog
+                    open={isEditOpen}
+                    onOpenChange={(open) => {
+                        setIsEditOpen(open);
+                        if (!open) setEditingHyperlink(undefined);
+                    }}
+                >
                     <DialogContent className="max-h-[90vh] overflow-y-auto rounded">
                         <DialogHeader>
                             <DialogTitle>Edit Hyperlink</DialogTitle>
-                            <DialogDescription>Update the hyperlink details.</DialogDescription>
+                            <DialogDescription>
+                                Update the hyperlink details.
+                            </DialogDescription>
                         </DialogHeader>
                         <HyperlinkForm
                             hyperlink={editingHyperlink}

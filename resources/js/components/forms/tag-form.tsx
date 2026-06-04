@@ -33,7 +33,7 @@ export default function TagForm({ tag, className, onSuccess }: TagFormProps) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tag?.id]);
 
-    function handleSubmit(e: React.FormEvent) {
+    function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
 
         if (tag) {
@@ -84,11 +84,7 @@ export default function TagForm({ tag, className, onSuccess }: TagFormProps) {
                 ) : (
                     <BsPlusLg size={8} className="mr-2" />
                 )}
-                {processing
-                    ? 'Loading'
-                    : tag
-                      ? 'Save Changes'
-                      : 'Add Tag'}
+                {processing ? 'Loading' : tag ? 'Save Changes' : 'Add Tag'}
             </Button>
         </form>
     );
