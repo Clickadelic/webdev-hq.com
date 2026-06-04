@@ -87,7 +87,7 @@ class HyperlinkController extends Controller
         $hyperlink->tags()->sync($this->resolveTagIds($request->validated('tags', [])));
 
         return redirect()
-            ->route('hyperlinks.index')
+            ->back()
             ->with('success', 'Hyperlink successfully updated.');
     }
 
@@ -138,7 +138,7 @@ class HyperlinkController extends Controller
         $hyperlink->delete();
 
         return redirect()
-            ->route('hyperlinks.index')
+            ->back()
             ->with('success', 'Hyperlink successfully deleted.');
     }
 }
