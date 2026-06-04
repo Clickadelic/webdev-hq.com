@@ -21,7 +21,7 @@ class PageController extends Controller
 			});
 		}
 
-		$hyperlinks = $query->latest()->paginate(18)->withQueryString();
+		$hyperlinks = $query->latest()->paginate(35)->withQueryString();
 
 		return Inertia::render('home', [
 			'hyperlinks' => $hyperlinks,
