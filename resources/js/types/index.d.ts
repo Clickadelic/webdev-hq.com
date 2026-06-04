@@ -46,6 +46,7 @@ export interface App {
     id: string;
     title: string;
     url: string;
+    favicon_url: string | null;
     target: '_self' | '_blank';
     position: number;
     created_by: number | null;

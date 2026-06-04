@@ -1,5 +1,6 @@
 'use client';
 
+import ContextMenu from '@/components/context-menu';
 import { Button } from '@/components/ui/button';
 import PublicLayout from '@/layouts/public-layout';
 import { type Hyperlink } from '@/types';
@@ -82,6 +83,7 @@ export default function Home({
                                         {link.title}
                                     </h3>
                                     <ExternalLink className="mt-0.5 size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                                    <ContextMenu />
                                 </div>
 
                                 {link.category && (

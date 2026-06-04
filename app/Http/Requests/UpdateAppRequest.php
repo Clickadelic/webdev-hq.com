@@ -26,6 +26,8 @@ class UpdateAppRequest extends FormRequest
 
             'url' => ['sometimes', 'url', 'max:2048'],
 
+            'favicon_url' => ['sometimes', 'nullable', 'url', 'max:2048'],
+
             'target' => [
                 'sometimes',
                 'string',
