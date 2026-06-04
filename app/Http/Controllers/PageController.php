@@ -11,16 +11,22 @@ class PageController extends Controller
 
 	public function index()
 	{
-		$hyperlinks = Hyperlink::with(['category', 'tags'])
-		->published()
-		->latest()
-		->paginate(18)
-		->withQueryString();
-		
+		$query = Hyperlink::with(['category', 'tags'])->published();
+
+		if ($search = request('search')) {
+			$query->where(function ($q) use ($search) {
+				$q->where('title', 'like', "%{$search}%")
+				  ->orWhere('url', 'like', "%{$search}%")
+				  ->orWhere('description', 'like', "%{$search}%");
+			});
+		}
+
+		$hyperlinks = $query->latest()->paginate(18)->withQueryString();
+
 		return Inertia::render('home', [
 			'hyperlinks' => $hyperlinks,
 			'canRegister' => true,
-			]);
+		]);
 	}
 	public function legalIndex()
 	{
