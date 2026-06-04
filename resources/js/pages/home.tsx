@@ -1,19 +1,22 @@
 'use client';
 
-import ContextMenu from '@/components/context-menu';
+import HyperlinkCard from '@/components/hyperlink-card';
+import HyperlinkForm from '@/components/forms/hyperlink-form';
 import { Button } from '@/components/ui/button';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from '@/components/ui/dialog';
 import PublicLayout from '@/layouts/public-layout';
 import { type Hyperlink } from '@/types';
-import { router } from '@inertiajs/react';
-import {
-    ChevronLeft,
-    ChevronRight,
-    ExternalLink,
-    Search,
-    Tag as TagIcon,
-} from 'lucide-react';
+import { router, usePage } from '@inertiajs/react';
+import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
 import { useState } from 'react';
-
+import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
+import { toast } from 'sonner';
 interface PaginatedHyperlinks {
     data: Hyperlink[];
     current_page: number;
@@ -33,8 +36,24 @@ export default function Home({
 }) {
     const items = hyperlinks.data;
     const [query, setQuery] = useState<string>('');
+    const [editingHyperlink, setEditingHyperlink] = useState<Hyperlink | undefined>(undefined);
+    const [isEditOpen, setIsEditOpen] = useState(false);
+    const isAuthenticated = !!usePage().props.auth?.user;
 
-    function handleSearch(e: React.FormEvent) {
+    const handleEdit = (hyperlink: Hyperlink) => {
+        setEditingHyperlink(hyperlink);
+        setIsEditOpen(true);
+    };
+
+    const handleDelete = (id: number) => {
+        router.delete(destroy.url(id), {
+            preserveScroll: true,
+            onSuccess: () => toast.success('Hyperlink deleted!'),
+            onError: () => toast.error('Failed to delete hyperlink.'),
+        });
+    };
+
+    function handleSearch(e: React.ChangeEvent) {
         e.preventDefault();
         router.get('/', query ? { search: query } : {}, {
             preserveState: true,
@@ -69,53 +88,14 @@ export default function Home({
                 </p>
             ) : (
                 <div className="pb-12">
-                    <div className="flex flex-row gap-3">
+                    <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
                         {items.map((link) => (
-                            <a
+                            <HyperlinkCard
                                 key={link.id}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group flex w-72 flex-col gap-1 rounded-xl border border-border bg-white p-3 shadow-sm transition-all hover:border-primary/50 hover:shadow-md dark:bg-neutral-900"
-                            >
-                                <div className="flex items-start justify-between gap-2">
-                                    <h3 className="truncate text-sm leading-tight font-semibold group-hover:text-primary">
-                                        {link.title}
-                                    </h3>
-                                    <ExternalLink className="mt-0.5 size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-                                    <ContextMenu />
-                                </div>
-
-                                {link.category && (
-                                    <span className="w-fit rounded-md border border-muted bg-muted px-2 py-0.5 text-[10px] font-bold text-muted-foreground">
-                                        {link.category.name}
-                                    </span>
-                                )}
-
-                                {link.description && (
-                                    <p className="line-clamp-2 text-xs text-muted-foreground">
-                                        {link.description}
-                                    </p>
-                                )}
-
-                                <p className="mt-auto truncate text-xs font-medium text-primary/70">
-                                    {link.url.replace(/^https?:\/\//, '')}
-                                </p>
-
-                                {link.tags && link.tags.length > 0 && (
-                                    <div className="flex flex-wrap items-center gap-1">
-                                        <TagIcon className="size-3 text-muted-foreground" />
-                                        {link.tags.map((tag) => (
-                                            <span
-                                                key={tag.id}
-                                                className="rounded-full border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-medium text-primary"
-                                            >
-                                                {tag.name}
-                                            </span>
-                                        ))}
-                                    </div>
-                                )}
-                            </a>
+                                hyperlink={link}
+                                onEdit={isAuthenticated ? handleEdit : undefined}
+                                onDelete={isAuthenticated ? handleDelete : undefined}
+                            />
                         ))}
                     </div>
 
@@ -161,6 +141,25 @@ export default function Home({
                         </div>
                     )}
                 </div>
+            )}
+            {/* Edit Dialog */}
+            {isAuthenticated && (
+                <Dialog open={isEditOpen} onOpenChange={(open) => {
+                    setIsEditOpen(open);
+                    if (!open) setEditingHyperlink(undefined);
+                }}>
+                    <DialogContent className="max-h-[90vh] overflow-y-auto rounded">
+                        <DialogHeader>
+                            <DialogTitle>Edit Hyperlink</DialogTitle>
+                            <DialogDescription>Update the hyperlink details.</DialogDescription>
+                        </DialogHeader>
+                        <HyperlinkForm
+                            hyperlink={editingHyperlink}
+                            className="w-full"
+                            onSuccess={() => setIsEditOpen(false)}
+                        />
+                    </DialogContent>
+                </Dialog>
             )}
         </PublicLayout>
     );

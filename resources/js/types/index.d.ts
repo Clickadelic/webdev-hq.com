@@ -27,6 +27,7 @@ export interface SharedData {
     auth: Auth;
     sidebarOpen: boolean;
     categories: Category[];
+    tags: Tag[];
     [key: string]: unknown;
 }
 
