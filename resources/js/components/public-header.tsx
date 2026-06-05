@@ -6,6 +6,7 @@ import AppLogo from '@/components/app-logo';
 import { type SharedData } from '@/types';
 
 import { cn } from '@/lib/utils';
+import { CircleCheckBig, DoorOpen, LayoutDashboard } from 'lucide-react';
 
 interface PublicHeaderProps {
     canRegister?: boolean;
@@ -24,8 +25,10 @@ export default function PublicHeader({
                 className,
             )}
         >
-            <div className="container mx-auto flex items-center justify-between">
-                <AppLogo className="lg:mr-24" logoClassName="size-7 mr-3" />
+            <div className="container mx-auto flex justify-between px-3 sm:px-0">
+                <div className="relative flex content-center items-center justify-between gap-4 sm:gap-8 md:gap-16 md:space-x-2 lg:gap-32 lg:space-x-4">
+                    <AppLogo className="lg:mr-24" logoClassName="size-7 mr-3" />
+                </div>
                 <nav className="flex w-full items-center justify-between gap-4">
                     <ul className="flex items-start gap-4">
                         <li>
@@ -35,36 +38,40 @@ export default function PublicHeader({
                         </li>
                     </ul>
                     {auth.user ? (
-                        <ul className="flex-end flex items-center gap-4">
+                        <ul className="my-2.5 flex justify-end gap-3">
                             <li>
                                 <Link
                                     href={dashboard()}
-                                    className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                                    className="flex items-center justify-start gap-2 rounded-sm bg-primary px-3 py-1.5 text-sm leading-normal text-white hover:border-[#1915014a] hover:bg-primary/90"
+                                    title="Dashboard"
                                 >
+                                    <LayoutDashboard className="size-4" />
                                     Dashboard
                                 </Link>
                             </li>
                         </ul>
                     ) : (
-                        <ul className="flex-end flex items-center gap-4">
-                            <li>
-                                <Link
-                                    href={login()}
-                                    className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                                >
-                                    Log in
-                                </Link>
-                            </li>
+                        <ul className="my-2.5 flex justify-end gap-3">
                             {canRegister && (
                                 <li>
                                     <Link
                                         href={register()}
-                                        className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                                        className="flex items-center justify-between gap-2 rounded-sm border border-slate-200 px-3 py-2 text-slate-800 hover:bg-slate-100 hover:text-primary"
                                     >
+                                        <CircleCheckBig className="size-4" />
                                         Register
                                     </Link>
                                 </li>
                             )}
+                            <li>
+                                <Link
+                                    href={login()}
+                                    className="hover:bg-primary-hover flex items-center justify-between gap-2 rounded-sm border border-slate-200 bg-primary px-3 py-2 text-white hover:bg-primary/90"
+                                >
+                                    <DoorOpen className="size-4" />
+                                    Login
+                                </Link>
+                            </li>
                         </ul>
                     )}
                 </nav>
