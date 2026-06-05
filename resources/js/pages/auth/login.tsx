@@ -27,8 +27,8 @@ export default function Login({
 }: LoginProps) {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     return (
-        <AuthLayout title="Log in" description="Welcome back">
-            <Head title="Log in" />
+        <AuthLayout title="Login" description="Welcome back">
+            <Head title="Login" />
 
             <Form
                 {...store.form()}
@@ -112,7 +112,7 @@ export default function Login({
                                 data-test="login-button"
                             >
                                 {processing && <Spinner />}
-                                Log in
+                                Login
                             </Button>
                         </div>
 

@@ -84,7 +84,7 @@ export default function Home({
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
             {/* Search */}
-            <div className="mx-auto mt-8 mb-10 w-full max-w-lg">
+            <div className="mx-auto mt-8 w-full max-w-lg">
                 <div className="rounded-xl bg-white/30 p-1 backdrop-blur dark:bg-white/5">
                     <form
                         onSubmit={(e) => e.preventDefault()}
@@ -108,8 +108,8 @@ export default function Home({
                     No resources available yet.
                 </p>
             ) : (
-                <div className="pb-12">
-                    <div className="grid grid-cols-2 gap-2 md:grid-cols-5">
+                <div className="py-12">
+                    <div className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 lg:grid-cols-5">
                         {items.map((link) => (
                             <HyperlinkCard
                                 key={link.id}
