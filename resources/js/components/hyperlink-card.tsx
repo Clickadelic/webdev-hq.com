@@ -9,6 +9,7 @@ interface HyperlinkCardProps {
     onDelete?: (id: number) => void;
 }
 
+
 export default function HyperlinkCard({
     hyperlink,
     onEdit,
@@ -38,13 +39,15 @@ export default function HyperlinkCard({
             </div>
 
             {hyperlink.category && (
-                <span className="w-fit rounded-md border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-bold">
-                    {hyperlink.category.name}
-                </span>
+                <div className="flex items-start justify-between gap-2">
+                    <span className="w-fit rounded-md border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-bold">
+                        {hyperlink.category.name}
+                    </span>
+                </div>
             )}
 
             {hyperlink.tags && hyperlink.tags.length > 0 && (
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex items-start justify-between gap-2">
                     {hyperlink.tags.map((tag) => (
                         <span
                             key={tag.id}
@@ -57,14 +60,16 @@ export default function HyperlinkCard({
             )}
 
             {hyperlink.description && (
-                <p className="line-clamp-2 h-8 truncate text-xs text-muted-foreground">
+                <p className="line-clamp-2 h-8 text-xs text-muted-foreground">
                     {hyperlink.description}
                 </p>
             )}
 
-            <p className="mt-auto truncate text-xs font-medium text-primary/70">
-                {hyperlink.url.replace(/^https?:\/\//, '')}
-            </p>
+            <div className="mt-auto flex items-start justify-between gap-2">
+                <p className="truncate text-xs font-bold text-primary">
+                    {hyperlink.url.replace(/^https?:\/\//, '')}
+                </p>
+            </div>
         </a>
     );
 }
