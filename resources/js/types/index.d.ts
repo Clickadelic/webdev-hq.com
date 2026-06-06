@@ -67,6 +67,7 @@ export interface Hyperlink {
     id: number;
     title: string;
     url: string;
+    favicon_url: string | null;
     description: string;
     category_id: number | null;
     category?: Category | null;

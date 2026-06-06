@@ -12,7 +12,13 @@ import { LoaderCircle, LucideLink } from 'lucide-react';
 import { useEffect } from 'react';
 import { toast } from 'sonner';
 
-import { cn } from '@/lib/utils';
+import { cn, getFaviconUrl } from '@/lib/utils';
+
+/** Returns a storable favicon URL or empty string (→ null via middleware). */
+function storableFaviconUrl(url: string): string {
+    const favicon = getFaviconUrl(url);
+    return favicon.startsWith('http') ? favicon : '';
+}
 import { type Hyperlink } from '@/types';
 import { CategoryComboBox } from './category-combobox';
 import { TagComboBox } from './tag-combobox';
@@ -31,6 +37,7 @@ export default function HyperlinkForm({
     const { data, setData, post, put, processing, errors, reset } = useForm({
         title: hyperlink?.title ?? '',
         url: hyperlink?.url ?? '',
+        favicon_url: storableFaviconUrl(hyperlink?.url ?? ''),
         description: hyperlink?.description ?? '',
         category: hyperlink?.category_id ? String(hyperlink.category_id) : '',
         status: hyperlink?.status ?? 'published',
@@ -42,6 +49,7 @@ export default function HyperlinkForm({
             setData({
                 title: hyperlink.title,
                 url: hyperlink.url,
+                favicon_url: storableFaviconUrl(hyperlink.url),
                 description: hyperlink.description ?? '',
                 category: hyperlink.category_id
                     ? String(hyperlink.category_id)
@@ -53,6 +61,7 @@ export default function HyperlinkForm({
             setData({
                 title: '',
                 url: '',
+                favicon_url: '',
                 description: '',
                 category: '',
                 status: 'published',
@@ -129,7 +138,13 @@ export default function HyperlinkForm({
                     value={data.url}
                     required
                     placeholder="https://example.com"
-                    onChange={(e) => setData('url', e.target.value)}
+                    onChange={(e) =>
+                        setData((prev) => ({
+                            ...prev,
+                            url: e.target.value,
+                            favicon_url: storableFaviconUrl(e.target.value),
+                        }))
+                    }
                 />
                 {errors.url && (
                     <p className="text-sm text-destructive">{errors.url}</p>
