@@ -13,6 +13,7 @@ class Hyperlink extends Model
     protected $fillable = [
         'title',
         'url',
+        'favicon_url',
         'description',
         'category_id',
         'status',
