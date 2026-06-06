@@ -9,7 +9,6 @@ interface HyperlinkCardProps {
     onDelete?: (id: number) => void;
 }
 
-
 export default function HyperlinkCard({
     hyperlink,
     onEdit,
@@ -36,6 +35,9 @@ export default function HyperlinkCard({
                     onEdit={onEdit}
                     onDelete={onDelete}
                 />
+            </div>
+            <div className="favicon flex items-center gap-2">
+                <img src={hyperlink.favicon_url || ''} alt="favicon" />
             </div>
 
             {hyperlink.category && (
