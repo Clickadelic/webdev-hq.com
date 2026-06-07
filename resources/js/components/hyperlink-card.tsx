@@ -52,7 +52,7 @@ export default function HyperlinkCard({
             )}
 
             {hyperlink.tags && hyperlink.tags.length > 0 && (
-                <div className="flex items-start justify-between gap-2">
+                <div className="flex items-start justify-start gap-2">
                     {hyperlink.tags.map((tag) => (
                         <span
                             key={tag.id}
