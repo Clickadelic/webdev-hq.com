@@ -39,7 +39,7 @@ export default function HyperlinkCard({
                 <ExternalLink className="mt-0.5 size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
             </div>
             {hyperlink.description && (
-                <p className="line-clamp-2 h-8 text-sm text-muted-foreground">
+                <p className="line-clamp-2 h-10 text-sm text-muted-foreground">
                     {hyperlink.description}
                 </p>
             )}
