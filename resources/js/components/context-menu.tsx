@@ -20,7 +20,6 @@ import {
 import { Hyperlink } from '@/types';
 import { GoTrash } from 'react-icons/go';
 import { HiOutlineDotsHorizontal, HiOutlineDotsVertical } from 'react-icons/hi';
-import { IoShareSocialOutline } from 'react-icons/io5';
 import { MdOutlineEdit } from 'react-icons/md';
 import { RxClipboardCopy } from 'react-icons/rx';
 
@@ -133,19 +132,6 @@ export default function ContextMenu({
                         <RxClipboardCopy className="size-4" />
                         Copy URL
                     </DropdownMenuItem>
-
-                    {item?.url && (
-                        <DropdownMenuItem
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                window.open(item.url, '_blank');
-                            }}
-                            className="flex w-full flex-row items-center gap-2 hover:cursor-pointer"
-                        >
-                            <IoShareSocialOutline className="size-4" />
-                            Open in new tab
-                        </DropdownMenuItem>
-                    )}
                 </div>
             </DropdownMenuContent>
         </DropdownMenu>
