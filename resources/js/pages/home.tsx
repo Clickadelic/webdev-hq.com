@@ -34,6 +34,7 @@ export default function Home({
     hyperlinks: PaginatedHyperlinks;
     canRegister?: boolean;
 }) {
+    const count = hyperlinks.total;
     const items = hyperlinks.data;
     const [query, setQuery] = useState<string>('');
     const [editingHyperlink, setEditingHyperlink] = useState<
@@ -85,7 +86,7 @@ export default function Home({
         <PublicLayout canRegister={canRegister} title="Welcome">
             {/* Search */}
             <div className="mx-auto mt-8 w-full max-w-lg">
-                <div className="rounded-xl bg-white/30 p-1 backdrop-blur dark:bg-white/5">
+                <div className="rounded-xl bg-white/30 p-1 shadow-lg backdrop-blur dark:bg-white/5">
                     <form
                         onSubmit={(e) => e.preventDefault()}
                         className="relative rounded-lg bg-white dark:bg-neutral-950"
@@ -165,8 +166,13 @@ export default function Home({
                             </Button>
                         </div>
                     )}
+                    <h3 className="mt-8 text-center text-muted-foreground">
+                        Currently tracking{' '}
+                        {count === 1 ? '1 resource' : `${count} resources`}.
+                    </h3>
                 </div>
             )}
+
             {/* Edit Dialog */}
             {isAuthenticated && (
                 <Dialog
