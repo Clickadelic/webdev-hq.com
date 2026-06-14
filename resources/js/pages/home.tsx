@@ -110,7 +110,7 @@ export default function Home({
                 </p>
             ) : (
                 <div className="py-12">
-                    <div className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 lg:grid-cols-5">
+                    <div className="grid grid-cols-1 gap-1 md:grid-cols-3 md:gap-2 lg:grid-cols-5">
                         {items.map((link) => (
                             <HyperlinkCard
                                 key={link.id}
