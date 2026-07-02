@@ -2,7 +2,7 @@
 
 import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
-import HyperlinkCard from '@/components/hyperlink-card';
+import HyperlinkCard from '@/components/hyperlinks/hyperlink-card';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,

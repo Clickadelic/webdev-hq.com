@@ -1,6 +1,6 @@
 'use client';
 
-import HyperlinkTable from '@/components/hyperlink-table';
+import HyperlinkTable from '@/components/hyperlinks/hyperlink-table';
 import { SortableAppTile } from '@/components/sortable-app-tile';
 import AppLayout from '@/layouts/app-layout';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';

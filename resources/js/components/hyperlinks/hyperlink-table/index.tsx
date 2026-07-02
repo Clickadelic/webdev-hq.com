@@ -16,7 +16,7 @@ import { Hyperlink } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import { Ellipsis } from 'lucide-react';
 
-import HyperlinkStatusBadge from '../hyperlinks/hyperlink-statusbadge';
+import HyperlinkStatusBadge from '../hyperlink-statusbadge';
 
 export default function HyperlinkTable() {
     const { hyperlinks } = usePage<{ hyperlinks: { data: Hyperlink[] } }>()
