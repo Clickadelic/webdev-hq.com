@@ -44,11 +44,11 @@ export const SortableAppTile = ({
             ref={setNodeRef}
             style={style}
             key={app.id}
-            className="relative z-10 size-[70px] rounded border bg-white pt-1 transition-colors duration-150 ease-in-out hover:cursor-pointer dark:bg-neutral-800"
+            className="relative z-10 size-17.5 rounded border bg-white pt-1 transition-colors duration-150 ease-in-out hover:cursor-pointer dark:bg-neutral-800"
         >
             <div
                 className={
-                    'drag-handle absolute top-[4px] left-[24px] z-100 inline-flex h-[5px] w-[20px] rounded bg-neutral-200 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-600 ' +
+                    'drag-handle absolute top-1 left-6 z-100 inline-flex h-1.5 w-5 rounded bg-neutral-200 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-600 ' +
                     (enabled
                         ? 'hover:cursor-move'
                         : 'cursor-not-allowed opacity-50')
@@ -67,7 +67,7 @@ export const SortableAppTile = ({
                     alt={app.title}
                     className="size-6 rounded-xs"
                 />
-                <span className="inline-block max-w-[56px] truncate text-xs text-neutral-800 dark:text-neutral-300">
+                <span className="inline-block max-w-14 truncate text-xs text-neutral-800 dark:text-neutral-300">
                     {app.title}
                 </span>
             </a>
