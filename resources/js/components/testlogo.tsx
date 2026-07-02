@@ -1,6 +1,6 @@
 export default function testlogo() {
     return (
-        <h1 className="my-3 max-w-[180px] text-2xl">
+        <h1 className="my-3 max-w-45 text-2xl">
             <a
                 href="/"
                 className="group flex justify-between md:space-x-2 lg:space-x-4"
