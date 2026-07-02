@@ -13,6 +13,10 @@ import {
     TableRow,
 } from '@/components/ui/table';
 import { Hyperlink } from '@/types';
+<<<<<<< HEAD:resources/js/components/hyperlinks/hyperlink-table/index.tsx
+=======
+
+>>>>>>> eb655d1 (Favicon in Hyperlinks table):resources/js/components/hyperlink-table/index.tsx
 import { Link, usePage } from '@inertiajs/react';
 import { Ellipsis } from 'lucide-react';
 
@@ -28,7 +32,10 @@ export default function HyperlinkTable() {
             <TableHeader>
                 <TableRow>
                     <TableHead className="w-12">Id</TableHead>
+<<<<<<< HEAD:resources/js/components/hyperlinks/hyperlink-table/index.tsx
                     <TableHead className="w-16">Status</TableHead>
+=======
+>>>>>>> eb655d1 (Favicon in Hyperlinks table):resources/js/components/hyperlink-table/index.tsx
                     <TableHead className="w-16">Favicon</TableHead>
                     <TableHead>Title</TableHead>
                     <TableHead>URL</TableHead>
@@ -43,16 +50,22 @@ export default function HyperlinkTable() {
                         <TableRow key={link.id}>
                             <TableCell>{link.id}</TableCell>
                             <TableCell>
+<<<<<<< HEAD:resources/js/components/hyperlinks/hyperlink-table/index.tsx
                                 <HyperlinkStatusBadge status={link.status} />
                             </TableCell>
                             <TableCell>
+=======
+>>>>>>> eb655d1 (Favicon in Hyperlinks table):resources/js/components/hyperlink-table/index.tsx
                                 <img
                                     src={link.favicon_url || ''}
                                     alt="favicon"
                                 />
                             </TableCell>
                             <TableCell>{link.title}</TableCell>
+<<<<<<< HEAD:resources/js/components/hyperlinks/hyperlink-table/index.tsx
 
+=======
+>>>>>>> eb655d1 (Favicon in Hyperlinks table):resources/js/components/hyperlink-table/index.tsx
                             <TableCell>
                                 <Link
                                     href={link.url}
@@ -66,7 +79,10 @@ export default function HyperlinkTable() {
                             </TableCell>
                             <TableCell>{link.description}</TableCell>
                             {/* <TableCell>{link.category || undefined}</TableCell> */}
+<<<<<<< HEAD:resources/js/components/hyperlinks/hyperlink-table/index.tsx
 
+=======
+>>>>>>> eb655d1 (Favicon in Hyperlinks table):resources/js/components/hyperlink-table/index.tsx
                             <TableCell>
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
