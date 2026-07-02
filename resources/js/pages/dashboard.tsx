@@ -1,3 +1,5 @@
+'use client';
+
 import HyperlinkTable from '@/components/hyperlink-table';
 import { SortableAppTile } from '@/components/sortable-app-tile';
 import AppLayout from '@/layouts/app-layout';
@@ -40,6 +42,8 @@ import { toast } from 'sonner';
 import AppForm from '@/components/forms/app-form';
 import { getFaviconUrl } from '@/lib/utils';
 
+type AppItem = { id: string; title: string; url: string; icon: string };
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
@@ -50,10 +54,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function Dashboard() {
     const { apps } = usePage<{ apps: App[] }>().props;
 
-    const [items, setItems] = useState<
-        { id: string; title: string; url: string; icon: string }[]
-    >(
-        (apps ?? []).map((a) => ({
+    const [items, setItems] = useState<AppItem[]>(
+        (apps ?? []).map((a: App) => ({
             id: a.id,
             title: a.title,
             url: a.url,
@@ -64,7 +66,7 @@ export default function Dashboard() {
     // Keep local items in sync when server-provided apps change (e.g., after create/delete)
     useEffect(() => {
         setItems(
-            (apps ?? []).map((a) => ({
+            (apps ?? []).map((a: App) => ({
                 id: a.id,
                 title: a.title,
                 url: a.url,
@@ -82,9 +84,8 @@ export default function Dashboard() {
         }),
     );
 
-    const handleDragStart = (_event: DragStartEvent) => {
-        // Will implement reordering later
-        console.log(_event + ' Drag started');
+    const handleDragStart = (event: DragStartEvent) => {
+        setActiveId(String(event.active.id));
     };
 
     // Debounced persistence
@@ -113,6 +114,7 @@ export default function Dashboard() {
     );
 
     const handleDragEnd = ({ active, over }: DragEndEvent) => {
+        setActiveId(null);
         if (!dragEnabled) return;
         if (!over || active.id === over.id) return;
         const oldIndex = items.findIndex((i) => i.id === active.id);
@@ -130,14 +132,22 @@ export default function Dashboard() {
         );
     };
 
-    const draggingApp = null; // We can use this to style the drag overlay if we want
+    const [activeId, setActiveId] = useState<string | null>(null);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [dragEnabled, setDragEnabled] = useState<boolean>(false);
 
+    const draggingApp: AppItem | null = activeId
+        ? (items.find((i) => i.id === activeId) ?? null)
+        : null;
+
+    const handleDragCancel = () => {
+        setActiveId(null);
+    };
+
     const [editingAppId, setEditingAppId] = useState<string | null>(null);
     const editingApp = useMemo(
-        () => apps?.find((a) => a.id === editingAppId) ?? null,
+        () => apps?.find((a: App) => a.id === editingAppId) ?? null,
         [apps, editingAppId],
     );
 
@@ -161,6 +171,7 @@ export default function Dashboard() {
                     collisionDetection={closestCenter}
                     onDragEnd={handleDragEnd}
                     onDragStart={handleDragStart}
+                    onDragCancel={handleDragCancel}
                 >
                     <SortableContext
                         items={items.map((app) => app.id)}
@@ -245,7 +256,7 @@ export default function Dashboard() {
                     </DragOverlay>
                 </DndContext>
             </div>
-            <div>
+            <div className="flex h-full flex-1 flex-col gap-2 overflow-x-auto rounded-xl border-2 p-4">
                 <HyperlinkTable />
             </div>
         </AppLayout>
