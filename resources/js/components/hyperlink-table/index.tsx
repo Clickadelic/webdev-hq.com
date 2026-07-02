@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/table';
 import { Hyperlink } from '@/types';
 
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { Ellipsis } from 'lucide-react';
 
 export default function HyperlinkTable() {
@@ -26,11 +26,13 @@ export default function HyperlinkTable() {
         <Table className="w-full">
             <TableHeader>
                 <TableRow>
-                    <TableHead>Id</TableHead>
+                    <TableHead className="w-12">Id</TableHead>
+                    <TableHead className="w-16">Favicon</TableHead>
                     <TableHead>Title</TableHead>
                     <TableHead>URL</TableHead>
-                    <TableHead>Favicon</TableHead>
-                    <TableHead>Actions</TableHead>
+                    <TableHead>Description</TableHead>
+                    {/* <TableHead>Category</TableHead> */}
+                    <TableHead className="w-16">Actions</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -38,13 +40,30 @@ export default function HyperlinkTable() {
                     items.map((link: Hyperlink) => (
                         <TableRow key={link.id}>
                             <TableCell>{link.id}</TableCell>
+                            <TableCell>
+                                <img
+                                    src={link.favicon_url || ''}
+                                    alt="favicon"
+                                />
+                            </TableCell>
                             <TableCell>{link.title}</TableCell>
-                            <TableCell>{link.url}</TableCell>
-                            <TableCell>{link.favicon_url}</TableCell>
+                            <TableCell>
+                                <Link
+                                    href={link.url}
+                                    target="_blank"
+                                    title={link.url}
+                                    rel="noopener noreferrer"
+                                    className="hover:text-primary hover:underline"
+                                >
+                                    {link.url}
+                                </Link>
+                            </TableCell>
+                            <TableCell>{link.description}</TableCell>
+                            {/* <TableCell>{link.category || undefined}</TableCell> */}
                             <TableCell>
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
-                                        <button className="flex items-center justify-center rounded-full border p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50">
+                                        <button className="flex items-center justify-center rounded-full border p-2 text-muted-foreground transition-colors hover:cursor-pointer hover:border-primary hover:bg-accent hover:text-accent-foreground focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50">
                                             <Ellipsis className="size-4" />
                                         </button>
                                     </DropdownMenuTrigger>
