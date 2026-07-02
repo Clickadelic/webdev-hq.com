@@ -256,7 +256,7 @@ export default function Dashboard() {
                     </DragOverlay>
                 </DndContext>
             </div>
-            <div className="flex h-full flex-1 flex-col gap-2 overflow-x-auto rounded-xl border-2 p-4">
+            <div className="flex h-full flex-1 flex-col gap-2 overflow-x-auto p-4">
                 <HyperlinkTable />
             </div>
         </AppLayout>
