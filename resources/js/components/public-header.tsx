@@ -75,7 +75,9 @@ export default function PublicHeader({
                                 </li>
                             </ul>
                         )}
-                        <UserDropdownMenu />
+                        {auth.user ? (
+                            <UserDropdownMenu user={auth.user} />
+                        ) : null}
                     </div>
                 </nav>
             </div>

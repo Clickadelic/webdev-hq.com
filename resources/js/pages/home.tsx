@@ -106,7 +106,9 @@ export default function Home({
                         <button
                             type="button"
                             onClick={() => handleQueryChange('')}
-                            className="absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                            aria-label="Clear search"
+                            title="Clear search"
+                            className="absolute top-4.5 right-3 size-4 -translate-y-1/2 text-muted-foreground hover:cursor-pointer hover:text-foreground hover:text-primary"
                         >
                             <CircleX className="size-5" />
                         </button>
