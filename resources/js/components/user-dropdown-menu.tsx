@@ -9,17 +9,25 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-export default function UserDropdownMenu() {
+interface UserDropdownMenuProps {
+    user: {
+        name: string;
+        email: string;
+    };
+}
+export default function UserDropdownMenu({ user }: UserDropdownMenuProps) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline">Account</Button>
+                <Button variant="outline">{user.name}</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuGroup>
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                    <DropdownMenuItem>asd</DropdownMenuItem>
-                    <DropdownMenuItem>Billing</DropdownMenuItem>
+                    <DropdownMenuItem>{user.name}</DropdownMenuItem>
+                    {/* This is a temporary solution to display the user's email
+                    in the dropdown menu. */}
+                    <DropdownMenuItem>{user.email}</DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>

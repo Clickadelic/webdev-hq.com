@@ -25,7 +25,9 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                                 Disclaimer
                             </Link>
                         </li>
-                        <li className="hidden sm:inline-block">&middot;</li>
+                        <li className="hidden text-primary sm:inline-block">
+                            &middot;
+                        </li>
                         <li>
                             <Link
                                 href="/legal/cookie-policy"
@@ -36,7 +38,9 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                             </Link>
                         </li>
 
-                        <li className="hidden sm:inline-block">&middot;</li>
+                        <li className="hidden text-primary sm:inline-block">
+                            &middot;
+                        </li>
                         <li>
                             <Link
                                 href="/legal/legal-notice"
@@ -46,7 +50,9 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                                 Legal Notice
                             </Link>
                         </li>
-                        <li className="hidden sm:inline-block">&middot;</li>
+                        <li className="hidden text-primary sm:inline-block">
+                            &middot;
+                        </li>
                         <li>
                             <Link
                                 href="/legal/privacy-policy"
@@ -56,7 +62,9 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                                 Privacy Policy
                             </Link>
                         </li>
-                        <li className="hidden sm:inline-block">&middot;</li>
+                        <li className="hidden text-primary sm:inline-block">
+                            &middot;
+                        </li>
                         <li>
                             <Link
                                 href="/legal/terms-of-service"
