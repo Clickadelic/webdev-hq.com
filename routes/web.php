@@ -11,17 +11,20 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
-Route::get('/legal', [PageController::class, 'legalIndex'])->name('legal-index');
-Route::get('/legal/cookie-policy', [PageController::class, 'cookiePolicy'])->name('cookie-policy');
-Route::get('/legal/disclaimer', [PageController::class, 'disclaimer'])->name('disclaimer');
-Route::get('/legal/legal-notice', [PageController::class, 'legalNotice'])->name('legal-notice');
-Route::get('/legal/privacy-policy', [PageController::class, 'privatePolicy'])->name('privacy-policy');
-Route::get('/legal/terms-of-service', [PageController::class, 'termsOfService'])->name('terms-of-service');
+
+// Legal pages, Cookies, etc..
+Route::group(['prefix' => 'legal'], function () {
+	Route::get('/', [PageController::class, 'legalIndex'])->name('legal-index');
+	Route::get('/cookie-policy', [PageController::class, 'cookiePolicy'])->name('cookie-policy');
+	Route::get('/disclaimer', [PageController::class, 'disclaimer'])->name('disclaimer');
+	Route::get('/legal-notice', [PageController::class, 'legalNotice'])->name('legal-notice');
+	Route::get('/privacy-policy', [PageController::class, 'privatePolicy'])->name('privacy-policy');
+	Route::get('/terms-of-service', [PageController::class, 'termsOfService'])->name('terms-of-service');
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 	Route::patch('/apps/reorder', [AppController::class, 'reorder'])->name('apps.reorder');
-	Route::resource('/apps', AppController::class);
 	Route::resource('/hyperlinks', HyperlinkController::class);
 	Route::resource('/categories', CategoryController::class);
 	Route::resource('/tags', TagController::class);
@@ -30,5 +33,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
 require __DIR__ . '/settings.php';
 
 // if (config('app.debug')) {
-	require __DIR__ . '/dev.php';
+require __DIR__ . '/dev.php';
 // }
