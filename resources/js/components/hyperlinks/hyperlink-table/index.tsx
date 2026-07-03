@@ -19,7 +19,7 @@ import { Hyperlink } from '@/types';
 >>>>>>> eb655d1 (Favicon in Hyperlinks table):resources/js/components/hyperlink-table/index.tsx
 import { Link, usePage } from '@inertiajs/react';
 import { Ellipsis } from 'lucide-react';
-import DeleteHyperlinkButton from '../delete-hyperlink-button';
+
 import HyperlinkStatusBadge from '../hyperlink-statusbadge';
 
 export default function HyperlinkTable() {
@@ -98,9 +98,7 @@ export default function HyperlinkTable() {
                                             Edit
                                         </DropdownMenuItem>
                                         <DropdownMenuItem>
-                                            <DeleteHyperlinkButton
-                                                id={link.id}
-                                            />
+                                            Delete
                                         </DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
