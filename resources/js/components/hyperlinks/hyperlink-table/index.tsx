@@ -15,7 +15,7 @@ import {
 import { Hyperlink } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import { Ellipsis } from 'lucide-react';
-import DeleteHyperlinkButton from '../delete-hyperlink-button';
+
 import HyperlinkStatusBadge from '../hyperlink-statusbadge';
 
 export default function HyperlinkTable() {
@@ -82,9 +82,7 @@ export default function HyperlinkTable() {
                                             Edit
                                         </DropdownMenuItem>
                                         <DropdownMenuItem>
-                                            <DeleteHyperlinkButton
-                                                id={link.id}
-                                            />
+                                            Delete
                                         </DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>

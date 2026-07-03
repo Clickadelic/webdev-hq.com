@@ -1,5 +1,6 @@
 'use client';
 
+// imports
 import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
 import HyperlinkCard from '@/components/hyperlinks/hyperlink-card';
@@ -14,9 +15,11 @@ import {
 import PublicLayout from '@/layouts/public-layout';
 import { type Hyperlink } from '@/types';
 import { router, usePage } from '@inertiajs/react';
-import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CircleX, Search } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
+
+// PaginatedHyperlinks interface defines the structure of the paginated hyperlinks data.
 interface PaginatedHyperlinks {
     data: Hyperlink[];
     current_page: number;
@@ -27,6 +30,7 @@ interface PaginatedHyperlinks {
     prev_page_url: string | null;
 }
 
+// Home component, displays the list of hyperlinks.
 export default function Home({
     hyperlinks,
     canRegister = true,
@@ -86,7 +90,7 @@ export default function Home({
         <PublicLayout canRegister={canRegister} title="Welcome">
             {/* Search */}
             <div className="mx-auto mt-8 w-full max-w-lg">
-                <div className="rounded-xl bg-white/30 p-1 shadow-lg backdrop-blur dark:bg-white/5">
+                <div className="rounded-xl bg-white/30 p-1 shadow backdrop-blur dark:bg-white/5">
                     <form
                         onSubmit={(e) => e.preventDefault()}
                         className="relative rounded-lg bg-white dark:bg-neutral-950"
@@ -99,6 +103,13 @@ export default function Home({
                             placeholder="Search resources…"
                             className="w-full rounded-lg py-2.5 pr-3 pl-9 text-sm placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:outline-none dark:bg-neutral-950 dark:text-white"
                         />
+                        <button
+                            type="button"
+                            onClick={() => handleQueryChange('')}
+                            className="absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                        >
+                            <CircleX className="size-5" />
+                        </button>
                     </form>
                 </div>
             </div>
