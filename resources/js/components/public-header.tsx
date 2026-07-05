@@ -1,12 +1,13 @@
 import AppLogo from '@/components/app-logo';
 import UserDropdownMenu from '@/components/user-dropdown-menu';
 
-import { dashboard, login, register } from '@/routes';
-import { Link, usePage } from '@inertiajs/react';
-
 import AppearanceDropdown from '@/components/appearance-dropdown';
+import MegaMenu from '@/components/mega-menu';
+import { MegaMenuColumns } from '@/components/mega-menu/mega-menu-columns';
 import { cn } from '@/lib/utils';
+import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
+import { Link, usePage } from '@inertiajs/react';
 import { CircleCheckBig, DoorOpen, LayoutDashboard } from 'lucide-react';
 interface PublicHeaderProps {
     canRegister?: boolean;
@@ -32,9 +33,10 @@ export default function PublicHeader({
                 <nav className="flex w-full items-center justify-between gap-4">
                     <ul className="flex items-start gap-4">
                         <li>
-                            <Link href="/" className="font-medium" title="Home">
-                                Home
-                            </Link>
+                            <MegaMenu
+                                title="WebDev HQ"
+                                columns={MegaMenuColumns}
+                            />
                         </li>
                     </ul>
                     <div className="flex-start flex items-center gap-3">

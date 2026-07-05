@@ -74,7 +74,7 @@ class AppController extends Controller
 	 */
 	public function update(UpdateAppRequest $request, App $app): RedirectResponse
 	{
-		$app->update();
+		$app->update($request->validated());
 
 		return back()->with('success', 'App successfully updated.');
 	}
@@ -85,7 +85,6 @@ class AppController extends Controller
 	public function destroy(App $app): RedirectResponse
 	{
 		abort_if((int) $app->created_by !== (int) Auth::id(), 403);
-
 		$app->delete();
 
 		return back()->with('success', 'App successfully deleted.');

@@ -16,14 +16,16 @@ import { Hyperlink } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import { Ellipsis } from 'lucide-react';
 
+import TablePagination from '@/components/ui/table-pagination';
+import { type Paginator } from '@/types';
 import HyperlinkStatusBadge from '../hyperlink-statusbadge';
 
 export default function HyperlinkTable() {
-    const { hyperlinks } = usePage<{ hyperlinks: { data: Hyperlink[] } }>()
-        .props;
+    const { hyperlinks } = usePage<{ hyperlinks: Paginator<Hyperlink> }>().props;
     const items = hyperlinks?.data ?? [];
 
     return (
+        <div className="flex flex-col">
         <Table className="w-full">
             <TableHeader>
                 <TableRow>
@@ -101,5 +103,7 @@ export default function HyperlinkTable() {
                 )}
             </TableBody>
         </Table>
+        {hyperlinks && <TablePagination paginator={hyperlinks} />}
+        </div>
     );
 }

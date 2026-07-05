@@ -24,6 +24,7 @@ Route::group(['prefix' => 'legal'], function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+	Route::resource('/apps', AppController::class);
 	Route::patch('/apps/reorder', [AppController::class, 'reorder'])->name('apps.reorder');
 	Route::resource('/hyperlinks', HyperlinkController::class);
 	Route::resource('/categories', CategoryController::class);
