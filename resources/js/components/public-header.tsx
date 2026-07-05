@@ -4,10 +4,10 @@ import UserDropdownMenu from '@/components/user-dropdown-menu';
 import { dashboard, login, register } from '@/routes';
 import { Link, usePage } from '@inertiajs/react';
 
+import AppearanceDropdown from '@/components/appearance-dropdown';
 import { cn } from '@/lib/utils';
 import { type SharedData } from '@/types';
 import { CircleCheckBig, DoorOpen, LayoutDashboard } from 'lucide-react';
-
 interface PublicHeaderProps {
     canRegister?: boolean;
     className?: string;
@@ -78,6 +78,7 @@ export default function PublicHeader({
                         {auth.user ? (
                             <UserDropdownMenu user={auth.user} />
                         ) : null}
+                        <AppearanceDropdown />
                     </div>
                 </nav>
             </div>
