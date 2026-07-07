@@ -80,7 +80,7 @@ export default function MegaMenu({ icon, title, className, columns, featured }: 
     const toggleMenu = () => setIsOpen((prev) => !prev);
 
     return (
-        <div ref={menuRef} className={cn('inline-block mx-auto sm:px-1 md:px-2 border-sidebar-accent')}>
+        <div ref={menuRef} className={cn('relative inline-block mx-auto sm:px-1 md:px-2 border-sidebar-accent')}>
             <button
                 onClick={toggleMenu}
                 className={cn(

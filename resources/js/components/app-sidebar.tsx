@@ -27,22 +27,22 @@ import { type NavItem } from '@/types';
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
-        href: dashboard(),
+        href: dashboard.url(),
         icon: LayoutGrid,
     },
     {
         title: 'Hyperlinks',
-        href: '/hyperlinks',
+        href: 'hyperlinks.url()',
         icon: Link,
     },
     {
         title: 'Categories',
-        href: '/categories',
+        href: 'categories.url()',
         icon: Webhook,
     },
     {
         title: 'Tags',
-        href: '/tags',
+        href: 'tags.url()',
         icon: Tag,
     },
 ];
