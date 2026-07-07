@@ -34,10 +34,7 @@ export default function PublicHeader({
                 <nav className="flex w-full items-center justify-between gap-4">
                     <ul className="flex items-start gap-4">
                         <li>
-                            <MegaMenu
-                                title="WebDev HQ"
-                                columns={MegaMenuColumns}
-                            />
+                            <MegaMenu title="Menu" columns={MegaMenuColumns} />
                         </li>
                     </ul>
                     <div className="flex-start flex items-center gap-3">
