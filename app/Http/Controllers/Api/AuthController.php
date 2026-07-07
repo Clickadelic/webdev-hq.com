@@ -3,13 +3,36 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreApiUserRequest;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    /**
+     * Register a new user via the API and dispatch a verification e-mail.
+     * Uses the same VerifyEmailNotification as the web (Fortify) flow.
+     */
+    public function register(StoreApiUserRequest $request): JsonResponse
+    {
+        $user = User::create($request->validated());
+
+        event(new Registered($user));
+
+        return response()->json([
+            'message' => 'User registered. A verification e-mail has been sent.',
+            'user' => [
+                'id'    => $user->id,
+                'name'  => $user->name,
+                'email' => $user->email,
+            ],
+        ], 201);
+    }
+
     /**
      * Handle API login and return a Sanctum token.
      */
