@@ -59,7 +59,7 @@ export default function PublicHeader({
                                     <li>
                                         <Link
                                             href={register.url()}
-                                            className="flex items-center justify-between gap-2 rounded-sm border border-slate-200 px-3 py-2 text-slate-800 hover:bg-slate-100 hover:text-primary"
+                                            className="flex items-center justify-between gap-2 rounded-sm border border-border px-3 py-2 text-slate-800 hover:bg-slate-100 hover:text-primary dark:border-neutral-600 dark:bg-neutral-800 dark:text-slate-200 dark:hover:bg-neutral-700 dark:hover:text-primary"
                                         >
                                             <CircleCheckBig className="size-4" />
                                             Register
@@ -69,7 +69,7 @@ export default function PublicHeader({
                                 <li>
                                     <Link
                                         href={login.url()}
-                                        className="hover:bg-primary-hover flex items-center justify-between gap-2 rounded-sm border border-slate-200 bg-primary px-3 py-2 text-white hover:bg-primary/90"
+                                        className="hover:bg-primary-hover flex items-center justify-between gap-2 rounded-sm border border-slate-500 bg-primary px-3 py-2 text-white hover:bg-primary/90"
                                     >
                                         <DoorOpen className="size-4" />
                                         Login

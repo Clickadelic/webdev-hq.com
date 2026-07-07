@@ -10,7 +10,6 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
 import {
     BookOpen,
     GalleryHorizontal,
@@ -27,22 +26,22 @@ import { type NavItem } from '@/types';
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
-        href: dashboard.url(),
+        href: '/dashboard',
         icon: LayoutGrid,
     },
     {
         title: 'Hyperlinks',
-        href: 'hyperlinks.url()',
+        href: '/hyperlinks',
         icon: Link,
     },
     {
         title: 'Categories',
-        href: 'categories.url()',
+        href: '/categories',
         icon: Webhook,
     },
     {
         title: 'Tags',
-        href: 'tags.url()',
+        href: '/tags',
         icon: Tag,
     },
 ];
