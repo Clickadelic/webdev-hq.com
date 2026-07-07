@@ -9,6 +9,7 @@ import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import { CircleCheckBig, DoorOpen, LayoutDashboard } from 'lucide-react';
+
 interface PublicHeaderProps {
     canRegister?: boolean;
     className?: string;
