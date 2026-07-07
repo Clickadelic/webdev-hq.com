@@ -4,6 +4,7 @@ import { index } from '@/actions/App/Http/Controllers/HyperlinkController';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
 import DeleteHyperlinkButton from '@/components/hyperlinks/delete-hyperlink-button';
 import { Button } from '@/components/ui/button';
+import TablePagination from '@/components/ui/table-pagination';
 import {
     Dialog,
     DialogContent,
@@ -12,7 +13,7 @@ import {
     DialogTitle,
 } from '@/components/ui/dialog';
 import AppLayout from '@/layouts/app-layout';
-import { Hyperlink, type BreadcrumbItem } from '@/types';
+import { Hyperlink, type BreadcrumbItem, type Paginator } from '@/types';
 import { usePage } from '@inertiajs/react';
 import { Pencil } from 'lucide-react';
 import { useState } from 'react';
@@ -25,8 +26,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Hyperlinks() {
-    const { hyperlinks } = usePage<{ hyperlinks: { data: Hyperlink[] } }>()
-        .props;
+    const { hyperlinks } = usePage<{ hyperlinks: Paginator<Hyperlink> }>().props;
     const items = hyperlinks.data;
 
     const [editingHyperlink, setEditingHyperlink] = useState<
@@ -108,6 +108,8 @@ export default function Hyperlinks() {
                         </p>
                     )}
                 </div>
+
+                <TablePagination paginator={hyperlinks} />
 
                 {/* Edit Dialog */}
                 <Dialog

@@ -1,6 +1,19 @@
 import { InertiaLinkProps } from '@inertiajs/react';
 import { LucideIcon } from 'lucide-react';
 
+export interface Paginator<T> {
+    data: T[];
+    current_page: number;
+    last_page: number;
+    per_page: number;
+    total: number;
+    from: number | null;
+    to: number | null;
+    path: string;
+    prev_page_url: string | null;
+    next_page_url: string | null;
+}
+
 export interface Auth {
     user: User;
 }

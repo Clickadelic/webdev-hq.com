@@ -18,22 +18,13 @@ class DashboardController extends Controller
 			->latest('created_at')
 			->get();
 
-<<<<<<< HEAD
 		$query = Hyperlink::with(['category', 'tags']);
-=======
-
-
-		$query = Hyperlink::with(['category', 'tags'])->published();
->>>>>>> 8970bb0 (Data Table Start)
 
 		if ($search = request('search')) {
 			$query->where(function ($q) use ($search) {
 				$q->where('title', 'like', "%{$search}%")
 					->orWhere('url', 'like', "%{$search}%")
-<<<<<<< HEAD
 					->orWhere('category', 'like', "%{$search}%")
-=======
->>>>>>> 8970bb0 (Data Table Start)
 					->orWhere('description', 'like', "%{$search}%");
 			});
 		}

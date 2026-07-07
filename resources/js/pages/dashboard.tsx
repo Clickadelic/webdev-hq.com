@@ -165,7 +165,7 @@ export default function Dashboard() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <div className="flex h-full flex-1 flex-col gap-2 overflow-x-auto rounded-xl p-4">
+            <div className="flex flex-col gap-2 overflow-x-auto rounded-xl p-4">
                 <DndContext
                     sensors={sensors}
                     collisionDetection={closestCenter}
@@ -256,7 +256,7 @@ export default function Dashboard() {
                     </DragOverlay>
                 </DndContext>
             </div>
-            <div className="flex h-full flex-1 flex-col gap-2 overflow-x-auto p-4">
+            <div className="flex flex-1 flex-col gap-2 overflow-x-auto p-4">
                 <HyperlinkTable />
             </div>
         </AppLayout>

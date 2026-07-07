@@ -108,7 +108,7 @@ export default function Home({
                             onClick={() => handleQueryChange('')}
                             aria-label="Clear search"
                             title="Clear search"
-                            className="absolute top-4.5 right-3 size-4 -translate-y-1/2 text-muted-foreground hover:cursor-pointer hover:text-foreground hover:text-primary"
+                            className="absolute top-4.5 right-3 size-4 -translate-y-1/2 text-neutral-400 hover:cursor-pointer hover:text-primary"
                         >
                             <CircleX className="size-5" />
                         </button>
