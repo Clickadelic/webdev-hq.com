@@ -13,79 +13,89 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    /**
-     * Register a new user via the API and dispatch a verification e-mail.
-     * Uses the same VerifyEmailNotification as the web (Fortify) flow.
-     */
-    public function register(StoreApiUserRequest $request): JsonResponse
-    {
-        $user = User::create($request->validated());
+	/**
+	 * Register a new user via the API and dispatch a verification e-mail.
+	 * Uses the same VerifyEmailNotification as the web (Fortify) flow.
+	 */
+	public function register(StoreApiUserRequest $request): JsonResponse
+	{
+		$user = User::create($request->validated());
 
-        event(new Registered($user));
+		event(new Registered($user));
 
-        return response()->json([
-            'message' => 'User registered. A verification e-mail has been sent.',
-            'user' => [
-                'id'    => $user->id,
-                'name'  => $user->name,
-                'email' => $user->email,
-            ],
-        ], 201);
-    }
+		return response()->json([
+			'message' => 'User registered. A verification e-mail has been sent.',
+			'user' => [
+				'id'    => $user->id,
+				'name'  => $user->name,
+				'email' => $user->email,
+			],
+		], 201);
+	}
 
-    /**
-     * Handle API login and return a Sanctum token.
-     */
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-            'device_name' => 'string|nullable',
-        ]);
+	/**
+	 * Handle API login and return a Sanctum token.
+	 */
+	public function login(Request $request)
+	{
+		$request->validate([
+			'email' => 'required|email',
+			'password' => 'required',
+			'device_name' => 'string|nullable',
+		]);
 
-        $user = User::where('email', $request->email)->first();
+		$user = User::where('email', $request->email)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
-        }
+		if (! $user || ! Hash::check($request->password, $user->password)) {
+			throw ValidationException::withMessages([
+				'email' => ['The provided credentials are incorrect.'],
+			]);
+		}
 
-        // Delete old tokens for this device (optional: prevents token buildup)
-        $deviceName = $request->device_name ?? 'chrome-extension';
-        $user->tokens()->where('name', $deviceName)->delete();
+		// Delete old tokens for this device (optional: prevents token buildup)
+		$deviceName = $request->device_name ?? 'chrome-extension';
+		$user->tokens()->where('name', $deviceName)->delete();
 
-        // Create a new token
-        $token = $user->createToken($deviceName)->plainTextToken;
+		// Create a new token
+		$token = $user->createToken($deviceName)->plainTextToken;
 
-        return response()->json([
-            'token' => $token,
-            'user' => [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-            ],
-        ]);
-    }
+		return response()->json([
+			'token' => $token,
+			'user' => [
+				'id' => $user->id,
+				'name' => $user->name,
+				'email' => $user->email,
+			],
+		]);
+	}
 
-    /**
-     * Revoke the current user's token (logout).
-     */
-    public function logout(Request $request)
-    {
-        $request->user()->currentAccessToken()->delete();
+	/**
+	 * Revoke the current user's token (logout).
+	 */
+	public function logout(Request $request)
+	{
+		$request->user()->currentAccessToken()->delete();
 
-        return response()->json(['message' => 'Logged out successfully']);
-    }
+		return response()->json(['message' => 'Logged out successfully']);
+	}
 
-    /**
-     * Get the authenticated user.
-     */
-    public function me(Request $request)
-    {
-        return response()->json([
-            'user' => $request->user(),
-        ]);
-    }
+	/**
+	 * Get the authenticated user.
+	 */
+	public function me(Request $request)
+	{
+		return response()->json([
+			'user' => $request->user(),
+		]);
+	}
+
+	/**
+	 * Get the authenticated user.
+	 */
+	public function user(Request $request)
+	{
+		return response()->json([
+			'user' => $request->user(),
+		]);
+	}
 }
