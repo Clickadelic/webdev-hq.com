@@ -21,7 +21,7 @@ test('web and api hyperlink indexes return the same model results', function () 
 
     $apiResponse = $this
         ->actingAs($user, 'sanctum')
-        ->getJson('/api/hyperlinks');
+        ->getJson('/api/v1/hyperlinks');
 
     $webResponse->assertInertia(fn (Assert $page) => $page
         ->component('hyperlinks/index')
@@ -30,4 +30,30 @@ test('web and api hyperlink indexes return the same model results', function () 
     );
 
     expect($apiResponse->json('hyperlinks.data.*.id'))->toBe($expectedIds);
+});
+
+test('authenticated users can create hyperlinks via the api', function () {
+    $user = User::factory()->create();
+
+    $response = $this
+        ->actingAs($user, 'sanctum')
+        ->postJson('/api/v1/hyperlinks', [
+            'title' => 'Test Hyperlink',
+            'url' => 'https://example.com/test-hyperlink',
+            'description' => 'A hyperlink created through the API.',
+            'category' => 'Testing',
+            'status' => 'published',
+            'tags' => ['api', 'postman'],
+        ]);
+
+    $response
+        ->assertCreated()
+        ->assertJsonPath('hyperlink.title', 'Test Hyperlink');
+
+    $hyperlink = Hyperlink::query()
+        ->where('title', 'Test Hyperlink')
+        ->firstOrFail();
+
+    expect($hyperlink->created_by)->toBe($user->id)
+        ->and($hyperlink->tags()->pluck('name')->all())->toEqualCanonicalizing(['api', 'postman']);
 });
