@@ -61,6 +61,7 @@ jobs:
       # 7. Vite Build (inkl. Wayfinder types)
       - name: Build assets with Vite
         env:
+          VITE_API_VERSION: ${{ vars.VITE_API_VERSION || 'v1' }}
           # Verhindert den Datenbank-Fehler während des Bootstrapping
           DB_CONNECTION: sqlite
           DB_DATABASE: ":memory:"
