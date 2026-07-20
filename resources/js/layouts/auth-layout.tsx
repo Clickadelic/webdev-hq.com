@@ -14,8 +14,8 @@ export default function AuthSimpleLayout({
 }: PropsWithChildren<AuthLayoutProps>) {
     // Use API JSON mode and preload the image to avoid first-paint flicker.
     const today = new Date().toISOString().slice(0, 10);
-    const jsonUrl = `/api/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&response=json&d=${encodeURIComponent(today)}`;
-    const redirectUrl = `/api/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&d=${encodeURIComponent(today)}`;
+    const jsonUrl = `/api/${import.meta.env.VITE_API_VERSION}/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&response=json&d=${encodeURIComponent(today)}`;
+    const redirectUrl = `/api/${import.meta.env.VITE_API_VERSION}/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&d=${encodeURIComponent(today)}`;
     const [bgUrl, setBgUrl] = useState<string | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [attribution, setAttribution] = useState<{
