@@ -28,36 +28,6 @@ return new class extends Migration
 
 			return;
 		}
-
-		Schema::table('hyperlinks', function (Blueprint $table) {
-			if (! Schema::hasColumn('hyperlinks', 'created_by')) {
-				$table->foreignUuid('created_by')->nullable()->constrained('users')->nullOnDelete();
-			}
-
-			if (! Schema::hasColumn('hyperlinks', 'category_id')) {
-				$table->foreignUuid('category_id')->nullable()->constrained('categories')->nullOnDelete();
-			}
-
-			if (! Schema::hasColumn('hyperlinks', 'title')) {
-				$table->string('title');
-			}
-
-			if (! Schema::hasColumn('hyperlinks', 'url')) {
-				$table->string('url');
-			}
-
-			if (! Schema::hasColumn('hyperlinks', 'favicon_url')) {
-				$table->string('favicon_url')->nullable();
-			}
-
-			if (! Schema::hasColumn('hyperlinks', 'description')) {
-				$table->text('description')->nullable();
-			}
-
-			if (! Schema::hasColumn('hyperlinks', 'status')) {
-				$table->string('status')->default(Status::Draft->value);
-			}
-		});
 	}
 
 	public function down(): void
