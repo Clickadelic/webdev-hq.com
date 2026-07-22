@@ -10,7 +10,7 @@ return new class extends Migration
 	public function up(): void
 	{
 		if (!Schema::hasTable('hyperlinks')) {
-			// Create table if it doesn't exist
+			// Create the table if it doesn't exist
 			Schema::create('hyperlinks', function (Blueprint $table) {
 				$table->uuid('id')->primary();
 
@@ -27,7 +27,7 @@ return new class extends Migration
 				$table->timestamps();
 			});
 		} else {
-			// Table exists, check for columns
+			// Table exists, check for columns before adding
 			if (!Schema::hasColumn('hyperlinks', 'created_by')) {
 				Schema::table('hyperlinks', function (Blueprint $table) {
 					$table->foreignUuid('created_by')->nullable()->constrained('users')->nullOnDelete();
@@ -38,7 +38,7 @@ return new class extends Migration
 					$table->foreignUuid('category_id')->nullable()->constrained('categories')->nullOnDelete();
 				});
 			}
-			// Add checks for other columns if needed
+			// Add other columns check here if needed
 		}
 	}
 
