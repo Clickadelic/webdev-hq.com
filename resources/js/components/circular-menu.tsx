@@ -1,5 +1,5 @@
-import AppForm from '@/components/forms/app-form';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
+import PostForm from '@/components/forms/post-form';
 import {
     Dialog,
     DialogContent,
@@ -30,7 +30,7 @@ import { cn } from '@/lib/utils';
 export function CircularMenu() {
     const { auth } = usePage<SharedData>().props;
     const [showCircularMenu, setShowCircularMenu] = useState<boolean>(false);
-    const [isAppModalOpen, setIsAppModalOpen] = useState<boolean>(false);
+    const [isPostModalOpen, setIsPostModalOpen] = useState<boolean>(false);
     const [isHyperlinkModalOpen, setIsHyperlinkModalOpen] =
         useState<boolean>(false);
     const [isEditing, setIsEditing] = useState<boolean>(false);
@@ -53,22 +53,22 @@ export function CircularMenu() {
                         <TooltipTrigger asChild>
                             <button
                                 type="button"
-                                onClick={() => setIsAppModalOpen(true)}
+                                onClick={() => setIsPostModalOpen(true)}
                                 className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
                             >
                                 <ScreenShare className="size-4" />
                             </button>
                         </TooltipTrigger>
                         <TooltipContent side="left" className="text-white">
-                            <p>Create new app</p>
+                            <p>Create new post</p>
                             <TooltipArrow className="fill-primary dark:fill-primary" />
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
                 <Dialog
-                    open={isAppModalOpen}
+                    open={isPostModalOpen}
                     onOpenChange={(open) => {
-                        setIsAppModalOpen(open);
+                        setIsPostModalOpen(open);
                         if (!open) setIsEditing(false);
                     }}
                 >
@@ -76,13 +76,13 @@ export function CircularMenu() {
                         <DialogHeader>
                             <DialogTitle className="flex items-start gap-2">
                                 <ScreenShare className="size-4" />
-                                {isEditing ? 'Edit App' : 'Add App'}
+                                {isEditing ? 'Edit Post' : 'Add Post'}
                             </DialogTitle>
                             <DialogDescription>
-                                {isEditing ? 'Edit the App' : 'Add a new App'}
+                                {isEditing ? 'Edit the Post' : 'Add a new Post'}
                             </DialogDescription>
                         </DialogHeader>
-                        <AppForm className="w-full" />
+                        <PostForm className="w-full" />
                     </DialogContent>
                 </Dialog>
 

@@ -6,36 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::create('apps', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+	public function up(): void
+	{
+		Schema::create('apps', function (Blueprint $table) {
+			$table->uuid('id')->primary();
 
-            $table->string('title');
-            $table->string('url');
-            $table->string('target')->default('_self');
+			// Referenz auf User als UUID + nullable wegen nullOnDelete()
+			$table->foreignUuid('created_by')->nullable()->constrained('users')->nullOnDelete();
 
-            $table->integer('position')->default(0);
+			$table->string('title');
+			$table->string('url');
+			$table->string('favicon_url')->nullable();
+			$table->string('target')->default('_blank');
 
-            $table->foreignId('created_by')
-                ->nullable()
-                ->constrained('users')
-                ->nullOnDelete();
+			$table->timestamps();
+		});
+	}
 
-            $table->timestamps();
-
-            $table->index(['created_by', 'position']);
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('apps');
-    }
+	public function down(): void
+	{
+		Schema::dropIfExists('apps');
+	}
 };

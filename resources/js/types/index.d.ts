@@ -67,6 +67,7 @@ export interface App {
     created_at: string | null;
     updated_at: string | null;
 }
+
 export interface Tag {
     id: number;
     name: string;
@@ -97,4 +98,34 @@ export interface Category {
     hyperlinks_count?: number;
     created_at: string;
     updated_at: string;
+}
+
+export interface Post {
+    id: string;
+    title: string;
+    subline?: string | null;
+    slug: string;
+    description?: string | null;
+    content: string;
+    featured_image?: string | null;
+
+    // Status & Meta
+    status: Status;
+    published_at?: string | null;
+    meta_title?: string | null;
+    meta_description?: string | null;
+
+    // Foreign Keys
+    category_id?: string | null; // oder number (falls Categories kein UUID nutzt)
+    created_by: string;
+
+    // Relationen (aus forAppListing() via eager loading)
+    category?: Category | null;
+    author?: User;
+    tags?: Tag[];
+
+    // Timestamps
+    created_at: string;
+    updated_at: string;
+    deleted_at?: string | null;
 }

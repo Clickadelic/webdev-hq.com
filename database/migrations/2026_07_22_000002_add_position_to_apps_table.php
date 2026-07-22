@@ -11,11 +11,10 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('categories', function (Blueprint $table) {
-			$table->uuid('id')->primary(); // <-- UUID als Primary Key
-			$table->string('name');
-			$table->string('slug')->nullable();
-			$table->timestamps();
+		Schema::table('apps', function (Blueprint $table) {
+			if (! Schema::hasColumn('apps', 'position')) {
+				$table->integer('position')->nullable()->after('target');
+			}
 		});
 	}
 
@@ -24,6 +23,10 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('categories');
+		Schema::table('apps', function (Blueprint $table) {
+			if (Schema::hasColumn('apps', 'position')) {
+				$table->dropColumn('position');
+			}
+		});
 	}
 };

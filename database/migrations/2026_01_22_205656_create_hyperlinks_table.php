@@ -7,30 +7,27 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up(): void
-    {
-        Schema::create('hyperlinks', function (Blueprint $table) {
-            $table->id();
+	public function up(): void
+	{
+		Schema::create('hyperlinks', function (Blueprint $table) {
+			$table->uuid('id')->primary();
 
-            $table->string('title');
-            $table->string('url');
-            $table->text('description')->nullable();
+			// WICHTIG: foreignUuid statt foreignId!
+			$table->foreignUuid('created_by')->nullable()->constrained('users')->nullOnDelete();
+			$table->foreignUuid('category_id')->nullable()->constrained('categories')->nullOnDelete();
 
-            $table->foreignId('category_id')
-                ->nullable()
-                ->constrained()
-                ->nullOnDelete();
+			$table->string('title');
+			$table->string('url');
+			$table->string('favicon_url')->nullable();
+			$table->text('description')->nullable();
+			$table->string('status')->default(Status::Draft->value);
 
-            $table->string('status')
-                ->default(Status::Draft->value)
-                ->index();
+			$table->timestamps();
+		});
+	}
 
-            $table->timestamps();
-        });
-    }
-
-    public function down(): void
-    {
-        Schema::dropIfExists('hyperlinks');
-    }
+	public function down(): void
+	{
+		Schema::dropIfExists('hyperlinks');
+	}
 };
