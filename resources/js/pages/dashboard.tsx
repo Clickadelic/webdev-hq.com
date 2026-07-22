@@ -1,6 +1,5 @@
 'use client';
 
-import HyperlinkTable from '@/components/hyperlinks/hyperlink-table';
 import { SortableAppTile } from '@/components/sortable-app-tile';
 import AppLayout from '@/layouts/app-layout';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -255,9 +254,6 @@ export default function Dashboard() {
                         ) : null}
                     </DragOverlay>
                 </DndContext>
-            </div>
-            <div className="flex flex-1 flex-col gap-2 overflow-x-auto p-4">
-                <HyperlinkTable />
             </div>
         </AppLayout>
     );

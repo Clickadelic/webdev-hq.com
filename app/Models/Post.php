@@ -9,25 +9,33 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Hyperlink extends Model
+class Post extends Model
 {
-	use HasFactory, HasUuids;
+	/** @use HasFactory<\Database\Factories\PostFactory> */
+	use HasFactory, HasUuids, SoftDeletes;
 
 	protected $fillable = [
 		'title',
-		'url',
-		'favicon_url',
+		'subline',
+		'slug',
 		'description',
+		'content',
+		'featured_image',
 		'category_id',
 		'status',
+		'published_at',
 		'created_by',
+		'meta_title',
+		'meta_description',
 	];
 
 	protected function casts(): array
 	{
 		return [
 			'status' => Status::class,
+			'published_at' => 'datetime',
 		];
 	}
 
@@ -60,14 +68,18 @@ class Hyperlink extends Model
 
 	public function scopePublished(Builder $query): Builder
 	{
-		return $query->where('status', Status::Published);
+		return $query->where('status', Status::Published)
+			->where(function (Builder $q) {
+				$q->whereNull('published_at')
+					->orWhere('published_at', '<=', now());
+			});
 	}
 
 	public function scopeForAppListing(Builder $query): Builder
 	{
 		return $query->published()
 			->with(['category', 'author', 'tags'])
-			->latest();
+			->latest('published_at');
 	}
 
 	/*

@@ -45,7 +45,9 @@ class AppController extends Controller
 		$validated = $request->validated();
 
 		// Determine next position for this user's apps if not provided
-		$next = App::where('created_by', Auth::id(), '=', Auth::id())->max('position');
+		$next = App::query()
+			->where('created_by', Auth::id())
+			->max('position');
 		$position = array_key_exists('position', $validated) && $validated['position'] !== null
 			? (int) $validated['position']
 			: (is_null($next) ? 0 : ((int) $next + 1));

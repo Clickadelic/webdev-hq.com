@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppController;
 
 use App\Http\Controllers\HyperlinkController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PageController;
@@ -27,6 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	Route::resource('/apps', AppController::class);
 	Route::patch('/apps/reorder', [AppController::class, 'reorder'])->name('apps.reorder');
 	Route::resource('/hyperlinks', HyperlinkController::class);
+	Route::resource('/posts', PostController::class);
 	Route::resource('/categories', CategoryController::class);
 	Route::resource('/tags', TagController::class);
 });

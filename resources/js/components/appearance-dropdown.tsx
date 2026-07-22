@@ -33,20 +33,26 @@ export default function AppearanceToggleDropdown({
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="h-9 w-9 rounded-md"
+                        className="h-9 w-9 rounded-md border shadow-xs hover:cursor-pointer hover:bg-muted hover:text-muted-foreground"
                     >
                         {getCurrentIcon()}
                         <span className="sr-only">Toggle theme</span>
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                    <DropdownMenuItem onClick={() => updateAppearance('light')}>
+                    <DropdownMenuItem
+                        onClick={() => updateAppearance('light')}
+                        className="hover:cursor-pointer"
+                    >
                         <span className="flex items-center gap-2">
                             <Sun className="h-5 w-5" />
                             Light
                         </span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => updateAppearance('dark')}>
+                    <DropdownMenuItem
+                        onClick={() => updateAppearance('dark')}
+                        className="hover:cursor-pointer"
+                    >
                         <span className="flex items-center gap-2">
                             <Moon className="h-5 w-5" />
                             Dark
@@ -54,6 +60,7 @@ export default function AppearanceToggleDropdown({
                     </DropdownMenuItem>
                     <DropdownMenuItem
                         onClick={() => updateAppearance('system')}
+                        className="hover:cursor-pointer"
                     >
                         <span className="flex items-center gap-2">
                             <Monitor className="h-5 w-5" />
