@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
 			'name' => 'Clickadelic',
 			'email' => 'click@clickadelic.de',
 			'email_verified_at' => now(),
-			'password' => bcrypt('forello204$'), // Tipp: Immer hashen, falls nicht im Model-Casting
+			'password' => bcrypt('forello204$'),
 		]);
 	}
 }
