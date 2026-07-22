@@ -12,24 +12,15 @@ return new class extends Migration
 		Schema::create('hyperlinks', function (Blueprint $table) {
 			$table->uuid('id')->primary();
 
+			// WICHTIG: foreignUuid statt foreignId!
+			$table->foreignUuid('created_by')->nullable()->constrained('users')->nullOnDelete();
+			$table->foreignUuid('category_id')->nullable()->constrained('categories')->nullOnDelete();
+
 			$table->string('title');
 			$table->string('url');
-			$table->string('favicon_url', 2048)->nullable();
+			$table->string('favicon_url')->nullable();
 			$table->text('description')->nullable();
-
-			$table->foreignId('category_id')
-				->nullable()
-				->constrained()
-				->nullOnDelete();
-
-			$table->string('status')
-				->default(Status::Draft->value)
-				->index();
-
-			$table->foreignId('created_by')
-				->nullable()
-				->constrained('users')
-				->nullOnDelete();
+			$table->string('status')->default(Status::Draft->value);
 
 			$table->timestamps();
 		});
