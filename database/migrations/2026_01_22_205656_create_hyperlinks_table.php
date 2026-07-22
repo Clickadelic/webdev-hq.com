@@ -30,9 +30,9 @@ return new class extends Migration
 		}
 
 		Schema::table('hyperlinks', function (Blueprint $table) {
-			// if (! Schema::hasColumn('hyperlinks', 'created_by')) {
-			// 	$table->foreignUuid('created_by')->nullable()->constrained('users')->nullOnDelete();
-			// }
+			if (! Schema::hasColumn('hyperlinks', 'created_by')) {
+				$table->foreignUuid('created_by')->nullable()->constrained('users')->nullOnDelete();
+			}
 
 			if (! Schema::hasColumn('hyperlinks', 'category_id')) {
 				$table->foreignUuid('category_id')->nullable()->constrained('categories')->nullOnDelete();
