@@ -18,6 +18,7 @@ return new class extends Migration
 			$table->string('url');
 			$table->string('favicon_url')->nullable();
 			$table->string('target')->default('_blank');
+			$table->integer('position')->nullable();
 
 			$table->timestamps();
 		});
