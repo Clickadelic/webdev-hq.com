@@ -12,9 +12,9 @@ return new class extends Migration
 		Schema::create('posts', function (Blueprint $table) {
 			$table->uuid('id')->primary();
 
-			// Relationen & Author
-			$table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
-			$table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
+			// Relationen & Author (foreignUuid statt foreignId!)
+			$table->foreignUuid('created_by')->constrained('users')->cascadeOnDelete();
+			$table->foreignUuid('category_id')->nullable()->constrained('categories')->nullOnDelete();
 
 			// Content
 			$table->string('title');

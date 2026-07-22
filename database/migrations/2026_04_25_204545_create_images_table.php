@@ -6,22 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::create('images', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+	public function up(): void
+	{
+		Schema::create('images', function (Blueprint $table) {
+			$table->uuid('id')->primary();
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('images');
-    }
+			// Optional: Falls Bilder einem User gehören oder polymorph verknüpft sind
+			// $table->foreignUuid('user_id')->nullable()->constrained()->nullOnDelete();
+			// $table->uuidMorphs('imageable');
+
+			$table->string('path');
+			$table->string('alt_text')->nullable();
+
+			$table->timestamps();
+		});
+	}
+
+	public function down(): void
+	{
+		Schema::dropIfExists('images');
+	}
 };
