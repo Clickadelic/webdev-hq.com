@@ -85,7 +85,7 @@ export default function Home({
             onError: () => toast.error('Failed to delete hyperlink.'),
         });
     };
-
+    console.log('canRegister', canRegister);
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
             {/* Search */}
@@ -93,7 +93,7 @@ export default function Home({
                 <div className="rounded-xl bg-white/30 p-1 shadow backdrop-blur dark:bg-white/5">
                     <form
                         onSubmit={(e) => e.preventDefault()}
-                        className="relative rounded-lg bg-white dark:bg-neutral-950"
+                        className="relative rounded-lg bg-white dark:bg-slate-950"
                     >
                         <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
                         <input
@@ -101,14 +101,14 @@ export default function Home({
                             value={query}
                             onChange={(e) => handleQueryChange(e.target.value)}
                             placeholder="Search resources…"
-                            className="w-full rounded-lg py-2.5 pr-3 pl-9 text-sm placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:outline-none dark:bg-neutral-950 dark:text-white"
+                            className="w-full rounded-lg py-2.5 pr-3 pl-9 text-sm placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:outline-none dark:bg-slate-950 dark:text-white"
                         />
                         <button
                             type="button"
                             onClick={() => handleQueryChange('')}
                             aria-label="Clear search"
                             title="Clear search"
-                            className="absolute top-4.5 right-3 size-4 -translate-y-1/2 text-neutral-400 hover:cursor-pointer hover:text-primary"
+                            className="absolute top-4.5 right-3 size-4 -translate-y-1/2 text-slate-400 hover:cursor-pointer hover:text-primary"
                         >
                             <CircleX className="size-5" />
                         </button>
