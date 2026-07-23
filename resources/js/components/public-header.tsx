@@ -7,9 +7,11 @@ import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import {
+    Blocks,
     CircleCheckBig,
     DoorOpen,
     LayoutDashboard,
+    Link as LinkIcon,
     Pencil,
 } from 'lucide-react';
 
@@ -42,8 +44,31 @@ export default function PublicHeader({
                                 href="/blog"
                                 className="flex items-center gap-2 hover:text-primary"
                                 title="Blog"
+                                aria-label="Blog"
                             >
                                 <Pencil className="size-4" /> Blog
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                hrefLang="en"
+                                href="/resources"
+                                className="flex items-center gap-2 hover:text-primary"
+                                title="Resources"
+                                aria-label="Resources"
+                            >
+                                <LinkIcon className="size-4" /> Resources
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                hrefLang="en"
+                                href="/chrome-extension"
+                                className="flex items-center gap-2 hover:text-primary"
+                                title="Chrome Extension"
+                                aria-label="Chrome Extension"
+                            >
+                                <Blocks className="size-4" /> Chrome Extension
                             </Link>
                         </li>
                     </ul>

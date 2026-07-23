@@ -1,4 +1,4 @@
-import SidebarLegal from '@/components/sidebars/sidebar-legal';
+import SidebarLegal from '@/components/public-sidebars/sidebar-legal';
 import PublicLayout from '@/layouts/public-layout';
 export default function Disclaimer({
     canRegister = true,
