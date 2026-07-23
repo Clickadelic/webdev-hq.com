@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 
+// Hyperlinks
+Route::get('/resources', [PageController::class, 'resources'])->name('resources');
+
 // Legal pages, Cookies, etc..
 Route::group(['prefix' => 'legal'], function () {
 	Route::get('/', [PageController::class, 'legalIndex'])->name('legal-index');

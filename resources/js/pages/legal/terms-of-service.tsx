@@ -1,4 +1,5 @@
-import PublicSidebarLeftLayout from '@/layouts/public-sidebar-left-layout';
+import SidebarLegal from '@/components/sidebars/sidebar-legal';
+import PublicLayout from '@/layouts/public-layout';
 
 export default function TermsofService({
     canRegister = true,
@@ -6,7 +7,11 @@ export default function TermsofService({
     canRegister?: boolean;
 }) {
     return (
-        <PublicSidebarLeftLayout canRegister={canRegister} title="Disclaimer">
+        <PublicLayout
+            canRegister={canRegister}
+            title="Terms of Service"
+            sidebar={<SidebarLegal />}
+        >
             <div className="space-y-5">
                 <section>
                     <h2 className="mb-3 text-2xl font-semibold">
@@ -196,6 +201,6 @@ export default function TermsofService({
                     </p>
                 </section>
             </div>
-        </PublicSidebarLeftLayout>
+        </PublicLayout>
     );
 }

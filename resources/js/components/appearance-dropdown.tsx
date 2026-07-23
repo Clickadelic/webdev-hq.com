@@ -18,11 +18,11 @@ export default function AppearanceToggleDropdown({
     const getCurrentIcon = () => {
         switch (appearance) {
             case 'dark':
-                return <Moon className="h-5 w-5" />;
+                return <Moon className="size-5" />;
             case 'light':
-                return <Sun className="h-5 w-5" />;
+                return <Sun className="size-5" />;
             default:
-                return <Monitor className="h-5 w-5" />;
+                return <Monitor className="size-5" />;
         }
     };
 
@@ -33,7 +33,7 @@ export default function AppearanceToggleDropdown({
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="h-9 w-9 rounded-md border shadow-xs hover:cursor-pointer hover:bg-muted hover:text-muted-foreground"
+                        className="size-9 rounded-md border p-5 shadow-xs hover:cursor-pointer hover:bg-muted hover:text-muted-foreground"
                     >
                         {getCurrentIcon()}
                         <span className="sr-only">Toggle theme</span>
@@ -45,7 +45,7 @@ export default function AppearanceToggleDropdown({
                         className="hover:cursor-pointer"
                     >
                         <span className="flex items-center gap-2">
-                            <Sun className="h-5 w-5" />
+                            <Sun className="size-5" />
                             Light
                         </span>
                     </DropdownMenuItem>
@@ -54,7 +54,7 @@ export default function AppearanceToggleDropdown({
                         className="hover:cursor-pointer"
                     >
                         <span className="flex items-center gap-2">
-                            <Moon className="h-5 w-5" />
+                            <Moon className="size-5" />
                             Dark
                         </span>
                     </DropdownMenuItem>
@@ -63,7 +63,7 @@ export default function AppearanceToggleDropdown({
                         className="hover:cursor-pointer"
                     >
                         <span className="flex items-center gap-2">
-                            <Monitor className="h-5 w-5" />
+                            <Monitor className="size-5" />
                             System
                         </span>
                     </DropdownMenuItem>
