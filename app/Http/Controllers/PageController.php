@@ -8,22 +8,28 @@ use Inertia\Inertia;
 class PageController extends Controller
 {
 
-
 	public function index()
+	{
+
+		return Inertia::render('home', [
+			'canRegister' => true,
+		]);
+	}
+	public function resources()
 	{
 		$query = Hyperlink::with(['category', 'tags'])->published();
 
 		if ($search = request('search')) {
 			$query->where(function ($q) use ($search) {
 				$q->where('title', 'like', "%{$search}%")
-				  ->orWhere('url', 'like', "%{$search}%")
-				  ->orWhere('description', 'like', "%{$search}%");
+					->orWhere('url', 'like', "%{$search}%")
+					->orWhere('description', 'like', "%{$search}%");
 			});
 		}
 
 		$hyperlinks = $query->latest()->paginate(35)->withQueryString();
 
-		return Inertia::render('home', [
+		return Inertia::render('resources', [
 			'hyperlinks' => $hyperlinks,
 			'canRegister' => true,
 		]);

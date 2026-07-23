@@ -1,14 +1,15 @@
-import PublicSidebarLeftLayout from '@/layouts/public-sidebar-left-layout';
-
+import SidebarLegal from '@/components/sidebars/sidebar-legal';
+import PublicLayout from '@/layouts/public-layout';
 export default function PrivacyPolicy({
     canRegister = true,
 }: {
     canRegister?: boolean;
 }) {
     return (
-        <PublicSidebarLeftLayout
+        <PublicLayout
             canRegister={canRegister}
             title="Privacy Policy"
+            sidebar={<SidebarLegal />}
         >
             <div className="space-y-5">
                 <section>
@@ -99,6 +100,6 @@ export default function PrivacyPolicy({
                     </p>
                 </section>
             </div>
-        </PublicSidebarLeftLayout>
+        </PublicLayout>
     );
 }

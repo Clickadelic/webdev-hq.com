@@ -1,12 +1,19 @@
-import PublicSidebarLeftLayout from '@/layouts/public-sidebar-left-layout';
+import SidebarLegal from '@/components/sidebars/sidebar-legal';
+import PublicLayout from '@/layouts/public-layout';
+
 import { Link } from '@inertiajs/react';
+
 export default function LegalNotice({
     canRegister = true,
 }: {
     canRegister?: boolean;
 }) {
     return (
-        <PublicSidebarLeftLayout canRegister={canRegister} title="Legal Notice">
+        <PublicLayout
+            canRegister={canRegister}
+            title="Legal Notice"
+            sidebar={<SidebarLegal />}
+        >
             <div className="space-y-5">
                 <section>
                     <h2 className="mb-3 text-2xl font-medium">Legal Notice</h2>
@@ -71,6 +78,6 @@ export default function LegalNotice({
                     </p>
                 </section>
             </div>
-        </PublicSidebarLeftLayout>
+        </PublicLayout>
     );
 }

@@ -1,4 +1,5 @@
-import PublicSidebarLeftLayout from '@/layouts/public-sidebar-left-layout';
+import SidebarLegal from '@/components/sidebars/sidebar-legal';
+import PublicLayout from '@/layouts/public-layout';
 
 export default function CookiePolicy({
     canRegister = true,
@@ -6,13 +7,14 @@ export default function CookiePolicy({
     canRegister?: boolean;
 }) {
     return (
-        <PublicSidebarLeftLayout
+        <PublicLayout
             canRegister={canRegister}
             title="Cookie Policy"
+            sidebar={<SidebarLegal />}
         >
             <div className="space-y-5">
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
+                    <h2 className="mb-3 py-2 text-xl font-medium">
                         Cookie Policy
                     </h2>
                     Protecting your personal data is important to us. This
@@ -20,14 +22,14 @@ export default function CookiePolicy({
                     minimal data collection.
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
+                    <h2 className="mb-3 py-2 text-xl font-medium">
                         Data Controller
                     </h2>
                     Tobias Hopp Email:
                     [admin@webdev-hq.com](mailto:admin@webdev-hq.com)
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
+                    <h2 className="mb-3 py-2 text-xl font-medium">
                         Data We Collect and How We Use It
                     </h2>
                     We only collect data necessary to operate the platform: *
@@ -36,7 +38,7 @@ export default function CookiePolicy({
                     (e.g., IP address, browser type) stored in server.
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
+                    <h2 className="mb-3 py-2 text-xl font-medium">
                         Hosting & Server Logs
                     </h2>
                     This website is hosted by a provider located in Germany.
@@ -46,7 +48,7 @@ export default function CookiePolicy({
                     provider in accordance with GDPR requirements.
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
+                    <h2 className="mb-3 py-2 text-xl font-medium">
                         Authentication & Social Login
                     </h2>
                     Users may register using traditional login methods or
@@ -56,20 +58,20 @@ export default function CookiePolicy({
                     policies: * Google * GitHub
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">Cookies</h2>
+                    <h2 className="mb-3 py-2 text-xl font-medium">Cookies</h2>
                     This website uses essential cookies required for
                     functionality, such as: * Session management (login status)
                     * Security purposes No tracking or advertising cookies are
                     used.
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">Donations</h2>
+                    <h2 className="mb-3 py-2 text-xl font-medium">Donations</h2>
                     If you choose to make a voluntary donation via PayPal, your
                     payment data will be processed by PayPal. The operator does
                     not store payment information.
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
+                    <h2 className="mb-3 py-2 text-xl font-medium">
                         Your Rights (GDPR)
                     </h2>
                     You have the right to: * Access your data * Request
@@ -78,18 +80,18 @@ export default function CookiePolicy({
                     [admin@webdev-hq.com](mailto:admin@webdev-hq.com)
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
+                    <h2 className="mb-3 py-2 text-xl font-medium">
                         Data Retention
                     </h2>
                     Personal data is stored only as long as necessary for the
                     operation of the platform or as required by law. ### 10.
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">Changes</h2>
+                    <h2 className="mb-3 py-2 text-xl font-medium">Changes</h2>
                     This privacy policy may be updated to reflect changes in
                     functionality or legal requirements.
                 </section>
             </div>
-        </PublicSidebarLeftLayout>
+        </PublicLayout>
     );
 }

@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils';
 import { Link, usePage } from '@inertiajs/react';
 import { ChevronRight } from 'lucide-react'; // ShadCN Icons
 import { RiHomeLine } from 'react-icons/ri';
+
 interface BreadCrumbProps {
     className?: string;
 }
@@ -40,7 +41,7 @@ const PublicBreadcrumbs = ({ className }: BreadCrumbProps) => {
 
     return (
         <div className={cn('container mx-auto w-full px-2 md:px-0', className)}>
-            <ul className="flex items-center gap-2 border-b border-neutral-200 pb-3 text-sm text-neutral-600 dark:border-neutral-700 dark:text-neutral-200">
+            <ul className="flex items-center gap-3 py-5 text-sm text-gray-800 dark:text-gray-200">
                 {/* Home */}
                 <li>
                     <Link
@@ -49,17 +50,19 @@ const PublicBreadcrumbs = ({ className }: BreadCrumbProps) => {
                         aria-label="Homepage"
                         title="Homepage"
                     >
-                        <RiHomeLine className="-mt-1 inline" />
+                        <RiHomeLine className="-mt-1 inline size-5" />
                         <span className="sr-only">Homepage</span>
                     </Link>
                 </li>
 
                 {crumbs.map((crumb, idx) => (
                     <li key={idx} className="line-clamp-1 flex items-center">
-                        <ChevronRight className="mr-2 h-4 w-4 text-neutral-600 dark:text-neutral-200" />
+                        <ChevronRight className="mr-3 size-5 text-gray-800 dark:text-neutral-200" />
                         {/* Letztes Segment nicht als Link */}
                         {idx === crumbs.length - 1 ? (
-                            <span className="line-clamp-1">{crumb.name}</span>
+                            <span className="line-clamp-1 cursor-default">
+                                {crumb.name}
+                            </span>
                         ) : (
                             <Link
                                 href={crumb.path}
