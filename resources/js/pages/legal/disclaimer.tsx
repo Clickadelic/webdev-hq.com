@@ -1,15 +1,19 @@
-import PublicSidebarLeftLayout from '@/layouts/public-sidebar-left-layout';
-
+import SidebarLegal from '@/components/sidebars/sidebar-legal';
+import PublicLayout from '@/layouts/public-layout';
 export default function Disclaimer({
     canRegister = true,
 }: {
     canRegister?: boolean;
 }) {
     return (
-        <PublicSidebarLeftLayout canRegister={canRegister} title="Disclaimer">
+        <PublicLayout
+            canRegister={canRegister}
+            title="Disclaimer"
+            sidebar={<SidebarLegal />}
+        >
             <div className="space-y-5">
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
+                    <h2 className="mb-3 py-2 text-xl font-medium">
                         User Generated Content
                     </h2>
                     <p>
@@ -22,7 +26,7 @@ export default function Disclaimer({
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
+                    <h2 className="mb-3 text-xl font-medium">
                         No Liability for External Links
                     </h2>
                     <p>
@@ -33,7 +37,7 @@ export default function Disclaimer({
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
+                    <h2 className="mb-3 text-xl font-medium">
                         Notice of illegal content
                     </h2>
                     <p>
@@ -45,7 +49,7 @@ export default function Disclaimer({
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
+                    <h2 className="mb-3 text-xl font-medium">
                         No professional advice
                     </h2>
                     <p>
@@ -55,6 +59,6 @@ export default function Disclaimer({
                     </p>
                 </section>
             </div>
-        </PublicSidebarLeftLayout>
+        </PublicLayout>
     );
 }

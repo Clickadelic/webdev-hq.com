@@ -2,14 +2,16 @@ import CircularMenu from '@/components/circular-menu';
 import PublicBreadcrumbs from '@/components/public-breadcrumbs';
 import PublicFooter from '@/components/public-footer';
 import PublicHeader from '@/components/public-header';
-
 import { Toaster } from '@/components/ui/sonner';
+import { cn } from '@/lib/utils';
 import { Head } from '@inertiajs/react';
 
 interface PublicLayoutProps {
     title?: string;
+    sidebar?: React.ReactNode | null;
     children: React.ReactNode;
     canRegister?: boolean;
+    className?: string;
 }
 
 /**
@@ -21,16 +23,30 @@ interface PublicLayoutProps {
  */
 export default function PublicLayout({
     title,
+    sidebar,
     children,
     canRegister,
+    className,
 }: PublicLayoutProps) {
     return (
         <>
             <Head title={title} />
-            <div className="grid min-h-svh grid-rows-[auto_auto_1fr_auto] justify-items-center">
+            <div className="flex min-h-svh flex-col items-center justify-items-center">
                 <PublicHeader canRegister={canRegister} />
-                <PublicBreadcrumbs className="mb-3 border-b border-neutral-300" />
-                <main className="container mx-auto">{children}</main>
+                <PublicBreadcrumbs />
+                <div
+                    className={cn(
+                        'container mx-auto flex grow flex-col justify-center rounded bg-white/30 p-2 shadow backdrop-blur sm:mx-0',
+                        className,
+                    )}
+                >
+                    <div className="grow rounded bg-white p-4">
+                        <div className="flex justify-start gap-6">
+                            {sidebar ? sidebar : null}
+                            <main className="w-full">{children}</main>
+                        </div>
+                    </div>
+                </div>
                 <Toaster />
                 <CircularMenu />
                 <PublicFooter />

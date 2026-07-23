@@ -58,7 +58,7 @@ export default function Login({
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Password</Label>
                                 </div>
-                                <div className="flex-end flex rounded-md bg-[#2a3240]">
+                                <div className="relative">
                                     <Input
                                         id="password"
                                         type={
@@ -69,26 +69,21 @@ export default function Login({
                                         tabIndex={2}
                                         autoComplete="current-password"
                                         placeholder="Password"
-                                        className="dark:bg-[#2a3240]"
+                                        className="pr-10"
                                     />
                                     <button
                                         type="button"
-                                        className="rounded-tr rounded-br bg-transparent px-2 hover:cursor-pointer"
+                                        title="Toggle password visibility"
+                                        aria-label="Toggle password visibility"
+                                        onClick={() =>
+                                            setShowPassword(!showPassword)
+                                        }
+                                        className="absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground hover:cursor-pointer"
                                     >
                                         {showPassword ? (
-                                            <EyeOff
-                                                className="text-muted-foreground"
-                                                onClick={() =>
-                                                    setShowPassword(false)
-                                                }
-                                            />
+                                            <EyeOff size={16} />
                                         ) : (
-                                            <Eye
-                                                className="text-muted-foreground"
-                                                onClick={() =>
-                                                    setShowPassword(true)
-                                                }
-                                            />
+                                            <Eye size={16} />
                                         )}
                                     </button>
                                 </div>

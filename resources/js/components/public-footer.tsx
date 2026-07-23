@@ -13,7 +13,57 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                 className,
             )}
         >
-            <div className="container mx-auto pt-12 pb-8">
+            <div className="container mx-auto py-3">
+                <div className="mb-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                    <div>
+                        <h3 className="text-lg font-semibold text-neutral-200">
+                            WebDev HQ Chrome-Extension
+                        </h3>
+                        <p className="mt-2 text-sm text-neutral-200">
+                            We are striving to give you the best web experience
+                            possible. That's why we have developed a Chrome
+                            Extension to replace the NewTab as a startpage in
+                            Chrome. It is not published yet, but you can already
+                            give it a try and download it here.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-semibold text-neutral-200">
+                            About Us
+                        </h3>
+                        <p className="mt-2 text-sm text-neutral-200">
+                            Welcome to WebDevHQ, your go-to destination for web
+                            development resources. We are a community of
+                            passionate developers dedicated to sharing knowledge
+                            and exploring the latest trends in the world of web
+                            development.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-semibold text-neutral-200">
+                            About Us
+                        </h3>
+                        <p className="mt-2 text-sm text-neutral-200">
+                            Welcome to WebDevHQ, your go-to destination for web
+                            development resources. We are a community of
+                            passionate developers dedicated to sharing knowledge
+                            and exploring the latest trends in the world of web
+                            development.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-semibold text-neutral-200">
+                            About Us
+                        </h3>
+                        <p className="mt-2 text-sm text-neutral-200">
+                            Welcome to WebDevHQ, your go-to destination for web
+                            development resources. We are a community of
+                            passionate developers dedicated to sharing knowledge
+                            and exploring the latest trends in the world of web
+                            development.
+                        </p>
+                    </div>
+                </div>
                 <div className="flex flex-row items-center justify-center">
                     <ul className="mx-auto mb-4 space-y-3 text-center text-sm sm:flex sm:space-y-0 sm:space-x-3">
                         <li>

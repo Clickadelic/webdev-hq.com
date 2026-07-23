@@ -11,8 +11,10 @@ type PageModule = ComponentType & { default?: ComponentType };
 const pages = import.meta.glob<PageModule>('./pages/**/*.tsx');
 
 createInertiaApp({
-    title: (title) => (title ? `${title} &middot; ${appName}` : appName),
-    resolve: (name) => resolvePageComponent(`./pages/${name}.tsx`, pages),
+    title: (title: string) =>
+        title ? `${title} &middot; ${appName}` : appName,
+    resolve: (name: string) =>
+        resolvePageComponent(`./pages/${name}.tsx`, pages),
     progress: {
         color: '#1a90fd',
     },
