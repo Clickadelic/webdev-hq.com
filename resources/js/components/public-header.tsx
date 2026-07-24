@@ -41,12 +41,12 @@ export default function PublicHeader({
                         <li>
                             <Link
                                 hrefLang="en"
-                                href="/blog"
+                                href="/posts"
                                 className="flex items-center gap-2 hover:text-primary"
-                                title="Blog"
-                                aria-label="Blog"
+                                title="Posts"
+                                aria-label="Posts"
                             >
-                                <Pencil className="size-4" /> Blog
+                                <Pencil className="size-4" /> Posts
                             </Link>
                         </li>
                         <li>

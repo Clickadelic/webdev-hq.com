@@ -9,7 +9,7 @@ class ChromeExtensionController extends Controller
 {
 	public function index()
 	{
-		return Inertia::render('resources', [
+		return Inertia::render('chrome-extension/index', [
 			'canRegister' => true,
 		]);
 	}

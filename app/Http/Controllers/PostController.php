@@ -14,10 +14,11 @@ use Inertia\Response;
 
 class PostController extends Controller
 {
-	public function index(): Response
+	public function index()
 	{
-		return Inertia::render('Posts/Index', [
-			'posts' => Post::appListing(),
+		$posts = Post::All();
+		return Inertia::render('posts/index', [
+			'posts' => $posts
 		]);
 	}
 
