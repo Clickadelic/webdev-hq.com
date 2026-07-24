@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\AppController;
-
 use App\Http\Controllers\HyperlinkController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\DashboardController;
 
@@ -21,5 +21,6 @@ Route::prefix('dashboard')
 		Route::resource('/categories', CategoryController::class);
 		Route::resource('/tags', TagController::class);
 
+		Route::resource('/posts', PostController::class)->only(['store', 'update', 'destroy']);
 		Route::get('/posts/create', [PageController::class, 'createPost'])->name('dashboard.posts.create');
 	});
