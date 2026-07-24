@@ -15,6 +15,7 @@ import {
     GalleryHorizontal,
     LayoutGrid,
     Link,
+    Pencil,
     Tag,
     Webhook,
 } from 'lucide-react';
@@ -43,6 +44,11 @@ const mainNavItems: NavItem[] = [
         title: 'Tags',
         href: '/tags',
         icon: Tag,
+    },
+    {
+        title: 'Posts',
+        href: '/dashboard/posts',
+        icon: Pencil,
     },
 ];
 
