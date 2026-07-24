@@ -37,7 +37,7 @@ export default function PublicHeader({
                     <AppLogo className="lg:mr-24" logoClassName="size-7 mr-3" />
                 </div>
                 <nav className="flex w-full items-center justify-between gap-4">
-                    <ul className="flex items-start gap-4">
+                    <ul className="hidden items-start gap-4 lg:flex">
                         <li>
                             <Link
                                 hrefLang="en"
@@ -52,12 +52,12 @@ export default function PublicHeader({
                         <li>
                             <Link
                                 hrefLang="en"
-                                href="/resources"
+                                href="/hyperlinks"
                                 className="flex items-center gap-2 hover:text-primary"
-                                title="Resources"
-                                aria-label="Resources"
+                                title="Hyperlinks"
+                                aria-label="Hyperlinks"
                             >
-                                <LinkIcon className="size-4" /> Resources
+                                <LinkIcon className="size-4" /> Hyperlinks
                             </Link>
                         </li>
                         <li>
