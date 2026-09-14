@@ -43,6 +43,12 @@ RUN composer dump-autoload --no-scripts --optimize \
     && npm run build \
     && rm -f .env database/database.sqlite
 
+# Entrypoint used when this stage is run directly as the Vite dev server (docker-compose "node" service)
+COPY docker/entrypoint-node.sh /usr/local/bin/entrypoint-node.sh
+RUN sed -i 's/\r$//' /usr/local/bin/entrypoint-node.sh \
+    && chmod +x /usr/local/bin/entrypoint-node.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint-node.sh"]
+
 # ============================================================
 # Stage 2: Production runtime – PHP 8.4-FPM + Nginx
 # ============================================================
