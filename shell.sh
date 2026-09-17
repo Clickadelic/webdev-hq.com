@@ -1,0 +1,1 @@
+alias dsh="docker exec -it webdevhq-app bash"
