@@ -33,6 +33,8 @@ services:
       - DB_DATABASE=webdevhqcom_dev
       - DB_USERNAME=root
       - DB_PASSWORD=groot
+    env_file:
+      - .env
     entrypoint: ['/usr/local/bin/entrypoint.sh']
     develop:
       watch:
