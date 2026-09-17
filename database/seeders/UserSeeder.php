@@ -12,8 +12,8 @@ class UserSeeder extends Seeder
 	{
 		User::create([
 			'id' => Str::uuid(),
-			'name' => 'Clickadelic',
-			'email' => 'click@clickadelic.de',
+			'name' => 'Batman',
+			'email' => 'batman@clickadelic.de',
 			'email_verified_at' => now(),
 			'password' => bcrypt('forello204$'),
 		]);
