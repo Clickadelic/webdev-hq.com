@@ -8,7 +8,7 @@ services:
     container_name: webdevhq-app
     restart: unless-stopped
     ports:
-      - "8000:80"
+      - '8000:80'
     volumes:
       - ./docker/nginx/default.conf:/etc/nginx/http.d/default.conf:ro
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini:ro
@@ -24,7 +24,9 @@ services:
       - DB_DATABASE=webdevhqcom_dev
       - DB_USERNAME=root
       - DB_PASSWORD=groot
-    entrypoint: ["/usr/local/bin/entrypoint.sh"]
+    env_file:
+      - .env
+    entrypoint: ['/usr/local/bin/entrypoint.sh']
     develop:
       watch:
         - action: sync
@@ -84,14 +86,14 @@ services:
     container_name: webdevhq-mysql
     restart: unless-stopped
     ports:
-      - "3306:3306"
+      - '3306:3306'
     environment:
       MYSQL_DATABASE: webdevhqcom_dev
       MYSQL_ROOT_PASSWORD: groot
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -107,10 +109,10 @@ services:
     container_name: webdevhq-node
     working_dir: /app
     ports:
-      - "5173:5173"
+      - '5173:5173'
     # volumes:
-      # - ./resources:/app/resources
-      # - ./public:/app/public
+    # - ./resources:/app/resources
+    # - ./public:/app/public
     environment:
       - DB_HOST=mysql
       - DB_USERNAME=root
@@ -155,7 +157,7 @@ services:
     container_name: webdevhq-phpmyadmin
     restart: unless-stopped
     ports:
-      - "8080:80"
+      - '8080:80'
     environment:
       PMA_HOST: mysql
       PMA_USER: root
