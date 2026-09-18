@@ -1,11 +1,13 @@
 <?php
 
 use App\Enums\Season;
+use Tests\TestCase;
 
 describe('Unsplash Image Service API Endpoints', function () {
 	describe('GET /api/unsplash/image/seasonal', function () {
 		it('returns a random seasonal image for the current season', function () {
-			$response = $this->getJson('/api/unsplash/image/seasonal');
+			/** @var TestCase $this */
+			$response = $this->getJson('/api/v1/unsplash/image/seasonal');
 
 			$response->assertOk();
 			$response->assertJsonStructure([
@@ -31,41 +33,47 @@ describe('Unsplash Image Service API Endpoints', function () {
 		});
 
 		it('returns a random seasonal image with a specified season', function () {
-			$response = $this->getJson('/api/unsplash/image/seasonal?season=spring');
+			/** @var TestCase $this */
+			$response = $this->getJson('/api/v1/unsplash/image/seasonal?season=spring');
 
 			$response->assertOk();
 			$response->assertJsonPath('meta.season', 'spring');
 		});
 
 		it('rejects invalid season parameter', function () {
-			$response = $this->getJson('/api/unsplash/image/seasonal?season=invalid');
+			/** @var TestCase $this */
+			$response = $this->getJson('/api/v1/unsplash/image/seasonal?season=invalid');
 
 			$response->assertStatus(422);
 		});
 
 		it('allows overriding collections via query parameter', function () {
+			/** @var TestCase $this */
 			$collectionId = config('services.unsplash.collections.spring');
 
-			$response = $this->getJson("/api/unsplash/image/seasonal?collections={$collectionId}");
+			$response = $this->getJson("/api/v1/unsplash/image/seasonal?collections={$collectionId}");
 
 			$response->assertOk();
 		});
 
-		it('returns error when no collection is configured for a season', function () {
+		it('falls back to a random seasonal image when no collection is configured', function () {
+			/** @var TestCase $this */
 			config(['services.unsplash.collections.spring' => null]);
 
-			$response = $this->getJson('/api/unsplash/image/seasonal?season=spring');
+			$response = $this->getJson('/api/v1/unsplash/image/seasonal?season=spring');
 
-			$response->assertStatus(422);
-			$response->assertJsonPath('message', 'No collection ID configured for season: spring');
+			$response->assertSuccessful();
+			$response->assertJsonPath('meta.season', 'spring');
+			$response->assertJsonPath('meta.collection_ids', []);
 		});
 
 		it('caches the response for 24 hours', function () {
-			$response1 = $this->getJson('/api/unsplash/image/seasonal');
+			/** @var TestCase $this */
+			$response1 = $this->getJson('/api/v1/unsplash/image/seasonal');
 			$response1->assertOk();
 			$photoId1 = $response1->json('data.id');
 
-			$response2 = $this->getJson('/api/unsplash/image/seasonal');
+			$response2 = $this->getJson('/api/v1/unsplash/image/seasonal');
 			$response2->assertOk();
 			$photoId2 = $response2->json('data.id');
 
@@ -76,7 +84,8 @@ describe('Unsplash Image Service API Endpoints', function () {
 
 	describe('GET /api/unsplash/image/general', function () {
 		it('returns a random image from all configured collections', function () {
-			$response = $this->getJson('/api/unsplash/image/general');
+			/** @var TestCase $this */
+			$response = $this->getJson('/api/v1/unsplash/image/general');
 
 			$response->assertOk();
 			$response->assertJsonStructure([
@@ -101,15 +110,17 @@ describe('Unsplash Image Service API Endpoints', function () {
 		});
 
 		it('allows overriding collections via query parameter', function () {
+			/** @var TestCase $this */
 			$collectionId = config('services.unsplash.collections.spring');
 
-			$response = $this->getJson("/api/unsplash/image/general?collections={$collectionId}");
+			$response = $this->getJson("/api/v1/unsplash/image/general?collections={$collectionId}");
 
 			$response->assertOk();
 		});
 
 		it('combines all seasonal collections by default', function () {
-			$response = $this->getJson('/api/unsplash/image/general');
+			/** @var TestCase $this */
+			$response = $this->getJson('/api/v1/unsplash/image/general');
 
 			$response->assertOk();
 			$collectionIds = $response->json('meta.collection_ids');
@@ -119,6 +130,7 @@ describe('Unsplash Image Service API Endpoints', function () {
 		});
 
 		it('returns error when no collections are configured', function () {
+			/** @var TestCase $this */
 			config(['services.unsplash.collections' => [
 				'spring' => null,
 				'summer' => null,
@@ -126,18 +138,19 @@ describe('Unsplash Image Service API Endpoints', function () {
 				'winter' => null,
 			]]);
 
-			$response = $this->getJson('/api/unsplash/image/general');
+			$response = $this->getJson('/api/v1/unsplash/image/general');
 
 			$response->assertStatus(422);
 			$response->assertJsonPath('message', 'No collection IDs are configured.');
 		});
 
 		it('caches the response for 24 hours', function () {
-			$response1 = $this->getJson('/api/unsplash/image/general');
+			/** @var TestCase $this */
+			$response1 = $this->getJson('/api/v1/unsplash/image/general');
 			$response1->assertOk();
 			$photoId1 = $response1->json('data.id');
 
-			$response2 = $this->getJson('/api/unsplash/image/general');
+			$response2 = $this->getJson('/api/v1/unsplash/image/general');
 			$response2->assertOk();
 			$photoId2 = $response2->json('data.id');
 
