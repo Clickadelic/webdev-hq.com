@@ -34,7 +34,6 @@ export default function PublicLayout({
             <div className="flex min-h-svh flex-col items-center justify-items-center">
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
-                <h2 className="text-2xl font-bold">Dingsbums</h2>
                 <div
                     className={cn(
                         'container mx-auto flex grow flex-col justify-center rounded bg-white/30 p-2 shadow backdrop-blur sm:mx-0',

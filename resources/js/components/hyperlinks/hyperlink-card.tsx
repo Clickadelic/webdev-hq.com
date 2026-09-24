@@ -1,6 +1,5 @@
-import { Hyperlink } from '@/types';
-
 import ContextMenu from '@/components/context-menu';
+import { Hyperlink } from '@/types';
 import { ExternalLink } from 'lucide-react';
 
 interface HyperlinkCardProps {
@@ -23,12 +22,20 @@ export default function HyperlinkCard({
             className="group flex w-full flex-col gap-2 rounded-xl border border-border bg-white p-3 shadow-sm transition-all hover:border-primary/50 hover:shadow-md dark:bg-neutral-900"
         >
             <div className="flex items-start justify-between gap-2">
-                <div className="favicon flex items-center gap-2">
-                    <img
-                        src={hyperlink.favicon_url || ''}
-                        className="size-7 rounded"
-                        alt="favicon"
-                    />
+                <div className="flex flex-1 items-center gap-2">
+                    <div className="favicon flex items-center gap-2">
+                        <img
+                            src={hyperlink.favicon_url || ''}
+                            className="size-7 rounded"
+                            alt="favicon"
+                        />
+                    </div>
+                    <div className="flex-start flex justify-start gap-2">
+                        <h3 className="text-md truncate leading-tight font-semibold group-hover:text-primary">
+                            {hyperlink.title}
+                        </h3>
+                        <ExternalLink className="mt-0.5 size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                    </div>
                 </div>
                 <ContextMenu
                     item={hyperlink}
@@ -36,12 +43,7 @@ export default function HyperlinkCard({
                     onDelete={onDelete}
                 />
             </div>
-            <div className="flex-start flex justify-start gap-2">
-                <h3 className="text-md truncate leading-tight font-semibold group-hover:text-primary">
-                    {hyperlink.title}
-                </h3>
-                <ExternalLink className="mt-0.5 size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-            </div>
+
             {hyperlink.description && (
                 <p className="line-clamp-2 h-10 text-sm text-muted-foreground">
                     {hyperlink.description}

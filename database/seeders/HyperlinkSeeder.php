@@ -19,24 +19,10 @@ class HyperlinkSeeder extends Seeder
 	{
 		$user = User::where('email', 'batman@clickadelic.de')->firstOrFail();
 		$category = Category::where('slug', 'web-development')->firstOrFail();
-		$tag = Tag::where('slug', 'laravel')->firstOrFail();
+		$javascriptTag = Tag::where('slug', 'javascript')->firstOrFail();
+		$phpTag = Tag::where('slug', 'php')->firstOrFail();
+
 		$team = Team::where('slug', 'marketing')->firstOrFail();
-
-		// Laravel
-		$laravel = Hyperlink::updateOrCreate(
-			['url' => 'https://laravel.com/docs'],
-			[
-				'title' => 'Laravel Documentation',
-				'favicon_url' => 'https://laravel.com/favicon.ico',
-				'description' => 'The official Laravel documentation.',
-				'category_id' => $category->id,
-				'status' => Status::Published,
-				'created_by' => $user->id,
-				'team_id' => $team->id,
-			],
-		);
-
-		$laravel->tags()->syncWithoutDetaching([$tag->id]);
 
 		// W3C
 		$w3cHyperlink = Hyperlink::updateOrCreate(
@@ -52,7 +38,23 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 
-		$w3cHyperlink->tags()->syncWithoutDetaching([$tag->id]);
+		$w3cHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		// Webstatus Dev
+		$webstatusDevHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://webstatus.dev/'],
+			[
+				'title' => 'Webstatus Dev',
+				'favicon_url' => 'https://webstatus.dev/public/img/favicon.png',
+				'description' => 'A platform for monitoring the status of current web implementations.',
+				'category_id' => $category->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		$webstatusDevHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 
 		// MDN Web Docs
 		$mdnHyperlink = Hyperlink::updateOrCreate(
@@ -68,7 +70,39 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 
-		$mdnHyperlink->tags()->syncWithoutDetaching([$tag->id]);
+		$mdnHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+
+		// Symfony
+		$symfony = Hyperlink::updateOrCreate(
+			['url' => 'https://symfony.com'],
+			[
+				'title' => 'Symfony',
+				'favicon_url' => 'https://symfony.com/favicons/favicon.svg',
+				'description' => 'Build with confidence at any scale.',
+				'category_id' => $category->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$symfony->tags()->syncWithoutDetaching([$phpTag->id]);
+
+		// Laravel
+		$laravel = Hyperlink::updateOrCreate(
+			['url' => 'https://laravel.com/docs'],
+			[
+				'title' => 'Laravel Documentation',
+				'favicon_url' => 'https://laravel.com/favicon.ico',
+				'description' => 'The official Laravel documentation.',
+				'category_id' => $category->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		$laravel->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		// Marko
 		$markoHyperlink = Hyperlink::updateOrCreate(
@@ -84,6 +118,54 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 
-		$markoHyperlink->tags()->syncWithoutDetaching([$tag->id]);
+		$markoHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
+
+		// Tempest
+		$tempestHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://tempestphp.com/'],
+			[
+				'title' => 'Tempest',
+				'favicon_url' => 'https://tempestphp.com/favicon/favicon-32x32.png',
+				'description' => 'The framework that gets out of your way.',
+				'category_id' => $category->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		$tempestHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
+
+		// Yii
+		$yiiHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://www.yiiframework.com/'],
+			[
+				'title' => 'Yii Framework',
+				'favicon_url' => 'https://www.yiiframework.com/favico/favicon.ico',
+				'description' => 'PHP framework for rapid development of modern applications.',
+				'category_id' => $category->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		$yiiHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
+
+		// Jamstack
+		$jamstackHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://jamstack.org/'],
+			[
+				'title' => 'Jamstack',
+				'favicon_url' => 'https://jamstack.org/img/favicons/favicon-32x32.png',
+				'description' => 'Jamstack is an architectural approach that decouples the web experience layer from data and business logic, improving flexibility, scalability, performance, and maintainability.',
+				'category_id' => $category->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		$jamstackHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 	}
 }

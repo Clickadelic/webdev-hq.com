@@ -16,7 +16,7 @@ class PostSeeder extends Seeder
 	{
 		$user = User::where('email', 'marketing-admin@clickadelic.de')->firstOrFail();
 		$category = Category::where('slug', 'web-development')->firstOrFail();
-		$tag = Tag::where('slug', 'laravel')->firstOrFail();
+		$tag = Tag::where('slug', 'php')->firstOrFail();
 		$team = Team::where('slug', 'marketing')->firstOrFail();
 
 		$post = Post::updateOrCreate(
