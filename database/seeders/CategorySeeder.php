@@ -25,5 +25,32 @@ class CategorySeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
+
+		Category::updateOrCreate(
+			['slug' => 'frontend'],
+			[
+				'name' => 'Frontend',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		Category::updateOrCreate(
+			['slug' => 'backend'],
+			[
+				'name' => 'Backend',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		Category::updateOrCreate(
+			['slug' => 'fullstack'],
+			[
+				'name' => 'Fullstack',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
 	}
 }
