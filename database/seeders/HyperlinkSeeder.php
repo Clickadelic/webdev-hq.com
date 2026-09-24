@@ -19,7 +19,9 @@ class HyperlinkSeeder extends Seeder
 	{
 		$user = User::where('email', 'batman@clickadelic.de')->firstOrFail();
 		$category = Category::where('slug', 'web-development')->firstOrFail();
-		$tag = Tag::where('slug', 'php')->firstOrFail();
+		$javascriptTag = Tag::where('slug', 'javascript')->firstOrFail();
+		$phpTag = Tag::where('slug', 'php')->firstOrFail();
+
 		$team = Team::where('slug', 'marketing')->firstOrFail();
 
 		// W3C
@@ -36,7 +38,7 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 
-		$w3cHyperlink->tags()->syncWithoutDetaching([$tag->id]);
+		$w3cHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 
 		// Webstatus Dev
 		$webstatusDevHyperlink = Hyperlink::updateOrCreate(
@@ -52,7 +54,7 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 
-		$webstatusDevHyperlink->tags()->syncWithoutDetaching([$tag->id]);
+		$webstatusDevHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 
 		// MDN Web Docs
 		$mdnHyperlink = Hyperlink::updateOrCreate(
@@ -68,7 +70,7 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 
-		$mdnHyperlink->tags()->syncWithoutDetaching([$tag->id]);
+		$mdnHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 
 
 		// Symfony
@@ -84,7 +86,7 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-		$symfony->tags()->syncWithoutDetaching([$tag->id]);
+		$symfony->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		// Laravel
 		$laravel = Hyperlink::updateOrCreate(
@@ -100,7 +102,7 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 
-		$laravel->tags()->syncWithoutDetaching([$tag->id]);
+		$laravel->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		// Marko
 		$markoHyperlink = Hyperlink::updateOrCreate(
@@ -116,7 +118,7 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 
-		$markoHyperlink->tags()->syncWithoutDetaching([$tag->id]);
+		$markoHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		// Tempest
 		$tempestHyperlink = Hyperlink::updateOrCreate(
@@ -132,7 +134,7 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 
-		$tempestHyperlink->tags()->syncWithoutDetaching([$tag->id]);
+		$tempestHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		// Yii
 		$yiiHyperlink = Hyperlink::updateOrCreate(
@@ -148,14 +150,14 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 
-		$yiiHyperlink->tags()->syncWithoutDetaching([$tag->id]);
+		$yiiHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		// Jamstack
 		$jamstackHyperlink = Hyperlink::updateOrCreate(
 			['url' => 'https://jamstack.org/'],
 			[
 				'title' => 'Jamstack',
-				'favicon_url' => 'https://jamstack.org/favicon-32x32.png',
+				'favicon_url' => 'https://jamstack.org/img/favicons/favicon-32x32.png',
 				'description' => 'Jamstack is an architectural approach that decouples the web experience layer from data and business logic, improving flexibility, scalability, performance, and maintainability.',
 				'category_id' => $category->id,
 				'status' => Status::Published,
@@ -164,6 +166,6 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 
-		$jamstackHyperlink->tags()->syncWithoutDetaching([$tag->id]);
+		$jamstackHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 	}
 }
