@@ -167,5 +167,21 @@ class HyperlinkSeeder extends Seeder
 		);
 
 		$jamstackHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		// Web Features Explorer
+		$webFeaturesExplorerHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://web-platform-dx.github.io/web-features-explorer/'],
+			[
+				'title' => 'Web Features Explorer',
+				'favicon_url' => 'https://web-platform-dx.github.io/web-features-explorer/favicon-32x32.png',
+				'description' => 'Explore the capabilities of modern web platforms and APIs.',
+				'category_id' => $category->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		$webFeaturesExplorerHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 	}
 }
