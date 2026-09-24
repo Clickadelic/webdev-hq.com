@@ -32,17 +32,17 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Hyperlinks',
-        href: '/hyperlinks',
+        href: '/dashboard/hyperlinks',
         icon: Link,
     },
     {
         title: 'Categories',
-        href: '/categories',
+        href: '/dashboard/categories',
         icon: Webhook,
     },
     {
         title: 'Tags',
-        href: '/tags',
+        href: '/dashboard/tags',
         icon: Tag,
     },
     {
