@@ -8,10 +8,19 @@ services:
     container_name: webdevhq-app
     restart: unless-stopped
     ports:
-      - "8000:80"
+      - '8000:80'
     volumes:
       - ./docker/nginx/default.conf:/etc/nginx/http.d/default.conf:ro
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini:ro
+      - ./app:/var/www/html/app
+      - ./bootstrap:/var/www/html/bootstrap
+      - ./resources:/var/www/html/resources
+      - ./routes:/var/www/html/routes
+      - ./config:/var/www/html/config
+      - ./database:/var/www/html/database
+      - ./tests:/var/www/html/tests
+      - ./public:/var/www/html/public
+      - ./.env:/var/www/html/.env
     depends_on:
       mysql:
         condition: service_healthy
@@ -24,53 +33,11 @@ services:
       - DB_DATABASE=webdevhqcom_dev
       - DB_USERNAME=root
       - DB_PASSWORD=groot
-    entrypoint: ["/usr/local/bin/entrypoint.sh"]
+    env_file:
+      - .env
+    entrypoint: ['/usr/local/bin/entrypoint.sh']
     develop:
       watch:
-        - action: sync
-          path: ./app
-          target: /var/www/html/app
-          initial_sync: true
-        - action: sync
-          path: ./bootstrap
-          target: /var/www/html/bootstrap
-          initial_sync: true
-          ignore:
-            - cache/
-        - action: sync
-          path: ./resources
-          target: /var/www/html/resources
-          initial_sync: true
-        - action: sync
-          path: ./routes
-          target: /var/www/html/routes
-          initial_sync: true
-        - action: sync
-          path: ./config
-          target: /var/www/html/config
-          initial_sync: true
-        - action: sync
-          path: ./database
-          target: /var/www/html/database
-          initial_sync: true
-        - action: sync
-          path: ./tests
-          target: /var/www/html/tests
-          initial_sync: true
-        - action: sync
-          path: ./public
-          target: /var/www/html/public
-          initial_sync: true
-          ignore:
-            - build/
-        - action: sync
-          path: ./artisan
-          target: /var/www/html/artisan
-          initial_sync: true
-        - action: sync
-          path: ./.env
-          target: /var/www/html/.env
-          initial_sync: true
         - action: rebuild
           path: ./composer.json
         - action: rebuild
@@ -84,17 +51,18 @@ services:
     container_name: webdevhq-mysql
     restart: unless-stopped
     ports:
-      - "3306:3306"
+      - '3306:3306'
     environment:
       MYSQL_DATABASE: webdevhqcom_dev
       MYSQL_ROOT_PASSWORD: groot
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 12
+      start_period: 30s
     networks:
       - webdevhq
 
@@ -105,12 +73,16 @@ services:
       dockerfile: Dockerfile
       target: build
     container_name: webdevhq-node
+    restart: unless-stopped
     working_dir: /app
     ports:
-      - "5173:5173"
-    # volumes:
-      # - ./resources:/app/resources
-      # - ./public:/app/public
+      - '5173:5173'
+    volumes:
+      - ./resources:/app/resources
+      - ./routes:/app/routes
+      - ./public:/app/public
+      - ./vite.config.ts:/app/vite.config.ts
+      - ./tsconfig.json:/app/tsconfig.json
     environment:
       - DB_HOST=mysql
       - DB_USERNAME=root
@@ -122,26 +94,6 @@ services:
     command: sh -c "npm run dev -- --host 0.0.0.0"
     develop:
       watch:
-        - action: sync
-          path: ./app
-          target: /app/app
-          initial_sync: true
-        - action: sync
-          path: ./routes
-          target: /app/routes
-          initial_sync: true
-        - action: sync+restart
-          path: ./vite.config.ts
-          target: /app/vite.config.ts
-          initial_sync: true
-        - action: sync+restart
-          path: ./tsconfig.json
-          target: /app/tsconfig.json
-          initial_sync: true
-        - action: sync+restart
-          path: ./.env
-          target: /app/.env
-          initial_sync: true
         - action: rebuild
           path: ./package.json
         - action: rebuild
@@ -155,7 +107,7 @@ services:
     container_name: webdevhq-phpmyadmin
     restart: unless-stopped
     ports:
-      - "8080:80"
+      - '8080:80'
     environment:
       PMA_HOST: mysql
       PMA_USER: root

@@ -31,7 +31,7 @@ class DashboardController extends Controller
 
 		$hyperlinks = $query->latest()->paginate(35)->withQueryString();
 
-		return Inertia::render('dashboard', [
+		return Inertia::render('dashboard/index', [
 			'apps' => $apps,
 			'hyperlinks' => $hyperlinks,
 		]);

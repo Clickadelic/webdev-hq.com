@@ -22,6 +22,7 @@ class Hyperlink extends Model
 		'category_id',
 		'status',
 		'created_by',
+		'team_id',
 	];
 
 	protected function casts(): array
@@ -45,6 +46,11 @@ class Hyperlink extends Model
 	public function author(): BelongsTo
 	{
 		return $this->belongsTo(User::class, 'created_by');
+	}
+
+	public function team(): BelongsTo
+	{
+		return $this->belongsTo(Team::class);
 	}
 
 	public function tags(): MorphToMany

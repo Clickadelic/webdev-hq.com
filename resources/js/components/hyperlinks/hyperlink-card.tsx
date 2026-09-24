@@ -24,7 +24,11 @@ export default function HyperlinkCard({
         >
             <div className="flex items-start justify-between gap-2">
                 <div className="favicon flex items-center gap-2">
-                    <img src={hyperlink.favicon_url || ''} alt="favicon" />
+                    <img
+                        src={hyperlink.favicon_url || ''}
+                        className="size-7 rounded"
+                        alt="favicon"
+                    />
                 </div>
                 <ContextMenu
                     item={hyperlink}

@@ -9,7 +9,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
     return (
         <footer
             className={cn(
-                'w-full border-t-2 border-primary bg-neutral-900 px-3 py-6 sm:px-0',
+                'mt-12 w-full border-t-2 border-primary bg-neutral-900 px-3 py-6 sm:px-0',
                 className,
             )}
         >
@@ -64,7 +64,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                         </p>
                     </div>
                 </div>
-                <div className="flex flex-row items-center justify-center">
+                <div className="mb-5 flex flex-row items-center justify-center">
                     <ul className="mx-auto mb-4 space-y-3 text-center text-sm sm:flex sm:space-y-0 sm:space-x-3">
                         <li>
                             <Link
