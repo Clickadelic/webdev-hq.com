@@ -17,7 +17,7 @@ Route::prefix('dashboard')
 		Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 		Route::patch('/apps/reorder', [AppController::class, 'reorder'])->name('apps.reorder');
 		Route::resource('/apps', AppController::class);
-		Route::resource('/hyperlinks', HyperlinkController::class);
+		Route::resource('/hyperlinks', HyperlinkController::class)->only(['index', 'store', 'update', 'destroy']);
 		Route::resource('/categories', CategoryController::class);
 		Route::resource('/tags', TagController::class);
 
