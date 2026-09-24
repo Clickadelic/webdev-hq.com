@@ -27,6 +27,7 @@ class Post extends Model
 		'status',
 		'published_at',
 		'created_by',
+		'team_id',
 		'meta_title',
 		'meta_description',
 	];
@@ -53,6 +54,11 @@ class Post extends Model
 	public function author(): BelongsTo
 	{
 		return $this->belongsTo(User::class, 'created_by');
+	}
+
+	public function team(): BelongsTo
+	{
+		return $this->belongsTo(Team::class);
 	}
 
 	public function tags(): MorphToMany
