@@ -7,9 +7,11 @@ import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import {
+    Blocks,
     CircleCheckBig,
     DoorOpen,
     LayoutDashboard,
+    Link as LinkIcon,
     Pencil,
 } from 'lucide-react';
 
@@ -35,15 +37,38 @@ export default function PublicHeader({
                     <AppLogo className="lg:mr-24" logoClassName="size-7 mr-3" />
                 </div>
                 <nav className="flex w-full items-center justify-between gap-4">
-                    <ul className="flex items-start gap-4">
+                    <ul className="hidden items-start gap-4 lg:flex">
                         <li>
                             <Link
                                 hrefLang="en"
-                                href="/blog"
+                                href="/posts"
                                 className="flex items-center gap-2 hover:text-primary"
-                                title="Blog"
+                                title="Posts"
+                                aria-label="Posts"
                             >
-                                <Pencil className="size-4" /> Blog
+                                <Pencil className="size-4" /> Posts
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                hrefLang="en"
+                                href="/hyperlinks"
+                                className="flex items-center gap-2 hover:text-primary"
+                                title="Hyperlinks"
+                                aria-label="Hyperlinks"
+                            >
+                                <LinkIcon className="size-4" /> Hyperlinks
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                hrefLang="en"
+                                href="/chrome-extension"
+                                className="flex items-center gap-2 hover:text-primary"
+                                title="Chrome Extension"
+                                aria-label="Chrome Extension"
+                            >
+                                <Blocks className="size-4" /> Chrome Extension
                             </Link>
                         </li>
                     </ul>

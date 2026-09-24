@@ -12,10 +12,6 @@ return new class extends Migration
 		Schema::create('posts', function (Blueprint $table) {
 			$table->uuid('id')->primary();
 
-			// Relationen & Author (foreignUuid statt foreignId!)
-			$table->foreignUuid('created_by')->constrained('users')->cascadeOnDelete();
-			$table->foreignUuid('category_id')->nullable()->constrained('categories')->nullOnDelete();
-
 			// Content
 			$table->string('title');
 			$table->string('subline')->nullable();
@@ -27,6 +23,10 @@ return new class extends Migration
 			// Status & Timestamps
 			$table->string('status')->default(Status::Draft->value);
 			$table->timestamp('published_at')->nullable();
+
+			// Relationen & Author (foreignUuid statt foreignId!)
+			$table->foreignUuid('created_by')->constrained('users')->cascadeOnDelete();
+			$table->foreignUuid('category_id')->nullable()->constrained('categories')->nullOnDelete();
 
 			// SEO
 			$table->string('meta_title')->nullable();

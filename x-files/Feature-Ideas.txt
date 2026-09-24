@@ -1,2 +1,6 @@
 - Dev Profile > Callable via API
-
+- Hyperlinks
+- Posts
+- TrelloBoard
+- Jobs
+- Chrome Extension

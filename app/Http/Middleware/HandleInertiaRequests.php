@@ -9,56 +9,56 @@ use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
-    /**
-     * Determines whether Inertia should handle this request.
-     */
-    public function shouldProcess(Request $request): bool
-    {
-        // Skip Inertia for API routes
-        if ($request->is('api/*')) {
-            return false;
-        }
-        
-        return parent::shouldProcess($request);
-    }
-    /**
-     * The root template that's loaded on the first page visit.
-     *
-     * @see https://inertiajs.com/server-side-setup#root-template
-     *
-     * @var string
-     */
-    protected $rootView = 'app';
+	/**
+	 * Determines whether Inertia should handle this request.
+	 */
+	public function shouldProcess(Request $request): bool
+	{
+		// Skip Inertia for API routes
+		if ($request->is('api/*')) {
+			return false;
+		}
 
-    /**
-     * Determines the current asset version.
-     *
-     * @see https://inertiajs.com/asset-versioning
-     */
-    public function version(Request $request): ?string
-    {
-        return parent::version($request);
-    }
+		return parent::shouldProcess($request);
+	}
+	/**
+	 * The root template that's loaded on the first page visit.
+	 *
+	 * @see https://inertiajs.com/server-side-setup#root-template
+	 *
+	 * @var string
+	 */
+	protected $rootView = 'app';
 
-    /**
-     * Define the props that are shared by default.
-     *
-     * @see https://inertiajs.com/shared-data
-     *
-     * @return array<string, mixed>
-     */
-    public function share(Request $request): array
-    {
-        return [
-            ...parent::share($request),
+	/**
+	 * Determines the current asset version.
+	 *
+	 * @see https://inertiajs.com/asset-versioning
+	 */
+	public function version(Request $request): ?string
+	{
+		return parent::version($request);
+	}
+
+	/**
+	 * Define the props that are shared by default.
+	 *
+	 * @see https://inertiajs.com/shared-data
+	 *
+	 * @return array<string, mixed>
+	 */
+	public function share(Request $request): array
+	{
+		return [
+			...parent::share($request),
 			'auth' => [
-				'user' => $request->user() 
-					? $request->user()->only(['id', 'name']) 
+				'user' => $request->user()
+					? $request->user()->only(['id', 'name', 'email', 'email_verified_at'])
 					: null,
 			],
-            'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
-            'categories' => Category::orderBy('name')->get(['id', 'name', 'slug']),
-            'tags' => Tag::orderBy('name')->get(['id', 'name', 'slug']),
-        ];
-    }
+			'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+			'categories' => Category::orderBy('name')->get(['id', 'name', 'slug']),
+			'tags' => Tag::orderBy('name')->get(['id', 'name', 'slug']),
+		];
+	}
 }

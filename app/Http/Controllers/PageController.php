@@ -15,7 +15,7 @@ class PageController extends Controller
 			'canRegister' => true,
 		]);
 	}
-	public function resources()
+	public function showHyperlinks()
 	{
 		$query = Hyperlink::with(['category', 'tags'])->published();
 
@@ -29,7 +29,7 @@ class PageController extends Controller
 
 		$hyperlinks = $query->latest()->paginate(35)->withQueryString();
 
-		return Inertia::render('resources', [
+		return Inertia::render('hyperlinks/index', [
 			'hyperlinks' => $hyperlinks,
 			'canRegister' => true,
 		]);
@@ -57,5 +57,17 @@ class PageController extends Controller
 	public function termsOfService()
 	{
 		return Inertia::render('legal/terms-of-service');
+	}
+	public function chromeExtension()
+	{
+		return Inertia::render('chrome-extension/index');
+	}
+	public function showPosts()
+	{
+		return Inertia::render('posts/index');
+	}
+	public function createPost()
+	{
+		return Inertia::render('dashboard/create-post');
 	}
 }

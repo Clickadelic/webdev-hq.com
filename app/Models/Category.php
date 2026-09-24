@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Category extends Model
 {
@@ -13,7 +14,17 @@ class Category extends Model
 
 	public $incrementing = false;
 
-	protected $fillable = ['name', 'slug'];
+	protected $fillable = ['name', 'slug', 'team_id', 'created_by'];
+
+	public function creator(): BelongsTo
+	{
+		return $this->belongsTo(User::class, 'created_by');
+	}
+
+	public function team(): BelongsTo
+	{
+		return $this->belongsTo(Team::class);
+	}
 
 	/**
 	 * Get all hyperlinks in this category.

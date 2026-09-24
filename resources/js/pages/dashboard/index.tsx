@@ -50,7 +50,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Dashboard() {
+export default function DashboardIndex() {
     const { apps } = usePage<{ apps: App[] }>().props;
 
     const [items, setItems] = useState<AppItem[]>(
