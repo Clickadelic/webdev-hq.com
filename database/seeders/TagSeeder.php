@@ -18,9 +18,9 @@ class TagSeeder extends Seeder
 		$team = Team::where('slug', 'marketing')->firstOrFail();
 
 		Tag::updateOrCreate(
-			['slug' => 'laravel'],
+			['slug' => 'php'],
 			[
-				'name' => 'Laravel',
+				'name' => 'PHP',
 				'created_by' => $user->id,
 				'team_id' => $team->id,
 			],
