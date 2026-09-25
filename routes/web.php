@@ -32,6 +32,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Apps
     Route::resource('/apps', AppController::class);
     Route::patch('/apps/reorder', [AppController::class, 'reorder'])->name('apps.reorder');
+    // Teams
+    Route::get('/settings/teams/{team}/edit', [TeamController::class, 'edit'])->name('teams.edit');
+    Route::patch('/settings/teams/{team}', [TeamController::class, 'update'])->name('teams.update');
     // Posts
     Route::resource('/dashboard/posts', PostController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     // Hyperlinks

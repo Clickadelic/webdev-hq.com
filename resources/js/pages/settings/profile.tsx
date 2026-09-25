@@ -7,6 +7,7 @@ import { Form, Head, Link, usePage } from '@inertiajs/react';
 import DeleteUser from '@/components/delete-user';
 import HeadingSmall from '@/components/heading-small';
 import InputError from '@/components/input-error';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -50,6 +51,33 @@ export default function Profile({
                     >
                         {({ processing, recentlySuccessful, errors }) => (
                             <>
+                                <div className="grid gap-2">
+                                    <Label htmlFor="profile_image">
+                                        Profile image
+                                    </Label>
+                                    <div className="flex items-center gap-4">
+                                        <Avatar className="size-16">
+                                            <AvatarImage
+                                                src={auth.user.avatar}
+                                                alt={auth.user.name}
+                                            />
+                                            <AvatarFallback>
+                                                {auth.user.name.charAt(0)}
+                                            </AvatarFallback>
+                                        </Avatar>
+                                        <Input
+                                            id="profile_image"
+                                            name="profile_image"
+                                            type="file"
+                                            accept="image/*"
+                                        />
+                                    </div>
+                                    <InputError
+                                        className="mt-2"
+                                        message={errors.profile_image}
+                                    />
+                                </div>
+
                                 <div className="grid gap-2">
                                     <Label htmlFor="name">Name</Label>
 
