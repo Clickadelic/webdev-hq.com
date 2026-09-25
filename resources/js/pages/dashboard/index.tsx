@@ -254,6 +254,14 @@ export default function DashboardIndex() {
                         ) : null}
                     </DragOverlay>
                 </DndContext>
+                <div className="grid grid-cols-2 gap-2">
+                    <div className="flex flex-col gap-2">
+                        <h2 className="text-lg font-medium">Your Apps</h2>
+                        <p className="text-sm text-muted-foreground">
+                            You can add up to 5 apps to your dashboard.
+                        </p>
+                    </div>
+                </div>
             </div>
         </AppLayout>
     );

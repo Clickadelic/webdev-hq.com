@@ -76,6 +76,7 @@ class HyperlinkController extends Controller
         $data = $request->safe()->except(['tags', 'category']);
         $data['category_id'] = $this->resolveCategoryId($request->validated('category'));
         $data['created_by'] = $request->user()->id;
+        $data['team_id'] = $request->user()->teams()->value('teams.id');
 
         $hyperlink = Hyperlink::create($data);
         $hyperlink->tags()->sync($this->resolveTagIds($request->validated('tags', [])));
