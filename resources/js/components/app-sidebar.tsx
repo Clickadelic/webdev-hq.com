@@ -20,6 +20,7 @@ import {
     Webhook,
 } from 'lucide-react';
 
+import { index as postsIndex } from '@/actions/App/Http/Controllers/PostController';
 import AppLogo from './app-logo';
 
 import { type NavItem } from '@/types';
@@ -47,7 +48,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Posts',
-        href: '/dashboard/posts',
+        href: postsIndex.url(),
         icon: Pencil,
     },
 ];

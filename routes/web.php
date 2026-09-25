@@ -33,8 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/apps', AppController::class);
     Route::patch('/apps/reorder', [AppController::class, 'reorder'])->name('apps.reorder');
     // Posts
-    Route::resource('/dashboard/posts', PostController::class)->only(['index', 'store', 'update', 'destroy']);
-    Route::get('/dashboard/posts/create', [PageController::class, 'createPost'])->name('dashboard.posts.create');
+    Route::resource('/dashboard/posts', PostController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     // Hyperlinks
     Route::get('/dashboard/hyperlinks', [HyperlinkController::class, 'index'])->name('dashboard.hyperlinks.index');
     Route::post('/dashboard/hyperlinks', [HyperlinkController::class, 'store'])->name('hyperlinks.store');

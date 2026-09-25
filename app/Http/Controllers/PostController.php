@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Response;
@@ -22,12 +25,30 @@ class PostController extends Controller
         ]);
     }
 
-    /**
-     * Display the dashboard post form.
-     */
+    /** Display all posts in the dashboard. */
     public function index(): Response
     {
-        return inertia('dashboard/posts/index');
+        return inertia('dashboard/posts/index', [
+            'posts' => Post::query()
+                ->with(['author', 'category', 'tags'])
+                ->latest()
+                ->paginate(15),
+        ]);
+    }
+
+    /** Display the dashboard post creation form. */
+    public function create(): Response
+    {
+        return inertia('dashboard/posts/create', $this->formOptions());
+    }
+
+    /** Display the dashboard post editing form. */
+    public function edit(Post $post): Response
+    {
+        return inertia('dashboard/posts/edit', [
+            'post' => $post->load(['category', 'tags']),
+            ...$this->formOptions(),
+        ]);
     }
 
     /**
@@ -74,5 +95,14 @@ class PostController extends Controller
         $post->delete($post->id);
 
         return back()->with('success', 'Post successfully deleted.');
+    }
+
+    /** @return array{categories: Collection<int, Category>, tags: Collection<int, Tag>} */
+    private function formOptions(): array
+    {
+        return [
+            'categories' => Category::query()->orderBy('name', 'asc')->get(),
+            'tags' => Tag::query()->orderBy('name', 'asc')->get(),
+        ];
     }
 }

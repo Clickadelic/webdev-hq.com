@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/sidebar';
 import { resolveUrl } from '@/lib/utils';
 import { type NavItem } from '@/types';
-import { Link, usePage } from '@inertiajs/react';
+import { usePage } from '@inertiajs/react';
 
 export function NavMain({ items = [] }: { items: NavItem[] }) {
     const page = usePage();
@@ -24,10 +24,10 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
                             )}
                             tooltip={{ children: item.title }}
                         >
-                            <Link href={item.href} prefetch>
+                            <a href={resolveUrl(item.href)}>
                                 {item.icon && <item.icon />}
                                 <span>{item.title}</span>
-                            </Link>
+                            </a>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 ))}
