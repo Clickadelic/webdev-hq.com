@@ -12,13 +12,15 @@ export default function AppLogo({ logoClassName, className }: AppLogoProps) {
     return (
         <Link
             href="/"
-            className={cn('flex items-center gap-2', className)}
+            className={cn('flex min-w-0 items-center gap-2', className)}
             title="Home"
             prefetch
         >
-            <AppLogoIcon className={cn('flex', logoClassName)} />
+            <AppLogoIcon
+                className={cn('size-8 shrink-0 object-contain', logoClassName)}
+            />
 
-            <div className="grid flex-1 text-left text-sm">
+            <div className="grid min-w-0 flex-1 text-left text-sm group-data-[collapsible=icon]:hidden">
                 <h1 className="my-3 max-w-45 text-2xl">
                     <div
                         className="flex font-light hover:text-neutral-500"
