@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Hyperlink;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Inertia\Testing\AssertableInertia as Assert;
@@ -57,6 +58,30 @@ test('authenticated users can create hyperlinks via the api', function () {
 
     expect($hyperlink->created_by)->toBe($user->id)
         ->and($hyperlink->tags()->pluck('name')->all())->toEqualCanonicalizing(['api', 'postman']);
+});
+
+test('dashboard hyperlinks are assigned to the authenticated user team', function () {
+    $user = User::factory()->create();
+    $team = Team::query()->create([
+        'owner_id' => $user->id,
+        'name' => 'Test Team',
+        'slug' => 'test-team',
+    ]);
+    $user->teams()->attach($team);
+
+    $this
+        ->actingAs($user)
+        ->post(route('hyperlinks.store'), [
+            'title' => 'Team Hyperlink',
+            'url' => 'https://example.com/team-hyperlink',
+            'description' => 'A team hyperlink.',
+            'status' => 'published',
+            'tags' => [],
+        ])
+        ->assertRedirect();
+
+    expect(Hyperlink::query()->where('title', 'Team Hyperlink')->value('team_id'))
+        ->toBe($team->id);
 });
 
 test('authenticated users can update their hyperlinks from the dashboard', function () {
