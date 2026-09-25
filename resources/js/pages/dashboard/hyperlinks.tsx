@@ -38,7 +38,7 @@ export default function Hyperlinks() {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className="flex flex-col gap-3 p-4">
-                <h2 className="mb-4 text-lg font-medium">Deine Ressourcen</h2>
+                <h2 className="mb-4 text-lg font-medium">Your hyperlinks</h2>
                 <HyperlinkTable onEdit={handleEdit} />
 
                 {/* Edit Dialog */}

@@ -23,10 +23,11 @@ test('web and api hyperlink indexes return the same model results', function () 
         ->actingAs($user, 'sanctum')
         ->getJson('/api/v1/hyperlinks');
 
-    $webResponse->assertInertia(fn (Assert $page) => $page
-        ->component('hyperlinks/index')
-        ->where('hyperlinks.data.0.id', $expectedIds[0])
-        ->where('hyperlinks.data.1.id', $expectedIds[1])
+    $webResponse->assertInertia(
+        fn (Assert $page) => $page
+            ->component('hyperlinks/index')
+            ->where('hyperlinks.data.0.id', $expectedIds[0])
+            ->where('hyperlinks.data.1.id', $expectedIds[1])
     );
 
     expect($apiResponse->json('hyperlinks.data.*.id'))->toBe($expectedIds);
@@ -56,4 +57,28 @@ test('authenticated users can create hyperlinks via the api', function () {
 
     expect($hyperlink->created_by)->toBe($user->id)
         ->and($hyperlink->tags()->pluck('name')->all())->toEqualCanonicalizing(['api', 'postman']);
+});
+
+test('authenticated users can update their hyperlinks from the dashboard', function () {
+    $user = User::factory()->create();
+    $hyperlink = Hyperlink::factory()->for($user, 'author')->create();
+
+    $response = $this
+        ->actingAs($user)
+        ->put(route('hyperlinks.update', $hyperlink), [
+            'title' => 'Updated Hyperlink',
+            'url' => 'https://example.com/updated-hyperlink',
+            'favicon_url' => 'https://example.com/favicon.ico',
+            'description' => 'An updated hyperlink.',
+            'category' => '',
+            'status' => 'published',
+            'tags' => [],
+        ]);
+
+    $response->assertRedirect();
+
+    $this->assertDatabaseHas('hyperlinks', [
+        'id' => $hyperlink->id,
+        'title' => 'Updated Hyperlink',
+    ]);
 });

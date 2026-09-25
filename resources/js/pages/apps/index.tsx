@@ -34,7 +34,7 @@ export default function Apps() {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className="flex flex-col gap-3 p-4">
-                <h2 className="mb-4 text-lg font-medium">Deine Ressourcen</h2>
+                <h2 className="mb-4 text-lg font-medium">Your hyperlinks</h2>
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {items && items.length > 0 ? (
                         items.map((app: App) => (

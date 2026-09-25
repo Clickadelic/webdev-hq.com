@@ -7,9 +7,18 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Response;
 
 class PostController extends Controller
 {
+    /**
+     * Display the dashboard post form.
+     */
+    public function index(): Response
+    {
+        return inertia('dashboard/posts/index');
+    }
+
     /**
      * Store a newly created post.
      */

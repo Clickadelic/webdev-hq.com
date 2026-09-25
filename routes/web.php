@@ -33,17 +33,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/apps', AppController::class);
     Route::patch('/apps/reorder', [AppController::class, 'reorder'])->name('apps.reorder');
     // Posts
-    Route::resource('/dashboard/posts', PostController::class)->only(['store', 'update', 'destroy']);
+    Route::resource('/dashboard/posts', PostController::class)->only(['index', 'store', 'update', 'destroy']);
     Route::get('/dashboard/posts/create', [PageController::class, 'createPost'])->name('dashboard.posts.create');
     // Hyperlinks
     Route::get('/dashboard/hyperlinks', [HyperlinkController::class, 'index'])->name('dashboard.hyperlinks.index');
-    Route::post('/hyperlinks', [HyperlinkController::class, 'store'])->name('hyperlinks.store');
-    Route::put('/hyperlinks/{hyperlink}', [HyperlinkController::class, 'update'])->name('hyperlinks.update');
-    Route::delete('/hyperlinks/{hyperlink}', [HyperlinkController::class, 'destroy'])->name('hyperlinks.destroy');
+    Route::post('/dashboard/hyperlinks', [HyperlinkController::class, 'store'])->name('hyperlinks.store');
+    Route::put('/dashboard/hyperlinks/{hyperlink}', [HyperlinkController::class, 'update'])->name('hyperlinks.update');
+    Route::delete('/dashboard/hyperlinks/{hyperlink}', [HyperlinkController::class, 'destroy'])->name('hyperlinks.destroy');
     // Categories
-    Route::resource('/categories', CategoryController::class);
+    Route::resource('/dashboard/categories', CategoryController::class);
     // Tags
-    Route::resource('/tags', TagController::class);
+    Route::resource('/dashboard/tags', TagController::class);
 });
 
 // Route::get('/emails/templates/contact-submissions/trigger', function () {

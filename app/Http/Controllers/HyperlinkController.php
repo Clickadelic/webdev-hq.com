@@ -23,8 +23,8 @@ class HyperlinkController extends Controller
 
         return inertia('hyperlinks/index', [
             'hyperlinks' => $hyperlinks,
-            'categories' => Category::orderBy('name', 'asc')->get(),
-            'tags' => Tag::orderBy('name', 'asc')->get(),
+            'categories' => Category::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
+            'tags' => Tag::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
             'canRegister' => true,
         ]);
     }
@@ -52,8 +52,8 @@ class HyperlinkController extends Controller
 
         return inertia('dashboard/hyperlinks', [
             'hyperlinks' => $hyperlinks,
-            'categories' => Category::orderBy('name', 'asc')->get(),
-            'tags' => Tag::orderBy('name', 'asc')->get(),
+            'categories' => Category::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
+            'tags' => Tag::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
         ]);
     }
 
@@ -63,8 +63,8 @@ class HyperlinkController extends Controller
     public function create()
     {
         return inertia('hyperlinks/create', [
-            'categories' => Category::orderBy('name', 'asc')->get(),
-            'tags' => Tag::orderBy('name', 'asc')->get(),
+            'categories' => Category::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
+            'tags' => Tag::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
         ]);
     }
 
@@ -102,8 +102,8 @@ class HyperlinkController extends Controller
     {
         return inertia('hyperlinks/edit', [
             'hyperlink' => $hyperlink->load('tags'),
-            'categories' => Category::orderBy('name', 'asc')->get(),
-            'tags' => Tag::orderBy('name', 'asc')->get(),
+            'categories' => Category::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
+            'tags' => Tag::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
         ]);
     }
 
