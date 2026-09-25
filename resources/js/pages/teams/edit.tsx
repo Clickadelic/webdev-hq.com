@@ -26,7 +26,10 @@ export default function TeamEdit({ team }: { team: Team }) {
 
                 <Form
                     {...TeamController.update.form(team.id)}
-                    options={{ preserveScroll: true }}
+                    options={{
+                        preserveScroll: true,
+                        forceFormData: true,
+                    }}
                     className="space-y-6"
                 >
                     {({ processing, recentlySuccessful, errors }) => (
