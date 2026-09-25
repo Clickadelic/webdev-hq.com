@@ -2,7 +2,10 @@
 
 use App\Models\Hyperlink;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Inertia\Testing\AssertableInertia as Assert;
+
+uses(RefreshDatabase::class);
 
 test('guests are redirected to the login page', function () {
     $this->get(route('dashboard'))->assertRedirect(route('login'));
@@ -14,6 +17,17 @@ test('authenticated users can visit the dashboard', function () {
     $this->get(route('dashboard'))->assertOk();
 });
 
+test('authenticated users can access dashboard management pages', function (string $path, string $component) {
+    $this->actingAs(User::factory()->create())
+        ->get($path)
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page->component($component));
+})->with([
+    ['/dashboard/categories', 'categories/index'],
+    ['/dashboard/tags', 'tags/index'],
+    ['/dashboard/posts', 'dashboard/posts/index'],
+]);
+
 test('the dashboard renders the authenticated user\'s hyperlinks', function () {
     $user = User::factory()->create();
     $otherUser = User::factory()->create();
@@ -24,10 +38,11 @@ test('the dashboard renders the authenticated user\'s hyperlinks', function () {
     $this->actingAs($user)
         ->get(route('dashboard'))
         ->assertOk()
-        ->assertInertia(fn (Assert $page) => $page
-            ->component('dashboard')
-            ->has('apps')
-            ->has('hyperlinks.data', 1)
-            ->where('hyperlinks.data.0.id', $mine->id)
+        ->assertInertia(
+            fn (Assert $page) => $page
+                ->component('dashboard/index')
+                ->has('apps')
+                ->has('hyperlinks.data', 1)
+                ->where('hyperlinks.data.0.id', $mine->id)
         );
 });

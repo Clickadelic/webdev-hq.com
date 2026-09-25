@@ -41,7 +41,7 @@ export default function Categories() {
     const [isEditOpen, setIsEditOpen] = useState(false);
 
     function handleDelete(id: number) {
-        router.delete(destroy.url(id), {
+        router.delete(destroy.url({ category: String(id) }), {
             preserveScroll: true,
             onSuccess: () => toast.success('Category deleted!'),
             onError: () => toast.error('Failed to delete category.'),
@@ -111,7 +111,7 @@ export default function Categories() {
                                                     Delete
                                                 </Button>
                                             </DialogTrigger>
-                                            <DialogContent className="sm:max-w-[425px]">
+                                            <DialogContent className="sm:max-w-106.25">
                                                 <DialogHeader>
                                                     <DialogTitle>
                                                         Delete Category

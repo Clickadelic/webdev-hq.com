@@ -23,7 +23,7 @@ import { Link, router, usePage } from '@inertiajs/react';
 import { Info } from 'lucide-react';
 import { toast } from 'sonner';
 
-import HyperlinkStatusBadge from '../hyperlink-statusbadge';
+import HyperlinkStatusBadge from '@/components/hyperlinks/hyperlink-statusbadge';
 
 interface HyperlinkTableProps {
     onEdit: (hyperlink: Hyperlink) => void;
@@ -53,6 +53,9 @@ export default function HyperlinkTable({ onEdit }: HyperlinkTableProps) {
                         <TableHead>Title</TableHead>
                         <TableHead>URL</TableHead>
                         <TableHead>Description</TableHead>
+                        <TableHead>Created At</TableHead>
+                        <TableHead>Updated At</TableHead>
+                        <TableHead>Team-Id</TableHead>
                         <TableHead className="w-16">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -63,18 +66,20 @@ export default function HyperlinkTable({ onEdit }: HyperlinkTableProps) {
                                 <TableCell>
                                     <Popover>
                                         <PopoverTrigger asChild>
-                                            <Button variant="outline">
+                                            <Button variant="ghost">
                                                 <Info className="size-4" />
                                             </Button>
                                         </PopoverTrigger>
-                                        <PopoverContent>
+                                        <PopoverContent
+                                            align="start"
+                                            side="right"
+                                        >
                                             <PopoverHeader>
                                                 <PopoverTitle>
-                                                    Title
+                                                    Link-Id
                                                 </PopoverTitle>
                                                 <PopoverDescription>
-                                                    {link.description ||
-                                                        'No description available.'}
+                                                    {link.id}
                                                 </PopoverDescription>
                                             </PopoverHeader>
                                         </PopoverContent>
@@ -86,10 +91,14 @@ export default function HyperlinkTable({ onEdit }: HyperlinkTableProps) {
                                     />
                                 </TableCell>
                                 <TableCell>
-                                    <img src={link.favicon_url || ''} alt="" />
+                                    <img
+                                        src={link.favicon_url || ''}
+                                        className="size-6 rounded"
+                                        alt="favicon"
+                                    />
                                 </TableCell>
                                 <TableCell>{link.title}</TableCell>
-                                <TableCell>
+                                <TableCell className="max-w-56 truncate">
                                     <Link
                                         href={link.url}
                                         target="_blank"
@@ -100,7 +109,12 @@ export default function HyperlinkTable({ onEdit }: HyperlinkTableProps) {
                                         {link.url}
                                     </Link>
                                 </TableCell>
-                                <TableCell>{link.description}</TableCell>
+                                <TableCell className="max-w-56 truncate">
+                                    {link.description}
+                                </TableCell>
+                                <TableCell>{link.created_at}</TableCell>
+                                <TableCell>{link.updated_at}</TableCell>
+                                <TableCell>{link.team_id}</TableCell>
                                 <TableCell>
                                     <ContextMenu
                                         item={link}
@@ -114,7 +128,7 @@ export default function HyperlinkTable({ onEdit }: HyperlinkTableProps) {
                     ) : (
                         <TableRow>
                             <TableCell
-                                colSpan={7}
+                                colSpan={8}
                                 className="text-center text-muted-foreground"
                             >
                                 No hyperlinks yet.
