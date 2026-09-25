@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Hyperlink;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class HyperlinkPolicy
 {
@@ -13,7 +12,7 @@ class HyperlinkPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +20,11 @@ class HyperlinkPolicy
      */
     public function view(User $user, Hyperlink $hyperlink): bool
     {
-        return false;
+        if ($hyperlink->team_id === null) {
+            return $hyperlink->created_by === $user->id;
+        }
+
+        return $user->teams()->whereKey($hyperlink->team_id)->exists();
     }
 
     /**
@@ -29,7 +32,7 @@ class HyperlinkPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +40,7 @@ class HyperlinkPolicy
      */
     public function update(User $user, Hyperlink $hyperlink): bool
     {
-        return false;
+        return $this->view($user, $hyperlink);
     }
 
     /**
@@ -45,7 +48,7 @@ class HyperlinkPolicy
      */
     public function delete(User $user, Hyperlink $hyperlink): bool
     {
-        return false;
+        return $this->view($user, $hyperlink);
     }
 
     /**

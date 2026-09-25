@@ -1,13 +1,13 @@
-import { AlertCircleIcon } from 'lucide-react';
+import { AlertCircleIcon, Blocks, Link as HyperlinkIcon } from 'lucide-react';
 export const MegaMenuColumns = [
     {
-        title: 'Rezepte',
+        title: 'Resources',
         items: [
             {
-                icon: <AlertCircleIcon className="size-4 text-primary" />,
-                title: 'Alle Rezepte',
-                href: '/rezepte',
-                description: 'Alle Rezepte als Übersicht',
+                icon: <HyperlinkIcon className="size-4 text-primary" />,
+                title: 'Hyperlinks',
+                href: '/hyperlinks',
+                description: 'Web development resources',
             },
         ],
     },
@@ -15,10 +15,10 @@ export const MegaMenuColumns = [
         title: 'Kategorien',
         items: [
             {
-                icon: <AlertCircleIcon className="size-4 text-primary" />,
-                title: 'Vorspeisen',
-                href: '#',
-                description: 'für den kleinen Hunger',
+                icon: <Blocks className="size-4 text-primary" />,
+                title: 'Chrome Extension',
+                href: '/chrome-extension',
+                description: 'Best Chrome Extension',
             },
             {
                 icon: <AlertCircleIcon className="size-4 text-primary" />,

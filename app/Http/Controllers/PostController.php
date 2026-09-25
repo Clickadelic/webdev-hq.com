@@ -10,49 +10,49 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-	/**
-	 * Store a newly created post.
-	 */
-	public function store(StorePostRequest $request): RedirectResponse
-	{
-		$validated = $request->validated();
-		$tagIds = $validated['tag_ids'] ?? [];
-		unset($validated['tag_ids']);
+    /**
+     * Store a newly created post.
+     */
+    public function store(StorePostRequest $request): RedirectResponse
+    {
+        $validated = $request->validated();
+        $tagIds = $validated['tag_ids'] ?? [];
+        unset($validated['tag_ids']);
 
-		$post = Post::create([
-			...$validated,
-			'created_by' => Auth::id(),
-		]);
+        $post = Post::create([
+            ...$validated,
+            'created_by' => Auth::id(),
+        ]);
 
-		$post->tags()->sync($tagIds);
+        $post->tags()->sync($tagIds);
 
-		return redirect()->route('dashboard.posts.create')
-			->with('success', 'Post successfully created.');
-	}
+        return redirect()->route('dashboard.posts.create')
+            ->with('success', 'Post successfully created.');
+    }
 
-	/**
-	 * Update the specified post.
-	 */
-	public function update(UpdatePostRequest $request, Post $post): RedirectResponse
-	{
-		$validated = $request->validated();
-		$tagIds = $validated['tag_ids'] ?? [];
-		unset($validated['tag_ids']);
+    /**
+     * Update the specified post.
+     */
+    public function update(UpdatePostRequest $request, Post $post): RedirectResponse
+    {
+        $validated = $request->validated();
+        $tagIds = $validated['tag_ids'] ?? [];
+        unset($validated['tag_ids']);
 
-		$post->update($validated);
-		$post->tags()->sync($tagIds);
+        $post->update($validated);
+        $post->tags()->sync($tagIds);
 
-		return back()->with('success', 'Post successfully updated.');
-	}
+        return back()->with('success', 'Post successfully updated.');
+    }
 
-	/**
-	 * Remove the specified post.
-	 */
-	public function destroy(Post $post): RedirectResponse
-	{
-		abort_if((int) $post->created_by !== (int) Auth::id(), 403);
-		$post->delete();
+    /**
+     * Remove the specified post.
+     */
+    public function destroy(Post $post): RedirectResponse
+    {
+        abort_if((int) $post->created_by !== (int) Auth::id(), 403);
+        $post->delete($post->id);
 
-		return back()->with('success', 'Post successfully deleted.');
-	}
+        return back()->with('success', 'Post successfully deleted.');
+    }
 }
