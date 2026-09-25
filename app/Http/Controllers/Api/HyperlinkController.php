@@ -15,7 +15,9 @@ class HyperlinkController extends Controller
     public function index(): JsonResponse
     {
         return response()->json([
-            'hyperlinks' => Hyperlink::appListing(),
+            'hyperlinks' => Hyperlink::with(['category', 'tags'])
+                ->latest()
+                ->paginate(38),
         ]);
     }
 
@@ -37,14 +39,14 @@ class HyperlinkController extends Controller
     /**
      * Resolve a category value (numeric ID or name) to a category ID.
      */
-    private function resolveCategoryId(?string $value): ?int
+    private function resolveCategoryId(?string $value): ?string
     {
         if (! $value) {
             return null;
         }
 
-        if (is_numeric($value)) {
-            return (int) $value;
+        if (Str::isUuid($value)) {
+            return $value;
         }
 
         return Category::firstOrCreate(
