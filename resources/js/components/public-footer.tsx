@@ -55,13 +55,17 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                         <h3 className="text-lg font-semibold text-neutral-200">
                             About Us
                         </h3>
-                        <p className="mt-2 text-sm text-neutral-200">
-                            Welcome to WebDevHQ, your go-to destination for web
-                            development resources. We are a community of
-                            passionate developers dedicated to sharing knowledge
-                            and exploring the latest trends in the world of web
-                            development.
-                        </p>
+                        <ul>
+                            <li>
+                                <Link
+                                    href="/contact"
+                                    className="text-sm text-neutral-200 hover:text-primary dark:text-neutral-200"
+                                    title="Contact"
+                                >
+                                    Contact
+                                </Link>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className="mb-5 flex flex-row items-center justify-center">

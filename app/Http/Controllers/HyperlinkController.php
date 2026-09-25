@@ -12,17 +12,48 @@ use Illuminate\Support\Str;
 class HyperlinkController extends Controller
 {
 	/**
-	 * Display a listing of the resource.
+	 * Display published hyperlinks publicly.
 	 */
-	public function index()
+	public function publicIndex()
 	{
 		$hyperlinks = Hyperlink::with(['category', 'tags'])
 			->latest()
-			->paginate(38);
+			->paginate(38)
+			->withQueryString();
 
 		return inertia('hyperlinks/index', [
 			'hyperlinks' => $hyperlinks,
-			'tags' => Tag::orderBy('name')->get(),
+			'categories' => Category::orderBy('name', 'asc')->get(),
+			'tags' => Tag::orderBy('name', 'asc')->get(),
+			'canRegister' => true,
+		]);
+	}
+
+	/**
+	 * Display the dashboard hyperlink list.
+	 */
+	public function index()
+	{
+		$user = request()->user();
+		$teamIds = $user->teams()->pluck('teams.id');
+
+		$hyperlinks = Hyperlink::with(['category', 'tags'])
+			->where(function ($query) use ($user, $teamIds) {
+				$query
+					->whereIn('team_id', $teamIds)
+					->orWhere(function ($query) use ($user) {
+						$query
+							->whereNull('team_id')
+							->where('created_by', $user->id);
+					});
+			})
+			->latest()
+			->paginate(38);
+
+		return inertia('dashboard/hyperlinks', [
+			'hyperlinks' => $hyperlinks,
+			'categories' => Category::orderBy('name', 'asc')->get(),
+			'tags' => Tag::orderBy('name', 'asc')->get(),
 		]);
 	}
 
@@ -32,8 +63,8 @@ class HyperlinkController extends Controller
 	public function create()
 	{
 		return inertia('hyperlinks/create', [
-			'categories' => Category::orderBy('name')->get(),
-			'tags' => Tag::orderBy('name')->get(),
+			'categories' => Category::orderBy('name', 'asc')->get(),
+			'tags' => Tag::orderBy('name', 'asc')->get(),
 		]);
 	}
 
@@ -44,6 +75,7 @@ class HyperlinkController extends Controller
 	{
 		$data = $request->safe()->except(['tags', 'category']);
 		$data['category_id'] = $this->resolveCategoryId($request->validated('category'));
+		$data['created_by'] = $request->user()->id;
 
 		$hyperlink = Hyperlink::create($data);
 		$hyperlink->tags()->sync($this->resolveTagIds($request->validated('tags', [])));
@@ -70,8 +102,8 @@ class HyperlinkController extends Controller
 	{
 		return inertia('hyperlinks/edit', [
 			'hyperlink' => $hyperlink->load('tags'),
-			'categories' => Category::orderBy('name')->get(),
-			'tags' => Tag::orderBy('name')->get(),
+			'categories' => Category::orderBy('name', 'asc')->get(),
+			'tags' => Tag::orderBy('name', 'asc')->get(),
 		]);
 	}
 
@@ -80,6 +112,8 @@ class HyperlinkController extends Controller
 	 */
 	public function update(UpdateHyperlinkRequest $request, Hyperlink $hyperlink)
 	{
+		$request->user()->can('update', $hyperlink) ?: abort(403);
+
 		$data = $request->safe()->except(['tags', 'category']);
 		$data['category_id'] = $this->resolveCategoryId($request->validated('category'));
 
@@ -135,7 +169,9 @@ class HyperlinkController extends Controller
 	 */
 	public function destroy(Hyperlink $hyperlink)
 	{
-		$hyperlink->delete();
+		request()->user()->can('delete', $hyperlink) ?: abort(403);
+
+		$hyperlink->delete($hyperlink->id);
 
 		return redirect()
 			->back()

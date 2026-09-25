@@ -2,6 +2,7 @@
 
 import { index } from '@/actions/App/Http/Controllers/HyperlinkController';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
+import HyperlinkTable from '@/components/hyperlinks/hyperlink-table/index';
 import {
     Dialog,
     DialogContent,
@@ -9,10 +10,8 @@ import {
     DialogHeader,
     DialogTitle,
 } from '@/components/ui/dialog';
-import TablePagination from '@/components/ui/table-pagination';
 import AppLayout from '@/layouts/app-layout';
 import { Hyperlink, type BreadcrumbItem, type Paginator } from '@/types';
-import HyperlinkTable from '@/components/hyperlinks/hyperlink-table';
 import { usePage } from '@inertiajs/react';
 import { useState } from 'react';
 const breadcrumbs: BreadcrumbItem[] = [
@@ -25,20 +24,22 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function Hyperlinks() {
     const { hyperlinks } = usePage<{ hyperlinks: Paginator<Hyperlink> }>()
         .props;
-    const items = hyperlinks.data;
 
     const [editingHyperlink, setEditingHyperlink] = useState<
         Hyperlink | undefined
     >(undefined);
     const [isEditOpen, setIsEditOpen] = useState(false);
 
+    function handleEdit(hyperlink: Hyperlink) {
+        setEditingHyperlink(hyperlink);
+        setIsEditOpen(true);
+    }
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className="flex flex-col gap-3 p-4">
                 <h2 className="mb-4 text-lg font-medium">Deine Ressourcen</h2>
-                <HyperlinkTable />
-
-                <TablePagination paginator={hyperlinks} />
+                <HyperlinkTable onEdit={handleEdit} />
 
                 {/* Edit Dialog */}
                 <Dialog

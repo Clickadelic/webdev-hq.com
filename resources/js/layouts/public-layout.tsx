@@ -11,7 +11,8 @@ interface PublicLayoutProps {
     sidebar?: React.ReactNode | null;
     children: React.ReactNode;
     canRegister?: boolean;
-    className?: string;
+    outerClassNames?: string;
+    innerClassNames?: string;
 }
 
 /**
@@ -26,7 +27,8 @@ export default function PublicLayout({
     sidebar,
     children,
     canRegister,
-    className,
+    outerClassNames,
+    innerClassNames,
 }: PublicLayoutProps) {
     return (
         <>
@@ -36,11 +38,11 @@ export default function PublicLayout({
                 <PublicBreadcrumbs />
                 <div
                     className={cn(
-                        'container mx-auto flex grow flex-col justify-center rounded bg-white/30 p-2 shadow backdrop-blur sm:mx-0',
-                        className,
+                        'container mx-auto flex grow flex-col items-start justify-center',
+                        outerClassNames,
                     )}
                 >
-                    <div className="grow rounded bg-white p-4">
+                    <div className={cn('grow py-4', innerClassNames)}>
                         <div className="flex justify-start gap-6">
                             {sidebar ? sidebar : null}
                             <main className="w-full">{children}</main>
