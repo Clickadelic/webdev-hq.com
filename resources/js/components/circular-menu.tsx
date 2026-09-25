@@ -1,5 +1,6 @@
 import HyperlinkForm from '@/components/forms/hyperlink-form';
 import PostForm from '@/components/forms/post-form';
+
 import {
     Dialog,
     DialogContent,
@@ -7,18 +8,17 @@ import {
     DialogHeader,
     DialogTitle,
 } from '@/components/ui/dialog';
-import { type SharedData } from '@/types';
-import { usePage } from '@inertiajs/react';
-import { Link as LinkIcon, ScreenShare } from 'lucide-react';
-import { useState } from 'react';
-
 import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { type SharedData } from '@/types';
+import { Link, usePage } from '@inertiajs/react';
 import { TooltipArrow } from '@radix-ui/react-tooltip';
+import { Link as LinkIcon, Pen, ScreenShare } from 'lucide-react';
+import { useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 
 import { cn } from '@/lib/utils';
@@ -51,13 +51,12 @@ export function CircularMenu() {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <button
-                                type="button"
-                                onClick={() => setIsPostModalOpen(true)}
+                            <Link
+                                href="/dashboard/posts/new"
                                 className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
                             >
-                                <ScreenShare className="size-4" />
-                            </button>
+                                <Pen className="size-4" />
+                            </Link>
                         </TooltipTrigger>
                         <TooltipContent side="left" className="text-white">
                             <p>Create new post</p>

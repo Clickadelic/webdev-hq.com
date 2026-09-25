@@ -9,29 +9,29 @@ use Illuminate\Database\Seeder;
 
 class TagSeeder extends Seeder
 {
-	/**
-	 * Run the database seeds.
-	 */
-	public function run(): void
-	{
-		$user = User::where('email', 'marketing-admin@clickadelic.de')->firstOrFail();
-		$team = Team::where('slug', 'marketing')->firstOrFail();
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $user = User::query()->where('email', 'batman@clickadelic.de')->firstOrFail();
+        $team = Team::query()->where('slug', 'marketing')->firstOrFail();
 
-		Tag::updateOrCreate(
-			['slug' => 'php'],
-			[
-				'name' => 'PHP',
-				'created_by' => $user->id,
-				'team_id' => $team->id,
-			],
-		);
-		Tag::updateOrCreate(
-			['slug' => 'javascript'],
-			[
-				'name' => 'JavaScript',
-				'created_by' => $user->id,
-				'team_id' => $team->id,
-			],
-		);
-	}
+        Tag::updateOrCreate(
+            ['slug' => 'php'],
+            [
+                'name' => 'PHP',
+                'created_by' => $user->id,
+                'team_id' => $team->id,
+            ],
+        );
+        Tag::updateOrCreate(
+            ['slug' => 'javascript'],
+            [
+                'name' => 'JavaScript',
+                'created_by' => $user->id,
+                'team_id' => $team->id,
+            ],
+        );
+    }
 }

@@ -10,9 +10,11 @@ import {
     Blocks,
     CircleCheckBig,
     DoorOpen,
+    House,
     LayoutDashboard,
     Link as LinkIcon,
-    Pencil,
+    Pen as PenIcon,
+    Users,
 } from 'lucide-react';
 
 interface PublicHeaderProps {
@@ -32,46 +34,59 @@ export default function PublicHeader({
                 className,
             )}
         >
-            <div className="container mx-auto flex justify-between px-3 sm:px-0">
-                <div className="relative flex content-center items-center justify-between gap-4 sm:gap-8 md:gap-16 md:space-x-2 lg:gap-32 lg:space-x-4">
-                    <AppLogo className="lg:mr-24" logoClassName="size-7 mr-3" />
-                </div>
-                <nav className="flex w-full items-center justify-between gap-4">
-                    <ul className="hidden items-start gap-4 lg:flex">
+            <div className="container mx-auto flex items-center justify-between px-3 sm:px-0">
+                <AppLogo logoClassName="size-7 mr-3" />
+
+                <nav className="flex items-center justify-between gap-4">
+                    <ul className="hidden items-center justify-start gap-6 lg:flex">
                         <li>
                             <Link
-                                hrefLang="en"
+                                href="/"
+                                className="flex h-auto items-center gap-2"
+                            >
+                                <House className="size-4" />
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
                                 href="/posts"
-                                className="flex items-center gap-2 hover:text-primary"
-                                title="Posts"
-                                aria-label="Posts"
+                                className="flex h-auto items-center gap-2"
                             >
-                                <Pencil className="size-4" /> Posts
+                                <PenIcon className="size-4" />
+                                Posts
                             </Link>
                         </li>
                         <li>
                             <Link
-                                hrefLang="en"
                                 href="/hyperlinks"
-                                className="flex items-center gap-2 hover:text-primary"
-                                title="Hyperlinks"
-                                aria-label="Hyperlinks"
+                                className="flex h-auto items-center gap-2"
                             >
-                                <LinkIcon className="size-4" /> Hyperlinks
+                                <LinkIcon className="size-4" />
+                                Hyperlinks
                             </Link>
                         </li>
                         <li>
                             <Link
-                                hrefLang="en"
-                                href="/chrome-extension"
-                                className="flex items-center gap-2 hover:text-primary"
-                                title="Chrome Extension"
-                                aria-label="Chrome Extension"
+                                href="/teams"
+                                className="flex h-auto items-center gap-2"
                             >
-                                <Blocks className="size-4" /> Chrome Extension
+                                <Users className="size-4" />
+                                Teams
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/chrome-extension"
+                                className="flex h-auto items-center gap-2"
+                            >
+                                <Blocks className="size-4" />
+                                Chrome Extension
                             </Link>
                         </li>
                     </ul>
+                </nav>
+                <nav>
                     <div className="flex-start flex items-center gap-3">
                         {auth.user ? (
                             <ul className="my-2.5 flex justify-end gap-3">

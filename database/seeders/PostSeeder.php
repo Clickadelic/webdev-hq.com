@@ -12,30 +12,30 @@ use Illuminate\Database\Seeder;
 
 class PostSeeder extends Seeder
 {
-	public function run(): void
-	{
-		$user = User::where('email', 'marketing-admin@clickadelic.de')->firstOrFail();
-		$category = Category::where('slug', 'web-development')->firstOrFail();
-		$tag = Tag::where('slug', 'php')->firstOrFail();
-		$team = Team::where('slug', 'marketing')->firstOrFail();
+    public function run(): void
+    {
+        $user = User::query()->where('email', 'batman@clickadelic.de')->firstOrFail();
+        $category = Category::query()->where('slug', 'web-development')->firstOrFail();
+        $tag = Tag::query()->where('slug', 'php')->firstOrFail();
+        $team = Team::query()->where('slug', 'marketing')->firstOrFail();
 
-		$post = Post::updateOrCreate(
-			['slug' => 'getting-started-with-laravel'],
-			[
-				'title' => 'Getting Started with Laravel',
-				'subline' => 'Build your first Laravel application.',
-				'description' => 'A short introduction to building an application with Laravel.',
-				'content' => 'Laravel gives you expressive tools for building modern web applications.',
-				'category_id' => $category->id,
-				'status' => Status::Published,
-				'published_at' => now(),
-				'created_by' => $user->id,
-				'team_id' => $team->id,
-				'meta_title' => 'Getting Started with Laravel',
-				'meta_description' => 'Learn the basics of building a Laravel application.',
-			],
-		);
+        $post = Post::updateOrCreate(
+            ['slug' => 'getting-started-with-laravel'],
+            [
+                'title' => 'Getting Started with Laravel',
+                'subline' => 'Build your first Laravel application.',
+                'description' => 'A short introduction to building an application with Laravel.',
+                'content' => 'Laravel gives you expressive tools for building modern web applications.',
+                'category_id' => $category->id,
+                'status' => Status::Published,
+                'published_at' => now(),
+                'created_by' => $user->id,
+                'team_id' => $team->id,
+                'meta_title' => 'Getting Started with Laravel',
+                'meta_description' => 'Learn the basics of building a Laravel application.',
+            ],
+        );
 
-		$post->tags()->syncWithoutDetaching([$tag->id]);
-	}
+        $post->tags()->syncWithoutDetaching([$tag->id]);
+    }
 }

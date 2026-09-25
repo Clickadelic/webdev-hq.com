@@ -1,4 +1,5 @@
-'use client';
+import PublicTitle from '@/components/public-title';
+import PublicLayout from '@/layouts/public-layout';
 
 // imports
 import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
@@ -12,7 +13,6 @@ import {
     DialogHeader,
     DialogTitle,
 } from '@/components/ui/dialog';
-import PublicLayout from '@/layouts/public-layout';
 import { type Hyperlink } from '@/types';
 import { router, usePage } from '@inertiajs/react';
 import { ChevronLeft, ChevronRight, CircleX, Search } from 'lucide-react';
@@ -52,7 +52,7 @@ export default function Home({
     const search = useCallback((value: string) => {
         if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
         debounceTimer.current = window.setTimeout(() => {
-            router.get('/', value ? { search: value } : {}, {
+            router.get('/hyperlinks', value ? { search: value } : {}, {
                 preserveState: true,
                 preserveScroll: true,
             });
@@ -87,6 +87,7 @@ export default function Home({
     };
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
+            <PublicTitle title="Hyperlinks" />
             {/* Search */}
             <div className="mx-auto mt-8 w-full max-w-lg">
                 <div className="rounded-xl bg-white/30 p-1 shadow backdrop-blur dark:bg-white/5">
