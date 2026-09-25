@@ -56,6 +56,14 @@ export interface User {
     [key: string]: unknown; // This allows for additional properties...
 }
 
+export interface Team {
+    id: number;
+    name: string;
+    slug: string;
+    image_url: string | null;
+    can_edit?: boolean;
+}
+
 export interface App {
     id: string;
     title: string;
