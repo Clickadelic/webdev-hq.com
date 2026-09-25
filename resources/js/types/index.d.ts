@@ -84,6 +84,7 @@ export interface Hyperlink {
     favicon_url: string | null;
     description: string;
     category_id: number | null;
+    team_id: string | null;
     category?: Category | null;
     tags?: Tag[];
     status: string;
