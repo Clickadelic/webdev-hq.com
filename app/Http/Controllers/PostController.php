@@ -12,6 +12,17 @@ use Inertia\Response;
 class PostController extends Controller
 {
     /**
+     * Display published posts publicly.
+     */
+    public function showPosts(): Response
+    {
+        return inertia('posts/index', [
+            'posts' => Post::appListing(),
+            'canRegister' => true,
+        ]);
+    }
+
+    /**
      * Display the dashboard post form.
      */
     public function index(): Response
