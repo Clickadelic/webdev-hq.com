@@ -12,7 +12,10 @@ export default function AppLogo({ logoClassName, className }: AppLogoProps) {
     return (
         <Link
             href="/"
-            className={cn('flex min-w-0 items-center gap-2', className)}
+            className={cn(
+                'flex min-w-0 items-center gap-2 group-data-[collapsible=icon]:translate-x-px group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:gap-0',
+                className,
+            )}
             title="Home"
             prefetch
         >
