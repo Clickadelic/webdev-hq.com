@@ -1,19 +1,24 @@
 import { useEffect, useState, type PropsWithChildren } from 'react';
 interface BackgroundImageProps {
     backgroundUrl?: string;
+    collectionId?: string;
 }
 
 /**
  * A component that wraps its children with a background image, preloading the image to avoid flicker.
  *
  * @param {React.ReactNode} props.children - The children of the component
+ * @param {string} props.collectionId - The ID of the Unsplash collection to use for the background image.
  * @returns {React.ReactNode} - The wrapped children
  */
-export default function BackgroundImage({ children }: PropsWithChildren<BackgroundImageProps>) {
+export default function BackgroundImage({
+    children,
+    collectionId,
+}: PropsWithChildren<BackgroundImageProps>) {
     // Use API JSON mode and preload the image to avoid first-paint flicker.
     const today = new Date().toISOString().slice(0, 10);
-    const jsonUrl = `/api/${import.meta.env.VITE_API_VERSION}/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&response=json&d=${encodeURIComponent(today)}`;
-    const redirectUrl = `/api/${import.meta.env.VITE_API_VERSION}/unsplash/image/seasonal?strategy=daily&variant=full&fit=crop&w=1920&h=1080&d=${encodeURIComponent(today)}`;
+    const jsonUrl = `/api/${import.meta.env.VITE_API_VERSION}/unsplash/image/general${collectionId ? `?collectionId=${collectionId}` : ''}&strategy=daily&variant=full&fit=crop&w=1920&h=1080&response=json&d=${encodeURIComponent(today)}`;
+    const redirectUrl = `/api/${import.meta.env.VITE_API_VERSION}/unsplash/image/general${collectionId ? `?collectionId=${collectionId}` : ''}&strategy=daily&variant=full&fit=crop&w=1920&h=1080&d=${encodeURIComponent(today)}`;
     const [bgUrl, setBgUrl] = useState<string | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [attribution, setAttribution] = useState<{
