@@ -1,9 +1,28 @@
 <?php
 
 use App\Enums\Season;
+use App\Services\Unsplash\UnsplashImageService;
 use Tests\TestCase;
 
 describe('Unsplash Image Service API Endpoints', function () {
+	describe('GET /api/unsplash/image', function () {
+		it('returns images from the requested collection', function () {
+			/** @var TestCase $this */
+			$unsplashImageService = Mockery::mock(UnsplashImageService::class);
+			$unsplashImageService
+				->shouldReceive('getImagesFromCollections')
+				->once()
+				->with(['collection-123'], 2, 10)
+				->andReturn(['data' => [], 'meta' => []]);
+
+			$this->app->instance(UnsplashImageService::class, $unsplashImageService);
+
+			$this->getJson('/api/v1/unsplash/image?collection_id=collection-123&page=2&per_page=10')
+				->assertOk()
+				->assertExactJson(['data' => [], 'meta' => []]);
+		});
+	});
+
 	describe('GET /api/unsplash/image/seasonal', function () {
 		it('returns a random seasonal image for the current season', function () {
 			/** @var TestCase $this */

@@ -9,7 +9,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
     return (
         <footer
             className={cn(
-                'z-20 mt-12 w-full border-t-2 border-primary bg-white/30 px-3 py-6 backdrop-blur sm:px-0 dark:bg-neutral-900/30 dark:backdrop-blur',
+                'z-20 w-full border-t-2 border-primary bg-white/30 px-3 py-6 backdrop-blur sm:px-0 dark:bg-neutral-900/30 dark:backdrop-blur',
                 className,
             )}
         >
@@ -20,41 +20,32 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                             WebDev HQ Chrome-Extension
                         </h3>
                         <p className="mt-2 text-sm text-neutral-200">
-                            We are striving to give you the best web experience
-                            possible. That's why we have developed a Chrome
-                            Extension to replace the NewTab as a startpage in
-                            Chrome. It is not published yet, but you can already
-                            give it a try and download it here.
+                            We are striving to give you the best web experience possible. That's why
+                            we have developed a Chrome Extension to replace the NewTab as a
+                            startpage in Chrome. It is not published yet, but you can already give
+                            it a try and download it here.
                         </p>
                     </div>
                     <div>
-                        <h3 className="text-lg font-semibold text-neutral-200">
-                            About Us
-                        </h3>
+                        <h3 className="text-lg font-semibold text-neutral-200">About Us</h3>
                         <p className="mt-2 text-sm text-neutral-200">
-                            Welcome to WebDevHQ, your go-to destination for web
-                            development resources. We are a community of
-                            passionate developers dedicated to sharing knowledge
-                            and exploring the latest trends in the world of web
+                            Welcome to WebDevHQ, your go-to destination for web development
+                            resources. We are a community of passionate developers dedicated to
+                            sharing knowledge and exploring the latest trends in the world of web
                             development.
                         </p>
                     </div>
                     <div>
-                        <h3 className="text-lg font-semibold text-neutral-200">
-                            About Us
-                        </h3>
+                        <h3 className="text-lg font-semibold text-neutral-200">About Us</h3>
                         <p className="mt-2 text-sm text-neutral-200">
-                            Welcome to WebDevHQ, your go-to destination for web
-                            development resources. We are a community of
-                            passionate developers dedicated to sharing knowledge
-                            and exploring the latest trends in the world of web
+                            Welcome to WebDevHQ, your go-to destination for web development
+                            resources. We are a community of passionate developers dedicated to
+                            sharing knowledge and exploring the latest trends in the world of web
                             development.
                         </p>
                     </div>
                     <div>
-                        <h3 className="text-lg font-semibold text-neutral-200">
-                            About Us
-                        </h3>
+                        <h3 className="text-lg font-semibold text-neutral-200">About Us</h3>
                         <ul>
                             <li>
                                 <Link
@@ -79,9 +70,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                                 Disclaimer
                             </Link>
                         </li>
-                        <li className="hidden text-primary sm:inline-block">
-                            &middot;
-                        </li>
+                        <li className="hidden text-primary sm:inline-block">&middot;</li>
                         <li>
                             <Link
                                 href="/legal/cookie-policy"
@@ -92,9 +81,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                             </Link>
                         </li>
 
-                        <li className="hidden text-primary sm:inline-block">
-                            &middot;
-                        </li>
+                        <li className="hidden text-primary sm:inline-block">&middot;</li>
                         <li>
                             <Link
                                 href="/legal/legal-notice"
@@ -104,9 +91,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                                 Legal Notice
                             </Link>
                         </li>
-                        <li className="hidden text-primary sm:inline-block">
-                            &middot;
-                        </li>
+                        <li className="hidden text-primary sm:inline-block">&middot;</li>
                         <li>
                             <Link
                                 href="/legal/privacy-policy"
@@ -116,9 +101,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                                 Privacy Policy
                             </Link>
                         </li>
-                        <li className="hidden text-primary sm:inline-block">
-                            &middot;
-                        </li>
+                        <li className="hidden text-primary sm:inline-block">&middot;</li>
                         <li>
                             <Link
                                 href="/legal/terms-of-service"
