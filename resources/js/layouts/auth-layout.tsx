@@ -20,8 +20,9 @@ export default function AuthSimpleLayout({
     title,
     description,
 }: PropsWithChildren<AuthLayoutProps>) {
+    console.log(import.meta.env.VITE_UNSPLASH_AUTH_SCREEN_COLLECTION);
     return (
-        <BackgroundImage>
+        <BackgroundImage collectionId={`${import.meta.env.VITE_UNSPLASH_AUTH_SCREEN_COLLECTION}`}>
             <div className="dark:bg-neutral w-84 rounded-xl bg-white/30 p-2 shadow-lg md:w-96">
                 <div className="flex flex-col gap-8 rounded-md bg-white p-8 dark:bg-neutral-900">
                     <div className="flex flex-col items-center gap-4">
