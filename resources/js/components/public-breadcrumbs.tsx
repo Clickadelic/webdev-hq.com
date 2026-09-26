@@ -55,7 +55,7 @@ const PublicBreadcrumbs = ({ className }: BreadCrumbProps) => {
                     </Link>
                 </li>
 
-                {crumbs.map((crumb, idx) => (
+                {crumbs.map((crumb: { name: string; path: string }, idx) => (
                     <li key={idx} className="line-clamp-1 flex items-center">
                         <ChevronRight className="mr-3 size-5 text-gray-800 dark:text-neutral-200" />
                         {/* Letztes Segment nicht als Link */}

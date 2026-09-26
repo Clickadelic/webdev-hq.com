@@ -136,7 +136,10 @@ export default function PostForm({
     return (
         <form
             onSubmit={handleSubmit}
-            className={cn('flex w-full max-w-4xl flex-col gap-6', className)}
+            className={cn(
+                'mx-auto flex w-full max-w-4xl flex-col gap-6',
+                className,
+            )}
         >
             {/* Title & Slug */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -400,11 +403,7 @@ export default function PostForm({
                 ) : (
                     <BsPlusLg size={12} className="mr-2" />
                 )}
-                {processing
-                    ? 'Saving...'
-                    : post
-                      ? 'Save Changes'
-                      : 'Create Post'}
+                {processing ? 'Saving...' : post ? 'Save Post' : 'Create Post'}
             </Button>
         </form>
     );

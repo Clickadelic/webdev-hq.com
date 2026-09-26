@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hyperlink;
+use App\Models\Post;
 use Inertia\Inertia;
 
 class PageController extends Controller
@@ -64,7 +65,10 @@ class PageController extends Controller
 	}
 	public function showPosts()
 	{
-		return Inertia::render('posts/index');
+		return Inertia::render('posts/index', [
+			'posts' => Post::appListing(),
+			'canRegister' => true,
+		]);
 	}
 	public function createPost()
 	{
