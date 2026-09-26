@@ -1,7 +1,12 @@
 import GlassCard from '@/components/glass-card';
 import LogoImageSrc from '@/images/icons/icon-128.png';
 import PublicLayout from '@/layouts/public-layout';
+import { usePage } from '@inertiajs/react';
 
+interface PageProps {
+    canRegister?: boolean;
+    hyperlinkCount: number;
+}
 interface LayoutProps {
     canRegister?: boolean;
 }
@@ -13,6 +18,7 @@ interface LayoutProps {
  * @returns The JSX element representing the Home page.
  */
 export default function Home({ canRegister = true }: LayoutProps) {
+    const { hyperlinkCount } = usePage<PageProps>().props;
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
             <div className="mb-24 w-full overflow-hidden text-center">
@@ -24,9 +30,13 @@ export default function Home({ canRegister = true }: LayoutProps) {
                     />
                     Web<span className="font-medium">Dev HQ</span>
                 </h1>
-                <h2 className="relative text-3xl">
+                <h2 className="relative mb-4 text-3xl">
                     Your Go-To Destination for Web Developers and alike.
                 </h2>
+                <p className="font-light text-muted-foreground">
+                    Currently tracking <span className="font-bold">{hyperlinkCount}</span>{' '}
+                    resources.
+                </p>
             </div>
             <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <GlassCard title="Find Quality Resources">
