@@ -1,3 +1,4 @@
+import AmbientBlobs from '@/components/ambient-blobs';
 import CircularMenu from '@/components/circular-menu';
 import PublicBreadcrumbs from '@/components/public-breadcrumbs';
 import PublicFooter from '@/components/public-footer';
@@ -5,7 +6,6 @@ import PublicHeader from '@/components/public-header';
 import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/lib/utils';
 import { Head } from '@inertiajs/react';
-
 interface PublicLayoutProps {
     title?: string;
     sidebar?: React.ReactNode | null;
@@ -42,6 +42,7 @@ export default function PublicLayout({
                         outerClassNames,
                     )}
                 >
+                    <AmbientBlobs />
                     <div className={cn('w-full grow py-4', innerClassNames)}>
                         <div className="flex justify-start gap-6">
                             {sidebar ? sidebar : null}

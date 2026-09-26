@@ -9,7 +9,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
     return (
         <footer
             className={cn(
-                'mt-12 w-full border-t-2 border-primary bg-neutral-900 px-3 py-6 sm:px-0',
+                'z-20 mt-12 w-full border-t-2 border-primary bg-white/30 px-3 py-6 backdrop-blur sm:px-0 dark:bg-neutral-900/30 dark:backdrop-blur',
                 className,
             )}
         >

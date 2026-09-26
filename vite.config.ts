@@ -13,17 +13,30 @@ export default defineConfig({
             refresh: true,
         }),
         react({
-            babel: {
-                plugins: ['babel-plugin-react-compiler'],
-            },
+            // babel: {
+            //     plugins: ['babel-plugin-react-compiler'],
+            // },
         }),
         tailwindcss(),
         wayfinder(),
     ],
     resolve: {
         alias: [
-            { find: '@/routes', replacement: path.resolve(__dirname, 'resources/js/wayfinder/routes') },
-            { find: '@/actions', replacement: path.resolve(__dirname, 'resources/js/wayfinder') },
+            {
+                find: '@/routes',
+                replacement: path.resolve(
+                    __dirname,
+                    'resources/js/wayfinder/routes',
+                ),
+            },
+            {
+                find: '@/actions',
+                replacement: path.resolve(__dirname, 'resources/js/wayfinder'),
+            },
+            {
+                find: '@/images',
+                replacement: path.resolve(__dirname, 'resources/images'),
+            },
         ],
     },
     build: {

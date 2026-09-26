@@ -30,7 +30,7 @@ export default function PublicHeader({
     return (
         <header
             className={cn(
-                'w-full bg-white shadow dark:bg-neutral-900',
+                'relative z-20 w-full bg-white shadow-lg backdrop-blur dark:bg-neutral-900/30 dark:backdrop-blur',
                 className,
             )}
         >

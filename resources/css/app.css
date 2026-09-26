@@ -148,4 +148,11 @@
     body {
         @apply bg-neutral-200 text-foreground dark:bg-neutral-950;
     }
+
+    .bg-noise {
+        background: url('../images/bg-noise.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
 }
