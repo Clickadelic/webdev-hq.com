@@ -34,16 +34,16 @@ interface PaginatedHyperlinks {
 export default function Home({
     hyperlinks,
     canRegister = true,
+    search: initialSearch = '',
 }: {
     hyperlinks: PaginatedHyperlinks;
     canRegister?: boolean;
+    search?: string;
 }) {
     const count = hyperlinks.total;
     const items = hyperlinks.data;
-    const [query, setQuery] = useState<string>('');
-    const [editingHyperlink, setEditingHyperlink] = useState<
-        Hyperlink | undefined
-    >(undefined);
+    const [query, setQuery] = useState<string>(initialSearch);
+    const [editingHyperlink, setEditingHyperlink] = useState<Hyperlink | undefined>(undefined);
     const [isEditOpen, setIsEditOpen] = useState(false);
     const isAuthenticated = !!usePage().props.auth?.user;
 
@@ -62,8 +62,7 @@ export default function Home({
     // Clean up timer on unmount
     useEffect(
         () => () => {
-            if (debounceTimer.current)
-                window.clearTimeout(debounceTimer.current);
+            if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
         },
         [],
     );
@@ -128,12 +127,8 @@ export default function Home({
                             <HyperlinkCard
                                 key={link.id}
                                 hyperlink={link}
-                                onEdit={
-                                    isAuthenticated ? handleEdit : undefined
-                                }
-                                onDelete={
-                                    isAuthenticated ? handleDelete : undefined
-                                }
+                                onEdit={isAuthenticated ? handleEdit : undefined}
+                                onDelete={isAuthenticated ? handleDelete : undefined}
                             />
                         ))}
                     </div>
@@ -158,8 +153,7 @@ export default function Home({
                                 Previous
                             </Button>
                             <span className="text-sm text-muted-foreground">
-                                Page {hyperlinks.current_page} of{' '}
-                                {hyperlinks.last_page}
+                                Page {hyperlinks.current_page} of {hyperlinks.last_page}
                             </span>
                             <Button
                                 variant="outline"
@@ -180,8 +174,7 @@ export default function Home({
                         </div>
                     )}
                     <h3 className="mt-8 text-center text-muted-foreground">
-                        Currently tracking{' '}
-                        {count === 1 ? '1 resource' : `${count} resources`}.
+                        Currently tracking {count === 1 ? '1 resource' : `${count} resources`}.
                     </h3>
                 </div>
             )}
@@ -198,9 +191,7 @@ export default function Home({
                     <DialogContent className="max-h-[90vh] overflow-y-auto rounded">
                         <DialogHeader>
                             <DialogTitle>Edit Hyperlink</DialogTitle>
-                            <DialogDescription>
-                                Update the hyperlink details.
-                            </DialogDescription>
+                            <DialogDescription>Update the hyperlink details.</DialogDescription>
                         </DialogHeader>
                         <HyperlinkForm
                             hyperlink={editingHyperlink}

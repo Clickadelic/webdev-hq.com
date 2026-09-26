@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateHyperlinkRequest;
 use App\Models\Category;
 use App\Models\Hyperlink;
 use App\Models\Tag;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class HyperlinkController extends Controller
@@ -14,9 +15,22 @@ class HyperlinkController extends Controller
     /**
      * Display published hyperlinks publicly.
      */
-    public function publicIndex()
+    public function publicIndex(Request $request)
     {
-        $hyperlinks = Hyperlink::with(['category', 'tags'])
+        $search = trim((string) $request->query('search', ''));
+
+        $query = Hyperlink::with(['category', 'tags'])
+            ->published();
+
+        if ($search !== '') {
+            $query->where(function ($query) use ($search) {
+                $query->where('title', 'like', "%{$search}%")
+                    ->orWhere('url', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        $hyperlinks = $query
             ->latest()
             ->paginate(38)
             ->withQueryString();
@@ -26,6 +40,7 @@ class HyperlinkController extends Controller
             'categories' => Category::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
             'tags' => Tag::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
             'canRegister' => true,
+            'search' => $search,
         ]);
     }
 

@@ -9,10 +9,9 @@ use Illuminate\Support\Facades\Route;
 // Alle Routen unter dem Präfix v1 zusammengefasst
 Route::prefix('v1')->group(function () {
 
-
-
 	// Unsplash Image Service Routes (public)
 	Route::prefix('/unsplash/image')->middleware('throttle:60,10')->group(function () {
+		Route::get('/', [ImageController::class, 'index']);
 		Route::get('/seasonal', [ImageController::class, 'seasonal']);
 		Route::get('/general', [ImageController::class, 'general']);
 	});
@@ -29,7 +28,6 @@ Route::prefix('v1')->group(function () {
 			Route::post('/logout', [AuthController::class, 'logout']);
 		});
 	});
-
 
 	Route::middleware('auth:sanctum')->as('api.')->group(function () {
 		Route::apiResource('hyperlinks', HyperlinkController::class);
