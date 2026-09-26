@@ -102,13 +102,15 @@ export interface Hyperlink {
 }
 
 export interface Category {
-    id: number;
+    id: string;
     name: string;
     slug: string;
     hyperlinks_count?: number;
     created_at: string;
     updated_at: string;
 }
+
+export type Status = 'draft' | 'published' | 'archived';
 
 export interface Post {
     id: string;

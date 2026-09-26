@@ -21,16 +21,16 @@ export default function Home({ canRegister = true }: LayoutProps) {
     const { hyperlinkCount } = usePage<PageProps>().props;
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
-            <div className="mb-24 w-full overflow-hidden text-center">
-                <h1 className="my-10 text-6xl font-light text-neutral-950 dark:text-white">
+            <div className="flex w-full grow flex-col items-center justify-center overflow-hidden">
+                <h1 className="mb-10 text-5xl font-light text-neutral-950 dark:text-white">
                     <img
                         src={LogoImageSrc}
                         alt="WebDev HQ Logo"
-                        className="mr-3 inline-block size-12"
+                        className="-mt-2 mr-5 inline-block size-11"
                     />
                     Web<span className="font-medium">Dev HQ</span>
                 </h1>
-                <h2 className="relative mb-4 text-3xl">
+                <h2 className="relative mb-4 max-w-120 text-center text-3xl">
                     Your Go-To Destination for Web Developers and alike.
                 </h2>
                 <p className="font-light text-muted-foreground">
@@ -41,7 +41,7 @@ export default function Home({ canRegister = true }: LayoutProps) {
                     resources.
                 </p>
             </div>
-            <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="my-12 grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <GlassCard title="Find Quality Resources">
                     Explore hundreds of resources for every need you might have.
                 </GlassCard>
