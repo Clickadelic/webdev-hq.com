@@ -10,38 +10,84 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { BookOpen, GalleryHorizontal, LayoutGrid, Link, Pencil, Tag, Webhook } from 'lucide-react';
+import {
+    BookOpen,
+    Folder,
+    GalleryHorizontal,
+    LayoutGrid,
+    Link,
+    Pencil,
+    Tag,
+    Webhook,
+} from 'lucide-react';
 
 import { index as postsIndex } from '@/actions/App/Http/Controllers/PostController';
 import AppLogo from './app-logo';
 
-import { type NavItem } from '@/types';
+import { type NavGroup, type NavItem } from '@/types';
 
-const mainNavItems: NavItem[] = [
+const mainNavGroups: NavGroup[] = [
     {
-        title: 'Dashboard',
-        href: '/dashboard',
-        icon: LayoutGrid,
+        title: 'Personal',
+        items: [
+            {
+                title: 'Dashboard',
+                href: '/dashboard',
+                icon: LayoutGrid,
+            },
+        ],
     },
     {
-        title: 'Hyperlinks',
-        href: '/dashboard/hyperlinks',
-        icon: Link,
-    },
-    {
-        title: 'Categories',
-        href: '/dashboard/categories',
-        icon: Webhook,
-    },
-    {
-        title: 'Tags',
-        href: '/dashboard/tags',
-        icon: Tag,
-    },
-    {
-        title: 'Posts',
-        href: postsIndex.url(),
-        icon: Pencil,
+        title: 'Content',
+        items: [
+            {
+                title: 'Library',
+                icon: Folder,
+                items: [
+                    {
+                        title: 'Hyperlinks',
+                        href: '/dashboard/hyperlinks',
+                        icon: Link,
+                    },
+                    {
+                        title: 'Categories',
+                        href: '/dashboard/categories',
+                        icon: Webhook,
+                    },
+                    {
+                        title: 'Tags',
+                        href: '/dashboard/tags',
+                        icon: Tag,
+                    },
+                ],
+            },
+            // {
+            //     title: 'Free',
+            //     icon: Folder,
+            //     items: [
+            //         {
+            //             title: 'Dummylinks',
+            //             href: '#',
+            //             icon: Link,
+            //         },
+            //         {
+            //             title: 'Dummylinks',
+            //             href: '#',
+            //             icon: Link,
+            //         },
+            //         {
+            //             title: 'Dummylinks',
+            //             href: '#',
+            //             icon: Link,
+            //         },
+            //     ],
+            // },
+            {
+                title: 'Posts',
+                href: postsIndex.url(),
+                icon: Pencil,
+            },
+        ],
     },
 ];
 
@@ -77,7 +123,7 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent>
-                <NavMain items={mainNavItems} />
+                <NavMain groups={mainNavGroups} />
             </SidebarContent>
 
             <SidebarFooter>
