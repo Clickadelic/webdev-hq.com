@@ -11,8 +11,8 @@ export default function Home({ canRegister = true }: LayoutProps) {
             title="Welcome to WebDev HQ"
         >
             <div className="relative overflow-hidden text-center">
-                <h1 className="relative my-10 text-6xl font-medium text-white">
-                    WebDev HQ
+                <h1 className="relative my-10 text-6xl font-light text-neutral-950 dark:text-white">
+                    Web<span className="font-medium">Dev HQ</span>
                 </h1>
 
                 <h2 className="relative text-3xl">
