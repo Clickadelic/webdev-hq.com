@@ -34,7 +34,10 @@ export default function Home({ canRegister = true }: LayoutProps) {
                     Your Go-To Destination for Web Developers and alike.
                 </h2>
                 <p className="font-light text-muted-foreground">
-                    Currently tracking <span className="font-bold">{hyperlinkCount}</span>{' '}
+                    Currently tracking{' '}
+                    <span className="font-bold text-neutral-950 dark:text-white">
+                        {hyperlinkCount}
+                    </span>{' '}
                     resources.
                 </p>
             </div>
