@@ -1,4 +1,4 @@
-import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useMediaQuery } from '@/hooks/use-media-query';
 
 import {
     Dialog,
@@ -49,9 +49,7 @@ export const ResponsiveDialog = ({
                             <span className="mr-2">{icon}</span>
                             <span>{title}</span>
                         </DialogTitle>
-                        {description && (
-                            <DialogDescription>{description}</DialogDescription>
-                        )}
+                        {description && <DialogDescription>{description}</DialogDescription>}
                     </DialogHeader>
                     {children}
                 </DialogContent>
@@ -67,9 +65,7 @@ export const ResponsiveDialog = ({
                         <span className="mr-2">{icon}</span>
                         <span>{title}</span>
                     </DrawerTitle>
-                    {description && (
-                        <DrawerDescription>{description}</DrawerDescription>
-                    )}
+                    {description && <DrawerDescription>{description}</DrawerDescription>}
                 </DrawerHeader>
                 {children}
             </DrawerContent>

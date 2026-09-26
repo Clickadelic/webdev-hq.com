@@ -3,6 +3,13 @@ import { cn } from '@/lib/utils';
 import { LucideIcon, Monitor, Moon, Sun } from 'lucide-react';
 import { HTMLAttributes } from 'react';
 
+/**
+ * A component that renders a set of tabs for toggling the appearance (theme) of the application.
+ *
+ * @param {Object} props - The props for the component
+ * @param {string} [props.className] - The class name for the wrapper div
+ * @returns {React.ReactNode} - The rendered appearance toggle tabs
+ */
 export default function AppearanceToggleTab({
     className = '',
     ...props

@@ -7,13 +7,17 @@ interface AppShellProps {
     variant?: 'header' | 'sidebar';
 }
 
+/**
+ * A layout component for the application that conditionally wraps its children based on the specified variant.
+ *
+ * @param {AppShellProps} props - The props for the component
+ * @returns {React.ReactNode} - The wrapped children
+ */
 export function AppShell({ children, variant = 'header' }: AppShellProps) {
     const isOpen = usePage<SharedData>().props.sidebarOpen;
 
     if (variant === 'header') {
-        return (
-            <div className="flex min-h-screen w-full flex-col">{children}</div>
-        );
+        return <div className="flex min-h-screen w-full flex-col">{children}</div>;
     }
 
     return <SidebarProvider defaultOpen={isOpen}>{children}</SidebarProvider>;

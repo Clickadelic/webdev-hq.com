@@ -9,12 +9,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from '@/components/ui/dialog';
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { type SharedData } from '@/types';
 import { usePage } from '@inertiajs/react';
 import { TooltipArrow } from '@radix-ui/react-tooltip';
@@ -25,15 +20,15 @@ import { FiPlus } from 'react-icons/fi';
 import { cn } from '@/lib/utils';
 
 /**
- * A circular menu that appears on the bottom right of the screen when the user has the user role.
- * It contains buttons to create a new recipe and to view all ingredients.
+ * A circular menu component that appears on the bottom right of the screen for authenticated users.
+ *
+ * @returns {React.ReactNode} - The circular menu component for authenticated users
  */
 export function CircularMenu() {
     const { auth } = usePage<SharedData>().props;
     const [showCircularMenu, setShowCircularMenu] = useState<boolean>(false);
     const [isPostModalOpen, setIsPostModalOpen] = useState<boolean>(false);
-    const [isHyperlinkModalOpen, setIsHyperlinkModalOpen] =
-        useState<boolean>(false);
+    const [isHyperlinkModalOpen, setIsHyperlinkModalOpen] = useState<boolean>(false);
     const [isEditing, setIsEditing] = useState<boolean>(false);
 
     if (!auth.user) {
@@ -44,9 +39,7 @@ export function CircularMenu() {
             <div
                 className={cn(
                     'absolute -top-20 left-2 flex flex-col items-center space-y-2 transition-all',
-                    showCircularMenu
-                        ? 'opacity-100'
-                        : 'pointer-events-none opacity-0',
+                    showCircularMenu ? 'opacity-100' : 'pointer-events-none opacity-0',
                 )}
             >
                 <TooltipProvider>
@@ -117,9 +110,7 @@ export function CircularMenu() {
                                 {isEditing ? 'Edit Hyperlink' : 'Add Hyperlink'}
                             </DialogTitle>
                             <DialogDescription>
-                                {isEditing
-                                    ? 'Edit the hyperlink'
-                                    : 'Add a new hyperlink'}
+                                {isEditing ? 'Edit the hyperlink' : 'Add a new hyperlink'}
                             </DialogDescription>
                         </DialogHeader>
                         <HyperlinkForm className="w-full" />
@@ -144,10 +135,7 @@ export function CircularMenu() {
                             />
                         </button>
                     </TooltipTrigger>
-                    <TooltipContent
-                        side="left"
-                        className="bg-primary text-white dark:bg-primary"
-                    >
+                    <TooltipContent side="left" className="bg-primary text-white dark:bg-primary">
                         <p>Create new content.</p>
                         <TooltipArrow className="fill-primary dark:fill-primary" />
                     </TooltipContent>

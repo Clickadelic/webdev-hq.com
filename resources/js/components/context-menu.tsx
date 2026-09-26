@@ -34,6 +34,15 @@ interface ContextMenuProps {
     onDelete?: (id: number) => void;
 }
 
+/**
+ * A context menu component for managing hyperlinks, providing options to edit, delete, and copy the URL.
+ * @param {item} props.item - The hyperlink item for the context menu component
+ * @param {string} [props.className] - Additional class names for the context menu trigger
+ * @param {'vertical' | 'horizontal'} [props.dotStyle] - The style of the dots for the context menu trigger
+ * @param {function} [props.onEdit] - Callback function when the edit option is selected
+ * @param {function} [props.onDelete] - Callback function when the delete option is selected
+ * @returns {React.ReactNode} - The rendered context menu component
+ */
 export default function ContextMenu({
     item,
     className,
@@ -96,8 +105,8 @@ export default function ContextMenu({
                                 <AlertDialogContent className="bg-gray-100 dark:bg-gray-900">
                                     <AlertDialogHeader>
                                         <AlertDialogTitle className="text-gray-800 dark:text-gray-200">
-                                            Are you sure you want to delete this
-                                            item? This action cannot be undone.
+                                            Are you sure you want to delete this item? This action
+                                            cannot be undone.
                                         </AlertDialogTitle>
                                         <AlertDialogDescription>
                                             This action cannot be undone.

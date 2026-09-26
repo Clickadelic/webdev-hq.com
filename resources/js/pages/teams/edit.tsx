@@ -9,6 +9,11 @@ import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem, type Team } from '@/types';
 import { Form, Head } from '@inertiajs/react';
 
+/**
+ * A component for editing team settings, including updating the team image.
+ * @param param0 The props for the TeamEdit component, including the team to be edited.
+ * @returns The JSX element representing the team edit page.
+ */
 export default function TeamEdit({ team }: { team: Team }) {
     const breadcrumbs: BreadcrumbItem[] = [
         { title: 'Team settings', href: TeamController.edit.url(team.id) },
@@ -58,13 +63,9 @@ export default function TeamEdit({ team }: { team: Team }) {
                             </div>
 
                             <div className="flex items-center gap-4">
-                                <Button disabled={processing}>
-                                    Save image
-                                </Button>
+                                <Button disabled={processing}>Save image</Button>
                                 {recentlySuccessful && (
-                                    <p className="text-sm text-muted-foreground">
-                                        Saved
-                                    </p>
+                                    <p className="text-sm text-muted-foreground">Saved</p>
                                 )}
                             </div>
                         </>
