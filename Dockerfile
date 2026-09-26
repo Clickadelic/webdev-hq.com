@@ -38,7 +38,7 @@ RUN composer dump-autoload --no-scripts --optimize \
     && sed -i 's/APP_ENV=local/APP_ENV=production/' .env \
     && sed -i 's/APP_DEBUG=true/APP_DEBUG=false/' .env \
     && touch database/database.sqlite \
-    && rm -f bootstrap/cache/packages.php bootstrap/cache/services.php \
+    && rm -f bootstrap/cache/*.php \
     && php -d memory_limit=512M artisan key:generate --no-interaction \
     && npm run build \
     && rm -f .env database/database.sqlite

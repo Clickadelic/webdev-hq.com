@@ -42,7 +42,7 @@ export default function PublicLayout({
                         outerClassNames,
                     )}
                 >
-                    <div className={cn('grow py-4', innerClassNames)}>
+                    <div className={cn('w-full grow py-4', innerClassNames)}>
                         <div className="flex justify-start gap-6">
                             {sidebar ? sidebar : null}
                             <main className="w-full">{children}</main>
