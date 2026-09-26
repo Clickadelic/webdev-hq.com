@@ -25,14 +25,21 @@ export interface SortableAppTileProps {
     setWasDragged: (val: boolean) => void;
 }
 
+/**
+ * A sortable app tile component that can be dragged and displays app information.
+ *
+ * @param {SortableAppTileProps} props - The props for the sortable app tile component.
+ * @returns {React.ReactNode} - The rendered sortable app tile component.
+ */
 export const SortableAppTile = ({
     app,
     onEdit,
     onDelete,
     enabled = true,
 }: SortableAppTileProps) => {
-    const { attributes, listeners, setNodeRef, transform, transition } =
-        useSortable({ id: app.id });
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+        id: app.id,
+    });
 
     const style = {
         transform: CSS.Transform.toString(transform),
@@ -49,9 +56,7 @@ export const SortableAppTile = ({
             <div
                 className={
                     'drag-handle absolute top-1 left-6 z-100 inline-flex h-1.5 w-5 rounded bg-neutral-200 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-600 ' +
-                    (enabled
-                        ? 'hover:cursor-move'
-                        : 'cursor-not-allowed opacity-50')
+                    (enabled ? 'hover:cursor-move' : 'cursor-not-allowed opacity-50')
                 }
                 {...(enabled ? listeners : {})}
                 {...(enabled ? attributes : {})}
@@ -62,11 +67,7 @@ export const SortableAppTile = ({
                 className="flex flex-col items-center justify-between gap-2 p-2"
                 rel="noopener noreferrer"
             >
-                <img
-                    src={app.icon}
-                    alt={app.title}
-                    className="size-6 rounded-xs"
-                />
+                <img src={app.icon} alt={app.title} className="size-6 rounded-xs" />
                 <span className="inline-block max-w-14 truncate text-xs text-neutral-800 dark:text-neutral-300">
                     {app.title}
                 </span>
@@ -78,11 +79,7 @@ export const SortableAppTile = ({
                     </button>
                 </DropdownMenuTrigger>
 
-                <DropdownMenuContent
-                    side="right"
-                    align="start"
-                    className="rounded"
-                >
+                <DropdownMenuContent side="right" align="start" className="rounded">
                     <DropdownMenuItem>
                         <button
                             onClick={() => onEdit(app.id)}
