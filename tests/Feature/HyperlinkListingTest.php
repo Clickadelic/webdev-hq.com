@@ -11,8 +11,14 @@ uses(RefreshDatabase::class);
 test('web and api hyperlink indexes return the same model results', function () {
     $user = User::factory()->create();
 
-    $older = Hyperlink::factory()->create(['created_at' => now()->subDay()]);
-    $newer = Hyperlink::factory()->create(['created_at' => now()]);
+    $older = Hyperlink::factory()->create([
+        'created_at' => now()->subDay(),
+        'status' => 'published',
+    ]);
+    $newer = Hyperlink::factory()->create([
+        'created_at' => now(),
+        'status' => 'published',
+    ]);
 
     $expectedIds = [$newer->id, $older->id];
 
@@ -32,6 +38,45 @@ test('web and api hyperlink indexes return the same model results', function () 
     );
 
     expect($apiResponse->json('hyperlinks.data.*.id'))->toBe($expectedIds);
+});
+
+test('public hyperlink search filters published results by title url and description', function () {
+    $titleMatch = Hyperlink::factory()->create([
+        'title' => 'Searchneedle in title',
+        'created_at' => now()->subMinutes(3),
+        'status' => 'published',
+    ]);
+    $urlMatch = Hyperlink::factory()->create([
+        'title' => 'URL match',
+        'url' => 'https://example.com/searchneedle',
+        'created_at' => now()->subMinutes(2),
+        'status' => 'published',
+    ]);
+    $descriptionMatch = Hyperlink::factory()->create([
+        'title' => 'Description match',
+        'description' => 'Contains searchneedle in its description.',
+        'created_at' => now()->subMinute(),
+        'status' => 'published',
+    ]);
+    Hyperlink::factory()->create([
+        'title' => 'Hidden searchneedle draft',
+        'status' => 'draft',
+    ]);
+    Hyperlink::factory()->create([
+        'title' => 'Unrelated published resource',
+        'status' => 'published',
+    ]);
+
+    $this->get(route('hyperlinks.index', ['search' => 'searchneedle']))
+        ->assertInertia(
+            fn (Assert $page) => $page
+                ->component('hyperlinks/index')
+                ->where('search', 'searchneedle')
+                ->where('hyperlinks.total', 3)
+                ->where('hyperlinks.data.0.id', $descriptionMatch->id)
+                ->where('hyperlinks.data.1.id', $urlMatch->id)
+                ->where('hyperlinks.data.2.id', $titleMatch->id)
+        );
 });
 
 test('authenticated users can create hyperlinks via the api', function () {

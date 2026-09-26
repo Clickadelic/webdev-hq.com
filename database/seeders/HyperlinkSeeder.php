@@ -181,5 +181,21 @@ class HyperlinkSeeder extends Seeder
 		);
 
 		$webFeaturesExplorerHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		// Zend Framework
+		$zend = Hyperlink::updateOrCreate(
+			['url' => 'https://zend.com/'],
+			[
+				'title' => 'Zend Framework',
+				'favicon_url' => 'https://zend.com/favicon.ico',
+				'description' => 'Mission-Critical PHP Made Possible.',
+				'category_id' => $category->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		$zend->tags()->syncWithoutDetaching([$phpTag->id]);
 	}
 }

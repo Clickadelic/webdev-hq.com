@@ -33,7 +33,7 @@ export default function AppearanceToggleDropdown({
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="size-9 rounded-md border p-5 shadow-xs hover:cursor-pointer hover:bg-muted hover:text-muted-foreground"
+                        className="size-9 rounded-md border border-white p-5 shadow-xs hover:cursor-pointer hover:bg-muted hover:text-muted-foreground"
                     >
                         {getCurrentIcon()}
                         <span className="sr-only">Toggle theme</span>

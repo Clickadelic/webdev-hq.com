@@ -95,7 +95,7 @@ export default function BackgroundImage({ children }: PropsWithChildren<Backgrou
             />
             <div
                 aria-hidden
-                className="absolute inset-0 -z-10 bg-cover bg-no-repeat transition-opacity duration-500 ease-out"
+                className="absolute inset-0 -z-10 flex min-h-svh flex-col items-center justify-center bg-cover bg-no-repeat transition-opacity duration-500 ease-out"
                 style={{
                     backgroundImage: bgUrl ? `url('${bgUrl}')` : undefined,
                     backgroundPosition: 'center',

@@ -22,10 +22,7 @@ interface PublicHeaderProps {
     className?: string;
 }
 
-export default function PublicHeader({
-    canRegister = true,
-    className,
-}: PublicHeaderProps) {
+export default function PublicHeader({ canRegister = true, className }: PublicHeaderProps) {
     const { auth } = usePage<SharedData>().props;
     return (
         <header
@@ -40,37 +37,25 @@ export default function PublicHeader({
                 <nav className="flex items-center justify-between gap-4">
                     <ul className="hidden items-center justify-start gap-6 lg:flex">
                         <li>
-                            <Link
-                                href="/"
-                                className="flex h-auto items-center gap-2"
-                            >
+                            <Link href="/" className="flex h-auto items-center gap-2">
                                 <House className="size-4" />
                                 Home
                             </Link>
                         </li>
                         <li>
-                            <Link
-                                href="/posts"
-                                className="flex h-auto items-center gap-2"
-                            >
+                            <Link href="/posts" className="flex h-auto items-center gap-2">
                                 <PenIcon className="size-4" />
                                 Posts
                             </Link>
                         </li>
                         <li>
-                            <Link
-                                href="/hyperlinks"
-                                className="flex h-auto items-center gap-2"
-                            >
+                            <Link href="/hyperlinks" className="flex h-auto items-center gap-2">
                                 <LinkIcon className="size-4" />
                                 Hyperlinks
                             </Link>
                         </li>
                         <li>
-                            <Link
-                                href="/teams"
-                                className="flex h-auto items-center gap-2"
-                            >
+                            <Link href="/teams" className="flex h-auto items-center gap-2">
                                 <Users className="size-4" />
                                 Teams
                             </Link>
@@ -107,7 +92,7 @@ export default function PublicHeader({
                                     <li>
                                         <Link
                                             href={register.url()}
-                                            className="flex items-center justify-between gap-2 rounded-sm border border-border px-3 py-2 text-slate-800 hover:bg-slate-100 hover:text-primary dark:border-neutral-600 dark:bg-neutral-800 dark:text-slate-200 dark:hover:bg-neutral-700 dark:hover:text-primary"
+                                            className="flex items-center justify-between gap-2 rounded-sm border-0 px-3 py-2 text-slate-800 hover:bg-slate-100 hover:text-primary dark:border-neutral-600 dark:bg-neutral-800 dark:text-slate-200 dark:hover:bg-neutral-700 dark:hover:text-primary"
                                         >
                                             <CircleCheckBig className="size-4" />
                                             Register
@@ -117,7 +102,7 @@ export default function PublicHeader({
                                 <li>
                                     <Link
                                         href={login.url()}
-                                        className="hover:bg-primary-hover flex items-center justify-between gap-2 rounded-sm border border-slate-200 bg-primary px-3 py-2 text-white hover:bg-primary/90"
+                                        className="hover:bg-primary-hover flex items-center justify-between gap-2 rounded-sm border-0 bg-primary px-3 py-2 text-white hover:bg-primary/90"
                                     >
                                         <DoorOpen className="size-4" />
                                         Login
@@ -125,9 +110,7 @@ export default function PublicHeader({
                                 </li>
                             </ul>
                         )}
-                        {auth.user ? (
-                            <UserDropdownMenu user={auth.user} />
-                        ) : null}
+                        {auth.user ? <UserDropdownMenu user={auth.user} /> : null}
                         <AppearanceDropdown />
                     </div>
                 </nav>

@@ -6,6 +6,7 @@ import PublicHeader from '@/components/public-header';
 import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/lib/utils';
 import { Head } from '@inertiajs/react';
+
 interface PublicLayoutProps {
     title?: string;
     sidebar?: React.ReactNode | null;
@@ -33,27 +34,23 @@ export default function PublicLayout({
     return (
         <>
             <Head title={title} />
-            <div className="flex min-h-svh flex-col items-center justify-items-center">
+            <div className="flex min-h-svh flex-col items-center justify-start">
+                <AmbientBlobs />
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
                 <div
                     className={cn(
-                        'container mx-auto flex grow flex-col items-start justify-center',
+                        'container mx-auto flex grow flex-col items-start justify-start',
                         outerClassNames,
                     )}
                 >
-                    <AmbientBlobs />
-                    <div className={cn('w-full grow py-4', innerClassNames)}>
-                        <div className="flex justify-start gap-6">
-                            {sidebar ? sidebar : null}
-                            <main className="w-full">{children}</main>
-                        </div>
-                    </div>
+                    {sidebar ? sidebar : null}
+                    <main className="w-full">{children}</main>
                 </div>
-                <Toaster />
-                <CircularMenu />
-                <PublicFooter />
             </div>
+            <Toaster />
+            <CircularMenu />
+            <PublicFooter />
         </>
     );
 }
