@@ -5,6 +5,13 @@ interface AmbientBlobsProps {
     isAnimated?: boolean;
 }
 
+/**
+ * A component that renders animated ambient blobs in the background.
+ *
+ * @param {boolean} [isAnimated] - Whether the blobs should be animated
+ * @param {string} [className] - Additional class names for the container
+ * @returns {React.ReactNode} - The rendered ambient blobs component
+ */
 export default function AmbientBlobs({ isAnimated = false, className }: AmbientBlobsProps) {
     return (
         <div

@@ -7,6 +7,14 @@ interface AuthLayoutProps {
     description?: string;
 }
 
+/**
+ * A layout component for authentication pages that displays a logo, title, description, and children content.
+ *
+ * @param {React.ReactNode} children - The children of the component
+ * @param {string} title - The title of the authentication page
+ * @param {string} description - The description/subline below the logo of the authentication page
+ * @returns {React.ReactNode} - The wrapped children in the authentication layout component
+ */
 export default function AuthSimpleLayout({
     children,
     title,

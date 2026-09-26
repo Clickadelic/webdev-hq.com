@@ -3,6 +3,12 @@ interface BackgroundImageProps {
     backgroundUrl?: string;
 }
 
+/**
+ * A component that wraps its children with a background image, preloading the image to avoid flicker.
+ *
+ * @param {React.ReactNode} props.children - The children of the component
+ * @returns {React.ReactNode} - The wrapped children
+ */
 export default function BackgroundImage({ children }: PropsWithChildren<BackgroundImageProps>) {
     // Use API JSON mode and preload the image to avoid first-paint flicker.
     const today = new Date().toISOString().slice(0, 10);

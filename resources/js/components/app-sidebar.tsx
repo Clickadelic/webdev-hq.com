@@ -10,15 +10,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import {
-    BookOpen,
-    GalleryHorizontal,
-    LayoutGrid,
-    Link,
-    Pencil,
-    Tag,
-    Webhook,
-} from 'lucide-react';
+import { BookOpen, GalleryHorizontal, LayoutGrid, Link, Pencil, Tag, Webhook } from 'lucide-react';
 
 import { index as postsIndex } from '@/actions/App/Http/Controllers/PostController';
 import AppLogo from './app-logo';
@@ -66,6 +58,11 @@ const footerNavItems: NavItem[] = [
     },
 ];
 
+/**
+ * A component that renders the application's sidebar, including the main navigation, footer navigation, and user section.
+ *
+ * @returns {React.ReactNode} - The rendered application sidebar
+ */
 export function AppSidebar() {
     return (
         <Sidebar collapsible="icon" variant="inset">

@@ -22,6 +22,12 @@ interface PublicHeaderProps {
     className?: string;
 }
 
+/**
+ * A component that renders the public header of the application.
+ * @param {boolean} [canRegister] - Indicates if the registration link should be displayed
+ * @param {string} [className] - Additional class names for the header
+ * @returns {React.ReactNode} - The rendered public header component
+ */
 export default function PublicHeader({ canRegister = true, className }: PublicHeaderProps) {
     const { auth } = usePage<SharedData>().props;
     return (

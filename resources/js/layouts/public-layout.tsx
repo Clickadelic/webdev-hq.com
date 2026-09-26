@@ -12,24 +12,25 @@ interface PublicLayoutProps {
     sidebar?: React.ReactNode | null;
     children: React.ReactNode;
     canRegister?: boolean;
-    outerClassNames?: string;
-    innerClassNames?: string;
+    className?: string;
 }
 
 /**
  * A public layout component that wraps its children in a
  * div with a class of "flex flex-col min-h-dvh justify-between items-center"
  *
- * @param {React.ReactNode} children - The children of the component
- * @returns {React.ReactNode} - The wrapped children
+ * @param {React.ReactNode} title - The title of the page
+ * @param {React.ReactNode} sidebar - The sidebar component
+ * @param {React.ReactNode} children - The main content of the page
+ * @param {boolean} canRegister - Indicates if the registration option should be displayed
+ * @param {string} className - An optional class name to apply to the main container
  */
 export default function PublicLayout({
     title,
     sidebar,
     children,
     canRegister,
-    outerClassNames,
-    innerClassNames,
+    className,
 }: PublicLayoutProps) {
     return (
         <>
@@ -38,19 +39,18 @@ export default function PublicLayout({
                 <AmbientBlobs />
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
-                <div
+                <main
                     className={cn(
                         'container mx-auto flex grow flex-col items-start justify-start',
-                        outerClassNames,
+                        className,
                     )}
                 >
-                    {sidebar ? sidebar : null}
-                    <main className="w-full">{children}</main>
-                </div>
+                    {children}
+                </main>
+                <Toaster />
+                <CircularMenu />
+                <PublicFooter />
             </div>
-            <Toaster />
-            <CircularMenu />
-            <PublicFooter />
         </>
     );
 }

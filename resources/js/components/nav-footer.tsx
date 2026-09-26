@@ -10,6 +10,12 @@ import { resolveUrl } from '@/lib/utils';
 import { type NavItem } from '@/types';
 import { type ComponentPropsWithoutRef } from 'react';
 
+/**
+ * A navigation footer component that renders a list of navigation items with icons and links.
+ * @param {NavItem[]} items - The list of navigation items to render
+ * @param {string} [className] - Additional class names for the sidebar group
+ * @returns {React.ReactNode} - The rendered navigation footer component
+ */
 export function NavFooter({
     items,
     className,
@@ -18,10 +24,7 @@ export function NavFooter({
     items: NavItem[];
 }) {
     return (
-        <SidebarGroup
-            {...props}
-            className={`group-data-[collapsible=icon]:p-0 ${className || ''}`}
-        >
+        <SidebarGroup {...props} className={`group-data-[collapsible=icon]:p-0 ${className || ''}`}>
             <SidebarGroupContent>
                 <SidebarMenu>
                     {items.map((item) => (
@@ -35,12 +38,7 @@ export function NavFooter({
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    {item.icon && (
-                                        <Icon
-                                            iconNode={item.icon}
-                                            className="h-5 w-5"
-                                        />
-                                    )}
+                                    {item.icon && <Icon iconNode={item.icon} className="h-5 w-5" />}
                                     <span>{item.title}</span>
                                 </a>
                             </SidebarMenuButton>
