@@ -40,7 +40,7 @@ export function CircularMenu() {
         return null;
     }
     return (
-        <div className="fixed right-3 bottom-3 z-20 max-w-12 md:right-8 md:bottom-8 lg:right-12 lg:bottom-12">
+        <div className="fixed right-3 bottom-3 z-30 max-w-12 md:right-8 md:bottom-8 lg:right-12 lg:bottom-12">
             <div
                 className={cn(
                     'absolute -top-20 left-2 flex flex-col items-center space-y-2 transition-all',
