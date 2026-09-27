@@ -40,6 +40,7 @@ export interface SharedData {
     name: string;
     auth: Auth;
     sidebarOpen: boolean;
+    unsplashAuthScreenCollectionId: string | null;
     categories: Category[];
     tags: Tag[];
     [key: string]: unknown;

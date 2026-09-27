@@ -1,9 +1,9 @@
 import { edit } from '@/actions/App/Http/Controllers/TeamController';
+import PublicTitle from '@/components/public-title';
 import PublicLayout from '@/layouts/public-layout';
 import { type Team } from '@/types';
 import { Link } from '@inertiajs/react';
 import { Users } from 'lucide-react';
-
 export default function TeamsIndex({
     canRegister = true,
     teams = [],
@@ -13,6 +13,7 @@ export default function TeamsIndex({
 }) {
     return (
         <PublicLayout title="Teams" canRegister={canRegister}>
+            <PublicTitle title="Teams" />
             <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {teams.map((team) => (
                     <li
