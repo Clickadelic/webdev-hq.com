@@ -64,6 +64,7 @@ class HandleInertiaRequests extends Middleware
                     : null,
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+            'unsplashAuthScreenCollectionId' => config('services.unsplash.auth_screen_collection_id'),
             'categories' => Category::orderBy('name')->get(['id', 'name', 'slug']),
             'tags' => Tag::orderBy('name')->get(['id', 'name', 'slug']),
         ];

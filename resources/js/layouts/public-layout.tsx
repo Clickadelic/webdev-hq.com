@@ -35,13 +35,13 @@ export default function PublicLayout({
     return (
         <>
             <Head title={title} />
-            <div className="flex min-h-svh flex-col items-center justify-start">
-                <AmbientBlobs className="top-0" />
+            <div className="relative flex min-h-svh flex-col items-center justify-start">
+                <AmbientBlobs className="absolute top-0 z-0 min-h-dvh w-full overflow-clip" />
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
                 <main
                     className={cn(
-                        'container mx-auto flex grow flex-col items-start justify-start',
+                        'relative z-20 container mx-auto flex grow flex-col items-start justify-start',
                         className,
                     )}
                 >
