@@ -36,7 +36,7 @@ export default function PublicLayout({
         <>
             <Head title={title} />
             <div className="flex min-h-svh flex-col items-center justify-start">
-                <AmbientBlobs />
+                <AmbientBlobs className="top-0" />
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
                 <main
