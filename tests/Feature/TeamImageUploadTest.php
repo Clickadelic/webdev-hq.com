@@ -9,7 +9,8 @@ test('a user can upload a profile image', function () {
     Storage::fake('public');
     $user = User::factory()->create();
 
-    $this->actingAs($user)
+    $this->withoutMiddleware(\Illuminate\Foundation\Http\Middleware\PreventRequestForgery::class)
+        ->actingAs($user)
         ->patch(route('profile.update'), [
             'name' => $user->name,
             'email' => $user->email,
@@ -25,6 +26,8 @@ test('a user can upload a profile image', function () {
 
 test('only a team owner can upload a team image', function () {
     Storage::fake('public');
+    $this->withoutMiddleware(\Illuminate\Foundation\Http\Middleware\PreventRequestForgery::class);
+
     $owner = User::factory()->create();
     $otherUser = User::factory()->create();
     $team = Team::query()->create([

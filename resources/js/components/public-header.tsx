@@ -14,7 +14,6 @@ import {
     LayoutDashboard,
     Link as LinkIcon,
     Pen as PenIcon,
-    Users,
 } from 'lucide-react';
 
 interface PublicHeaderProps {
@@ -58,12 +57,6 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                             <Link href="/hyperlinks" className="flex h-auto items-center gap-2">
                                 <LinkIcon className="size-4" />
                                 Hyperlinks
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/teams" className="flex h-auto items-center gap-2">
-                                <Users className="size-4" />
-                                Teams
                             </Link>
                         </li>
                         <li>

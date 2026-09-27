@@ -26,7 +26,8 @@ class UpdateTeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['required', 'image', 'max:2048'],
+            'name' => ['sometimes', 'required', 'string', 'max:255'],
+            'image' => ['sometimes', 'nullable', 'image', 'max:2048'],
         ];
     }
 }
