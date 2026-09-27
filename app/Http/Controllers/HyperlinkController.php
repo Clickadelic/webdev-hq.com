@@ -150,7 +150,7 @@ class HyperlinkController extends Controller
             return null;
         }
 
-        if (is_numeric($value)) {
+        if (Str::isUuid($value) || is_numeric($value)) {
             return (string) $value;
         }
 

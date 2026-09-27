@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Hyperlink;
 use App\Models\Team;
 use App\Models\User;
@@ -127,6 +128,33 @@ test('dashboard hyperlinks are assigned to the authenticated user team', functio
 
     expect(Hyperlink::query()->where('title', 'Team Hyperlink')->value('team_id'))
         ->toBe($team->id);
+});
+
+test('dashboard hyperlink creation uses an existing category uuid instead of creating a category named with the uuid', function () {
+    $this->withoutMiddleware();
+
+    $user = User::factory()->create();
+    $category = Category::query()->create([
+        'name' => 'Development',
+        'slug' => 'development',
+    ]);
+
+    $this
+        ->actingAs($user)
+        ->post(route('hyperlinks.store'), [
+            'title' => 'Category UUID Hyperlink',
+            'url' => 'https://example.com/category-uuid',
+            'description' => 'A hyperlink using an existing category.',
+            'category' => $category->id,
+            'status' => 'published',
+            'tags' => [],
+        ])
+        ->assertRedirect();
+
+    $hyperlink = Hyperlink::query()->where('title', 'Category UUID Hyperlink')->firstOrFail();
+
+    expect($hyperlink->category_id)->toBe($category->id)
+        ->and(Category::query()->count())->toBe(1);
 });
 
 test('authenticated users can update their hyperlinks from the dashboard', function () {
