@@ -14,12 +14,7 @@ interface AmbientBlobsProps {
  */
 export default function AmbientBlobs({ isAnimated = false, className }: AmbientBlobsProps) {
     return (
-        <div
-            className={cn(
-                'pointer-events-none absolute inset-0 z-0 size-full overflow-clip',
-                className,
-            )}
-        >
+        <div className={cn('pointer-events-none', className)}>
             <div
                 className={cn(
                     'absolute -top-40 -left-40 size-128 rounded-full bg-cyan-500/35 blur-[120px]',

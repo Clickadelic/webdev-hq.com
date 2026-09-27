@@ -17,8 +17,30 @@ export default function BackgroundImage({
 }: PropsWithChildren<BackgroundImageProps>) {
     // Use API JSON mode and preload the image to avoid first-paint flicker.
     const today = new Date().toISOString().slice(0, 10);
-    const jsonUrl = `/api/${import.meta.env.VITE_API_VERSION}/unsplash/image/general${collectionId ? `?collectionId=${collectionId}` : ''}&strategy=daily&variant=full&fit=crop&w=1920&h=1080&response=json&d=${encodeURIComponent(today)}`;
-    const redirectUrl = `/api/${import.meta.env.VITE_API_VERSION}/unsplash/image/general${collectionId ? `?collectionId=${collectionId}` : ''}&strategy=daily&variant=full&fit=crop&w=1920&h=1080&d=${encodeURIComponent(today)}`;
+    const endpoint = `/api/${import.meta.env.VITE_API_VERSION}/unsplash/image/general`;
+    const jsonParams = new URLSearchParams({
+        strategy: 'daily',
+        variant: 'full',
+        fit: 'crop',
+        w: '1920',
+        h: '1080',
+        response: 'json',
+        d: today,
+    });
+    const redirectParams = new URLSearchParams({
+        strategy: 'daily',
+        variant: 'full',
+        fit: 'crop',
+        w: '1920',
+        h: '1080',
+        d: today,
+    });
+    if (collectionId?.trim()) {
+        jsonParams.set('collection_id', collectionId.trim());
+        redirectParams.set('collection_id', collectionId.trim());
+    }
+    const jsonUrl = `${endpoint}?${jsonParams.toString()}`;
+    const redirectUrl = `${endpoint}?${redirectParams.toString()}`;
     const [bgUrl, setBgUrl] = useState<string | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [attribution, setAttribution] = useState<{

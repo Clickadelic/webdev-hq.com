@@ -1,5 +1,7 @@
 import AppLogo from '@/components/app-logo';
 import BackgroundImage from '@/components/background-image';
+import { type SharedData } from '@/types';
+import { usePage } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
 interface AuthLayoutProps {
     name?: string;
@@ -20,9 +22,10 @@ export default function AuthSimpleLayout({
     title,
     description,
 }: PropsWithChildren<AuthLayoutProps>) {
-    console.log(import.meta.env.VITE_UNSPLASH_AUTH_SCREEN_COLLECTION);
+    const { unsplashAuthScreenCollectionId } = usePage<SharedData>().props;
+
     return (
-        <BackgroundImage collectionId={`${import.meta.env.VITE_UNSPLASH_AUTH_SCREEN_COLLECTION}`}>
+        <BackgroundImage collectionId={unsplashAuthScreenCollectionId ?? undefined}>
             <div className="dark:bg-neutral w-84 rounded-xl bg-white/30 p-2 shadow-lg md:w-96">
                 <div className="flex flex-col gap-8 rounded-md bg-white p-8 dark:bg-neutral-900">
                     <div className="flex flex-col items-center gap-4">

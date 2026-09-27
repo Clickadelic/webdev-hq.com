@@ -102,6 +102,22 @@ describe('Unsplash Image Service API Endpoints', function () {
 	});
 
 	describe('GET /api/unsplash/image/general', function () {
+		it('accepts a single collection id override', function () {
+			/** @var TestCase $this */
+			$unsplashImageService = Mockery::mock(UnsplashImageService::class);
+			$unsplashImageService
+				->shouldReceive('getRandomPhotoFromCollections')
+				->once()
+				->with(['collection-123'], [], 'unsplash:general:'.md5('collection-123'), 86400)
+				->andReturn([]);
+
+			$this->app->instance(UnsplashImageService::class, $unsplashImageService);
+
+			$this->getJson('/api/v1/unsplash/image/general?collection_id=collection-123')
+				->assertOk()
+				->assertJsonPath('meta.collection_ids', ['collection-123']);
+		});
+
 		it('returns a random image from all configured collections', function () {
 			/** @var TestCase $this */
 			$response = $this->getJson('/api/v1/unsplash/image/general');

@@ -5,9 +5,13 @@ use Illuminate\Support\Facades\RateLimiter;
 use Laravel\Fortify\Features;
 
 test('login screen can be rendered', function () {
+    config(['services.unsplash.auth_screen_collection_id' => 'auth-screen-collection']);
+
     $response = $this->get(route('login'));
 
-    $response->assertStatus(200);
+    $response
+        ->assertStatus(200)
+        ->assertInertia(fn ($page) => $page->where('unsplashAuthScreenCollectionId', 'auth-screen-collection'));
 });
 
 test('users can authenticate using the login screen', function () {
