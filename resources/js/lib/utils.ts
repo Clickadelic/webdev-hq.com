@@ -41,3 +41,12 @@ export const dailySalutation = () => {
         return 'good_evening';
     }
 };
+
+export function formatIsoDate(isoString: string | Date) {
+    const date = new Date(isoString);
+    return date.toLocaleDateString('en-US', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+    });
+}

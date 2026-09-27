@@ -1,5 +1,5 @@
-import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
 import ContextMenu from '@/components/context-menu';
+import HyperlinkStatusBadge from '@/components/hyperlinks/hyperlink-statusbadge';
 import { Button } from '@/components/ui/button';
 import {
     Popover,
@@ -18,20 +18,17 @@ import {
     TableRow,
 } from '@/components/ui/table';
 import TablePagination from '@/components/ui/table-pagination';
+import { formatIsoDate } from '@/lib/utils';
 import { type Hyperlink, type Paginator } from '@/types';
 import { Link, router, usePage } from '@inertiajs/react';
 import { Info } from 'lucide-react';
 import { toast } from 'sonner';
-
-import HyperlinkStatusBadge from '@/components/hyperlinks/hyperlink-statusbadge';
-
 interface HyperlinkTableProps {
     onEdit: (hyperlink: Hyperlink) => void;
 }
 
 export default function HyperlinkTable({ onEdit }: HyperlinkTableProps) {
-    const { hyperlinks } = usePage<{ hyperlinks: Paginator<Hyperlink> }>()
-        .props;
+    const { hyperlinks } = usePage<{ hyperlinks: Paginator<Hyperlink> }>().props;
     const items = hyperlinks?.data ?? [];
 
     function handleDelete(id: number) {
@@ -70,25 +67,16 @@ export default function HyperlinkTable({ onEdit }: HyperlinkTableProps) {
                                                 <Info className="size-4" />
                                             </Button>
                                         </PopoverTrigger>
-                                        <PopoverContent
-                                            align="start"
-                                            side="right"
-                                        >
+                                        <PopoverContent align="start" side="right">
                                             <PopoverHeader>
-                                                <PopoverTitle>
-                                                    Link-Id
-                                                </PopoverTitle>
-                                                <PopoverDescription>
-                                                    {link.id}
-                                                </PopoverDescription>
+                                                <PopoverTitle>Link-Id</PopoverTitle>
+                                                <PopoverDescription>{link.id}</PopoverDescription>
                                             </PopoverHeader>
                                         </PopoverContent>
                                     </Popover>
                                 </TableCell>
                                 <TableCell>
-                                    <HyperlinkStatusBadge
-                                        status={link.status}
-                                    />
+                                    <HyperlinkStatusBadge status={link.status} />
                                 </TableCell>
                                 <TableCell>
                                     <img
@@ -112,8 +100,40 @@ export default function HyperlinkTable({ onEdit }: HyperlinkTableProps) {
                                 <TableCell className="max-w-56 truncate">
                                     {link.description}
                                 </TableCell>
-                                <TableCell>{link.created_at}</TableCell>
-                                <TableCell>{link.updated_at}</TableCell>
+                                <TableCell>
+                                    <Popover>
+                                        <PopoverTrigger asChild>
+                                            <Button variant="ghost">
+                                                <Info className="size-4" />
+                                            </Button>
+                                        </PopoverTrigger>
+                                        <PopoverContent align="start" side="right">
+                                            <PopoverHeader>
+                                                <PopoverTitle>Created at</PopoverTitle>
+                                                <PopoverDescription>
+                                                    {formatIsoDate(link.created_at)}
+                                                </PopoverDescription>
+                                            </PopoverHeader>
+                                        </PopoverContent>
+                                    </Popover>
+                                </TableCell>
+                                <TableCell>
+                                    <Popover>
+                                        <PopoverTrigger asChild>
+                                            <Button variant="ghost">
+                                                <Info className="size-4" />
+                                            </Button>
+                                        </PopoverTrigger>
+                                        <PopoverContent align="start" side="right">
+                                            <PopoverHeader>
+                                                <PopoverTitle>Updated at</PopoverTitle>
+                                                <PopoverDescription>
+                                                    {formatIsoDate(link.updated_at)}
+                                                </PopoverDescription>
+                                            </PopoverHeader>
+                                        </PopoverContent>
+                                    </Popover>
+                                </TableCell>
                                 <TableCell>{link.team_id}</TableCell>
                                 <TableCell>
                                     <ContextMenu
@@ -127,10 +147,7 @@ export default function HyperlinkTable({ onEdit }: HyperlinkTableProps) {
                         ))
                     ) : (
                         <TableRow>
-                            <TableCell
-                                colSpan={8}
-                                className="text-center text-muted-foreground"
-                            >
+                            <TableCell colSpan={8} className="text-center text-muted-foreground">
                                 No hyperlinks yet.
                             </TableCell>
                         </TableRow>
