@@ -10,7 +10,7 @@ export const LangSwitch = () => {
 					<PiTranslate className="size-5" />
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end" className="md:w-[440px] mt-1 bg-white min-h-[300px] md:flex justify-around shadow-sm border p-8 gap-8">
+			<DropdownMenuContent align="end" className="md:w-110 mt-1 bg-white min-h-[300px] md:flex justify-around shadow-sm border p-8 gap-8">
 				<div>
 					<h3 className="text-md font-bold mb-3">Empty Column</h3>
 					<ul className="list-disc ml-5">
