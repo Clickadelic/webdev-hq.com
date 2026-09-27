@@ -63,7 +63,16 @@ export interface Team {
     name: string;
     slug: string;
     image_url: string | null;
-    can_edit?: boolean;
+    can_manage?: boolean;
+    members_count?: number;
+    members?: TeamMember[];
+}
+
+export interface TeamMember {
+    id: string;
+    name: string;
+    email: string;
+    is_owner: boolean;
 }
 
 export interface App {

@@ -45,6 +45,11 @@ const mainNavGroups: NavGroup[] = [
                 icon: Folder,
                 items: [
                     {
+                        title: 'Posts',
+                        href: postsIndex.url(),
+                        icon: Pencil,
+                    },
+                    {
                         title: 'Hyperlinks',
                         href: '/dashboard/hyperlinks',
                         icon: Link,
@@ -82,11 +87,6 @@ const mainNavGroups: NavGroup[] = [
             //         },
             //     ],
             // },
-            {
-                title: 'Posts',
-                href: postsIndex.url(),
-                icon: Pencil,
-            },
         ],
     },
 ];
@@ -94,7 +94,7 @@ const mainNavGroups: NavGroup[] = [
 const footerNavItems: NavItem[] = [
     {
         title: 'API Platform',
-        href: 'https://api.webdev-hq.com',
+        href: 'https://webdev-hq.com',
         icon: GalleryHorizontal,
     },
     {
