@@ -8,20 +8,16 @@ interface HyperlinkCardProps {
     onDelete?: (id: number) => void;
 }
 
-export default function HyperlinkCard({
-    hyperlink,
-    onEdit,
-    onDelete,
-}: HyperlinkCardProps) {
+export default function HyperlinkCard({ hyperlink, onEdit, onDelete }: HyperlinkCardProps) {
     return (
         <a
             key={hyperlink.id}
             href={hyperlink.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex w-full flex-col gap-2 rounded-xl border border-border bg-white p-3 shadow-sm transition-all hover:border-primary/50 hover:shadow-md dark:bg-neutral-900"
+            className="group flex w-full flex-col gap-0 rounded-xl bg-white/30 p-1 shadow-sm backdrop-blur transition-all hover:border-primary/50 hover:shadow-md dark:bg-neutral-900/30"
         >
-            <div className="flex items-start justify-between gap-2">
+            <div className="flex items-start justify-between gap-2 rounded-t-md bg-white px-2 pt-2 dark:bg-neutral-900">
                 <div className="flex flex-1 items-center gap-2">
                     <div className="favicon flex items-center gap-2">
                         <img
@@ -37,20 +33,16 @@ export default function HyperlinkCard({
                         <ExternalLink className="mt-0.5 size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                     </div>
                 </div>
-                <ContextMenu
-                    item={hyperlink}
-                    onEdit={onEdit}
-                    onDelete={onDelete}
-                />
+                <ContextMenu item={hyperlink} onEdit={onEdit} onDelete={onDelete} />
             </div>
 
             {hyperlink.description && (
-                <p className="line-clamp-2 h-10 text-sm text-muted-foreground">
+                <p className="line-clamp-2 h-14 bg-white p-2 text-sm text-muted-foreground dark:bg-neutral-900">
                     {hyperlink.description}
                 </p>
             )}
             {hyperlink.category && (
-                <div className="flex items-start justify-between gap-2">
+                <div className="flex items-start justify-between gap-2 bg-white p-2 dark:bg-neutral-900">
                     <span className="w-fit rounded-md border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-bold">
                         {hyperlink.category.name}
                     </span>
@@ -58,7 +50,7 @@ export default function HyperlinkCard({
             )}
 
             {hyperlink.tags && hyperlink.tags.length > 0 && (
-                <div className="flex items-start justify-start gap-2">
+                <div className="flex items-start justify-start gap-2 bg-white px-2 dark:bg-neutral-900">
                     {hyperlink.tags.map((tag) => (
                         <span
                             key={tag.id}
@@ -70,7 +62,7 @@ export default function HyperlinkCard({
                 </div>
             )}
 
-            <div className="mt-auto flex items-start justify-between gap-2">
+            <div className="mt-auto flex items-start justify-between gap-2 rounded-b-md bg-white p-2 dark:bg-neutral-900">
                 <p className="truncate text-sm font-bold text-primary">
                     {hyperlink.url.replace(/^https?:\/\//, '')}
                 </p>

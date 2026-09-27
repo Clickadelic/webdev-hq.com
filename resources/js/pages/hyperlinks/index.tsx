@@ -1,4 +1,3 @@
-import PublicTitle from '@/components/public-title';
 import PublicLayout from '@/layouts/public-layout';
 
 // imports
@@ -86,7 +85,6 @@ export default function Home({
     };
     return (
         <PublicLayout canRegister={canRegister} title="Welcome">
-            <PublicTitle title="Hyperlinks" />
             {/* Search */}
             <div className="mx-auto mt-8 w-full max-w-lg">
                 <div className="rounded-xl bg-white/30 p-1 shadow backdrop-blur dark:bg-white/5">
