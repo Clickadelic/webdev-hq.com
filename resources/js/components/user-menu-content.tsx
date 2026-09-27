@@ -1,3 +1,4 @@
+import TeamController from '@/actions/App/Http/Controllers/TeamController';
 import {
     DropdownMenuGroup,
     DropdownMenuItem,
@@ -10,7 +11,7 @@ import { logout } from '@/routes';
 import { edit } from '@/routes/profile';
 import { type User } from '@/types';
 import { Link, router } from '@inertiajs/react';
-import { LogOut, Settings } from 'lucide-react';
+import { LogOut, Settings, Users } from 'lucide-react';
 
 interface UserMenuContentProps {
     user: User;
@@ -43,6 +44,18 @@ export function UserMenuContent({ user }: UserMenuContentProps) {
                     >
                         <Settings className="mr-2" />
                         Settings
+                    </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                    <Link
+                        className="block w-full"
+                        href={TeamController.index.url()}
+                        as="button"
+                        prefetch
+                        onClick={cleanup}
+                    >
+                        <Users className="mr-2" />
+                        My teams
                     </Link>
                 </DropdownMenuItem>
             </DropdownMenuGroup>

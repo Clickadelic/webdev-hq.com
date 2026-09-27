@@ -22,19 +22,24 @@ Route::get('/posts', [PostController::class, 'showPosts'])->name('public.posts.i
 Route::get('/hyperlinks', [HyperlinkController::class, 'publicIndex'])->name('hyperlinks.index');
 Route::get('/chrome-extension', [PageController::class, 'chromeExtension'])->name('chrome-extension.index');
 Route::get('/contact', [ContactpageController::class, 'index'])->name('contact.index');
-Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
 
 // Protected Routes
 Route::middleware(['auth', 'verified'])->group(function () {
+    // Teams
+    Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
+    Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
+    Route::delete('/settings/teams/{team}', [TeamController::class, 'destroy'])->name('teams.destroy');
+    Route::post('/settings/teams/{team}/members', [TeamController::class, 'addMember'])->name('teams.members.store');
+    Route::delete('/settings/teams/{team}/members/{member}', [TeamController::class, 'removeMember'])->name('teams.members.destroy');
+    Route::get('/settings/teams/{team}/edit', [TeamController::class, 'edit'])->name('teams.edit');
+    Route::patch('/settings/teams/{team}', [TeamController::class, 'update'])->name('teams.update');
+
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Apps
     Route::resource('/apps', AppController::class);
     Route::patch('/apps/reorder', [AppController::class, 'reorder'])->name('apps.reorder');
-    // Teams
-    Route::get('/settings/teams/{team}/edit', [TeamController::class, 'edit'])->name('teams.edit');
-    Route::patch('/settings/teams/{team}', [TeamController::class, 'update'])->name('teams.update');
     // Posts
     Route::resource('/dashboard/posts', PostController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     // Hyperlinks
@@ -59,5 +64,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // 	return $mail->render();
 // });
 
-require __DIR__.'/settings.php';
-require __DIR__.'/legal-pages.php';
+require __DIR__ . '/settings.php';
+require __DIR__ . '/legal-pages.php';
