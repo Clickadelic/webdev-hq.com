@@ -16,6 +16,7 @@ export interface Paginator<T> {
 
 export interface Auth {
     user: User;
+    isAdmin: boolean;
 }
 
 export interface BreadcrumbItem {
@@ -73,6 +74,27 @@ export interface TeamMember {
     name: string;
     email: string;
     is_owner: boolean;
+}
+
+export interface AdminUser {
+    id: string;
+    name: string;
+    email: string;
+    email_verified_at: string | null;
+    teams_count: number;
+    is_platform_admin: boolean;
+}
+
+export interface AdminTeam {
+    id: number;
+    name: string;
+    slug: string;
+    owner: {
+        id: string;
+        name: string;
+        email: string;
+    };
+    members_count: number;
 }
 
 export interface App {
