@@ -20,7 +20,7 @@ class StoreHyperlinkRequest extends FormRequest
             'url' => ['required', 'url', 'max:255'],
             'favicon_url' => ['nullable', 'url', 'max:2048'],
             'description' => ['nullable', 'string'],
-            'category' => ['nullable', 'string', 'max:255'], // Can be numeric ID or category name
+            'category' => ['nullable', 'string', 'max:255'],
             'status' => ['required', Rule::enum(Status::class)],
             'tags' => ['nullable', 'array'],
             'tags.*' => ['required', 'string', 'max:255'],

@@ -1,4 +1,3 @@
-import AmbientBlobs from '@/components/ambient-blobs';
 import CircularMenu from '@/components/circular-menu';
 import PublicBreadcrumbs from '@/components/public-breadcrumbs';
 import PublicFooter from '@/components/public-footer';
@@ -36,7 +35,7 @@ export default function PublicLayout({
         <>
             <Head title={title} />
             <div className="relative flex min-h-svh flex-col items-center justify-start">
-                <AmbientBlobs className="absolute top-0 z-0 min-h-dvh w-full overflow-clip" />
+                {/* <AmbientBlobs className="absolute top-0 z-0 min-h-dvh w-full overflow-clip" /> */}
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
                 <main
