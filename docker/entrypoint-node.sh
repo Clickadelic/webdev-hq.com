@@ -13,4 +13,8 @@ if ! grep -q '^APP_KEY=base64:' .env; then
     php artisan key:generate --no-interaction
 fi
 
+echo "==> Installing full Composer dependencies (including dev)..."
+composer install --no-interaction --prefer-dist \
+    --ignore-platform-req=ext-simplexml --ignore-platform-req=ext-xmlwriter
+
 exec "$@"
