@@ -4,9 +4,9 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { UserInfo } from '@/components/user-info';
 import { UserMenuContent } from '@/components/user-menu-content';
 import { type User } from '@/types';
-import { CircleUser } from 'lucide-react';
 interface UserDropdownMenuProps {
     user: User;
 }
@@ -16,7 +16,7 @@ export default function UserDropdownMenu({ user }: UserDropdownMenuProps) {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="outline" className="hover:cursor-pointer">
-                    <CircleUser /> {user.name}
+                    <UserInfo user={user} />
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">

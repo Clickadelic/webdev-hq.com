@@ -2,19 +2,26 @@ import { InertiaLinkProps } from '@inertiajs/react';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+type ResolvableUrl = NonNullable<InertiaLinkProps['href']> | URL;
+
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-export function isSameUrl(
-    url1: NonNullable<InertiaLinkProps['href']>,
-    url2: NonNullable<InertiaLinkProps['href']>,
-) {
+export function isSameUrl(url1: ResolvableUrl, url2: ResolvableUrl) {
     return resolveUrl(url1) === resolveUrl(url2);
 }
 
-export function resolveUrl(url: NonNullable<InertiaLinkProps['href']>): string {
-    return typeof url === 'string' ? url : url.url;
+export function resolveUrl(url: ResolvableUrl): string {
+    if (typeof url === 'string') {
+        return url;
+    }
+
+    if ('url' in url && typeof url.url === 'string') {
+        return url.url;
+    }
+
+    return String(url);
 }
 
 export function getFaviconUrl(websiteUrl: string, size = 32): string {
