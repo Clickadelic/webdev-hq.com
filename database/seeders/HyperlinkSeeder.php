@@ -171,7 +171,7 @@ class HyperlinkSeeder extends Seeder
 			['url' => 'https://web-platform-dx.github.io/web-features-explorer/'],
 			[
 				'title' => 'Web Features Explorer',
-				'favicon_url' => 'https://web-platform-dx.github.io/web-features-explorer/assets/img/webdx-notext.svg',
+				'favicon_url' => 'https://web-platform-dx.github.io/assets/img/webdx-notext.svg',
 				'description' => 'Explore the capabilities of modern web platforms and APIs.',
 				'category_id' => $category->id,
 				'status' => Status::Published,
@@ -187,7 +187,7 @@ class HyperlinkSeeder extends Seeder
 			['url' => 'https://zend.com/'],
 			[
 				'title' => 'Zend Framework',
-				'favicon_url' => 'https://zend.com/favicon.ico',
+				'favicon_url' => 'https://zend.com/themes/custom/p4base/assets/favicons/znd/favicon.ico',
 				'description' => 'Mission-Critical PHP Made Possible.',
 				'category_id' => $category->id,
 				'status' => Status::Published,

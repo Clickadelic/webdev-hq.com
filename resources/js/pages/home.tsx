@@ -1,7 +1,6 @@
-import GlassCard from '@/components/glass-card';
 import LogoImageSrc from '@/images/icons/icon-128.png';
 import PublicLayout from '@/layouts/public-layout';
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 
 interface PageProps {
     canRegister?: boolean;
@@ -33,27 +32,20 @@ export default function Home({ canRegister = true }: LayoutProps) {
                 <h2 className="relative mb-4 max-w-120 text-center text-3xl">
                     Your Go-To Destination for Web Developers and alike.
                 </h2>
-                <p className="font-light text-muted-foreground">
+                <p className="mb-12 font-light text-muted-foreground">
                     Currently tracking{' '}
                     <span className="font-bold text-neutral-950 dark:text-white">
                         {hyperlinkCount}
                     </span>{' '}
                     resources.
                 </p>
-            </div>
-            <div className="my-12 grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <GlassCard title="Find Quality Resources">
-                    Explore hundreds of resources for every need you might have.
-                </GlassCard>
-                <GlassCard title="Get the news">
-                    Stay updated with the latest news and trends in web development.
-                </GlassCard>
-                <GlassCard title="Community">
-                    Connect with other web developers, share knowledge, and collaborate on projects.
-                </GlassCard>
-                <GlassCard title="Build a Team">
-                    Manage members, assign roles, and collaborate effectively within your team.
-                </GlassCard>
+                <Link
+                    href="/hyperlinks"
+                    className="rounded-md bg-primary px-4 py-2 text-white hover:bg-primary/80"
+                    title="Explore Hyperlinks"
+                >
+                    Explore Hyperlinks
+                </Link>
             </div>
         </PublicLayout>
     );
