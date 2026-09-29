@@ -1,10 +1,6 @@
 'use client';
 
-import {
-    create,
-    edit,
-    index,
-} from '@/actions/App/Http/Controllers/PostController';
+import { create, edit, index } from '@/actions/App/Http/Controllers/PostController';
 import { Button } from '@/components/ui/button';
 import {
     Table,
@@ -15,7 +11,7 @@ import {
     TableRow,
 } from '@/components/ui/table';
 import TablePagination from '@/components/ui/table-pagination';
-import AppLayout from '@/layouts/app-layout';
+import AppLayout from '@/layouts/dashboard-layout';
 import { type BreadcrumbItem, type Paginator, type Post } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import { Pencil, Plus } from 'lucide-react';
@@ -62,28 +58,16 @@ export default function DashboardPostsIndex() {
                         {posts.data.length > 0 ? (
                             posts.data.map((post) => (
                                 <TableRow key={post.id}>
-                                    <TableCell className="font-medium">
-                                        {post.title}
-                                    </TableCell>
-                                    <TableCell>
-                                        {post.category?.name ?? '-'}
-                                    </TableCell>
-                                    <TableCell className="capitalize">
-                                        {post.status}
-                                    </TableCell>
+                                    <TableCell className="font-medium">{post.title}</TableCell>
+                                    <TableCell>{post.category?.name ?? '-'}</TableCell>
+                                    <TableCell className="capitalize">{post.status}</TableCell>
                                     <TableCell>
                                         {post.published_at
-                                            ? new Date(
-                                                  post.published_at,
-                                              ).toLocaleDateString()
+                                            ? new Date(post.published_at).toLocaleDateString()
                                             : '-'}
                                     </TableCell>
                                     <TableCell>
-                                        <Button
-                                            asChild
-                                            variant="outline"
-                                            size="sm"
-                                        >
+                                        <Button asChild variant="outline" size="sm">
                                             <Link href={edit.url(post.id)}>
                                                 <Pencil className="size-3.5" />
                                                 Edit

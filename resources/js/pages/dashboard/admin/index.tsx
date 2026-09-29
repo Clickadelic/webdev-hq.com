@@ -1,4 +1,4 @@
-import AppLayout from '@/layouts/app-layout';
+import AppLayout from '@/layouts/dashboard-layout';
 
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';

@@ -1,9 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\AppController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\HyperlinkController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\TagController;
 use Illuminate\Support\Facades\Route;
 
 // Alle Routen unter dem Präfix v1 zusammengefasst
@@ -30,6 +32,9 @@ Route::prefix('v1')->group(function () {
 	});
 
 	Route::middleware('auth:sanctum')->as('api.')->group(function () {
+		Route::apiResource('apps', AppController::class);
+		Route::apiResource('categories', CategoryController::class);
+		Route::apiResource('tags', TagController::class);
 		Route::apiResource('hyperlinks', HyperlinkController::class);
 	});
 });
