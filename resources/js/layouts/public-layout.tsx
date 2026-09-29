@@ -1,4 +1,5 @@
 import CircularMenu from '@/components/circular-menu';
+import CookieNotice from '@/components/cookie-notice';
 import PublicBreadcrumbs from '@/components/public-breadcrumbs';
 import PublicFooter from '@/components/public-footer';
 import PublicHeader from '@/components/public-header';
@@ -48,6 +49,7 @@ export default function PublicLayout({
                 </main>
                 <Toaster />
                 <CircularMenu />
+                <CookieNotice />
                 <PublicFooter />
             </div>
         </>

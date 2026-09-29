@@ -51,7 +51,7 @@ export const SortableAppTile = ({
             ref={setNodeRef}
             style={style}
             key={app.id}
-            className="relative z-10 size-17.5 rounded border bg-white pt-1 transition-colors duration-150 ease-in-out hover:cursor-pointer dark:bg-neutral-800"
+            className="relative z-10 size-17.5 rounded border bg-white/30 pt-1 backdrop-blur transition-colors duration-150 ease-in-out hover:cursor-pointer dark:bg-neutral-800/30"
         >
             <div
                 className={
@@ -64,7 +64,7 @@ export const SortableAppTile = ({
             <a
                 href={app.url}
                 target="_self"
-                className="flex flex-col items-center justify-between gap-2 p-2"
+                className="flex flex-col items-center justify-between gap-1 px-2 pt-2.5 pb-2"
                 rel="noopener noreferrer"
             >
                 <img src={app.icon} alt={app.title} className="size-6 rounded-xs" />

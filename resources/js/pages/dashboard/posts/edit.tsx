@@ -2,13 +2,8 @@
 
 import { edit, index } from '@/actions/App/Http/Controllers/PostController';
 import PostForm from '@/components/forms/post-form';
-import AppLayout from '@/layouts/app-layout';
-import {
-    type BreadcrumbItem,
-    type Category,
-    type Post,
-    type Tag,
-} from '@/types';
+import AppLayout from '@/layouts/dashboard-layout';
+import { type BreadcrumbItem, type Category, type Post, type Tag } from '@/types';
 import { usePage } from '@inertiajs/react';
 
 export default function DashboardPostsEdit() {

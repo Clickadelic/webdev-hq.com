@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import AppLayout from '@/layouts/app-layout';
+import AppLayout from '@/layouts/dashboard-layout';
 import { type BreadcrumbItem, type Team, type TeamMember } from '@/types';
 import { Form, Head, Link, router } from '@inertiajs/react';
 import { ArrowLeft, Trash2, UserMinus, UserPlus } from 'lucide-react';

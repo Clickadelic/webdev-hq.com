@@ -1,5 +1,5 @@
 'use client';
-import AppLayout from '@/layouts/app-layout';
+import AppLayout from '@/layouts/dashboard-layout';
 
 import { index } from '@/actions/App/Http/Controllers/PostController';
 import PostForm from '@/components/forms/post-form';
