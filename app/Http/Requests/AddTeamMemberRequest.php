@@ -15,7 +15,7 @@ class AddTeamMemberRequest extends FormRequest
 	{
 		$team = $this->route('team');
 
-		return $team instanceof Team && $this->user()?->is($team->owner) === true;
+		return $team instanceof Team && $this->user()?->canManageTeam($team) === true;
 	}
 
 	/**

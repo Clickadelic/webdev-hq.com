@@ -78,11 +78,19 @@ services:
     ports:
       - '5173:5173'
     volumes:
+      - ./app:/app/app
+      - ./bootstrap:/app/bootstrap
+      - ./config:/app/config
+      - ./database:/app/database
       - ./resources:/app/resources
       - ./routes:/app/routes
       - ./public:/app/public
       - ./vite.config.ts:/app/vite.config.ts
       - ./tsconfig.json:/app/tsconfig.json
+      - ./composer.json:/app/composer.json
+      - ./composer.lock:/app/composer.lock
+      - ./.env:/app/.env
+      - node-vendor:/app/vendor
     environment:
       - DB_HOST=mysql
       - DB_USERNAME=root
@@ -120,6 +128,7 @@ services:
 
 volumes:
   mysql-data:
+  node-vendor:
 
 networks:
   webdevhq:

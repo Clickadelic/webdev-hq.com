@@ -11,7 +11,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from '@/components/ui/dialog';
-import AppLayout from '@/layouts/app-layout';
+import AppLayout from '@/layouts/dashboard-layout';
 import { App, type BreadcrumbItem, type Paginator } from '@/types';
 import { usePage } from '@inertiajs/react';
 import { Pencil } from 'lucide-react';
@@ -74,9 +74,7 @@ export default function Apps() {
                             </div>
                         ))
                     ) : (
-                        <p className="text-muted-foreground italic">
-                            No hyperlinks yet.
-                        </p>
+                        <p className="text-muted-foreground italic">No hyperlinks yet.</p>
                     )}
                 </div>
 
@@ -91,9 +89,7 @@ export default function Apps() {
                     <DialogContent className="max-h-[90vh] overflow-y-auto rounded">
                         <DialogHeader>
                             <DialogTitle>Edit App</DialogTitle>
-                            <DialogDescription>
-                                Update the hyperlink details.
-                            </DialogDescription>
+                            <DialogDescription>Update the hyperlink details.</DialogDescription>
                         </DialogHeader>
                         <AppForm app={editingApp} className="w-full" />
                     </DialogContent>

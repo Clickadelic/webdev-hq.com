@@ -1,9 +1,6 @@
 'use client';
 
-import {
-    destroy,
-    index,
-} from '@/actions/App/Http/Controllers/CategoryController';
+import { destroy, index } from '@/actions/App/Http/Controllers/CategoryController';
 import CategoryForm from '@/components/forms/category-form';
 import { Button } from '@/components/ui/button';
 import {
@@ -16,7 +13,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import AppLayout from '@/layouts/app-layout';
+import AppLayout from '@/layouts/dashboard-layout';
 import { Category, type BreadcrumbItem } from '@/types';
 import { router, usePage } from '@inertiajs/react';
 import { Pencil, Trash2 } from 'lucide-react';
@@ -31,13 +28,10 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Categories() {
-    const { categories } = usePage<{ categories: { data: Category[] } }>()
-        .props;
+    const { categories } = usePage<{ categories: { data: Category[] } }>().props;
     const items = categories.data;
 
-    const [editingCategory, setEditingCategory] = useState<
-        Category | undefined
-    >(undefined);
+    const [editingCategory, setEditingCategory] = useState<Category | undefined>(undefined);
     const [isEditOpen, setIsEditOpen] = useState(false);
 
     function handleDelete(id: number) {
@@ -80,9 +74,7 @@ export default function Categories() {
                                         {cat.hyperlinks_count !== undefined && (
                                             <span className="rounded-md border border-muted bg-muted px-2 py-1 text-[10px] font-bold text-muted-foreground">
                                                 {cat.hyperlinks_count} hyperlink
-                                                {cat.hyperlinks_count !== 1
-                                                    ? 's'
-                                                    : ''}
+                                                {cat.hyperlinks_count !== 1 ? 's' : ''}
                                             </span>
                                         )}
                                     </div>
@@ -103,41 +95,29 @@ export default function Categories() {
                                         {/* Delete Button */}
                                         <Dialog>
                                             <DialogTrigger asChild>
-                                                <Button
-                                                    variant="destructive"
-                                                    size="sm"
-                                                >
+                                                <Button variant="destructive" size="sm">
                                                     <Trash2 className="mr-1 size-3" />
                                                     Delete
                                                 </Button>
                                             </DialogTrigger>
                                             <DialogContent className="sm:max-w-106.25">
                                                 <DialogHeader>
-                                                    <DialogTitle>
-                                                        Delete Category
-                                                    </DialogTitle>
+                                                    <DialogTitle>Delete Category</DialogTitle>
                                                     <DialogDescription>
-                                                        Are you sure you want to
-                                                        delete &quot;{cat.name}
-                                                        &quot;? Hyperlinks in
-                                                        this category will
+                                                        Are you sure you want to delete &quot;
+                                                        {cat.name}
+                                                        &quot;? Hyperlinks in this category will
                                                         become uncategorized.
                                                     </DialogDescription>
                                                 </DialogHeader>
                                                 <DialogFooter>
                                                     <DialogClose asChild>
-                                                        <Button variant="outline">
-                                                            Cancel
-                                                        </Button>
+                                                        <Button variant="outline">Cancel</Button>
                                                     </DialogClose>
                                                     <DialogClose asChild>
                                                         <Button
                                                             variant="destructive"
-                                                            onClick={() =>
-                                                                handleDelete(
-                                                                    cat.id,
-                                                                )
-                                                            }
+                                                            onClick={() => handleDelete(cat.id)}
                                                         >
                                                             Delete
                                                         </Button>
@@ -150,8 +130,7 @@ export default function Categories() {
                             ))
                         ) : (
                             <p className="text-muted-foreground italic">
-                                No categories yet. Add your first category using
-                                the form above!
+                                No categories yet. Add your first category using the form above!
                             </p>
                         )}
                     </div>
@@ -168,9 +147,7 @@ export default function Categories() {
                     <DialogContent className="rounded">
                         <DialogHeader>
                             <DialogTitle>Edit Category</DialogTitle>
-                            <DialogDescription>
-                                Update the category details.
-                            </DialogDescription>
+                            <DialogDescription>Update the category details.</DialogDescription>
                         </DialogHeader>
                         <CategoryForm
                             category={editingCategory}

@@ -2,20 +2,19 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Team;
 use Illuminate\Contracts\Validation\ValidationRule;
+use App\Enums\Status;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class UpdateTeamRequest extends FormRequest
+class TagRequest extends FormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
 	 */
 	public function authorize(): bool
 	{
-		$team = $this->route('team');
-
-		return $team instanceof Team && $this->user()?->canManageTeam($team) === true;
+		return true;
 	}
 
 	/**
@@ -26,8 +25,10 @@ class UpdateTeamRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'name' => ['sometimes', 'required', 'string', 'max:255'],
-			'image' => ['sometimes', 'nullable', 'image', 'max:2048'],
+			'name' => ['required', 'string', 'max:255'],
+			'slug' => ['required', 'string', 'max:255'],
+			'description' => ['nullable', 'string'],
+			'status' => ['required', Rule::enum(Status::class)],
 		];
 	}
 }

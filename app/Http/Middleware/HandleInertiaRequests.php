@@ -10,63 +10,64 @@ use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
-    /**
-     * Determines whether Inertia should handle this request.
-     */
-    public function shouldProcess(Request $request): bool
-    {
-        // Skip Inertia for API routes
-        if ($request->is('api/*')) {
-            return false;
-        }
+	/**
+	 * Determines whether Inertia should handle this request.
+	 */
+	public function shouldProcess(Request $request): bool
+	{
+		// Skip Inertia for API routes
+		if ($request->is('api/*')) {
+			return false;
+		}
 
-        return parent::shouldProcess($request);
-    }
+		return parent::shouldProcess($request);
+	}
 
-    /**
-     * The root template that's loaded on the first page visit.
-     *
-     * @see https://inertiajs.com/server-side-setup#root-template
-     *
-     * @var string
-     */
-    protected $rootView = 'app';
+	/**
+	 * The root template that's loaded on the first page visit.
+	 *
+	 * @see https://inertiajs.com/server-side-setup#root-template
+	 *
+	 * @var string
+	 */
+	protected $rootView = 'app';
 
-    /**
-     * Determines the current asset version.
-     *
-     * @see https://inertiajs.com/asset-versioning
-     */
-    public function version(Request $request): ?string
-    {
-        return parent::version($request);
-    }
+	/**
+	 * Determines the current asset version.
+	 *
+	 * @see https://inertiajs.com/asset-versioning
+	 */
+	public function version(Request $request): ?string
+	{
+		return parent::version($request);
+	}
 
-    /**
-     * Define the props that are shared by default.
-     *
-     * @see https://inertiajs.com/shared-data
-     *
-     * @return array<string, mixed>
-     */
-    public function share(Request $request): array
-    {
-        return [
-            ...parent::share($request),
-            'auth' => [
-                'user' => $request->user()
-                    ? [
-                        ...$request->user()->only(['id', 'name', 'email', 'email_verified_at']),
-                        'avatar' => $request->user()->profile_image_path
-                            ? Storage::disk('public')->url($request->user()->profile_image_path)
-                            : null,
-                    ]
-                    : null,
-            ],
-            'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
-            'unsplashAuthScreenCollectionId' => config('services.unsplash.auth_screen_collection_id'),
-            'categories' => Category::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
-            'tags' => Tag::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
-        ];
-    }
+	/**
+	 * Define the props that are shared by default.
+	 *
+	 * @see https://inertiajs.com/shared-data
+	 *
+	 * @return array<string, mixed>
+	 */
+	public function share(Request $request): array
+	{
+		return [
+			...parent::share($request),
+			'auth' => [
+				'user' => $request->user()
+					? [
+						...$request->user()->only(['id', 'name', 'email', 'email_verified_at']),
+						'avatar' => $request->user()->profile_image_path
+							? Storage::disk('public')->url($request->user()->profile_image_path)
+							: null,
+					]
+					: null,
+				'isAdmin' => $request->user()?->isPlatformAdmin() ?? false,
+			],
+			'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+			'unsplashAuthScreenCollectionId' => config('services.unsplash.auth_screen_collection_id'),
+			'categories' => Category::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
+			'tags' => Tag::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
+		];
+	}
 }

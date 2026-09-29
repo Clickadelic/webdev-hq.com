@@ -1,7 +1,7 @@
 'use client';
 
 import { SortableAppTile } from '@/components/sortable-app-tile';
-import AppLayout from '@/layouts/app-layout';
+import AppLayout from '@/layouts/dashboard-layout';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core';
@@ -14,11 +14,7 @@ import {
     useSensor,
     useSensors,
 } from '@dnd-kit/core';
-import {
-    SortableContext,
-    arrayMove,
-    horizontalListSortingStrategy,
-} from '@dnd-kit/sortable';
+import { SortableContext, arrayMove, horizontalListSortingStrategy } from '@dnd-kit/sortable';
 
 import {
     Dialog,
@@ -90,27 +86,22 @@ export default function DashboardIndex() {
     // Debounced persistence
     const persistTimer = useRef<number | null>(null);
 
-    const debouncedPersist = useCallback(
-        (order: string[], revert: () => void) => {
-            if (persistTimer.current) window.clearTimeout(persistTimer.current);
-            persistTimer.current = window.setTimeout(() => {
-                router.patch(
-                    '/apps/reorder',
-                    { order },
-                    {
-                        preserveScroll: true,
-                        onError: () => {
-                            revert();
-                            toast.error(
-                                'Failed to save order. Changes were reverted.',
-                            );
-                        },
+    const debouncedPersist = useCallback((order: string[], revert: () => void) => {
+        if (persistTimer.current) window.clearTimeout(persistTimer.current);
+        persistTimer.current = window.setTimeout(() => {
+            router.patch(
+                '/apps/reorder',
+                { order },
+                {
+                    preserveScroll: true,
+                    onError: () => {
+                        revert();
+                        toast.error('Failed to save order. Changes were reverted.');
                     },
-                );
-            }, 400);
-        },
-        [],
-    );
+                },
+            );
+        }, 400);
+    }, []);
 
     const handleDragEnd = ({ active, over }: DragEndEvent) => {
         setActiveId(null);
@@ -177,15 +168,10 @@ export default function DashboardIndex() {
                         strategy={horizontalListSortingStrategy}
                     >
                         <div className="flex items-center gap-3 px-1 py-2">
-                            <Switch
-                                checked={dragEnabled}
-                                onCheckedChange={setDragEnabled}
-                            />
-                            <span className="text-sm text-muted-foreground">
-                                Enable reordering
-                            </span>
+                            <Switch checked={dragEnabled} onCheckedChange={setDragEnabled} />
+                            <span className="text-sm text-muted-foreground">Enable reordering</span>
                         </div>
-                        <ul className="flex w-full gap-2 rounded bg-white/30 p-1 backdrop-blur dark:bg-neutral-800/30">
+                        <ul className="flex w-full gap-2">
                             {items.map((app) => (
                                 <SortableAppTile
                                     key={app.id}
@@ -218,9 +204,7 @@ export default function DashboardIndex() {
                                         <DialogHeader>
                                             <DialogTitle className="flex items-start gap-2">
                                                 <BsApp />
-                                                {isEditing
-                                                    ? 'Edit App'
-                                                    : 'Add App'}
+                                                {isEditing ? 'Edit App' : 'Add App'}
                                             </DialogTitle>
                                             <DialogDescription>
                                                 {isEditing
@@ -254,14 +238,6 @@ export default function DashboardIndex() {
                         ) : null}
                     </DragOverlay>
                 </DndContext>
-                <div className="grid grid-cols-2 gap-2">
-                    <div className="flex flex-col gap-2">
-                        <h2 className="text-lg font-medium">Your Apps</h2>
-                        <p className="text-sm text-muted-foreground">
-                            You can add up to 5 apps to your dashboard.
-                        </p>
-                    </div>
-                </div>
             </div>
         </AppLayout>
     );
