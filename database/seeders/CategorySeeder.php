@@ -76,5 +76,25 @@ class CategorySeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
+
+		// DevOps
+		Category::updateOrCreate(
+			['slug' => 'devops'],
+			[
+				'name' => 'DevOps',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		// Tooling
+		Category::updateOrCreate(
+			['slug' => 'tooling'],
+			[
+				'name' => 'Tooling',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
 	}
 }

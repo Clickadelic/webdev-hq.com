@@ -22,6 +22,7 @@ class HyperlinkSeeder extends Seeder
 		$category = Category::query()->where('slug', 'web-development')->firstOrFail();
 		$javascriptTag = Tag::query()->where('slug', 'javascript')->firstOrFail();
 		$phpTag = Tag::query()->where('slug', 'php')->firstOrFail();
+		$toolingTag = Tag::query()->where('slug', 'tooling')->firstOrFail();
 
 		// W3C
 		$w3cHyperlink = Hyperlink::updateOrCreate(
@@ -117,6 +118,22 @@ class HyperlinkSeeder extends Seeder
 		);
 
 		$markoHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
+
+		// CodeIgniter
+		$codeIgniterHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://codeigniter.com/'],
+			[
+				'title' => 'CodeIgniter',
+				'favicon_url' => 'https://codeigniter.com/favicon.ico',
+				'description' => 'The small framework with powerful features.',
+				'category_id' => $category->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		$codeIgniterHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		// Tempest
 		$tempestHyperlink = Hyperlink::updateOrCreate(
