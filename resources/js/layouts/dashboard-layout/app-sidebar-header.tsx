@@ -2,7 +2,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { FullscreenButton } from '@/layouts/dashboard-layout/fullscreen-button';
 import { LangSwitch } from '@/layouts/dashboard-layout/lang-switch';
 import { NotificationButton } from '@/layouts/dashboard-layout/notification-button';
-import { SidebarSheet } from '@/components/sidebar-sheet';
+import { SidebarSheet } from '@/layouts/dashboard-layout/sidebar-sheet';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import UserDropdownMenu from '@/components/user-dropdown-menu';
 import { SharedData, type BreadcrumbItem as BreadcrumbItemType } from '@/types';

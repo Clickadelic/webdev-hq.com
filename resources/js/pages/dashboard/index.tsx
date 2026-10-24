@@ -1,6 +1,6 @@
 'use client';
 
-import { SortableAppTile } from '@/components/sortable-app-tile';
+import { SortableAppTile } from '@/layouts/dashboard-layout/sortable-app-tile';
 import AppLayout from '@/layouts/dashboard-layout';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 

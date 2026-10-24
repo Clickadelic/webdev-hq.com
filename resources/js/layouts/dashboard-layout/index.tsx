@@ -1,4 +1,4 @@
-import DashboardLayout from '@/layouts/app-layout/app-sidebar-layout';
+import DashboardLayout from '@/layouts/dashboard-layout/app-sidebar-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
 import { type ReactNode } from 'react';
