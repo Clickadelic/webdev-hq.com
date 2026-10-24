@@ -47,16 +47,6 @@ class CategorySeeder extends Seeder
 			],
 		);
 
-		// Web Development
-		Category::updateOrCreate(
-			['slug' => 'web-development'],
-			[
-				'name' => 'Web Development',
-				'created_by' => $user->id,
-				'team_id' => $team->id,
-			],
-		);
-
 		// Frontend
 		Category::updateOrCreate(
 			['slug' => 'frontend'],
@@ -69,9 +59,9 @@ class CategorySeeder extends Seeder
 
 		// Fullstack
 		Category::updateOrCreate(
-			['slug' => 'fullstack'],
+			['slug' => 'full-stack'],
 			[
-				'name' => 'Fullstack',
+				'name' => 'Full-Stack',
 				'created_by' => $user->id,
 				'team_id' => $team->id,
 			],
@@ -79,9 +69,19 @@ class CategorySeeder extends Seeder
 
 		// DevOps
 		Category::updateOrCreate(
-			['slug' => 'devops'],
+			['slug' => 'dev-ops'],
 			[
 				'name' => 'DevOps',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		// Performance
+		Category::updateOrCreate(
+			['slug' => 'performance'],
+			[
+				'name' => 'Performance',
 				'created_by' => $user->id,
 				'team_id' => $team->id,
 			],
@@ -92,6 +92,66 @@ class CategorySeeder extends Seeder
 			['slug' => 'tooling'],
 			[
 				'name' => 'Tooling',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		// CMS
+		Category::updateOrCreate(
+			['slug' => 'cms'],
+			[
+				'name' => 'CMS',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		// Icons
+		Category::updateOrCreate(
+			['slug' => 'icons'],
+			[
+				'name' => 'Icons',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		// Design
+		Category::updateOrCreate(
+			['slug' => 'design'],
+			[
+				'name' => 'Design',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		// Mobile
+		Category::updateOrCreate(
+			['slug' => 'mobile'],
+			[
+				'name' => 'Design',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		// Security
+		Category::updateOrCreate(
+			['slug' => 'security'],
+			[
+				'name' => 'Security',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		// WebDev
+		Category::updateOrCreate(
+			['slug' => 'web-development'],
+			[
+				'name' => 'Web Development',
 				'created_by' => $user->id,
 				'team_id' => $team->id,
 			],
