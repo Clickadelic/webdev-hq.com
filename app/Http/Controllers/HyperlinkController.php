@@ -23,6 +23,7 @@ class HyperlinkController extends Controller
 			->published()
 			->leftJoin('taggables', 'hyperlinks.id', '=', 'taggables.taggable_id')
 			->leftJoin('tags', 'taggables.tag_id', '=', 'tags.id')
+			->leftJoin('categories', 'hyperlinks.category_id', '=', 'categories.id')
 			->select('hyperlinks.*');
 
 		if ($search !== '') {
@@ -30,7 +31,7 @@ class HyperlinkController extends Controller
 				$query->where('title', 'like', "%{$search}%")
 					->orWhere('url', 'like', "%{$search}%")
 					->orWhere('tags.name', 'like', "%{$search}%")
-					->orWhere('category_id', 'like', "%{$search}%")
+					->orWhere('categories.name', 'like', "%{$search}%")
 					->orWhere('description', 'like', "%{$search}%");
 			});
 		}
