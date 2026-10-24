@@ -1,7 +1,7 @@
 import { Breadcrumbs } from '@/components/breadcrumbs';
-import { FullscreenButton } from '@/components/fullscreen-button';
-import { LangSwitch } from '@/components/lang-switch';
-import { NotificationButton } from '@/components/notification-button';
+import { FullscreenButton } from '@/layouts/dashboard-layout/fullscreen-button';
+import { LangSwitch } from '@/layouts/dashboard-layout/lang-switch';
+import { NotificationButton } from '@/layouts/dashboard-layout/notification-button';
 import { SidebarSheet } from '@/components/sidebar-sheet';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import UserDropdownMenu from '@/components/user-dropdown-menu';

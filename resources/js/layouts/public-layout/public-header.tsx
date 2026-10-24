@@ -1,7 +1,7 @@
-import AppLogo from '@/components/app-logo';
+import AppLogo from '@/layouts/dashboard-layout/app-logo';
 import UserDropdownMenu from '@/components/user-dropdown-menu';
 
-import AppearanceDropdown from '@/components/appearance-dropdown';
+import AppearanceDropdown from '@/layouts/public-layout/appearance-dropdown';
 import { cn } from '@/lib/utils';
 import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';

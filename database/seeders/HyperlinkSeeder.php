@@ -306,5 +306,20 @@ class HyperlinkSeeder extends Seeder
 		);
 
 		$zend->tags()->syncWithoutDetaching([$phpTag->id]);
+
+		$shodanHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://shodan.io/'],
+			[
+				'title' => 'Shodan',
+				'favicon_url' => 'https://www.shodan.io/favicon.ico',
+				'description' => 'Shodan is a search engine for Internet-connected devices.',
+				'category_id' => $webdevCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		$shodanHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 	}
 }

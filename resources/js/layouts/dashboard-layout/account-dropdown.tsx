@@ -15,7 +15,7 @@ export const AccountDropdown = () => {
                 <span className="ml-2 text-slate-900 hover:text-slate-900">Username</span>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="mr-3">
-                <DropdownMenuLabel>Mein Account</DropdownMenuLabel>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                     <a href="/mein-profil" title="Go to Profile">

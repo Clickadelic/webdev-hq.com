@@ -1,8 +1,8 @@
 import CircularMenu from '@/components/circular-menu';
-import CookieNotice from '@/components/cookie-notice';
-import PublicBreadcrumbs from '@/components/public-breadcrumbs';
-import PublicFooter from '@/components/public-footer';
-import PublicHeader from '@/components/public-header';
+import CookieNotice from '@/layouts/public-layout/cookie-notice';
+import PublicBreadcrumbs from '@/layouts/public-layout/public-breadcrumbs';
+import PublicFooter from '@/layouts/public-layout/public-footer';
+import PublicHeader from '@/layouts/public-layout/public-header';
 import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/lib/utils';
 import { Head } from '@inertiajs/react';

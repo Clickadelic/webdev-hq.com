@@ -4,7 +4,7 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { UserInfo } from '@/components/user-info';
+import { UserInfo } from '@/layouts/public-layout/user-info';
 import { UserMenuContent } from '@/components/user-menu-content';
 import { type User } from '@/types';
 interface UserDropdownMenuProps {

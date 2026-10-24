@@ -1,4 +1,4 @@
-import DashboardLayout from '@/layouts/app/app-sidebar-layout';
+import DashboardLayout from '@/layouts/app-layout/app-sidebar-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
 import { type ReactNode } from 'react';
@@ -14,7 +14,9 @@ interface DashboardLayoutProps {
 export default ({ children, breadcrumbs, ...props }: DashboardLayoutProps) => (
     <DashboardLayout breadcrumbs={breadcrumbs} {...props}>
         <Head title={breadcrumbs?.[breadcrumbs.length - 1]?.title} />
-        {children}
+        <div className="p-4">
+			{children}
+		</div>
         <Toaster />
         <CircularMenu />
     </DashboardLayout>

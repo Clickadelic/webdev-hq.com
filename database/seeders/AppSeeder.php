@@ -21,7 +21,7 @@ class AppSeeder extends Seeder
 			['url' => 'https://mail.google.com'],
 			[
 				'title' => 'G-Mail',
-				'favicon_url' => 'https://mail.google.com/favicon.ico',
+				'favicon_url' => '//ssl.gstatic.com/ui/v1/icons/mail/rfr/unreadcountfavicon/5/0.png',
 				'target' => '_blank',
 				'position' => 1,
 				'created_by' => $user->id,

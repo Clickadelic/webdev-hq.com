@@ -36,6 +36,7 @@ import { toast } from 'sonner';
 
 import AppForm from '@/components/forms/app-form';
 import { getFaviconUrl } from '@/lib/utils';
+import HyperlinkWidget from '@/components/hyperlink-widget';
 
 type AppItem = { id: string; title: string; url: string; icon: string };
 
@@ -155,7 +156,7 @@ export default function DashboardIndex() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <div className="flex flex-col gap-2 overflow-x-auto rounded-xl p-4">
+            <div className="flex flex-col gap-2 overflow-x-auto rounded-xl mb-8">
                 <DndContext
                     sensors={sensors}
                     collisionDetection={closestCenter}
@@ -239,6 +240,12 @@ export default function DashboardIndex() {
                     </DragOverlay>
                 </DndContext>
             </div>
+			<div className="grid grid-cols-4">
+				<HyperlinkWidget hyperlinks={[]} />
+				<div>Gridbox</div>
+				<div>Gridbox</div>
+				<div>Gridbox</div>
+			</div>
         </AppLayout>
     );
 }
