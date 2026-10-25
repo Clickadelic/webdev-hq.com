@@ -43,27 +43,27 @@ export default function PublicLayout({
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
                 {leftSidebar && !rightSidebar && (
-                    <div className="container grid grow grid-cols-1 gap-4 md:grid-cols-6">
+                    <div className="container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6">
                         <aside className="col-span-1">{leftSidebar}</aside>
                         <main className={cn('col-span-5 w-full', contentClasses)}>{children}</main>
                     </div>
                 )}
                 {leftSidebar && rightSidebar && (
-                    <div className="container grid grow grid-cols-1 gap-4 md:grid-cols-6">
+                    <div className="container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6">
                         <aside className="col-span-1">{leftSidebar}</aside>
                         <main className={cn('col-span-4 w-full', contentClasses)}>{children}</main>
                         <aside className="col-span-1">{rightSidebar}</aside>
                     </div>
                 )}
                 {rightSidebar && !leftSidebar && (
-                    <div className="container grid grow grid-cols-1 gap-4 md:grid-cols-6">
+                    <div className="container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6">
                         <main className={cn('col-span-5 w-full', contentClasses)}>{children}</main>
                         <aside className="col-span-1">{rightSidebar}</aside>
                     </div>
                 )}
                 {!leftSidebar && !rightSidebar && (
-                    <div className="container grid grow grid-cols-1 gap-4 md:grid-cols-6">
-                        <main className={cn('col-span-6 w-full', contentClasses)}>{children}</main>
+                    <div className="container mx-auto grow">
+                        <main className={cn('w-full', contentClasses)}>{children}</main>
                     </div>
                 )}
                 <Toaster />
