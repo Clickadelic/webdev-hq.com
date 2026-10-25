@@ -1,5 +1,5 @@
-import AppLogo from '@/layouts/dashboard-layout/app-logo';
 import UserDropdownMenu from '@/components/user-dropdown-menu';
+import AppLogo from '@/layouts/dashboard-layout/app-logo';
 
 import AppearanceDropdown from '@/layouts/public-layout/appearance-dropdown';
 import { cn } from '@/lib/utils';
@@ -32,7 +32,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
     return (
         <header
             className={cn(
-                'relative z-20 w-full bg-white shadow-lg backdrop-blur dark:bg-neutral-900/30 dark:backdrop-blur',
+                'relative z-20 w-full bg-white shadow-lg backdrop-blur dark:bg-neutral-900 dark:backdrop-blur',
                 className,
             )}
         >

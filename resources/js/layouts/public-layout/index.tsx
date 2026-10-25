@@ -1,52 +1,71 @@
 import CircularMenu from '@/components/circular-menu';
+import { Toaster } from '@/components/ui/sonner';
 import CookieNotice from '@/layouts/public-layout/cookie-notice';
 import PublicBreadcrumbs from '@/layouts/public-layout/public-breadcrumbs';
 import PublicFooter from '@/layouts/public-layout/public-footer';
 import PublicHeader from '@/layouts/public-layout/public-header';
-import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/lib/utils';
 import { Head } from '@inertiajs/react';
 
+// Public Layout Interface
 interface PublicLayoutProps {
     title?: string;
-    sidebar?: React.ReactNode | null;
+    leftSidebar?: React.ReactNode | null;
+    rightSidebar?: React.ReactNode | null;
     children: React.ReactNode;
     canRegister?: boolean;
-    className?: string;
+    contentClasses?: string;
 }
 
 /**
  * A public layout component that wraps its children in a
  * div with a class of "flex flex-col min-h-dvh justify-between items-center"
  *
- * @param {React.ReactNode} title - The title of the page
- * @param {React.ReactNode} sidebar - The sidebar component
+ * @param {string} title - The title of the page
+ * @param {React.ReactNode} leftSidebar - The left sidebar component
+ * @param {React.ReactNode} rightSidebar - The right sidebar component
  * @param {React.ReactNode} children - The main content of the page
  * @param {boolean} canRegister - Indicates if the registration option should be displayed
- * @param {string} className - An optional class name to apply to the main container
+ * @param {string} contentClasses - An optional class name to apply to the main container
  */
 export default function PublicLayout({
     title,
-    sidebar,
+    leftSidebar,
+    rightSidebar,
     children,
     canRegister,
-    className,
+    contentClasses,
 }: PublicLayoutProps) {
     return (
         <>
             <Head title={title} />
-            <div className="relative flex min-h-svh flex-col items-center justify-start">
-                {/* <AmbientBlobs className="absolute top-0 z-0 min-h-dvh w-full overflow-clip" /> */}
+            <div className="flex min-h-svh flex-col items-center justify-start">
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
-                <main
-                    className={cn(
-                        'relative z-20 container mx-auto flex grow flex-col items-start justify-start',
-                        className,
-                    )}
-                >
-                    {children}
-                </main>
+                {leftSidebar && !rightSidebar && (
+                    <div className="container grid grow grid-cols-1 gap-4 md:grid-cols-6">
+                        <aside className="col-span-1">{leftSidebar}</aside>
+                        <main className={cn('col-span-5 w-full', contentClasses)}>{children}</main>
+                    </div>
+                )}
+                {leftSidebar && rightSidebar && (
+                    <div className="container grid grow grid-cols-1 gap-4 md:grid-cols-6">
+                        <aside className="col-span-1">{leftSidebar}</aside>
+                        <main className={cn('col-span-4 w-full', contentClasses)}>{children}</main>
+                        <aside className="col-span-1">{rightSidebar}</aside>
+                    </div>
+                )}
+                {rightSidebar && !leftSidebar && (
+                    <div className="container grid grow grid-cols-1 gap-4 md:grid-cols-6">
+                        <main className={cn('col-span-5 w-full', contentClasses)}>{children}</main>
+                        <aside className="col-span-1">{rightSidebar}</aside>
+                    </div>
+                )}
+                {!leftSidebar && !rightSidebar && (
+                    <div className="container grid grow grid-cols-1 gap-4 md:grid-cols-6">
+                        <main className={cn('col-span-6 w-full', contentClasses)}>{children}</main>
+                    </div>
+                )}
                 <Toaster />
                 <CircularMenu />
                 <CookieNotice />

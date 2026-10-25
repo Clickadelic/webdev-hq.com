@@ -1,102 +1,68 @@
-import SidebarLegal from '@/layouts/public-layout/public-sidebars/sidebar-legal';
 import PublicLayout from '@/layouts/public-layout';
-export default function PrivacyPolicy({
-    canRegister = true,
-}: {
-    canRegister?: boolean;
-}) {
+import SidebarLegal from '@/layouts/public-layout/sidebars/legal-sidebar';
+export default function PrivacyPolicy({ canRegister = true }: { canRegister?: boolean }) {
     return (
-        <PublicLayout
-            canRegister={canRegister}
-            title="Privacy Policy"
-            sidebar={<SidebarLegal />}
-        >
+        <PublicLayout canRegister={canRegister} title="Privacy Policy" sidebar={<SidebarLegal />}>
             <div className="space-y-5">
                 <section>
-                    <h2 className="mb-3 text-2xl font-medium">
-                        General Information
-                    </h2>
+                    <h2 className="mb-6 flex gap-3 text-xl font-medium">General Information</h2>
                     <p>
-                        Protecting your personal data is important to me. This
-                        website is designed with a strong focus on privacy and
-                        minimal data collection.
+                        Protecting your personal data is important to me. This website is designed
+                        with a strong focus on privacy and minimal data collection.
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Data Controller
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Data Controller</h2>
                     <ul>
                         <li>Tobias Hopp</li>
-                        <li>
-                            [admin@webdev-hq.com](mailto:admin@webdev-hq.com)
-                        </li>
+                        <li>[admin@webdev-hq.com](mailto:admin@webdev-hq.com)</li>
                     </ul>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Data Collection
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Data Collection</h2>
                     <p>
-                        We only collect data necessary to operate the platform:
-                        * Account information (e.g., username, email address) *
-                        Content you submit (links, posts, comments) * Technical
-                        data (e.g., IP address, browser type) stored in server
-                        logs
+                        We only collect data necessary to operate the platform: * Account
+                        information (e.g., username, email address) * Content you submit (links,
+                        posts, comments) * Technical data (e.g., IP address, browser type) stored in
+                        server logs
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Server Hosting
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Server Hosting</h2>
                     <p>
-                        This website is hosted by a provider located in Germany.
-                        Server logs may be automatically collected and stored by
-                        the hosting provider for security and operational
-                        purposes. A data processing agreement (DPA) is in place
-                        with the hosting provider in accordance with GDPR
-                        requirements.
+                        This website is hosted by a provider located in Germany. Server logs may be
+                        automatically collected and stored by the hosting provider for security and
+                        operational purposes. A data processing agreement (DPA) is in place with the
+                        hosting provider in accordance with GDPR requirements.
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Authentication & Social Login
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Authentication & Social Login</h2>
                     <p>
-                        This website is hosted by a provider located in Germany.
-                        Server logs may be automatically collected and stored by
-                        the hosting provider for security and operational
-                        purposes. A data processing agreement (DPA) is in place
-                        with the hosting provider in accordance with GDPR
-                        requirements.
+                        This website is hosted by a provider located in Germany. Server logs may be
+                        automatically collected and stored by the hosting provider for security and
+                        operational purposes. A data processing agreement (DPA) is in place with the
+                        hosting provider in accordance with GDPR requirements.
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Authentication & Social Login
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Authentication & Social Login</h2>
                     <p>
-                        Users may register using traditional login methods or
-                        third-party authentication providers (e.g., Google,
-                        GitHub). When using social login, certain data may be
-                        transferred from these providers. Please refer to their
-                        privacy policies: * Google * GitHub ### 6. Cookies This
-                        website uses essential cookies required for
-                        functionality, such as: * Session management (login
-                        status) * Security purposes No tracking or advertising
-                        cookies are used. ### 7. Donations If you choose to make
-                        a voluntary donation via PayPal, your payment data will
-                        be processed by PayPal. The operator does not store
-                        payment information. ### 8. Your Rights (GDPR) You have
-                        the right to: * Access your data * Request correction or
-                        deletion * Restrict processing * Object to processing To
-                        exercise your rights, contact:
-                        [admin@webdev-hq.com](mailto:admin@webdev-hq.com) ### 9.
-                        Data Retention Personal data is stored only as long as
-                        necessary for the operation of the platform or as
-                        required by law. ### 10. Changes This privacy policy may
-                        be updated to reflect changes in functionality or legal
-                        requirements.
+                        Users may register using traditional login methods or third-party
+                        authentication providers (e.g., Google, GitHub). When using social login,
+                        certain data may be transferred from these providers. Please refer to their
+                        privacy policies: * Google * GitHub ### 6. Cookies This website uses
+                        essential cookies required for functionality, such as: * Session management
+                        (login status) * Security purposes No tracking or advertising cookies are
+                        used. ### 7. Donations If you choose to make a voluntary donation via
+                        PayPal, your payment data will be processed by PayPal. The operator does not
+                        store payment information. ### 8. Your Rights (GDPR) You have the right to:
+                        * Access your data * Request correction or deletion * Restrict processing *
+                        Object to processing To exercise your rights, contact:
+                        [admin@webdev-hq.com](mailto:admin@webdev-hq.com) ### 9. Data Retention
+                        Personal data is stored only as long as necessary for the operation of the
+                        platform or as required by law. ### 10. Changes This privacy policy may be
+                        updated to reflect changes in functionality or legal requirements.
                     </p>
                 </section>
             </div>

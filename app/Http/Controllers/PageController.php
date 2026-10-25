@@ -11,7 +11,7 @@ class PageController extends Controller
 	public function index()
 	{
 		$hyperlinkCount = Hyperlink::count('url');
-		return Inertia::render('home', [
+		return Inertia::render('index', [
 			'canRegister' => true,
 			'hyperlinkCount' => $hyperlinkCount,
 		]);

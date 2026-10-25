@@ -3,7 +3,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { ChevronRight } from 'lucide-react'; // ShadCN Icons
 import { RiHomeLine } from 'react-icons/ri';
 
-interface BreadCrumbProps {
+interface PublicBreadCrumbProps {
     className?: string;
 }
 
@@ -19,7 +19,7 @@ interface BreadCrumbProps {
  *
  * @returns {JSX.Element} The breadcrumb navigation component.
  */
-const PublicBreadcrumbs = ({ className }: BreadCrumbProps) => {
+const PublicBreadcrumbs = ({ className }: PublicBreadCrumbProps) => {
     const { url } = usePage(); // aktueller Pfad z.B. /gerichte/1/edit
     const pathname = url.split('?')[0];
 
@@ -33,14 +33,12 @@ const PublicBreadcrumbs = ({ className }: BreadCrumbProps) => {
     const crumbs = segments.map((segment, idx) => {
         const path = '/' + segments.slice(0, idx + 1).join('/');
         // Format: Bindestriche durch Leerzeichen ersetzen, erste Buchstaben groß
-        const name = segment
-            .replace(/-/g, ' ')
-            .replace(/\b\w/g, (c) => c.toUpperCase());
+        const name = segment.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
         return { name, path };
     });
 
     return (
-        <div className={cn('container mx-auto w-full px-2 md:px-0', className)}>
+        <div className={cn('container mx-auto mb-3 w-full px-2 md:px-0', className)}>
             <ul className="flex items-center gap-3 py-5 text-sm text-gray-800 dark:text-gray-200">
                 {/* Home */}
                 <li>
@@ -60,14 +58,9 @@ const PublicBreadcrumbs = ({ className }: BreadCrumbProps) => {
                         <ChevronRight className="mr-3 size-5 text-gray-800 dark:text-neutral-200" />
                         {/* Letztes Segment nicht als Link */}
                         {idx === crumbs.length - 1 ? (
-                            <span className="line-clamp-1 cursor-default">
-                                {crumb.name}
-                            </span>
+                            <span className="line-clamp-1 cursor-default">{crumb.name}</span>
                         ) : (
-                            <Link
-                                href={crumb.path}
-                                className="line-clamp-1 hover:text-primary"
-                            >
+                            <Link href={crumb.path} className="line-clamp-1 hover:text-primary">
                                 {crumb.name}
                             </Link>
                         )}

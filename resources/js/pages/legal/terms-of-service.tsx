@@ -1,153 +1,108 @@
-import SidebarLegal from '@/layouts/public-layout/public-sidebars/sidebar-legal';
 import PublicLayout from '@/layouts/public-layout';
+import SidebarLegal from '@/layouts/public-layout/sidebars/legal-sidebar';
 
-export default function TermsofService({
-    canRegister = true,
-}: {
-    canRegister?: boolean;
-}) {
+export default function TermsofService({ canRegister = true }: { canRegister?: boolean }) {
     return (
-        <PublicLayout
-            canRegister={canRegister}
-            title="Terms of Service"
-            sidebar={<SidebarLegal />}
-        >
+        <PublicLayout canRegister={canRegister} title="Terms of Service" sidebar={<SidebarLegal />}>
             <div className="space-y-5">
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Scope of these Terms of Service
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Scope of these Terms of Service</h2>
                     <p>
-                        These Terms of Service ("Terms") govern the use of this
-                        website webdev-hq.com (the "Platform"), operated by a
-                        private individual. By accessing or using the Platform,
-                        you agree to these terms.
+                        These Terms of Service ("Terms") govern the use of this website
+                        webdev-hq.com (the "Platform"), operated by a private individual. By
+                        accessing or using the Platform, you agree to these terms.
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Description of Service
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Description of Service</h2>
                     <p>
-                        WebDev HQ (webdev-hq.com) is a community-driven platform
-                        that allows users to:
+                        WebDev HQ (webdev-hq.com) is a community-driven platform that allows users
+                        to:
                     </p>
                     <ul className="my-3 list-disc pl-5">
                         <li>Share and discover links (resources)</li>
+                        <li>Publish posts or articles (for informational purposes)</li>
+                        <li>The Platform is not intended for commercial use.</li>
                         <li>
-                            Publish posts or articles (for informational
-                            purposes)
-                        </li>
-                        <li>
-                            The Platform is not intended for commercial use.
-                        </li>
-                        <li>
-                            interact via comments and discussions The Platform
-                            is provided free of charge and without any guarantee
-                            of availability.
+                            interact via comments and discussions The Platform is provided free of
+                            charge and without any guarantee of availability.
                         </li>
                     </ul>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        User Accounts
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">User Accounts</h2>
                     <p>
-                        To access certain features, users may create a user
-                        account. If you do so, you agree to:
+                        To access certain features, users may create a user account. If you do so,
+                        you agree to:
                     </p>
                     <ul className="my-3 list-disc pl-5">
                         <li>Provide accurate and complete information</li>
                         <li>Keep your login credentials secure</li>
+                        <li>Be responsible for all activities under your account</li>
                         <li>
-                            Be responsible for all activities under your account
-                        </li>
-                        <li>
-                            The operator reserves the right to suspend or delete
-                            accounts at any time.
+                            The operator reserves the right to suspend or delete accounts at any
+                            time.
                         </li>
                     </ul>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Social Login
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Social Login</h2>
                     <p>
-                        The Platform may offer authentication via third-party
-                        providers such as Google or GitHub. By using these
-                        services, you agree to their respective terms and
-                        privacy policies. The operator is not responsible for
-                        these external services.
+                        The Platform may offer authentication via third-party providers such as
+                        Google or GitHub. By using these services, you agree to their respective
+                        terms and privacy policies. The operator is not responsible for these
+                        external services.
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        User-Generated Content
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">User-Generated Content</h2>
                     <p>
-                        Users may submit content including links, posts, and (in
-                        the future) comments. By submitting content, you: *
-                        Confirm that you have the right to share it * Grant the
-                        Platform a non-exclusive, worldwide, royalty-free
-                        license to display and distribute it * Remain the owner
-                        of your content
+                        Users may submit content including links, posts, and (in the future)
+                        comments. By submitting content, you: * Confirm that you have the right to
+                        share it * Grant the Platform a non-exclusive, worldwide, royalty-free
+                        license to display and distribute it * Remain the owner of your content
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Prohibited Content
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Prohibited Content</h2>
                     <p>
-                        You agree not to publish content that: * Violates
-                        applicable laws * Infringes intellectual property rights
-                        * Contains harmful, abusive, or illegal material *
-                        Includes malware, phishing, or deceptive links * Is spam
+                        You agree not to publish content that: * Violates applicable laws *
+                        Infringes intellectual property rights * Contains harmful, abusive, or
+                        illegal material * Includes malware, phishing, or deceptive links * Is spam
                         or misleading
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Moderation and Removal
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Moderation and Removal</h2>
                     <p>
-                        The operator is not obligated to monitor content but
-                        reserves the right to: * Review user content * Remove or
-                        block content at any time * Suspend or terminate
-                        accounts A notice-and-takedown procedure is in place.
-                        Reports can be sent to:
-                        [admin@webdev-hq.com](mailto:admin@webdev-hq.com)
+                        The operator is not obligated to monitor content but reserves the right to:
+                        * Review user content * Remove or block content at any time * Suspend or
+                        terminate accounts A notice-and-takedown procedure is in place. Reports can
+                        be sent to: [admin@webdev-hq.com](mailto:admin@webdev-hq.com)
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        No Liability for User
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">No Liability for User</h2>
                     <p>
-                        No Liability for User Content The Platform acts as a
-                        hosting provider for user-generated content. The
-                        operator does not assume responsibility for: * Accuracy
-                        or legality of user content * External links shared by
-                        users * Any damages resulting from the use of such
-                        content
+                        No Liability for User Content The Platform acts as a hosting provider for
+                        user-generated content. The operator does not assume responsibility for: *
+                        Accuracy or legality of user content * External links shared by users * Any
+                        damages resulting from the use of such content
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        External Links
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">External Links</h2>
                     <p>
-                        The Platform may contain links to third-party websites.
-                        The operator has no control over these websites and
-                        assumes no liability for their content or availability.
+                        The Platform may contain links to third-party websites. The operator has no
+                        control over these websites and assumes no liability for their content or
+                        availability.
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Availability of the Service
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Availability of the Service</h2>
                     <p>
-                        The Platform is provided "as is" without warranties of
-                        any kind. The operator does not guarantee:
+                        The Platform is provided "as is" without warranties of any kind. The
+                        operator does not guarantee:
                     </p>
                     <ul className="my-3 list-inside list-disc">
                         <li>Continuous availability</li>
@@ -158,45 +113,32 @@ export default function TermsofService({
                 <section>
                     <h2 className="mb-3 text-2xl font-semibold">Termination</h2>
                     <p>
-                        The operator may suspend or terminate access to the
-                        Platform at any time without prior notice. Users may
-                        delete their accounts at any time.
+                        The operator may suspend or terminate access to the Platform at any time
+                        without prior notice. Users may delete their accounts at any time.
                     </p>
                 </section>
                 <section>
                     <h2 className="mb-3 text-2xl font-semibold">Termination</h2>
                     <p>
-                        The operator may suspend or terminate access to the
-                        Platform at any time without prior notice. Users may
-                        delete their accounts at any time.
+                        The operator may suspend or terminate access to the Platform at any time
+                        without prior notice. Users may delete their accounts at any time.
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Changes to the Terms
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Changes to the Terms</h2>
                     <p>
-                        These Terms may be updated at any time. Continued use of
-                        the Platform constitutes acceptance of the updated
-                        Terms.
+                        These Terms may be updated at any time. Continued use of the Platform
+                        constitutes acceptance of the updated Terms.
                     </p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Applicable Law
-                    </h2>
-                    <p>
-                        These Terms are governed by the laws of the Federal
-                        Republic of Germany.
-                    </p>
+                    <h2 className="mb-3 text-2xl font-semibold">Applicable Law</h2>
+                    <p>These Terms are governed by the laws of the Federal Republic of Germany.</p>
                 </section>
                 <section>
-                    <h2 className="mb-3 text-2xl font-semibold">
-                        Contact for questions
-                    </h2>
+                    <h2 className="mb-3 text-2xl font-semibold">Contact for questions</h2>
                     <p>
-                        For questions with regards to these terms, please
-                        contact:
+                        For questions with regards to these terms, please contact:
                         [admin@webdev-hq.com](mailto:admin@webdev-hq.com)
                     </p>
                 </section>

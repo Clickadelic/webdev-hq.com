@@ -12,7 +12,7 @@ export const MegaMenuColumns = [
         ],
     },
     {
-        title: 'Kategorien',
+        title: 'Community',
         items: [
             {
                 icon: <Blocks className="size-4 text-primary" />,
@@ -22,13 +22,13 @@ export const MegaMenuColumns = [
             },
             {
                 icon: <AlertCircleIcon className="size-4 text-primary" />,
-                title: 'Hauptgerichte',
+                title: 'Posts',
                 href: '#',
                 description: 'für den großen Hunger',
             },
             {
                 icon: <AlertCircleIcon className="size-4 text-primary" />,
-                title: 'Nachtisch',
+                title: 'Teams',
                 href: '#',
                 description: 'für ein süßes Ende',
             },

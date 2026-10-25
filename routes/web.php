@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // use App\Mail\ContactSubmissionMail;
 
 // Public Routes
-Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('/', [PageController::class, 'index'])->name('index');
 Route::get('/posts', [PostController::class, 'showPosts'])->name('public.posts.index');
 Route::get('/hyperlinks', [HyperlinkController::class, 'publicIndex'])->name('hyperlinks.index');
 Route::get('/chrome-extension', [PageController::class, 'chromeExtension'])->name('chrome-extension.index');
