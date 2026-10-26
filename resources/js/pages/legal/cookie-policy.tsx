@@ -12,11 +12,6 @@ export default function CookiePolicy({ canRegister = true }: { canRegister?: boo
                 Protecting your personal data is important to us. This website is designed with a
                 strong focus on privacy and minimal data collection.
             </p>
-
-            <section className="mb-8">
-                <h3 className="mb-2 text-lg font-medium">Data Controller:</h3>
-                Tobias Hopp, E-mail: [admin@webdev-hq.com](mailto:admin@webdev-hq.com)
-            </section>
             <section className="mb-8">
                 <h3 className="mb-2 text-lg font-medium">Data We Collect and How We Use It</h3>
                 We only collect data necessary to operate the platform: * Account information (e.g.,
