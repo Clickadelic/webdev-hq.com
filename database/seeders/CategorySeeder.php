@@ -131,7 +131,7 @@ class CategorySeeder extends Seeder
 		Category::updateOrCreate(
 			['slug' => 'mobile'],
 			[
-				'name' => 'Design',
+				'name' => 'Mobile',
 				'created_by' => $user->id,
 				'team_id' => $team->id,
 			],

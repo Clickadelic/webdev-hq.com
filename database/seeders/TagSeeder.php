@@ -197,5 +197,14 @@ class TagSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
+
+		Tag::updateOrCreate(
+			['slug' => 'testing'],
+			[
+				'name' => 'Testing',
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
 	}
 }

@@ -26,7 +26,7 @@ export default function AppLogo({ logoClassName, className }: AppLogoProps) {
         >
             <AppIcon className={cn('size-8 shrink-0 object-contain', logoClassName)} />
 
-            <div className="hidden min-w-0 flex-1 text-left text-sm group-data-[collapsible=icon]:hidden sm:grid">
+            <div className="grid min-w-0 flex-1 text-left text-sm group-data-[collapsible=icon]:hidden">
                 <h1 className="my-3 max-w-45 text-2xl">
                     <div className="flex font-light hover:text-neutral-500" id="logo-text">
                         <span className="web">Web</span>
