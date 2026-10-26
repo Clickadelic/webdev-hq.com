@@ -12,7 +12,6 @@ import { NavMain } from '@/layouts/dashboard-layout/nav-main';
 import { NavUser } from '@/layouts/dashboard-layout/nav-user';
 import { GalleryHorizontal, LayoutGrid, Link, Pencil, Tag, Webhook } from 'lucide-react';
 
-import { index as postsIndex } from '@/actions/App/Http/Controllers/PostController';
 import AppLogo from './app-logo';
 
 import { type NavGroup, type NavItem } from '@/types';
@@ -33,7 +32,7 @@ const mainNavGroups: NavGroup[] = [
         items: [
             {
                 title: 'Posts',
-                href: postsIndex.url(),
+                href: '/dashboard/posts',
                 icon: Pencil,
             },
             {

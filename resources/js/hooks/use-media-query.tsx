@@ -1,24 +1,18 @@
 import { useEffect, useState } from 'react';
 
-/**
- * React hook that tracks whether the given media query matches the current viewport.
- * Returns a boolean indicating whether the query matches.
- * @param query - The media query to track.
- * @returns A boolean indicating whether the query matches.
- */
-export function useMediaQuery(query: string) {
-    const [value, setValue] = useState(false);
+export function useMediaQuery(query: string): boolean {
+    const [value, setValue] = useState(() => window.matchMedia(query).matches);
 
     useEffect(() => {
-        function onChange(event: MediaQueryListEvent) {
+        const mediaQuery = window.matchMedia(query);
+
+        const onChange = (event: MediaQueryListEvent) => {
             setValue(event.matches);
-        }
+        };
 
-        const result = matchMedia(query);
-        result.addEventListener('change', onChange);
-        setValue(result.matches);
+        mediaQuery.addEventListener('change', onChange);
 
-        return () => result.removeEventListener('change', onChange);
+        return () => mediaQuery.removeEventListener('change', onChange);
     }, [query]);
 
     return value;
