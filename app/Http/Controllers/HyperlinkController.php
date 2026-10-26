@@ -38,7 +38,7 @@ class HyperlinkController extends Controller
 
 		$hyperlinks = $query
 			->latest()
-			->paginate(38)
+			->paginate(30)
 			->withQueryString();
 
 		return inertia('hyperlinks/index', [

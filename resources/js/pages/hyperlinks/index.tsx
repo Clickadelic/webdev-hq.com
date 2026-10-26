@@ -76,7 +76,7 @@ export default function Home({
         setIsEditOpen(true);
     };
 
-    const handleDelete = (id: number) => {
+    const handleDelete = (id: string) => {
         router.delete(destroy.url(id), {
             preserveScroll: true,
             onSuccess: () => toast.success('Hyperlink deleted!'),
@@ -124,7 +124,7 @@ export default function Home({
                 </p>
             ) : (
                 <div className="relative z-20 py-12">
-                    <div className="grid grid-cols-1 gap-1 md:grid-cols-3 md:gap-2 lg:grid-cols-5">
+                    <div className="grid grid-cols-1 gap-1 md:grid-cols-3 md:gap-2 lg:gap-5 lg:grid-cols-5">
                         {items.map((link) => (
                             <HyperlinkCard
                                 key={link.id}

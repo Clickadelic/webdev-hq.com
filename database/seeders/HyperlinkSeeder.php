@@ -207,7 +207,6 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$mdnHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 
 		// Symfony
@@ -297,7 +296,7 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-		$bootstrapHyperlink->tags()->syncWithoutDetaching([$cssTag->id]);
+		$bootstrapHyperlink->tags()->syncWithoutDetaching([$bootstrapTag->id, $cssTag->id, $javascriptTag->id]);
 
 		// Yii
 		$yiiHyperlink = Hyperlink::updateOrCreate(
@@ -428,5 +427,272 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 		$wxtHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$webfontsHelperHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://gwfh.mranftl.com/fonts'],
+			[
+				'title' => 'Google Webfonts Helper',
+				'favicon_url' => 'https://gwfh.mranftl.com/favicon.ico',
+				'description' => 'Google Webfonts Helper allows you to self-host Google Fonts easily.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$webfontsHelperHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$typescriptHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://www.typescriptlang.org/'],
+			[
+				'title' => 'TypeScript',
+				'favicon_url' => 'https://www.typescriptlang.org/favicon-32x32.png',
+				'description' => 'TypeScript is a strongly typed programming language that builds on JavaScript.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$typescriptHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$googleFontsHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://fonts.google.com/'],
+			[
+				'title' => 'Google Fonts',
+				'favicon_url' => 'https://www.gstatic.com/images/icons/material/apps/fonts/1x/catalog/v5/favicon.svg',
+				'description' => 'Google Fonts is a library of free licensed font families and APIs for using the fonts via CSS and Android.',
+				'category_id' => $designCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$googleFontsHyperlink->tags()->syncWithoutDetaching([$cssTag->id]);
+
+		$lucideHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://lucide.dev'],
+			[
+				'title' => 'Lucide Pencil Icon',
+				'favicon_url' => 'https://lucide.dev/favicon.ico',
+				'description' => 'Beautiful & consistent icons. Made by the community.',
+				'category_id' => $iconsCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$lucideHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id, $reactTag->id]);
+
+		$bunHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://bun.com/'],
+			[
+				'title' => 'Bun',
+				'favicon_url' => 'https://bun.com/favicon.ico',
+				'description' => 'Bun is a fast all-in-one JavaScript runtime.',
+				'category_id' => $toolingCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$bunHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$denoHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://deno.com/'],
+			[
+				'title' => 'Deno',
+				'favicon_url' => 'https://deno.com/favicon.ico',
+				'description' => 'Deno is a secure runtime for JavaScript and TypeScript.',
+				'category_id' => $toolingCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$denoHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$svelteHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://svelte.dev/'],
+			[
+				'title' => 'Svelte',
+				'favicon_url' => 'https://svelte.dev/favicon.png',
+				'description' => 'Svelte is a radical new approach to building user interfaces.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$svelteHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id, $cssTag->id]);
+
+		$twigHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://twig.symfony.com/'],
+			[
+				'title' => 'Twig',
+				'favicon_url' => 'https://twig.symfony.com/favicon-32x32.png',
+				'description' => 'Twig is a flexible, fast, and secure template engine for PHP.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$twigHyperlink->tags()->syncWithoutDetaching([$symfonyTag->id, $phpTag->id]);
+
+		$bladeHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://laravel.com/docs/blade'],
+			[
+				'title' => 'Blade',
+				'favicon_url' => 'https://laravel.com/favicon.ico',
+				'description' => 'Blade is the simple, yet powerful templating engine provided with Laravel.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$bladeHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
+
+		$expressHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://expressjs.com/'],
+			[
+				'title' => 'Express',
+				'favicon_url' => 'https://expressjs.com/favicon.ico',
+				'description' => 'Express is a fast, unopinionated, minimalist web framework for Node.js.',
+				'category_id' => $backendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$expressHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$nodeJsHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://nodejs.org/'],
+			[
+				'title' => 'Node.js',
+				'favicon_url' => 'https://nodejs.org/static/favicon.ico',
+				'description' => 'Node.js is a JavaScript runtime built on Chrome\'s V8 JavaScript engine.',
+				'category_id' => $backendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$nodeJsHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$reactIconsHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://react-icons.github.io/react-icons/'],
+			[
+				'title' => 'React Icons',
+				'favicon_url' => 'https://react-icons.github.io/react-icons/favicon-32x32.png',
+				'description' => 'React Icons is a library that provides popular icons as React components.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$reactIconsHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$astroHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://astro.build/'],
+			[
+				'title' => 'Astro',
+				'favicon_url' => 'https://astro.build/favicon-32x32.png',
+				'description' => 'Astro is a modern static site builder for the web.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$astroHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$alpinejsHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://alpinejs.dev/'],
+			[
+				'title' => 'Alpine.js',
+				'favicon_url' => 'https://alpinejs.dev/favicon-32x32.png',
+				'description' => 'Alpine.js is a rugged, minimal framework for composing JavaScript behavior in your markup.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$alpinejsHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$htmxHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://htmx.org/'],
+			[
+				'title' => 'htmx',
+				'favicon_url' => 'https://htmx.org/favicon-32x32.png',
+				'description' => 'htmx allows you to access modern browser features directly from HTML, without writing JavaScript.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$htmxHyperlink->tags()->syncWithoutDetaching([$htmlTag->id, $javascriptTag->id]);
+
+		$solidHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://www.solidjs.com/'],
+			[
+				'title' => 'SolidJS',
+				'favicon_url' => 'https://www.solidjs.com/favicon-32x32.png',
+				'description' => 'SolidJS is a declarative JavaScript library for building user interfaces.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$solidHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$webpackHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://webpack.js.org/'],
+			[
+				'title' => 'Webpack',
+				'favicon_url' => 'https://webpack.js.org/favicon-32x32.png',
+				'description' => 'Webpack is a static module bundler for modern JavaScript applications.',
+				'category_id' => $toolingCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$webpackHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+
+		$rollupHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://rollupjs.org/'],
+			[
+				'title' => 'Rollup',
+				'favicon_url' => 'https://rollupjs.org/favicon-32x32.png',
+				'description' => 'Rollup is a module bundler for JavaScript which compiles small pieces of code into something larger and more complex.',
+				'category_id' => $toolingCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$rollupHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$rolldownHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://rolldown.rs/'],
+			[
+				'title' => 'Rolldown',
+				'favicon_url' => 'https://rolldown.rs/logo-without-border.svg',
+				'description' => 'Rolldown is a module bundler for JavaScript which compiles small pieces of code into something larger and more complex.',
+				'category_id' => $toolingCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$rolldownHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 	}
 }
