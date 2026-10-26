@@ -7,102 +7,102 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use Inertia\Response;
+use Inertia\Inertia;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Inertia\Response;
 
 class PostController extends Controller
 {
-    /**
-     * Display published posts publicly.
-     */
-    public function showPosts(): Response
-    {
-        return inertia('posts/index', [
-            'posts' => Post::appListing(),
-            'canRegister' => true,
-        ]);
-    }
 
-    /** Display all posts in the dashboard. */
-    public function index(): Response
-    {
-        return inertia('dashboard/posts/index', [
-            'posts' => Post::query()
-                ->with(['author', 'category', 'tags'])
-                ->latest()
-                ->paginate(15),
-        ]);
-    }
+	/** Display all posts in the public frontend. */
+	public function index(): Response
+	{
+		return inertia('posts/index', [
+			'posts' => Post::query()
+				->with(['author', 'category', 'tags'])
+				->latest()
+				->paginate(15),
+		]);
+	}
 
-    /** Display the dashboard post creation form. */
-    public function create(): Response
-    {
-        return inertia('dashboard/posts/create', $this->formOptions());
-    }
+	/** Display the dashboard post creation form. */
+	public function create(): Response
+	{
+		return inertia('dashboard/posts/create', $this->formOptions());
+	}
 
-    /** Display the dashboard post editing form. */
-    public function edit(Post $post): Response
-    {
-        return inertia('dashboard/posts/edit', [
-            'post' => $post->load(['category', 'tags']),
-            ...$this->formOptions(),
-        ]);
-    }
+	/** Display the specified post publicly. */
+	public function show(Post $post): Response
+	{
+		return inertia('posts/show', [
+			'post' => $post->load(['author', 'category', 'tags']),
+			'canRegister' => true,
+		]);
+	}
 
-    /**
-     * Store a newly created post.
-     */
-    public function store(StorePostRequest $request): RedirectResponse
-    {
-        $validated = $request->validated();
-        $tagIds = $validated['tag_ids'] ?? [];
-        unset($validated['tag_ids']);
+	/** Display the dashboard post editing form. */
+	public function edit(Post $post): Response
+	{
+		return inertia('dashboard/posts/edit', [
+			'post' => $post->load(['category', 'tags']),
+			...$this->formOptions(),
+		]);
+	}
 
-        $post = Post::create([
-            ...$validated,
-            'created_by' => Auth::id(),
-        ]);
+	/**
+	 * Store a newly created post.
+	 */
+	public function store(StorePostRequest $request): RedirectResponse
+	{
+		$validated = $request->validated();
+		$tagIds = $validated['tag_ids'] ?? [];
+		unset($validated['tag_ids']);
 
-        $post->tags()->sync($tagIds);
+		$post = Post::create([
+			...$validated,
+			'created_by' => Auth::id(),
+		]);
 
-        return redirect()->route('dashboard.posts.create')
-            ->with('success', 'Post successfully created.');
-    }
+		$post->tags()->sync($tagIds);
 
-    /**
-     * Update the specified post.
-     */
-    public function update(UpdatePostRequest $request, Post $post): RedirectResponse
-    {
-        $validated = $request->validated();
-        $tagIds = $validated['tag_ids'] ?? [];
-        unset($validated['tag_ids']);
+		return redirect()->route('dashboard.posts.create')
+			->with('success', 'Post successfully created.');
+	}
 
-        $post->update($validated);
-        $post->tags()->sync($tagIds);
+	/**
+	 * Update the specified post.
+	 */
+	public function update(UpdatePostRequest $request, Post $post): RedirectResponse
+	{
+		$validated = $request->validated();
+		$tagIds = $validated['tag_ids'] ?? [];
+		unset($validated['tag_ids']);
 
-        return back()->with('success', 'Post successfully updated.');
-    }
+		$post->update($validated);
+		$post->tags()->sync($tagIds);
 
-    /**
-     * Remove the specified post.
-     */
-    public function destroy(Post $post): RedirectResponse
-    {
-        abort_if((int) $post->created_by !== (int) Auth::id(), 403);
-        $post->delete($post->id);
+		return back()->with('success', 'Post successfully updated.');
+	}
 
-        return back()->with('success', 'Post successfully deleted.');
-    }
+	/**
+	 * Remove the specified post.
+	 */
+	public function destroy(Post $post): RedirectResponse
+	{
+		abort_if((int) $post->created_by !== (int) Auth::id(), 403);
+		$post->delete($post->id);
 
-    /** @return array{categories: Collection<int, Category>, tags: Collection<int, Tag>} */
-    private function formOptions(): array
-    {
-        return [
-            'categories' => Category::query()->orderBy('name', 'asc')->get(),
-            'tags' => Tag::query()->orderBy('name', 'asc')->get(),
-        ];
-    }
+		return back()->with('success', 'Post successfully deleted.');
+	}
+
+	/** @return array{categories: Collection<int, Category>, tags: Collection<int, Tag>} */
+	private function formOptions(): array
+	{
+		return [
+			'categories' => Category::query()->orderBy('name', 'asc')->get(),
+			'tags' => Tag::query()->orderBy('name', 'asc')->get(),
+		];
+	}
 }

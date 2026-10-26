@@ -46,17 +46,4 @@ class PageController extends Controller
 	{
 		return Inertia::render('chrome-extension/index');
 	}
-
-	public function showPosts()
-	{
-		return Inertia::render('posts/index', [
-			'posts' => Post::appListing(),
-			'canRegister' => true,
-		]);
-	}
-
-	public function createPost()
-	{
-		return Inertia::render('dashboard/create-post');
-	}
 }

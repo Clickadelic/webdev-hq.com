@@ -3,7 +3,6 @@ import PublicLayout from '@/layouts/public-layout';
 import { type Paginator, type Post } from '@/types';
 import { router } from '@inertiajs/react';
 import { ChevronLeft, ChevronRight, ImageOff } from 'lucide-react';
-
 export default function PostsIndex({
     posts,
     canRegister = true,
