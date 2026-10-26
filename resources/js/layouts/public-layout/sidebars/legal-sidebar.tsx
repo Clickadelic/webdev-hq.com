@@ -9,7 +9,6 @@ export default function LegalSidebar({ className }: { className?: string }) {
                 <Scale className="mt-1 size-5" /> Navigation
             </h3>
             <ul className="list-inside space-y-1">
-                <SidebarLink title="Legal Overview" href="/legal" />
                 <SidebarLink title="Disclaimer" href="/legal/disclaimer" />
                 <SidebarLink title="Legal Notice" href="/legal/legal-notice" />
                 <SidebarLink title="Cookie Policy" href="/legal/cookie-policy" />

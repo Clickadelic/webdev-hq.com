@@ -17,11 +17,6 @@ class PageController extends Controller
 		]);
 	}
 
-	public function legalIndex()
-	{
-		return Inertia::render('legal/index');
-	}
-
 	public function legalNotice()
 	{
 		return Inertia::render('legal/legal-notice');
