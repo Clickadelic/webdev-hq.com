@@ -4,6 +4,7 @@ import CookieNotice from '@/layouts/public-layout/cookie-notice';
 import PublicBreadcrumbs from '@/layouts/public-layout/public-breadcrumbs';
 import PublicFooter from '@/layouts/public-layout/public-footer';
 import PublicHeader from '@/layouts/public-layout/public-header';
+import PublicTitle from '@/layouts/public-layout/public-title';
 import { cn } from '@/lib/utils';
 import { Head } from '@inertiajs/react';
 
@@ -52,7 +53,10 @@ export default function PublicLayout({
                         )}
                     >
                         <aside className="col-span-1 hidden md:flex">{leftSidebar}</aside>
-                        <main className={cn('col-span-5 w-full', contentClasses)}>{children}</main>
+                        <main className={cn('col-span-5 w-full', contentClasses)}>
+                            <PublicTitle title={title} />
+                            {children}
+                        </main>
                     </div>
                 )}
                 {leftSidebar && rightSidebar && (
@@ -63,7 +67,10 @@ export default function PublicLayout({
                         )}
                     >
                         <aside className="col-span-1">{leftSidebar}</aside>
-                        <main className={cn('col-span-4 w-full', contentClasses)}>{children}</main>
+                        <main className={cn('col-span-4 w-full', contentClasses)}>
+                            <PublicTitle title={title} />
+                            {children}
+                        </main>
                         <aside className="col-span-1">{rightSidebar}</aside>
                     </div>
                 )}
@@ -74,13 +81,19 @@ export default function PublicLayout({
                             wrapperClasses,
                         )}
                     >
-                        <main className={cn('col-span-5 w-full', contentClasses)}>{children}</main>
+                        <main className={cn('col-span-5 w-full', contentClasses)}>
+                            <PublicTitle title={title} />
+                            {children}
+                        </main>
                         <aside className="col-span-1">{rightSidebar}</aside>
                     </div>
                 )}
                 {!leftSidebar && !rightSidebar && (
                     <div className={cn('container mx-auto flex grow', wrapperClasses)}>
-                        <main className={cn('w-full px-3', contentClasses)}>{children}</main>
+                        <main className={cn('w-full px-3', contentClasses)}>
+                            <PublicTitle title={title} />
+                            {children}
+                        </main>
                     </div>
                 )}
                 <Toaster />

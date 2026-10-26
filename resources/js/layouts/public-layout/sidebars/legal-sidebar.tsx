@@ -11,8 +11,8 @@ export default function LegalSidebar({ className }: { className?: string }) {
             <ul className="list-inside space-y-1">
                 <SidebarLink title="Legal Overview" href="/legal" />
                 <SidebarLink title="Disclaimer" href="/legal/disclaimer" />
-                <SidebarLink title="Cookie Policy" href="/legal/cookie-policy" />
                 <SidebarLink title="Legal Notice" href="/legal/legal-notice" />
+                <SidebarLink title="Cookie Policy" href="/legal/cookie-policy" />
                 <SidebarLink title="Privacy Policy" href="/legal/privacy-policy" />
                 <SidebarLink title="Terms of Service" href="/legal/terms-of-service" />
             </ul>

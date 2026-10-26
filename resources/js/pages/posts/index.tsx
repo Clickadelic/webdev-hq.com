@@ -1,4 +1,3 @@
-import PublicTitle from '@/components/public-title';
 import { Button } from '@/components/ui/button';
 import PublicLayout from '@/layouts/public-layout';
 import { type Paginator, type Post } from '@/types';
@@ -14,14 +13,8 @@ export default function PostsIndex({
 }) {
     return (
         <PublicLayout title="Posts" canRegister={canRegister}>
-            <PublicTitle title="Posts" />
-
-            {posts.data.length === 0 ? (
-                <div className="py-16 text-center text-muted-foreground">
-                    No posts have been published yet.
-                </div>
-            ) : (
-                <div className="py-8">
+            {posts.data.length >= 1 ? (
+                <div className="pb-8">
                     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                         {posts.data.map((post) => (
                             <article
@@ -101,6 +94,10 @@ export default function PostsIndex({
                             </Button>
                         </div>
                     )}
+                </div>
+            ) : (
+                <div className="py-16 text-center">
+                    <p className="text-muted-foreground">No posts found.</p>
                 </div>
             )}
         </PublicLayout>
