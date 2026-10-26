@@ -1,7 +1,7 @@
 import PasswordController from '@/actions/App/Http/Controllers/Settings/PasswordController';
 import InputError from '@/components/input-error';
 import AppLayout from '@/layouts/dashboard-layout';
-import SettingsLayout from '@/layouts/settings/layout';
+import SettingsLayout from '@/layouts/dashboard-layout/settings/layout';
 import { type BreadcrumbItem } from '@/types';
 import { Transition } from '@headlessui/react';
 import { Form, Head } from '@inertiajs/react';

@@ -1,4 +1,3 @@
-import PublicTitle from '@/components/public-title';
 import { Button } from '@/components/ui/button';
 import PublicLayout from '@/layouts/public-layout';
 import { type Paginator, type Post } from '@/types';
@@ -14,14 +13,8 @@ export default function PostsIndex({
 }) {
     return (
         <PublicLayout title="Posts" canRegister={canRegister}>
-            <PublicTitle title="Posts" />
-
-            {posts.data.length === 0 ? (
-                <div className="py-16 text-center text-muted-foreground">
-                    No posts have been published yet.
-                </div>
-            ) : (
-                <div className="py-8">
+            {posts.data.length >= 1 ? (
+                <div className="pb-8">
                     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                         {posts.data.map((post) => (
                             <article
@@ -48,29 +41,22 @@ export default function PostsIndex({
                                         )}
                                         {post.published_at && (
                                             <time dateTime={post.published_at}>
-                                                {new Date(
-                                                    post.published_at,
-                                                ).toLocaleDateString()}
+                                                {new Date(post.published_at).toLocaleDateString()}
                                             </time>
                                         )}
                                     </div>
                                     <div className="space-y-2">
-                                        <h2 className="text-xl font-semibold">
-                                            {post.title}
-                                        </h2>
+                                        <h2 className="text-xl font-semibold">{post.title}</h2>
                                         {(post.description || post.subline) && (
                                             <p className="line-clamp-3 text-sm text-muted-foreground">
-                                                {post.description ??
-                                                    post.subline}
+                                                {post.description ?? post.subline}
                                             </p>
                                         )}
                                     </div>
                                     {post.tags && post.tags.length > 0 && (
                                         <div className="mt-auto flex flex-wrap gap-2 text-xs text-primary">
                                             {post.tags.map((tag) => (
-                                                <span key={tag.id}>
-                                                    #{tag.name}
-                                                </span>
+                                                <span key={tag.id}>#{tag.name}</span>
                                             ))}
                                         </div>
                                     )}
@@ -80,14 +66,13 @@ export default function PostsIndex({
                     </div>
 
                     {posts.last_page > 1 && (
-                        <div className="mt-8 flex items-center justify-center gap-2">
+                        <div className="mt-8 flex items-center justify-center gap-2 border-transparent hover:border-primary">
                             <Button
                                 variant="outline"
                                 size="sm"
                                 disabled={!posts.prev_page_url}
                                 onClick={() =>
-                                    posts.prev_page_url &&
-                                    router.get(posts.prev_page_url)
+                                    posts.prev_page_url && router.get(posts.prev_page_url)
                                 }
                             >
                                 <ChevronLeft className="size-4" />
@@ -101,8 +86,7 @@ export default function PostsIndex({
                                 size="sm"
                                 disabled={!posts.next_page_url}
                                 onClick={() =>
-                                    posts.next_page_url &&
-                                    router.get(posts.next_page_url)
+                                    posts.next_page_url && router.get(posts.next_page_url)
                                 }
                             >
                                 Next
@@ -110,6 +94,10 @@ export default function PostsIndex({
                             </Button>
                         </div>
                     )}
+                </div>
+            ) : (
+                <div className="py-16 text-center">
+                    <p className="text-muted-foreground">No posts found.</p>
                 </div>
             )}
         </PublicLayout>

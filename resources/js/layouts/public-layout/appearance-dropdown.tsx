@@ -17,7 +17,7 @@ import { HTMLAttributes } from 'react';
  * @returns {React.ReactNode} - The rendered appearance toggle dropdown
  */
 
-export default function AppearanceToggleDropdown({
+export default function PublicAppearanceDropdown({
     className = '',
     ...props
 }: HTMLAttributes<HTMLDivElement>) {
