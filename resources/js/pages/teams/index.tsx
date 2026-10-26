@@ -4,19 +4,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import PublicLayout from '@/layouts/public-layout';
-import PublicTitle from '@/layouts/public-layout/public-title';
 import { type Team } from '@/types';
-import { Form, Head, Link } from '@inertiajs/react';
+import { Form, Link } from '@inertiajs/react';
 import { Plus, Users } from 'lucide-react';
 export default function TeamsIndex({ teams = [] }: { teams?: Team[] }) {
     return (
         <PublicLayout title="My teams">
-            <Head title="My teams" />
             <div className="mx-auto w-full max-w-5xl space-y-8 p-4 sm:p-6">
-                <PublicTitle title="My teams" />
-
                 <section className="border-b pb-6">
-                    <h2 className="mb-4 text-lg font-semibold">Create a team</h2>
+                    <h3 className="mb-4 text-lg font-semibold">Create a team</h3>
                     <Form
                         {...TeamController.store.form()}
                         className="flex flex-wrap items-end gap-3"
@@ -38,7 +34,7 @@ export default function TeamsIndex({ teams = [] }: { teams?: Team[] }) {
                 </section>
 
                 <section>
-                    <h2 className="mb-4 text-lg font-semibold">Your teams</h2>
+                    <h3 className="mb-4 text-lg font-semibold">Your teams</h3>
                     {teams.length === 0 ? (
                         <p className="text-sm text-muted-foreground">
                             You are not in a team yet. Create one above or ask a team owner to add

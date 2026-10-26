@@ -5,7 +5,12 @@ import { Link } from '@inertiajs/react';
 
 export default function LegalNotice({ canRegister = true }: { canRegister?: boolean }) {
     return (
-        <PublicLayout canRegister={canRegister} title="Legal Notice" leftSidebar={<LegalSidebar />}>
+        <PublicLayout
+            canRegister={canRegister}
+            title="Legal Notice"
+            showTitle={true}
+            leftSidebar={<LegalSidebar />}
+        >
             <p className="mb-3">
                 All information in accordance with section 5 TMG (German Telemedia Act):
             </p>
