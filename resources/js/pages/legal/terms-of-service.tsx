@@ -1,9 +1,18 @@
 import PublicLayout from '@/layouts/public-layout';
-import SidebarLegal from '@/layouts/public-layout/sidebars/legal-sidebar';
+import LegalSidebar from '@/layouts/public-layout/sidebars/legal-sidebar';
 
+/**
+ *
+ * @param canRegister: boolean
+ * @returns
+ */
 export default function TermsofService({ canRegister = true }: { canRegister?: boolean }) {
     return (
-        <PublicLayout canRegister={canRegister} title="Terms of Service" sidebar={<SidebarLegal />}>
+        <PublicLayout
+            canRegister={canRegister}
+            title="Terms of Service"
+            leftSidebar={<LegalSidebar />}
+        >
             <div className="space-y-5">
                 <section>
                     <h2 className="mb-3 text-2xl font-semibold">Scope of these Terms of Service</h2>

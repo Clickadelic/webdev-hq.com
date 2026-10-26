@@ -14,6 +14,7 @@ interface PublicLayoutProps {
     rightSidebar?: React.ReactNode | null;
     children: React.ReactNode;
     canRegister?: boolean;
+    wrapperClasses?: string;
     contentClasses?: string;
 }
 
@@ -34,6 +35,7 @@ export default function PublicLayout({
     rightSidebar,
     children,
     canRegister,
+    wrapperClasses,
     contentClasses,
 }: PublicLayoutProps) {
     return (
@@ -43,27 +45,42 @@ export default function PublicLayout({
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
                 {leftSidebar && !rightSidebar && (
-                    <div className="container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6">
-                        <aside className="col-span-1">{leftSidebar}</aside>
+                    <div
+                        className={cn(
+                            'container mx-auto grid grow grid-cols-1 gap-4 px-3 md:grid-cols-6 md:px-0',
+                            wrapperClasses,
+                        )}
+                    >
+                        <aside className="col-span-1 hidden md:flex">{leftSidebar}</aside>
                         <main className={cn('col-span-5 w-full', contentClasses)}>{children}</main>
                     </div>
                 )}
                 {leftSidebar && rightSidebar && (
-                    <div className="container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6">
+                    <div
+                        className={cn(
+                            'container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6',
+                            wrapperClasses,
+                        )}
+                    >
                         <aside className="col-span-1">{leftSidebar}</aside>
                         <main className={cn('col-span-4 w-full', contentClasses)}>{children}</main>
                         <aside className="col-span-1">{rightSidebar}</aside>
                     </div>
                 )}
                 {rightSidebar && !leftSidebar && (
-                    <div className="container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6">
+                    <div
+                        className={cn(
+                            'container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6',
+                            wrapperClasses,
+                        )}
+                    >
                         <main className={cn('col-span-5 w-full', contentClasses)}>{children}</main>
                         <aside className="col-span-1">{rightSidebar}</aside>
                     </div>
                 )}
                 {!leftSidebar && !rightSidebar && (
-                    <div className="container mx-auto grow">
-                        <main className={cn('w-full', contentClasses)}>{children}</main>
+                    <div className={cn('container mx-auto flex grow', wrapperClasses)}>
+                        <main className={cn('w-full px-3', contentClasses)}>{children}</main>
                     </div>
                 )}
                 <Toaster />

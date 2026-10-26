@@ -1,8 +1,9 @@
 import PublicLayout from '@/layouts/public-layout';
-import SidebarLegal from '@/layouts/public-layout/sidebars/legal-sidebar';
+import LegalSidebar from '@/layouts/public-layout/sidebars/legal-sidebar';
+
 export default function Disclaimer({ canRegister = true }: { canRegister?: boolean }) {
     return (
-        <PublicLayout canRegister={canRegister} title="Disclaimer" sidebar={<SidebarLegal />}>
+        <PublicLayout canRegister={canRegister} title="Disclaimer" leftSidebar={<LegalSidebar />}>
             <div className="space-y-5">
                 <section>
                     <h2 className="mb-6 flex gap-3 text-xl font-medium">User Generated Content</h2>

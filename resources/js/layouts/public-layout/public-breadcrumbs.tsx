@@ -38,7 +38,12 @@ const PublicBreadcrumbs = ({ className }: PublicBreadCrumbProps) => {
     });
 
     return (
-        <div className={cn('container mx-auto mb-3 w-full px-2 md:px-0', className)}>
+        <div
+            className={cn(
+                'container mx-auto mb-5 w-full border-b-2 border-primary px-4 md:px-2',
+                className,
+            )}
+        >
             <ul className="flex items-center gap-3 py-5 text-sm text-gray-800 dark:text-gray-200">
                 {/* Home */}
                 <li>
@@ -48,14 +53,14 @@ const PublicBreadcrumbs = ({ className }: PublicBreadCrumbProps) => {
                         aria-label="Homepage"
                         title="Homepage"
                     >
-                        <RiHomeLine className="-mt-1 inline size-5" />
+                        <RiHomeLine className="-mt-1 inline size-4" />
                         <span className="sr-only">Homepage</span>
                     </Link>
                 </li>
 
                 {crumbs.map((crumb: { name: string; path: string }, idx) => (
                     <li key={idx} className="line-clamp-1 flex items-center">
-                        <ChevronRight className="mr-3 size-5 text-gray-800 dark:text-neutral-200" />
+                        <ChevronRight className="mr-3 size-4 text-gray-800 dark:text-neutral-200" />
                         {/* Letztes Segment nicht als Link */}
                         {idx === crumbs.length - 1 ? (
                             <span className="line-clamp-1 cursor-default">{crumb.name}</span>

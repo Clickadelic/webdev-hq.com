@@ -48,29 +48,22 @@ export default function PostsIndex({
                                         )}
                                         {post.published_at && (
                                             <time dateTime={post.published_at}>
-                                                {new Date(
-                                                    post.published_at,
-                                                ).toLocaleDateString()}
+                                                {new Date(post.published_at).toLocaleDateString()}
                                             </time>
                                         )}
                                     </div>
                                     <div className="space-y-2">
-                                        <h2 className="text-xl font-semibold">
-                                            {post.title}
-                                        </h2>
+                                        <h2 className="text-xl font-semibold">{post.title}</h2>
                                         {(post.description || post.subline) && (
                                             <p className="line-clamp-3 text-sm text-muted-foreground">
-                                                {post.description ??
-                                                    post.subline}
+                                                {post.description ?? post.subline}
                                             </p>
                                         )}
                                     </div>
                                     {post.tags && post.tags.length > 0 && (
                                         <div className="mt-auto flex flex-wrap gap-2 text-xs text-primary">
                                             {post.tags.map((tag) => (
-                                                <span key={tag.id}>
-                                                    #{tag.name}
-                                                </span>
+                                                <span key={tag.id}>#{tag.name}</span>
                                             ))}
                                         </div>
                                     )}
@@ -80,14 +73,13 @@ export default function PostsIndex({
                     </div>
 
                     {posts.last_page > 1 && (
-                        <div className="mt-8 flex items-center justify-center gap-2">
+                        <div className="mt-8 flex items-center justify-center gap-2 border-transparent hover:border-primary">
                             <Button
                                 variant="outline"
                                 size="sm"
                                 disabled={!posts.prev_page_url}
                                 onClick={() =>
-                                    posts.prev_page_url &&
-                                    router.get(posts.prev_page_url)
+                                    posts.prev_page_url && router.get(posts.prev_page_url)
                                 }
                             >
                                 <ChevronLeft className="size-4" />
@@ -101,8 +93,7 @@ export default function PostsIndex({
                                 size="sm"
                                 disabled={!posts.next_page_url}
                                 onClick={() =>
-                                    posts.next_page_url &&
-                                    router.get(posts.next_page_url)
+                                    posts.next_page_url && router.get(posts.next_page_url)
                                 }
                             >
                                 Next

@@ -1,9 +1,13 @@
 import PublicLayout from '@/layouts/public-layout';
-import SidebarLegal from '@/layouts/public-layout/sidebars/legal-sidebar';
+import LegalSidebar from '@/layouts/public-layout/sidebars/legal-sidebar';
 
 export default function CookiePolicy({ canRegister = true }: { canRegister?: boolean }) {
     return (
-        <PublicLayout canRegister={canRegister} title="Cookie Policy" sidebar={<SidebarLegal />}>
+        <PublicLayout
+            canRegister={canRegister}
+            title="Cookie Policy"
+            leftSidebar={<LegalSidebar />}
+        >
             <div className="space-y-5">
                 <h2 className="mb-6 flex gap-3 text-xl font-medium">Cookie Policy</h2>
                 <section>

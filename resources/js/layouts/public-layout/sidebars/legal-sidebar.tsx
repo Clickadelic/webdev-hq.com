@@ -6,7 +6,7 @@ export default function LegalSidebar({ className }: { className?: string }) {
     return (
         <div className={cn('hidden md:block', className)}>
             <h2 className="mb-6 flex gap-3 text-xl font-medium">
-                <Scale /> Navigation
+                <Scale className="mt-1 size-5" /> Navigation
             </h2>
             <ul className="list-inside space-y-1">
                 <SidebarLink title="Legal Overview" href="/legal" />

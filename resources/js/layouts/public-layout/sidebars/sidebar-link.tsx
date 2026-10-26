@@ -19,9 +19,8 @@ export default function SidebarLink({ href, title }: SidebarLinkProps) {
             <Link
                 href={href}
                 className={cn(
-                    'flex flex-row gap-4 rounded p-2 transition-colors hover:bg-slate-200 hover:text-primary',
-                    isActive &&
-                        'underline-primary font-semibold underline-offset-2',
+                    'flex flex-row gap-4 rounded p-2 transition-colors hover:bg-slate-200 hover:text-primary dark:hover:bg-neutral-800',
+                    isActive && 'underline-primary font-semibold underline-offset-2',
                 )}
                 title={title}
             >
