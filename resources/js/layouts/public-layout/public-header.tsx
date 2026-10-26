@@ -1,8 +1,8 @@
 import UserDropdownMenu from '@/components/user-dropdown-menu';
+import { useMediaQuery } from '@/hooks/use-media-query';
 import AppLogo from '@/layouts/dashboard-layout/app-logo';
 import PublicAppearanceDropdown from '@/layouts/public-layout/appearance-dropdown';
 import MobileSheet from '@/layouts/public-layout/public-mobile-sheet';
-
 import { cn } from '@/lib/utils';
 import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
@@ -30,6 +30,7 @@ interface PublicHeaderProps {
  */
 export default function PublicHeader({ canRegister = true, className }: PublicHeaderProps) {
     const { auth } = usePage<SharedData>().props;
+    const isMobile = useMediaQuery('(max-width: 768px)');
     return (
         <div className="w-full bg-white/30 pb-2 backdrop-blur dark:bg-neutral-900/30 dark:backdrop-blur">
             <header
@@ -40,7 +41,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
             >
                 <div className="container mx-auto flex items-center justify-between px-3 py-1.5 sm:px-0 lg:py-3">
                     <AppLogo logoClassName="size-7 md:mr-3" />
-                    <nav className="hidden items-center justify-between gap-4 lg:flex">
+                    <nav className="mt-0.75 hidden items-center justify-between gap-4 lg:flex">
                         <ul className="flex items-center justify-start gap-6">
                             <li>
                                 <Link href="/" className="flex h-auto items-center gap-2">
@@ -71,7 +72,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                             </li>
                         </ul>
                     </nav>
-                    <nav className="hidden lg:flex">
+                    <nav className="mt-0.75 hidden lg:flex">
                         <div className="flex-start flex items-center gap-3">
                             {auth.user ? (
                                 <ul className="flex justify-end gap-3">
@@ -114,7 +115,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                             <PublicAppearanceDropdown />
                         </div>
                     </nav>
-                    <MobileSheet className="flex lg:hidden" />
+                    {isMobile && <MobileSheet className="flex lg:hidden" />}
                 </div>
             </header>
         </div>
