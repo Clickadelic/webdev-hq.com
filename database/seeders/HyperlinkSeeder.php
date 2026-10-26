@@ -152,7 +152,7 @@ class HyperlinkSeeder extends Seeder
 			['url' => 'https://docs.paperless-ngx.com/'],
 			[
 				'title' => 'Paperless-ngx',
-				'favicon_url' => 'https://docs.paperless-ngx.com/_static/favicon-32x32.png',
+				'favicon_url' => 'https://docs.paperless-ngx.com/assets/favicon.png',
 				'description' => 'A document management system for your digital files.',
 				'category_id' => $openSourceCategory->id,
 				'status' => Status::Published,
@@ -238,7 +238,6 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$laravel->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		// Marko
@@ -254,7 +253,6 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$markoHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		// CodeIgniter
@@ -270,7 +268,6 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$codeIgniterHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		// Tempest
@@ -286,7 +283,6 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$tempestHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		$bootstrapHyperlink = Hyperlink::updateOrCreate(
@@ -301,7 +297,6 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$bootstrapHyperlink->tags()->syncWithoutDetaching([$cssTag->id]);
 
 		// Yii
@@ -317,7 +312,6 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$yiiHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		// Jamstack
@@ -333,7 +327,6 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$jamstackHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 
 		// Web Features Explorer
@@ -349,7 +342,6 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$webFeaturesExplorerHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 
 		// Zend Framework
@@ -365,7 +357,6 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$zend->tags()->syncWithoutDetaching([$phpTag->id]);
 
 		$shodanHyperlink = Hyperlink::updateOrCreate(
@@ -380,14 +371,13 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$shodanHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 
 		$playwrightHyperlink = Hyperlink::updateOrCreate(
 			['url' => 'https://playwright.dev/'],
 			[
 				'title' => 'Playwright',
-				'favicon_url' => 'https://playwright.dev/favicon-32x32.png',
+				'favicon_url' => 'https://playwright.dev/img/playwright-logo.ico',
 				'description' => 'Playwright is a Node.js library to automate Chromium, Firefox and WebKit with a single API.',
 				'category_id' => $frontendCategory->id,
 				'status' => Status::Published,
@@ -395,7 +385,48 @@ class HyperlinkSeeder extends Seeder
 				'team_id' => $team->id,
 			],
 		);
-
 		$playwrightHyperlink->tags()->syncWithoutDetaching([$testingTag->id]);
+
+		$frankenHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://frankenphp.com/'],
+			[
+				'title' => 'FrankenPHP',
+				'favicon_url' => 'https://frankenphp.dev/favicon.ico',
+				'description' => 'FrankenPHP is a high-performance PHP runtime.',
+				'category_id' => $backendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$frankenHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
+
+		$caddyHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://caddyserver.com/'],
+			[
+				'title' => 'Caddy Server',
+				'favicon_url' => 'https://caddyserver.com/resources/images/favicon.png?v=a49be19',
+				'description' => 'Caddy is a powerful, enterprise-ready, open source web server with automatic HTTPS.',
+				'category_id' => $backendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$caddyHyperlink->tags()->syncWithoutDetaching([$phpTag->id]);
+
+		$wxtHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://wxt.dev/'],
+			[
+				'title' => 'WXT',
+				'favicon_url' => 'https://wxt.dev/favicon.ico',
+				'description' => 'Next-gen Web Extension Framework.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$wxtHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 	}
 }

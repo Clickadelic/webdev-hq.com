@@ -41,7 +41,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
             >
                 <div className="container mx-auto flex items-center justify-between px-3 py-1.5 sm:px-0 lg:py-3">
                     <AppLogo logoClassName="size-7 md:mr-3" />
-                    <nav className="hidden items-center justify-between gap-4 lg:flex">
+                    <nav className="mt-0.75 hidden items-center justify-between gap-4 lg:flex">
                         <ul className="flex items-center justify-start gap-6">
                             <li>
                                 <Link href="/" className="flex h-auto items-center gap-2">
@@ -72,7 +72,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                             </li>
                         </ul>
                     </nav>
-                    <nav className="hidden lg:flex">
+                    <nav className="mt-0.75 hidden lg:flex">
                         <div className="flex-start flex items-center gap-3">
                             {auth.user ? (
                                 <ul className="flex justify-end gap-3">
