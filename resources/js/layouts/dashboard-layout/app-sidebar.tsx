@@ -1,6 +1,6 @@
-import { NavFooter } from '@/components/nav-footer';
-import { NavMain } from '@/components/nav-main';
-import { NavUser } from '@/components/nav-user';
+import { NavFooter } from '@/layouts/dashboard-layout/nav-footer';
+import { NavMain } from '@/layouts/dashboard-layout/nav-main';
+import { NavUser } from '@/layouts/dashboard-layout/nav-user';
 import {
     Sidebar,
     SidebarContent,
@@ -66,27 +66,6 @@ const mainNavGroups: NavGroup[] = [
                     },
                 ],
             },
-            // {
-            //     title: 'Free',
-            //     icon: Folder,
-            //     items: [
-            //         {
-            //             title: 'Dummylinks',
-            //             href: '#',
-            //             icon: Link,
-            //         },
-            //         {
-            //             title: 'Dummylinks',
-            //             href: '#',
-            //             icon: Link,
-            //         },
-            //         {
-            //             title: 'Dummylinks',
-            //             href: '#',
-            //             icon: Link,
-            //         },
-            //     ],
-            // },
         ],
     },
 ];
@@ -96,11 +75,6 @@ const footerNavItems: NavItem[] = [
         title: 'API Platform',
         href: 'https://webdev-hq.com',
         icon: GalleryHorizontal,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
     },
 ];
 

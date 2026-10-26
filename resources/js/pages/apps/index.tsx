@@ -3,7 +3,6 @@
 import { index } from '@/actions/App/Http/Controllers/AppController';
 import AppForm from '@/components/forms/app-form';
 
-import { Button } from '@/components/ui/button';
 import {
     Dialog,
     DialogContent,
@@ -14,7 +13,6 @@ import {
 import AppLayout from '@/layouts/dashboard-layout';
 import { App, type BreadcrumbItem, type Paginator } from '@/types';
 import { usePage } from '@inertiajs/react';
-import { Pencil } from 'lucide-react';
 import { useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -56,21 +54,6 @@ export default function Apps() {
                                 >
                                     {app.url.replace(/^https?:\/\//, '')}
                                 </a>
-
-                                <div className="flex gap-2">
-                                    <Button
-                                        variant="outline"
-                                        size="sm"
-                                        onClick={() => {
-                                            setEditingHyperlink(link);
-                                            setIsEditOpen(true);
-                                        }}
-                                    >
-                                        <Pencil className="mr-1 size-3" />
-                                        Edit
-                                    </Button>
-                                    <DeleteHyperlinkButton id={link.id} />
-                                </div>
                             </div>
                         ))
                     ) : (

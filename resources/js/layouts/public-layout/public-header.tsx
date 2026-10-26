@@ -1,7 +1,8 @@
-import AppLogo from '@/components/app-logo';
 import UserDropdownMenu from '@/components/user-dropdown-menu';
+import AppLogo from '@/layouts/dashboard-layout/app-logo';
+import PublicAppearanceDropdown from '@/layouts/public-layout/appearance-dropdown';
+import MobileSheet from '@/layouts/public-layout/public-mobile-sheet';
 
-import AppearanceDropdown from '@/components/appearance-dropdown';
 import { cn } from '@/lib/utils';
 import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
@@ -32,15 +33,14 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
     return (
         <header
             className={cn(
-                'relative z-20 w-full bg-white shadow-lg backdrop-blur dark:bg-neutral-900/30 dark:backdrop-blur',
+                'relative z-20 w-full bg-white shadow-lg backdrop-blur dark:bg-neutral-900 dark:backdrop-blur',
                 className,
             )}
         >
-            <div className="container mx-auto flex items-center justify-between px-3 sm:px-0">
-                <AppLogo logoClassName="size-7 mr-3" />
-
-                <nav className="flex items-center justify-between gap-4">
-                    <ul className="hidden items-center justify-start gap-6 lg:flex">
+            <div className="container mx-auto flex items-center justify-between px-3 py-1.5 sm:px-0 lg:py-3">
+                <AppLogo logoClassName="size-7 md:mr-3" />
+                <nav className="hidden items-center justify-between gap-4 lg:flex">
+                    <ul className="flex items-center justify-start gap-6">
                         <li>
                             <Link href="/" className="flex h-auto items-center gap-2">
                                 <House className="size-4" />
@@ -70,10 +70,10 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                         </li>
                     </ul>
                 </nav>
-                <nav>
+                <nav className="hidden lg:flex">
                     <div className="flex-start flex items-center gap-3">
                         {auth.user ? (
-                            <ul className="my-2.5 flex justify-end gap-3">
+                            <ul className="flex justify-end gap-3">
                                 <li>
                                     <Link
                                         href={dashboard.url()}
@@ -86,7 +86,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                                 </li>
                             </ul>
                         ) : (
-                            <ul className="my-2.5 flex justify-end gap-3">
+                            <ul className="flex justify-end gap-3">
                                 {canRegister && (
                                     <li>
                                         <Link
@@ -110,9 +110,10 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                             </ul>
                         )}
                         {auth.user ? <UserDropdownMenu user={auth.user} /> : null}
-                        <AppearanceDropdown />
+                        <PublicAppearanceDropdown />
                     </div>
                 </nav>
+                <MobileSheet className="flex lg:hidden" />
             </div>
         </header>
     );

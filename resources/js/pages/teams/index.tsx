@@ -1,10 +1,10 @@
 import TeamController from '@/actions/App/Http/Controllers/TeamController';
 import InputError from '@/components/input-error';
-import PublicTitle from '@/components/public-title';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import PublicLayout from '@/layouts/public-layout';
+import PublicTitle from '@/layouts/public-layout/public-title';
 import { type Team } from '@/types';
 import { Form, Head, Link } from '@inertiajs/react';
 import { Plus, Users } from 'lucide-react';
