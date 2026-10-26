@@ -2,7 +2,10 @@ import { Button } from '@/components/ui/button';
 import PublicLayout from '@/layouts/public-layout';
 import { type Paginator, type Post } from '@/types';
 import { router } from '@inertiajs/react';
+
 import { ChevronLeft, ChevronRight, ImageOff } from 'lucide-react';
+import { Link } from '@inertiajs/react';
+import { show } from '@/actions/App/Http/Controllers/PostController';
 export default function PostsIndex({
     posts,
     canRegister = true,
@@ -59,6 +62,12 @@ export default function PostsIndex({
                                             ))}
                                         </div>
                                     )}
+									<Link
+										className="mt-auto"
+										href={show.url(post.slug)}
+									>
+										Read more
+									</Link>
                                 </div>
                             </article>
                         ))}

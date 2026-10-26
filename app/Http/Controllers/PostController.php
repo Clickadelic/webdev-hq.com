@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Inertia\Response;
-use Inertia\Inertia;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
