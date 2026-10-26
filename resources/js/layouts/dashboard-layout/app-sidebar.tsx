@@ -1,6 +1,3 @@
-import { NavFooter } from '@/layouts/dashboard-layout/nav-footer';
-import { NavMain } from '@/layouts/dashboard-layout/nav-main';
-import { NavUser } from '@/layouts/dashboard-layout/nav-user';
 import {
     Sidebar,
     SidebarContent,
@@ -10,16 +7,10 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import {
-    BookOpen,
-    Folder,
-    GalleryHorizontal,
-    LayoutGrid,
-    Link,
-    Pencil,
-    Tag,
-    Webhook,
-} from 'lucide-react';
+import { NavFooter } from '@/layouts/dashboard-layout/nav-footer';
+import { NavMain } from '@/layouts/dashboard-layout/nav-main';
+import { NavUser } from '@/layouts/dashboard-layout/nav-user';
+import { GalleryHorizontal, LayoutGrid, Link, Pencil, Tag, Webhook } from 'lucide-react';
 
 import { index as postsIndex } from '@/actions/App/Http/Controllers/PostController';
 import AppLogo from './app-logo';
@@ -41,30 +32,24 @@ const mainNavGroups: NavGroup[] = [
         title: 'Content',
         items: [
             {
-                title: 'Library',
-                icon: Folder,
-                items: [
-                    {
-                        title: 'Posts',
-                        href: postsIndex.url(),
-                        icon: Pencil,
-                    },
-                    {
-                        title: 'Hyperlinks',
-                        href: '/dashboard/hyperlinks',
-                        icon: Link,
-                    },
-                    {
-                        title: 'Categories',
-                        href: '/dashboard/categories',
-                        icon: Webhook,
-                    },
-                    {
-                        title: 'Tags',
-                        href: '/dashboard/tags',
-                        icon: Tag,
-                    },
-                ],
+                title: 'Posts',
+                href: postsIndex.url(),
+                icon: Pencil,
+            },
+            {
+                title: 'Hyperlinks',
+                href: '/dashboard/hyperlinks',
+                icon: Link,
+            },
+            {
+                title: 'Categories',
+                href: '/dashboard/categories',
+                icon: Webhook,
+            },
+            {
+                title: 'Tags',
+                href: '/dashboard/tags',
+                icon: Tag,
             },
         ],
     },

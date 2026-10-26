@@ -54,7 +54,7 @@ export default function PublicLayout({
                 {leftSidebar && !rightSidebar && (
                     <div
                         className={cn(
-                            'container mx-auto grid grow grid-cols-1 gap-4 px-3 md:grid-cols-6 md:px-0',
+                            'container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6',
                             wrapperClasses,
                         )}
                     >
@@ -96,7 +96,7 @@ export default function PublicLayout({
                 )}
                 {!leftSidebar && !rightSidebar && (
                     <div className={cn('container mx-auto flex grow', wrapperClasses)}>
-                        <main className={cn('w-full px-3', contentClasses)}>
+                        <main className={cn('w-full', contentClasses)}>
                             {showTitle && <PublicTitle title={title} />}
                             {children}
                         </main>

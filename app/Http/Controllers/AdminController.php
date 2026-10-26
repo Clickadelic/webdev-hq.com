@@ -7,7 +7,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class DashboardAdminController extends Controller
+class AdminController extends Controller
 {
 	public function index(): Response
 	{
