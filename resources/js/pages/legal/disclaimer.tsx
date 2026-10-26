@@ -3,7 +3,12 @@ import LegalSidebar from '@/layouts/public-layout/sidebars/legal-sidebar';
 
 export default function Disclaimer({ canRegister = true }: { canRegister?: boolean }) {
     return (
-        <PublicLayout canRegister={canRegister} title="Disclaimer" leftSidebar={<LegalSidebar />}>
+        <PublicLayout
+            canRegister={canRegister}
+            title="Disclaimer"
+            showTitle={true}
+            leftSidebar={<LegalSidebar />}
+        >
             <p className="mb-3">
                 This disclaimer outlines the responsibilities and limitations of the webdev-hq.com
                 platform.

@@ -31,7 +31,7 @@ interface PublicHeaderProps {
 export default function PublicHeader({ canRegister = true, className }: PublicHeaderProps) {
     const { auth } = usePage<SharedData>().props;
     return (
-        <div className="w-full bg-white/30 pb-2 shadow-lg backdrop-blur dark:bg-neutral-900/30 dark:backdrop-blur">
+        <div className="w-full bg-white/30 pb-2 backdrop-blur dark:bg-neutral-900/30 dark:backdrop-blur">
             <header
                 className={cn(
                     'w-full bg-white backdrop-blur dark:bg-neutral-900 dark:backdrop-blur',

@@ -12,7 +12,7 @@ export default function PostsIndex({
     canRegister?: boolean;
 }) {
     return (
-        <PublicLayout title="Posts" canRegister={canRegister}>
+        <PublicLayout title="Posts" showTitle={true} canRegister={canRegister}>
             {posts.data.length >= 1 ? (
                 <div className="pb-8">
                     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">

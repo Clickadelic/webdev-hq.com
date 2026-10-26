@@ -11,6 +11,7 @@ import { Head } from '@inertiajs/react';
 // Public Layout Interface
 interface PublicLayoutProps {
     title?: string;
+    showTitle?: boolean;
     leftSidebar?: React.ReactNode | null;
     rightSidebar?: React.ReactNode | null;
     children: React.ReactNode;
@@ -28,10 +29,15 @@ interface PublicLayoutProps {
  * @param {React.ReactNode} rightSidebar - The right sidebar component
  * @param {React.ReactNode} children - The main content of the page
  * @param {boolean} canRegister - Indicates if the registration option should be displayed
+ * @param {boolean} showTitle - Indicates if the title should be displayed
+ * @param {boolean} canRegister - Indicates if the registration option should be displayed
  * @param {string} contentClasses - An optional class name to apply to the main container
+ * @param {string} wrapperClasses - An optional class name to apply to the wrapper container
+ * @returns {React.ReactNode} - The rendered public layout component
  */
 export default function PublicLayout({
     title,
+    showTitle,
     leftSidebar,
     rightSidebar,
     children,
@@ -54,7 +60,7 @@ export default function PublicLayout({
                     >
                         <aside className="col-span-1 hidden md:flex">{leftSidebar}</aside>
                         <main className={cn('col-span-5 w-full', contentClasses)}>
-                            <PublicTitle title={title} />
+                            {showTitle && <PublicTitle title={title} />}
                             {children}
                         </main>
                     </div>
@@ -68,7 +74,7 @@ export default function PublicLayout({
                     >
                         <aside className="col-span-1">{leftSidebar}</aside>
                         <main className={cn('col-span-4 w-full', contentClasses)}>
-                            <PublicTitle title={title} />
+                            {showTitle && <PublicTitle title={title} />}
                             {children}
                         </main>
                         <aside className="col-span-1">{rightSidebar}</aside>
@@ -82,7 +88,7 @@ export default function PublicLayout({
                         )}
                     >
                         <main className={cn('col-span-5 w-full', contentClasses)}>
-                            <PublicTitle title={title} />
+                            {showTitle && <PublicTitle title={title} />}
                             {children}
                         </main>
                         <aside className="col-span-1">{rightSidebar}</aside>
@@ -91,7 +97,7 @@ export default function PublicLayout({
                 {!leftSidebar && !rightSidebar && (
                     <div className={cn('container mx-auto flex grow', wrapperClasses)}>
                         <main className={cn('w-full px-3', contentClasses)}>
-                            <PublicTitle title={title} />
+                            {showTitle && <PublicTitle title={title} />}
                             {children}
                         </main>
                     </div>

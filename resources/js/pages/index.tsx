@@ -26,6 +26,7 @@ export default function IndexPage({ canRegister = true }: PublicLayoutProps) {
             canRegister={canRegister}
             contentClasses="flex flex-col items-center justify-center"
             title="Welcome"
+            showTitle={false}
         >
             <h1 className="mb-10 text-5xl font-light text-neutral-950 dark:text-white">
                 <img

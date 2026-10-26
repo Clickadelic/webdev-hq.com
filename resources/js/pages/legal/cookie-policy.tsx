@@ -6,6 +6,7 @@ export default function CookiePolicy({ canRegister = true }: { canRegister?: boo
         <PublicLayout
             canRegister={canRegister}
             title="Cookie Policy"
+            showTitle={true}
             leftSidebar={<LegalSidebar />}
         >
             <p className="mb-3">

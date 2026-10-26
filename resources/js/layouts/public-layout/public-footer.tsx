@@ -14,14 +14,14 @@ export default function PublicFooter({ className }: PublicFooterProps) {
     return (
         <footer
             className={cn(
-                'z-20 w-full bg-white/30 px-3 pt-2 backdrop-blur sm:px-0 dark:bg-neutral-900/30',
+                'z-20 w-full bg-white/30 px-0 pt-2 backdrop-blur dark:bg-neutral-900/30',
                 className,
             )}
         >
             <div className="w-full bg-white pt-4 backdrop-blur sm:px-0 dark:bg-neutral-900">
                 <div className="container mx-auto py-6">
-                    <div className="mb-0 flex flex-row items-center justify-center">
-                        <ul className="mx-auto mb-4 space-y-3 text-center text-sm sm:flex sm:space-y-0 sm:space-x-3">
+                    <div className="mb-5 flex flex-row items-center justify-center">
+                        <ul className="mx-auto mb-4 space-y-6 text-center text-sm sm:flex sm:space-y-0 sm:space-x-3">
                             <li>
                                 <Link
                                     href="/legal/disclaimer"
