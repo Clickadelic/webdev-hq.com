@@ -1,10 +1,8 @@
 'use client';
 
-import { SortableAppTile } from '@/layouts/dashboard-layout/sortable-app-tile';
 import AppLayout from '@/layouts/dashboard-layout';
+import { SortableAppTile } from '@/layouts/dashboard-layout/sortable-app-tile';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-
-import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core';
 
 import {
     DndContext,
@@ -24,20 +22,20 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import Switch from '@/components/ui/switch';
-import { Plus } from 'lucide-react';
-import { BsApp } from 'react-icons/bs';
 
 import { destroy as destroyRoute } from '@/actions/App/Http/Controllers/AppController';
+import Switch from '@/components/ui/switch';
 import { dashboard } from '@/routes';
 import { type App, type BreadcrumbItem } from '@/types';
 import { router, usePage } from '@inertiajs/react';
+import { Plus } from 'lucide-react';
+import { BsApp } from 'react-icons/bs';
 import { toast } from 'sonner';
 
 import AppForm from '@/components/forms/app-form';
-import { getFaviconUrl } from '@/lib/utils';
 import HyperlinkWidget from '@/components/hyperlink-widget';
-
+import { getFaviconUrl } from '@/lib/utils';
+import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core';
 type AppItem = { id: string; title: string; url: string; icon: string };
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -156,7 +154,7 @@ export default function DashboardIndex() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <div className="flex flex-col gap-2 overflow-x-auto rounded-xl mb-8">
+            <div className="mb-8 flex flex-col gap-2 overflow-x-auto">
                 <DndContext
                     sensors={sensors}
                     collisionDetection={closestCenter}
@@ -240,12 +238,12 @@ export default function DashboardIndex() {
                     </DragOverlay>
                 </DndContext>
             </div>
-			<div className="grid grid-cols-4">
-				<HyperlinkWidget hyperlinks={[]} />
-				<div>Gridbox</div>
-				<div>Gridbox</div>
-				<div>Gridbox</div>
-			</div>
+            <div className="grid grid-cols-4 gap-4">
+                <HyperlinkWidget hyperlinks={[]} />
+                <div>Gridbox</div>
+                <div>Gridbox</div>
+                <div>Gridbox</div>
+            </div>
         </AppLayout>
     );
 }
