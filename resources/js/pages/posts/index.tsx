@@ -21,7 +21,7 @@ export default function PostsIndex({
                         {posts.data.map((post) => (
                             <article
                                 key={post.id}
-                                className="flex min-h-72 flex-col overflow-hidden rounded-lg border border-border bg-background"
+                                className="transition-all flex min-h-72 flex-col overflow-hidden rounded-lg border border-border bg-background"
                             >
                                 {post.featured_image ? (
                                     <img
