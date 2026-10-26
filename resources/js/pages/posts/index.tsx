@@ -20,9 +20,10 @@ export default function PostsIndex({
                 <div className="pb-8">
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                         {posts.data.map((post) => (
+							<div className="bg-white/30 rounded-xl p-1 dark:bg-neutral-800/30">
                             <article
                                 key={post.id}
-                                className="flex min-h-72 flex-col overflow-hidden rounded-lg border border-border bg-background transition-all"
+                                className="flex min-h-72 flex-col overflow-hidden rounded-lg border border-border bg-white dark:bg-neutral-800 transition-all"
                             >
                                 {post.featured_image ? (
                                     <img
@@ -74,6 +75,7 @@ export default function PostsIndex({
                                     </Link>
                                 </div>
                             </article>
+							</div>
                         ))}
                     </div>
 
