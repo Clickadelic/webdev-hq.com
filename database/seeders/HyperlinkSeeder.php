@@ -54,7 +54,68 @@ class HyperlinkSeeder extends Seeder
 		$javaTag = Tag::query()->where('slug', 'java')->firstOrFail();
 		$openSourceTag = Tag::query()->where('slug', 'open-source')->firstOrFail();
 		$symfonyTag = Tag::query()->where('slug', 'symfony')->firstOrFail();
+		$testingTag = Tag::query()->where('slug', 'testing')->firstOrFail();
 
+
+		// TailWind Grid Generator
+		$folgeToolsHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://folge.me/tools'],
+			[
+				'title' => 'TailWind Grid Generator',
+				'favicon_url' => 'https://www.tailwindgen.com/favicon.ico',
+				'description' => 'Collection of free online tools, all private and running only in your browser.',
+				'category_id' => $toolingCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$folgeToolsHyperlink->tags()->syncWithoutDetaching([$cssTag->id]);
+
+		// Keystone
+		$keystoneHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://keystonejs.com/'],
+			[
+				'title' => 'KeystoneJS',
+				'favicon_url' => 'https://keystonejs.com/favicon-32x32.png',
+				'description' => 'The superpowered CMS for developers.',
+				'category_id' => $cmsCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$keystoneHyperlink->tags()->syncWithoutDetaching([$nodeJsTag->id]);
+
+		// Skeleton CSS
+		$skeletonHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'http://getskeleton.com/'],
+			[
+				'title' => 'Skeleton CSS',
+				'favicon_url' => 'http://getskeleton.com/dist/images/favicon.png',
+				'description' => 'A dead simple, responsive boilerplate.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$skeletonHyperlink->tags()->syncWithoutDetaching([$cssTag->id]);
+
+		// Pico CSS
+		$picoHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://picocss.com'],
+			[
+				'title' => 'Pico CSS',
+				'favicon_url' => 'https://picocss.com/favicon-32x32.png',
+				'description' => 'A minimal CSS Framework for Semantic HTML.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$picoHyperlink->tags()->syncWithoutDetaching([$cssTag->id]);
 
 		// W3C
 		$bulmaHyperlink = Hyperlink::updateOrCreate(
@@ -265,7 +326,7 @@ class HyperlinkSeeder extends Seeder
 			[
 				'title' => 'Jamstack',
 				'favicon_url' => 'https://jamstack.org/img/favicons/favicon-32x32.png',
-				'description' => 'Jamstack is an architectural approach that decouples the web experience layer from data and business logic, improving flexibility, scalability, performance, and maintainability.',
+				'description' => 'An architectural approach that decouples the web experience layer.',
 				'category_id' => $webdevCategory->id,
 				'status' => Status::Published,
 				'created_by' => $user->id,
@@ -311,7 +372,7 @@ class HyperlinkSeeder extends Seeder
 			['url' => 'https://shodan.io/'],
 			[
 				'title' => 'Shodan',
-				'favicon_url' => 'https://www.shodan.io/favicon.ico',
+				'favicon_url' => 'https://www.shodan.io/static/img/favicon.png',
 				'description' => 'Shodan is a search engine for Internet-connected devices.',
 				'category_id' => $webdevCategory->id,
 				'status' => Status::Published,
@@ -321,5 +382,20 @@ class HyperlinkSeeder extends Seeder
 		);
 
 		$shodanHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$playwrightHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://playwright.dev/'],
+			[
+				'title' => 'Playwright',
+				'favicon_url' => 'https://playwright.dev/favicon-32x32.png',
+				'description' => 'Playwright is a Node.js library to automate Chromium, Firefox and WebKit with a single API.',
+				'category_id' => $frontendCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+
+		$playwrightHyperlink->tags()->syncWithoutDetaching([$testingTag->id]);
 	}
 }

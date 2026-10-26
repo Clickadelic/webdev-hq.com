@@ -6,6 +6,7 @@ export default function PrivacyPolicy({ canRegister = true }: { canRegister?: bo
         <PublicLayout
             canRegister={canRegister}
             title="Privacy Policy"
+            showTitle={true}
             leftSidebar={<LegalSidebar />}
         >
             <p className="mb-3">

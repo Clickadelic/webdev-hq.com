@@ -11,6 +11,7 @@ export default function TermsofService({ canRegister = true }: { canRegister?: b
         <PublicLayout
             canRegister={canRegister}
             title="Terms of Service"
+            showTitle={true}
             leftSidebar={<LegalSidebar />}
         >
             <p className="mb-3">
