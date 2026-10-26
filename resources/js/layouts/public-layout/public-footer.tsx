@@ -25,7 +25,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                             <li>
                                 <Link
                                     href="/legal/disclaimer"
-                                    className="text-sm text-neutral-950 hover:text-primary dark:text-neutral-200"
+                                    className="text-sm text-neutral-950 hover:text-primary dark:text-neutral-200 dark:hover:text-primary"
                                     title="Disclaimer"
                                 >
                                     Disclaimer
@@ -35,7 +35,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                             <li>
                                 <Link
                                     href="/legal/cookie-policy"
-                                    className="text-sm text-neutral-950 hover:text-primary dark:text-neutral-200"
+                                    className="text-sm text-neutral-950 hover:text-primary dark:text-neutral-200 dark:hover:text-primary"
                                     title="Cookie Policy"
                                 >
                                     Cookie Policy
@@ -45,7 +45,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                             <li>
                                 <Link
                                     href="/legal/legal-notice"
-                                    className="text-sm text-neutral-950 hover:text-primary dark:text-neutral-200"
+                                    className="text-sm text-neutral-950 hover:text-primary dark:text-neutral-200 dark:hover:text-primary"
                                     title="Legal Notice"
                                 >
                                     Legal Notice
@@ -55,7 +55,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                             <li>
                                 <Link
                                     href="/legal/privacy-policy"
-                                    className="text-sm text-neutral-950 hover:text-primary dark:text-neutral-200"
+                                    className="text-sm text-neutral-950 hover:text-primary dark:text-neutral-200 dark:hover:text-primary"
                                     title="Privacy Policy"
                                 >
                                     Privacy Policy
@@ -65,7 +65,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
                             <li>
                                 <Link
                                     href="/legal/terms-of-service"
-                                    className="text-sm text-neutral-950 hover:text-primary dark:text-neutral-200"
+                                    className="text-sm text-neutral-950 hover:text-primary dark:text-neutral-200 dark:hover:text-primary"
                                     title="Terms of Service"
                                 >
                                     Terms of Service
