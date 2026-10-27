@@ -3,16 +3,7 @@
 import { destroy, index } from '@/actions/App/Http/Controllers/CategoryController';
 import CategoryForm from '@/components/forms/category-form';
 import { Button } from '@/components/ui/button';
-import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from '@/components/ui/dialog';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import AppLayout from '@/layouts/dashboard-layout';
 import { Category, type BreadcrumbItem } from '@/types';
 import { router, usePage } from '@inertiajs/react';
@@ -21,6 +12,10 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 
 const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: 'Dashboard',
+        href: index.url(),
+    },
     {
         title: 'Categories',
         href: index.url(),
@@ -63,14 +58,10 @@ export default function Categories() {
                                     key={cat.id}
                                     className="flex w-96 flex-col gap-3 rounded-xl border border-sidebar-border bg-white p-4 shadow-sm transition-all hover:border-primary/50 dark:bg-neutral-900"
                                 >
-                                    <h3 className="w-full truncate pr-2 text-lg leading-tight font-semibold">
-                                        {cat.name}
-                                    </h3>
+                                    <h3 className="w-full truncate pr-2 text-lg leading-tight font-semibold">{cat.name}</h3>
 
                                     <div className="flex gap-2">
-                                        <span className="rounded-md border border-primary/20 bg-primary/10 px-2 py-1 text-[10px] font-bold text-primary lowercase">
-                                            {cat.slug}
-                                        </span>
+                                        <span className="rounded-md border border-primary/20 bg-primary/10 px-2 py-1 text-[10px] font-bold text-primary lowercase">{cat.slug}</span>
                                         {cat.hyperlinks_count !== undefined && (
                                             <span className="rounded-md border border-muted bg-muted px-2 py-1 text-[10px] font-bold text-muted-foreground">
                                                 {cat.hyperlinks_count} hyperlink
@@ -106,8 +97,7 @@ export default function Categories() {
                                                     <DialogDescription>
                                                         Are you sure you want to delete &quot;
                                                         {cat.name}
-                                                        &quot;? Hyperlinks in this category will
-                                                        become uncategorized.
+                                                        &quot;? Hyperlinks in this category will become uncategorized.
                                                     </DialogDescription>
                                                 </DialogHeader>
                                                 <DialogFooter>
@@ -115,10 +105,7 @@ export default function Categories() {
                                                         <Button variant="outline">Cancel</Button>
                                                     </DialogClose>
                                                     <DialogClose asChild>
-                                                        <Button
-                                                            variant="destructive"
-                                                            onClick={() => handleDelete(cat.id)}
-                                                        >
+                                                        <Button variant="destructive" onClick={() => handleDelete(cat.id)}>
                                                             Delete
                                                         </Button>
                                                     </DialogClose>
@@ -129,9 +116,7 @@ export default function Categories() {
                                 </div>
                             ))
                         ) : (
-                            <p className="text-muted-foreground italic">
-                                No categories yet. Add your first category using the form above!
-                            </p>
+                            <p className="text-muted-foreground italic">No categories yet. Add your first category using the form above!</p>
                         )}
                     </div>
                 </div>
@@ -149,11 +134,7 @@ export default function Categories() {
                             <DialogTitle>Edit Category</DialogTitle>
                             <DialogDescription>Update the category details.</DialogDescription>
                         </DialogHeader>
-                        <CategoryForm
-                            category={editingCategory}
-                            className="w-full"
-                            onSuccess={() => setIsEditOpen(false)}
-                        />
+                        <CategoryForm category={editingCategory} className="w-full" onSuccess={() => setIsEditOpen(false)} />
                     </DialogContent>
                 </Dialog>
             </div>
