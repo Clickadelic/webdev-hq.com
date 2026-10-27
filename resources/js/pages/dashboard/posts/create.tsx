@@ -13,7 +13,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function DashboardIndex() {
+export default function DashboardPostsCreate() {
     const { categories, tags } = usePage<{
         categories: Category[];
         tags: Tag[];

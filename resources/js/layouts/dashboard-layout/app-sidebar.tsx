@@ -10,7 +10,7 @@ import {
 import { NavFooter } from '@/layouts/dashboard-layout/nav-footer';
 import { NavMain } from '@/layouts/dashboard-layout/nav-main';
 import { NavUser } from '@/layouts/dashboard-layout/nav-user';
-import { GalleryHorizontal, LayoutGrid, Link, Pencil, Tag, Webhook } from 'lucide-react';
+import { LayoutGrid, Link, Pencil, Tag, Webhook, ShieldUser, Users } from 'lucide-react';
 
 import AppLogo from './app-logo';
 
@@ -56,9 +56,14 @@ const mainNavGroups: NavGroup[] = [
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'API Platform',
-        href: 'https://webdev-hq.com',
-        icon: GalleryHorizontal,
+        title: 'Admin',
+        href: '/dashboard/admin',
+        icon: ShieldUser,
+    },
+    {
+        title: 'Users',
+        href: '/dashboard/admin/users',
+        icon: Users,
     },
 ];
 

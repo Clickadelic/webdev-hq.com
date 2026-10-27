@@ -1,12 +1,16 @@
 import AppLayout from '@/layouts/dashboard-layout';
 
-import { dashboard } from '@/routes';
+import { dashboard, index } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Admin',
+        title: 'Dashboard',
         href: dashboard().url,
+    },
+    {
+        title: 'Admin',
+        href: index().url,
     },
 ];
 
