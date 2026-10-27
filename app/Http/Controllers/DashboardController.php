@@ -5,9 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\App;
 use App\Models\Hyperlink;
 use Inertia\Inertia;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
+use App\Models\Post;
+use App\Models\Tag;
+use Inertia\Response;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+
 
 class DashboardController extends Controller
 {
+	/**
+	 * Display all posts for backend administration
+	 * @return Response
+	 */
 	public function index()
 	{
 		$user = request()->user();
@@ -44,13 +58,6 @@ class DashboardController extends Controller
 		return Inertia::render('dashboard/index', [
 			'apps' => $apps,
 			'hyperlinks' => $hyperlinks,
-		]);
-	}
-
-	public function listPosts()
-	{
-		return Inertia::render('dashboard/posts', [
-			'posts' => request()->user()->posts()->latest()->paginate(35)->withQueryString(),
 		]);
 	}
 }

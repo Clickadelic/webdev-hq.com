@@ -1,5 +1,5 @@
 import AppLogo from '@/layouts/dashboard-layout/app-logo';
-import BackgroundImage from '@/layouts/auth-layout/background-image';
+import BackgroundImage from '@/components/background-image';
 import { type SharedData } from '@/types';
 import { usePage } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';

@@ -12,9 +12,13 @@ import {
 } from '@/components/ui/dialog';
 import AppLayout from '@/layouts/dashboard-layout';
 import { Hyperlink, type BreadcrumbItem, type Paginator } from '@/types';
-import { usePage } from '@inertiajs/react';
+// import { usePage } from '@inertiajs/react';
 import { useState } from 'react';
 const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: 'Dashboard',
+        href: '/dashboard',
+    },
     {
         title: 'Hyperlinks',
         href: index.url(),
@@ -22,7 +26,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Hyperlinks() {
-    const { hyperlinks } = usePage<{ hyperlinks: Paginator<Hyperlink> }>().props;
+    // const { hyperlinks } = usePage<{ hyperlinks: Paginator<Hyperlink> }>().props;
 
     const [editingHyperlink, setEditingHyperlink] = useState<Hyperlink | undefined>(undefined);
     const [isEditOpen, setIsEditOpen] = useState(false);

@@ -104,4 +104,14 @@ class PostController extends Controller
 			'tags' => Tag::query()->orderBy('name', 'asc')->get(),
 		];
 	}
+
+	public function listPosts(): Response
+	{
+		return inertia('dashboard/posts/index', [
+			'posts' => Post::query()
+				->with(['author', 'category', 'tags'])
+				->latest()
+				->paginate(15),
+		]);
+	}
 }
