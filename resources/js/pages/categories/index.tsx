@@ -34,8 +34,8 @@ export default function Categories() {
     const [editingCategory, setEditingCategory] = useState<Category | undefined>(undefined);
     const [isEditOpen, setIsEditOpen] = useState(false);
 
-    function handleDelete(id: number) {
-        router.delete(destroy.url({ category: String(id) }), {
+    function handleDelete(id: string) {
+        router.delete(destroy.url({ category: id }), {
             preserveScroll: true,
             onSuccess: () => toast.success('Category deleted!'),
             onError: () => toast.error('Failed to delete category.'),

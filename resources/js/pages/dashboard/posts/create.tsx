@@ -8,8 +8,16 @@ import { usePage } from '@inertiajs/react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
+        title: 'Dashboard',
+        href: index.url(),
+    },
+    {
         title: 'Posts',
         href: index.url(),
+    },
+    {
+        title: 'Create Post',
+        href: '#',
     },
 ];
 

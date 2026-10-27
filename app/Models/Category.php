@@ -34,11 +34,11 @@ class Category extends Model
 		return $this->hasMany(Hyperlink::class);
 	}
 
-	// /**
-	//  * Get all posts in this category (future use).
-	//  */
-	// public function posts()
-	// {
-	//     return $this->hasMany(Post::class);
-	// }
+	/**
+	 * Get all posts in this category (future use).
+	 */
+	public function posts()
+	{
+		return $this->hasMany(Post::class);
+	}
 }
