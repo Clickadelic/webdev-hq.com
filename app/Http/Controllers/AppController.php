@@ -76,7 +76,7 @@ class AppController extends Controller
 	 */
 	public function update(UpdateAppRequest $request, App $app): RedirectResponse
 	{
-		$app->update($request->validated());
+		$app->update();
 
 		return back()->with('success', 'App successfully updated.');
 	}
