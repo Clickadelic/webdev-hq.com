@@ -17,15 +17,21 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
+import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
 import TablePagination from '@/components/ui/table-pagination';
 import { formatIsoDate } from '@/lib/utils';
 import { type Hyperlink, type Paginator } from '@/types';
 import { Link, router, usePage } from '@inertiajs/react';
 import { Info } from 'lucide-react';
 import { toast } from 'sonner';
+
+import { useState } from 'react';
+
 interface HyperlinkTableProps {
     onEdit: (hyperlink: Hyperlink) => void;
 }
+
+// TODO: Zusammenführen von Funktionen
 
 export default function HyperlinkTable({ onEdit }: HyperlinkTableProps) {
     const { hyperlinks } = usePage<{ hyperlinks: Paginator<Hyperlink> }>().props;
@@ -39,6 +45,15 @@ export default function HyperlinkTable({ onEdit }: HyperlinkTableProps) {
         });
     }
 
+	// const { hyperlinks } = usePage<{ hyperlinks: Paginator<Hyperlink> }>().props;
+	
+	const [editingHyperlink, setEditingHyperlink] = useState<Hyperlink | undefined>(undefined);
+	const [isEditOpen, setIsEditOpen] = useState(false);
+
+	function handleEdit(hyperlink: Hyperlink) {
+		setEditingHyperlink(hyperlink);
+		setIsEditOpen(true);
+	}
     return (
         <div className="flex flex-col">
             <Table className="w-full">

@@ -18,6 +18,10 @@ import { Pencil, Plus } from 'lucide-react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
+        title: 'Dashboard',
+        href: '/dashboard',
+    },
+    {
         title: 'Posts',
         href: index.url(),
     },
@@ -56,7 +60,7 @@ export default function DashboardPostsIndex() {
                     </TableHeader>
                     <TableBody>
                         {posts.data.length > 0 ? (
-                            posts.data.map((post) => (
+                            posts.data.map((post:Post) => (
                                 <TableRow key={post.id}>
                                     <TableCell className="font-medium">{post.title}</TableCell>
                                     <TableCell>{post.category?.name ?? '-'}</TableCell>

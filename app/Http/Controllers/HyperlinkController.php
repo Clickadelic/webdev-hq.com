@@ -71,7 +71,7 @@ class HyperlinkController extends Controller
 			->latest()
 			->paginate(38);
 
-		return inertia('dashboard/hyperlinks', [
+		return inertia('dashboard/hyperlinks/index', [
 			'hyperlinks' => $hyperlinks,
 			'categories' => Category::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
 			'tags' => Tag::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
