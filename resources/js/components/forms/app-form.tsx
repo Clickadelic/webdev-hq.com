@@ -14,6 +14,8 @@ import { type App } from '@/types';
 
 import { cn, getFaviconUrl } from '@/lib/utils';
 
+// TODO: Check for plausability
+
 /** Returns a storable favicon URL or empty string (→ null via middleware). */
 function storableFaviconUrl(url: string): string {
     const favicon = getFaviconUrl(url);
@@ -25,6 +27,12 @@ interface AppFormProps {
     className?: string;
 }
 
+/**
+ *
+ * @param App (Entity)
+ * @param className (Optional) Additional CSS classes for the form container.
+ * @returns JSX.Element representing the app form.
+ */
 export default function AppForm({ app, className }: AppFormProps) {
     // Inertia's useForm Hook
     const { data, setData, post, put, processing, errors, reset } = useForm({
