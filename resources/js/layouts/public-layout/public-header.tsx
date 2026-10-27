@@ -32,7 +32,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
     const { auth } = usePage<SharedData>().props;
     const isMobile = useMediaQuery('(max-width: 768px)');
     return (
-        <div className="w-full bg-white/30 pb-2 backdrop-blur dark:bg-neutral-900/30 dark:backdrop-blur">
+        <div className="w-full bg-white/30 pb-1 backdrop-blur dark:bg-neutral-900/30 dark:backdrop-blur">
             <header
                 className={cn(
                     'w-full bg-white backdrop-blur dark:bg-neutral-900 dark:backdrop-blur',

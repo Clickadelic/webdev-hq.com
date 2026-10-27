@@ -1,5 +1,5 @@
-import AppLogo from '@/layouts/dashboard-layout/app-logo';
 import BackgroundImage from '@/components/background-image';
+import AppLogo from '@/layouts/dashboard-layout/app-logo';
 import { type SharedData } from '@/types';
 import { usePage } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
@@ -26,7 +26,7 @@ export default function AuthSimpleLayout({
 
     return (
         <BackgroundImage collectionId={unsplashAuthScreenCollectionId ?? undefined}>
-            <div className="dark:bg-neutral w-84 rounded-xl bg-white/30 p-2 shadow-lg md:w-96">
+            <div className="dark:bg-neutral w-84 rounded-xl bg-white/30 p-1 shadow-lg md:w-96">
                 <div className="flex flex-col gap-8 rounded-md bg-white p-8 dark:bg-neutral-900">
                     <div className="flex flex-col items-center gap-4">
                         <div className="mb-1 flex items-center justify-center">

@@ -5,8 +5,8 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
-import { UserInfo } from '@/layouts/public-layout/user-info';
 import { useMobileNavigation } from '@/hooks/use-mobile-navigation';
+import { UserInfo } from '@/layouts/public-layout/user-info';
 import { logout } from '@/routes';
 import { edit } from '@/routes/profile';
 import { type User } from '@/types';
@@ -37,7 +37,7 @@ export function UserMenuContent({ user }: UserMenuContentProps) {
                 <DropdownMenuItem asChild>
                     <Link
                         className="block w-full"
-                        href={edit()}
+                        href={edit().url}
                         as="button"
                         prefetch
                         onClick={cleanup}
