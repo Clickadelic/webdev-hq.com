@@ -12,7 +12,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	Route::get('/dashboard/posts/create', [PostController::class, 'create'])->name('posts.create');
 	// Temp
 	Route::post('/dashboard/posts', [PostController::class, 'store'])->name('posts.store');
-	Route::get('/dashboard/posts/{post:slug}/edit', [PostController::class, 'edit'])->name('posts.edit');
-	Route::put('/dashboard/posts/{post:slug}', [PostController::class, 'update'])->name('posts.update');
-	Route::delete('/dashboard/posts/{post:slug}', [PostController::class, 'destroy'])->name('posts.destroy');
+	Route::get('/dashboard/posts/{post:id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+	Route::put('/dashboard/posts/{post:id}', [PostController::class, 'update'])->name('posts.update');
+	Route::delete('/dashboard/posts/{post:id}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
