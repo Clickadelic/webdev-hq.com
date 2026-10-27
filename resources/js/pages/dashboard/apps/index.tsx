@@ -1,15 +1,9 @@
 'use client';
 
-import { index } from '@/actions/App/Http/Controllers/AppController';
 import AppForm from '@/components/forms/app-form';
 
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-} from '@/components/ui/dialog';
+import { index } from '@/actions/App/Http/Controllers/DashboardController';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import AppLayout from '@/layouts/dashboard-layout';
 import { App, type BreadcrumbItem, type Paginator } from '@/types';
 import { usePage } from '@inertiajs/react';
@@ -17,8 +11,12 @@ import { useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Apps',
+        title: 'Dashboard',
         href: index.url(),
+    },
+    {
+        title: 'Apps',
+        href: '#',
     },
 ];
 
@@ -36,22 +34,12 @@ export default function Apps() {
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {items && items.length > 0 ? (
                         items.map((app: App) => (
-                            <div
-                                key={app.id}
-                                className="flex flex-col gap-2 rounded-xl border border-sidebar-border bg-white p-4 shadow-sm transition-all hover:border-primary/50 dark:bg-neutral-900"
-                            >
+                            <div key={app.id} className="flex flex-col gap-2 rounded-xl border border-sidebar-border bg-white p-4 shadow-sm transition-all hover:border-primary/50 dark:bg-neutral-900">
                                 <div className="flex items-start justify-between">
-                                    <h3 className="truncate pr-2 text-lg leading-tight font-semibold">
-                                        {app.title}
-                                    </h3>
+                                    <h3 className="truncate pr-2 text-lg leading-tight font-semibold">{app.title}</h3>
                                 </div>
 
-                                <a
-                                    href={app.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="mt-2 truncate text-sm font-medium text-primary underline-offset-4 hover:underline"
-                                >
+                                <a href={app.url} target="_blank" rel="noopener noreferrer" className="mt-2 truncate text-sm font-medium text-primary underline-offset-4 hover:underline">
                                     {app.url.replace(/^https?:\/\//, '')}
                                 </a>
                             </div>

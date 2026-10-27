@@ -8,12 +8,20 @@ import { usePage } from '@inertiajs/react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
+        title: 'Dashboard',
+        href: index.url(),
+    },
+    {
         title: 'Posts',
         href: index.url(),
     },
+    {
+        title: 'Create Post',
+        href: '#',
+    },
 ];
 
-export default function DashboardIndex() {
+export default function DashboardPostsCreate() {
     const { categories, tags } = usePage<{
         categories: Category[];
         tags: Tag[];
