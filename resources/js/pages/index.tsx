@@ -39,7 +39,7 @@ export default function IndexPage({ canRegister = true }: PublicLayoutProps) {
             <h2 className="relative mb-4 max-w-120 text-center text-3xl">
                 Your Go-To Destination for Web Developers and alike.
             </h2>
-            <p className="mb-12 font-light text-muted-foreground">
+            <p className="mb-12 font-light text-muted-foreground rounded-full backdrop-blur border-border">
                 Currently tracking{' '}
                 <span className="font-bold text-neutral-950 dark:text-white">{hyperlinkCount}</span>{' '}
                 resources.

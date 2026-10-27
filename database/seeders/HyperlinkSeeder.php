@@ -600,7 +600,7 @@ class HyperlinkSeeder extends Seeder
 			['url' => 'https://astro.build/'],
 			[
 				'title' => 'Astro',
-				'favicon_url' => 'https://astro.build/favicon-32x32.png',
+				'favicon_url' => 'https://astro.build/favicon.svg',
 				'description' => 'Astro is a modern static site builder for the web.',
 				'category_id' => $frontendCategory->id,
 				'status' => Status::Published,
@@ -614,7 +614,7 @@ class HyperlinkSeeder extends Seeder
 			['url' => 'https://alpinejs.dev/'],
 			[
 				'title' => 'Alpine.js',
-				'favicon_url' => 'https://alpinejs.dev/favicon-32x32.png',
+				'favicon_url' => 'https://alpinejs.dev/favicon.png',
 				'description' => 'Alpine.js is a rugged, minimal framework for composing JavaScript behavior in your markup.',
 				'category_id' => $frontendCategory->id,
 				'status' => Status::Published,
@@ -628,7 +628,7 @@ class HyperlinkSeeder extends Seeder
 			['url' => 'https://htmx.org/'],
 			[
 				'title' => 'htmx',
-				'favicon_url' => 'https://htmx.org/favicon-32x32.png',
+				'favicon_url' => 'https://htmx.org/favicon.svg',
 				'description' => 'htmx allows you to access modern browser features directly from HTML, without writing JavaScript.',
 				'category_id' => $frontendCategory->id,
 				'status' => Status::Published,
@@ -642,7 +642,7 @@ class HyperlinkSeeder extends Seeder
 			['url' => 'https://www.solidjs.com/'],
 			[
 				'title' => 'SolidJS',
-				'favicon_url' => 'https://www.solidjs.com/favicon-32x32.png',
+				'favicon_url' => 'https://www.solidjs.com/img/favicons/apple-touch-icon.png',
 				'description' => 'SolidJS is a declarative JavaScript library for building user interfaces.',
 				'category_id' => $frontendCategory->id,
 				'status' => Status::Published,
@@ -651,6 +651,20 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 		$solidHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$zohoHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://www.zoho.com/'],
+			[
+				'title' => 'Zoho',
+				'favicon_url' => 'https://www.zoho.com/favicon.ico',
+				'description' => 'Zoho offers a suite of online productivity tools and SaaS applications.',
+				'category_id' => $cmsCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$zohoHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 
 		$webpackHyperlink = Hyperlink::updateOrCreate(
 			['url' => 'https://webpack.js.org/'],
