@@ -17,6 +17,7 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
+import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
 import TablePagination from '@/components/ui/table-pagination';
 import { formatIsoDate } from '@/lib/utils';
 import { type Hyperlink, type Paginator } from '@/types';
