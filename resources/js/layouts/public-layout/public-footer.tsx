@@ -14,7 +14,7 @@ export default function PublicFooter({ className }: PublicFooterProps) {
     return (
         <footer
             className={cn(
-                'z-20 w-full bg-white/30 px-0 pt-2 backdrop-blur dark:bg-neutral-900/30',
+                'z-20 w-full bg-white/30 px-0 pt-1 backdrop-blur dark:bg-neutral-900/30',
                 className,
             )}
         >

@@ -71,23 +71,12 @@ export default function AppForm({ app, className }: AppFormProps) {
     }
 
     return (
-        <form
-            onSubmit={handleSubmit}
-            className={cn('flex flex-col gap-4', className)}
-        >
+        <form onSubmit={handleSubmit} className={cn('flex flex-col gap-4', className)}>
             {/* Title */}
             <div className="grid gap-2">
                 <Label htmlFor="title">Title</Label>
-                <Input
-                    id="title"
-                    value={data.title}
-                    required
-                    placeholder="Title"
-                    onChange={(e) => setData('title', e.target.value)}
-                />
-                {errors.title && (
-                    <p className="text-sm text-destructive">{errors.title}</p>
-                )}
+                <Input id="title" value={data.title} required placeholder="Title" onChange={(e) => setData('title', e.target.value)} />
+                {errors.title && <p className="text-sm text-destructive">{errors.title}</p>}
             </div>
 
             {/* URL */}
@@ -106,41 +95,22 @@ export default function AppForm({ app, className }: AppFormProps) {
                         }))
                     }
                 />
-                {errors.url && (
-                    <p className="text-sm text-destructive">{errors.url}</p>
-                )}
+                {errors.url && <p className="text-sm text-destructive">{errors.url}</p>}
             </div>
 
             {/* Target */}
             <div className="grid gap-2">
                 <Label>Target</Label>
-                <ToggleGroup
-                    size="sm"
-                    variant="outline"
-                    type="single"
-                    value={data.target}
-                    onValueChange={(value) =>
-                        setData(
-                            'target',
-                            (value as '_blank' | '_self') ?? '_blank',
-                        )
-                    }
-                >
+                <ToggleGroup size="sm" variant="outline" type="single" value={data.target} onValueChange={(value) => setData('target', (value as '_blank' | '_self') ?? '_blank')}>
                     <ToggleGroupItem value="_self">_self</ToggleGroupItem>
                     <ToggleGroupItem value="_blank">_blank</ToggleGroupItem>
                 </ToggleGroup>
 
-                {errors.target && (
-                    <p className="text-sm text-destructive">{errors.target}</p>
-                )}
+                {errors.target && <p className="text-sm text-destructive">{errors.target}</p>}
             </div>
 
             <Button type="submit" disabled={processing}>
-                {processing ? (
-                    <LoaderCircle />
-                ) : (
-                    <BsPlusLg size={8} className="mr-2" />
-                )}
+                {processing ? <LoaderCircle /> : <BsPlusLg size={8} className="mr-2" />}
                 {processing ? 'Loading' : app ? 'Save Changes' : 'Add App'}
             </Button>
         </form>

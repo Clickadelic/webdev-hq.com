@@ -34,8 +34,8 @@ export function NavFooter({
                                 className="text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100"
                             >
                                 <a
-                                    href={resolveUrl(item.href)}
-                                    target="_blank"
+                                    href={resolveUrl(item.href as string)}
+                                    target="_self"
                                     rel="noopener noreferrer"
                                 >
                                     {item.icon && <Icon iconNode={item.icon} className="h-5 w-5" />}
