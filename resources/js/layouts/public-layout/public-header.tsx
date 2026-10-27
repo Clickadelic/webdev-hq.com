@@ -33,12 +33,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
     const isMobile = useMediaQuery('(max-width: 768px)');
     return (
         <div className="w-full bg-white/30 pb-1 backdrop-blur dark:bg-neutral-900/30 dark:backdrop-blur">
-            <header
-                className={cn(
-                    'w-full bg-white backdrop-blur dark:bg-neutral-900 dark:backdrop-blur',
-                    className,
-                )}
-            >
+            <header className={cn('w-full bg-white dark:bg-neutral-900', className)}>
                 <div className="container mx-auto flex items-center justify-between px-3 py-1.5 sm:px-0 lg:py-3">
                     <AppLogo logoClassName="size-7 md:mr-3" />
                     <nav className="mt-0.75 hidden items-center justify-between gap-4 lg:flex">
