@@ -4,51 +4,60 @@ import { ChevronDown, ExternalLink, Search } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface SearchDropdownProps {
-    hyperlinks: Hyperlink[];
     onSearch: (query: string) => void;
     initialSearch?: string;
     className?: string;
 }
 
-export default function SearchDropdown({ hyperlinks, onSearch, initialSearch = '', className }: SearchDropdownProps) {
+export default function SearchDropdown({ onSearch, initialSearch = '', className }: SearchDropdownProps) {
     const [query, setQuery] = useState<string>(initialSearch);
     const [isOpen, setIsOpen] = useState(false);
     const [suggestions, setSuggestions] = useState<Hyperlink[]>([]);
     const [highlightedIndex, setHighlightedIndex] = useState(-1);
+    const [isLoading, setIsLoading] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const debounceTimer = useRef<number | null>(null);
 
-    // Filter hyperlinks based on search query locally (no server call)
-    const getLocalSuggestions = useCallback(
-        (searchQuery: string): Hyperlink[] => {
-            if (!searchQuery.trim()) return [];
+    // Fetch suggestions from API
+    const fetchSuggestions = useCallback(
+        (searchQuery: string) => {
+            if (!searchQuery.trim()) {
+                setSuggestions([]);
+                setIsOpen(false);
+                return;
+            }
 
-            const lowerQuery = searchQuery.toLowerCase();
-            return hyperlinks
-                .filter((hyperlink) => {
-                    const matchesTitle = hyperlink.title.toLowerCase().includes(lowerQuery);
-                    const matchesUrl = hyperlink.url.toLowerCase().includes(lowerQuery);
-                    const matchesDescription = hyperlink.description?.toLowerCase().includes(lowerQuery);
-                    const matchesTags = hyperlink.tags?.some((tag) => tag.name.toLowerCase().includes(lowerQuery));
-                    const matchesCategory = hyperlink.category?.name.toLowerCase().includes(lowerQuery);
+            setIsLoading(true);
 
-                    return matchesTitle || matchesUrl || matchesDescription || matchesTags || matchesCategory;
+            fetch(`/api/v1/hyperlinks/search?q=${encodeURIComponent(searchQuery)}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    setSuggestions(data.hyperlinks || []);
+                    setIsOpen((data.hyperlinks || []).length > 0);
+                    setHighlightedIndex(-1);
                 })
-                .slice(0, 8); // Limit to 8 suggestions
+                .catch(() => {
+                    setSuggestions([]);
+                    setIsOpen(false);
+                })
+                .finally(() => setIsLoading(false));
         },
-        [hyperlinks],
+        [],
     );
 
-    // Handle input change
+    // Debounced API search
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setQuery(value);
         setHighlightedIndex(-1);
 
+        if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
+
         if (value.trim()) {
-            const filtered = getLocalSuggestions(value);
-            setSuggestions(filtered);
-            setIsOpen(filtered.length > 0);
+            debounceTimer.current = window.setTimeout(() => {
+                fetchSuggestions(value);
+            }, 300);
         } else {
             setSuggestions([]);
             setIsOpen(false);
@@ -117,7 +126,10 @@ export default function SearchDropdown({ hyperlinks, onSearch, initialSearch = '
         };
 
         document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
+        };
     }, []);
 
     return (
