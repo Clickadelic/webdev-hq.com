@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WebDev HQ</title>
+	<link rel="icon" href="/favicon.ico" sizes="any">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<link rel="preconnect" href="https://fonts.bunny.net">
+	<link href="https://fonts.bunny.net/css?family=open-sans:400,700" rel="stylesheet">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		:root {
+			--primary-color: #3498db;
+			--font-family: 'Open Sans', sans-serif;
+			--bg-background: oklch(96.8% 0.007 247.896);
+			--text-base: oklch(30% 0.01 250);
+		}
+
+		body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+			font-family: var(--font-family);
+			background: var(--bg-color, #efefef);
+		}
+
+		.box {
+			background: var(--bg-white-30, rgba(255, 255, 255, 0.3));
+			backdrop-filter: blur(10px);
+			border-radius: 2rem;
+			padding: 2rem;
+			box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.title {
+			font-weight: bold;
+			font-size: 2rem;
+			color: var(--primary-color);
+			display: flex;
+			gap: 2rem;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 2rem;
+
+			a:link,
+			a:visited {
+				text-decoration: none;
+				color: var(--text-base);
+				display: flex;
+				gap: 1rem;
+			}
+		}
+
+		#logo-text {
+			display: flex;
+			gap: 0.5rem;
+			align-items: center;
+		}
+
+		.subtitle {
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body class="min-h-dvh flex flex-col items-center justify-between bg-background">
+
+
+	<div class="box">
+		<h1 class="title">
+			<a href="/" class="group flex justify-between gap-2" title="WebDev HQ">
+				<img src="./assets/favicon/favicon-96x96.png" class="group-hover:opacity-80" width="48" height="48"
+					alt="WebDev HQ Logo">
+				<div id="logo-text">
+					<span class="web">Web</span>
+					<span class="font-bold mr-2">Dev</span>
+					<span class="font-bold">HQ</span>
+				</div>
+			</a>
+		</h1>
+		<p class="text-slate-500 mt-3">Please come back soon for the full experience.</p>
+	</div>
+
+	<!-- Ende Box -->
+</body>
+
+</html>

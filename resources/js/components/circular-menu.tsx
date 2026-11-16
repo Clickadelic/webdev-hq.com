@@ -1,14 +1,7 @@
+import { create as createPost } from '@/actions/App/Http/Controllers/PostController';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
 import PostForm from '@/components/forms/post-form';
-
-import { create as createPost } from '@/actions/App/Http/Controllers/PostController';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { type SharedData } from '@/types';
 import { usePage } from '@inertiajs/react';
@@ -36,19 +29,11 @@ export function CircularMenu() {
     }
     return (
         <div className="fixed right-3 bottom-3 z-30 max-w-12 md:right-8 md:bottom-8 lg:right-12 lg:bottom-12">
-            <div
-                className={cn(
-                    'absolute -top-20 left-2 flex flex-col items-center space-y-2 transition-all',
-                    showCircularMenu ? 'opacity-100' : 'pointer-events-none opacity-0',
-                )}
-            >
+            <div className={cn('absolute -top-20 left-2 flex flex-col items-center space-y-2 transition-all', showCircularMenu ? 'opacity-100' : 'pointer-events-none opacity-0')}>
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <a
-                                href={createPost.url()}
-                                className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
-                            >
+                            <a href={createPost.url()} className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90">
                                 <Pen className="size-4" />
                             </a>
                         </TooltipTrigger>
@@ -71,9 +56,7 @@ export function CircularMenu() {
                                 <ScreenShare className="size-4" />
                                 {isEditing ? 'Edit Post' : 'Add Post'}
                             </DialogTitle>
-                            <DialogDescription>
-                                {isEditing ? 'Edit the Post' : 'Add a new Post'}
-                            </DialogDescription>
+                            <DialogDescription>{isEditing ? 'Edit the Post' : 'Add a new Post'}</DialogDescription>
                         </DialogHeader>
                         <PostForm className="w-full" />
                     </DialogContent>
@@ -82,11 +65,7 @@ export function CircularMenu() {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <button
-                                type="button"
-                                onClick={() => setIsHyperlinkModalOpen(true)}
-                                className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90"
-                            >
+                            <button type="button" onClick={() => setIsHyperlinkModalOpen(true)} className="rounded-full bg-primary p-2 text-white shadow-lg hover:cursor-pointer hover:bg-primary/90">
                                 <LinkIcon className="size-4" />
                             </button>
                         </TooltipTrigger>
@@ -109,9 +88,7 @@ export function CircularMenu() {
                                 <LinkIcon className="size-4" />
                                 {isEditing ? 'Edit Hyperlink' : 'Add Hyperlink'}
                             </DialogTitle>
-                            <DialogDescription>
-                                {isEditing ? 'Edit the hyperlink' : 'Add a new hyperlink'}
-                            </DialogDescription>
+                            <DialogDescription>{isEditing ? 'Edit the hyperlink' : 'Add a new hyperlink'}</DialogDescription>
                         </DialogHeader>
                         <HyperlinkForm className="w-full" />
                     </DialogContent>
@@ -127,12 +104,7 @@ export function CircularMenu() {
                             onClick={() => setShowCircularMenu((prev) => !prev)}
                             className="rounded-full bg-primary p-4 text-lg text-white shadow-lg transition hover:cursor-pointer hover:bg-primary dark:bg-primary"
                         >
-                            <FiPlus
-                                className={cn(
-                                    'transition-transform',
-                                    showCircularMenu ? 'rotate-45' : '',
-                                )}
-                            />
+                            <FiPlus className={cn('transition-transform', showCircularMenu ? 'rotate-45' : '')} />
                         </button>
                     </TooltipTrigger>
                     <TooltipContent side="left" className="bg-primary text-white dark:bg-primary">
