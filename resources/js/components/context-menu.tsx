@@ -31,7 +31,7 @@ interface ContextMenuProps {
     className?: string;
     dotStyle?: 'vertical' | 'horizontal';
     onEdit?: (hyperlink: Hyperlink) => void;
-    onDelete?: (id: number) => void;
+    onDelete?: (id: string) => void;
 }
 
 /**

@@ -4,17 +4,12 @@ import PublicLayout from '@/layouts/public-layout';
 import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
 import HyperlinkCard from '@/components/hyperlinks/hyperlink-card';
+import SearchDropdown from '@/components/hyperlinks/search-dropdown';
 import { Button } from '@/components/ui/button';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { type Hyperlink } from '@/types';
 import { router, usePage } from '@inertiajs/react';
-import { ChevronLeft, ChevronRight, CircleX, Search } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
@@ -30,32 +25,23 @@ interface PaginatedHyperlinks {
 }
 
 // Home component, displays the list of hyperlinks for the public
-export default function Home({
-    hyperlinks,
-    canRegister = true,
-    search: initialSearch = '',
-}: {
-    hyperlinks: PaginatedHyperlinks;
-    canRegister?: boolean;
-    search?: string;
-}) {
+export default function Home({ hyperlinks, canRegister = true, search: initialSearch = '' }: { hyperlinks: PaginatedHyperlinks; canRegister?: boolean; search?: string }) {
     const count = hyperlinks.total;
     const items = hyperlinks.data;
-    const [query, setQuery] = useState<string>(initialSearch);
     const [editingHyperlink, setEditingHyperlink] = useState<Hyperlink | undefined>(undefined);
     const [isEditOpen, setIsEditOpen] = useState(false);
     const isAuthenticated = !!usePage().props.auth?.user;
 
-    // Debounced live search
+    // Debounced server search (only when user confirms search)
     const debounceTimer = useRef<number | null>(null);
-    const search = useCallback((value: string) => {
+    const performSearch = useCallback((value: string) => {
         if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
         debounceTimer.current = window.setTimeout(() => {
             router.get('/hyperlinks', value ? { search: value } : {}, {
                 preserveState: true,
                 preserveScroll: true,
             });
-        }, 200);
+        }, 300);
     }, []);
 
     // Clean up timer on unmount
@@ -65,11 +51,6 @@ export default function Home({
         },
         [],
     );
-
-    function handleQueryChange(value: string) {
-        setQuery(value);
-        search(value);
-    }
 
     const handleEdit = (hyperlink: Hyperlink) => {
         setEditingHyperlink(hyperlink);
@@ -83,55 +64,22 @@ export default function Home({
             onError: () => toast.error('Failed to delete hyperlink.'),
         });
     };
+
     return (
         <PublicLayout canRegister={canRegister} title="Hyperlinks">
-            {/* Search */}
-            <div className="mx-auto mt-8 w-full max-w-lg">
-                <div className="rounded-xl bg-white/30 p-1 shadow backdrop-blur dark:bg-white/5">
-                    <form
-                        onSubmit={(e) => e.preventDefault()}
-                        className="flex items-center justify-center"
-                    >
-                        <Search
-                            id="live-search"
-                            name="live-search"
-                            className="pointer-events-none text-muted-foreground"
-                        />
-                        <input
-                            type="text"
-                            value={query}
-                            onChange={(e) => handleQueryChange(e.target.value)}
-                            placeholder="Search resources…"
-                            className="w-full rounded-lg py-2.5 pr-3 pl-9 text-xl placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:outline-none"
-                        />
-                        <button
-                            type="button"
-                            onClick={() => handleQueryChange('')}
-                            aria-label="Clear search"
-                            title="Clear search"
-                            className="text-slate-400 hover:cursor-pointer hover:text-primary"
-                        >
-                            <CircleX className="size-5" />
-                        </button>
-                    </form>
-                </div>
+            {/* Search Dropdown */}
+            <div className="relative mx-auto mt-8 w-full max-w-2xl">
+                <SearchDropdown className="absolute z-30 w-full" hyperlinks={items} onSearch={performSearch} initialSearch={initialSearch} />
             </div>
 
             {/* Results */}
             {items.length === 0 ? (
-                <p className="my-16 text-center text-muted-foreground">
-                    No resources available yet.
-                </p>
+                <p className="my-16 text-center text-muted-foreground">No resources available yet.</p>
             ) : (
-                <div className="relative z-20 py-12">
-                    <div className="grid grid-cols-1 gap-1 md:grid-cols-3 md:gap-2 lg:gap-5 lg:grid-cols-5">
+                <div className="relative top-28 z-20 pb-12">
+                    <div className="grid grid-cols-1 gap-1 md:grid-cols-3 md:gap-2 lg:grid-cols-5 lg:gap-5">
                         {items.map((link) => (
-                            <HyperlinkCard
-                                key={link.id}
-                                hyperlink={link}
-                                onEdit={isAuthenticated ? handleEdit : undefined}
-                                onDelete={isAuthenticated ? handleDelete : undefined}
-                            />
+                            <HyperlinkCard key={link.id} hyperlink={link} onEdit={isAuthenticated ? handleEdit : undefined} onDelete={isAuthenticated ? handleDelete : undefined} />
                         ))}
                     </div>
 
@@ -142,14 +90,7 @@ export default function Home({
                                 variant="outline"
                                 size="sm"
                                 disabled={!hyperlinks.prev_page_url}
-                                onClick={() =>
-                                    hyperlinks.prev_page_url &&
-                                    router.get(
-                                        hyperlinks.prev_page_url,
-                                        {},
-                                        { preserveState: true },
-                                    )
-                                }
+                                onClick={() => hyperlinks.prev_page_url && router.get(hyperlinks.prev_page_url, {}, { preserveState: true })}
                             >
                                 <ChevronLeft className="mr-1 size-4" />
                                 Previous
@@ -161,23 +102,14 @@ export default function Home({
                                 variant="outline"
                                 size="sm"
                                 disabled={!hyperlinks.next_page_url}
-                                onClick={() =>
-                                    hyperlinks.next_page_url &&
-                                    router.get(
-                                        hyperlinks.next_page_url,
-                                        {},
-                                        { preserveState: true },
-                                    )
-                                }
+                                onClick={() => hyperlinks.next_page_url && router.get(hyperlinks.next_page_url, {}, { preserveState: true })}
                             >
                                 Next
                                 <ChevronRight className="ml-1 size-4" />
                             </Button>
                         </div>
                     )}
-                    <h3 className="mt-8 text-center text-muted-foreground">
-                        Currently tracking {count === 1 ? '1 resource' : `${count} resources`}.
-                    </h3>
+                    <h3 className="mt-8 text-center text-muted-foreground">Currently tracking {count === 1 ? '1 resource' : `${count} resources`}.</h3>
                 </div>
             )}
 
@@ -195,11 +127,7 @@ export default function Home({
                             <DialogTitle>Edit Hyperlink</DialogTitle>
                             <DialogDescription>Update the hyperlink details.</DialogDescription>
                         </DialogHeader>
-                        <HyperlinkForm
-                            hyperlink={editingHyperlink}
-                            className="w-full"
-                            onSuccess={() => setIsEditOpen(false)}
-                        />
+                        <HyperlinkForm hyperlink={editingHyperlink} className="w-full" onSuccess={() => setIsEditOpen(false)} />
                     </DialogContent>
                 </Dialog>
             )}

@@ -5,7 +5,7 @@ import { ExternalLink } from 'lucide-react';
 interface HyperlinkCardProps {
     hyperlink: Hyperlink;
     onEdit?: (hyperlink: Hyperlink) => void;
-    onDelete?: (id: number) => void;
+    onDelete?: (id: string) => void;
 }
 
 export default function HyperlinkCard({ hyperlink, onEdit, onDelete }: HyperlinkCardProps) {
