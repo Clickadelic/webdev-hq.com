@@ -17,7 +17,7 @@ export default function HyperlinkCard({ hyperlink, onEdit, onDelete }: Hyperlink
             rel="noopener noreferrer"
             className="group flex w-full flex-col gap-0 rounded-xl bg-white/30 p-1 shadow-sm backdrop-blur transition-all hover:border-primary/50 hover:shadow-md dark:bg-neutral-900/30"
         >
-            <div className="flex items-start justify-between gap-2 rounded-t-md bg-white px-2 pt-2 dark:bg-neutral-900">
+            <div className="flex items-start justify-between gap-2 rounded-t-md bg-white p-3 dark:bg-neutral-900">
                 <div className="flex flex-1 items-center gap-2">
                     <div className="favicon flex items-center gap-2">
                         <img src={hyperlink.favicon_url || ''} className="size-7 rounded" alt="favicon" />
@@ -30,7 +30,7 @@ export default function HyperlinkCard({ hyperlink, onEdit, onDelete }: Hyperlink
                 <ContextMenu item={hyperlink} onEdit={onEdit} onDelete={onDelete} />
             </div>
 
-            {hyperlink.description && <p className="line-clamp-2 bg-white p-2 text-sm text-muted-foreground dark:bg-neutral-900">{hyperlink.description}</p>}
+            {hyperlink.description && <p className="line-clamp-2 h-13 bg-white p-2 text-sm text-muted-foreground dark:bg-neutral-900">{hyperlink.description}</p>}
             {hyperlink.category && (
                 <div className="flex items-start justify-between gap-2 bg-white p-2 dark:bg-neutral-900">
                     <span className="w-fit rounded-md border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-bold">{hyperlink.category.name}</span>
