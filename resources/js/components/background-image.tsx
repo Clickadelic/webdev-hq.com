@@ -11,10 +11,7 @@ interface BackgroundImageProps {
  * @param {string} props.collectionId - The ID of the Unsplash collection to use for the background image.
  * @returns {React.ReactNode} - The wrapped children
  */
-export default function BackgroundImage({
-    children,
-    collectionId,
-}: PropsWithChildren<BackgroundImageProps>) {
+export default function BackgroundImage({ children, collectionId }: PropsWithChildren<BackgroundImageProps>) {
     // Use API JSON mode and preload the image to avoid first-paint flicker.
     const today = new Date().toISOString().slice(0, 10);
     const endpoint = `/api/${import.meta.env.VITE_API_VERSION}/unsplash/image/general`;
@@ -138,31 +135,16 @@ export default function BackgroundImage({
                 {children}
                 {/* Unsplash attribution – bottom-left on desktop */}
                 {attribution && (
-                    <div className="absolute bottom-4 left-4 hidden text-xs text-white/70 md:block">
-                        <a
-                            href={attribution.photoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-white"
-                        >
+                    <div className="absolute bottom-4 left-4 hidden rounded bg-white/30 p-2 text-xs text-white md:block dark:bg-neutral-900/30">
+                        <a href={attribution.photoUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
                             Photo
                         </a>{' '}
                         by{' '}
-                        <a
-                            href={attribution.authorUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-white"
-                        >
+                        <a href={attribution.authorUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
                             {attribution.authorName}
                         </a>{' '}
                         on{' '}
-                        <a
-                            href="https://unsplash.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-white"
-                        >
+                        <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
                             Unsplash
                         </a>
                     </div>
