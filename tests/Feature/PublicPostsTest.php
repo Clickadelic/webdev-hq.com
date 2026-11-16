@@ -25,7 +25,7 @@ test('public posts page lists only published posts', function () {
         'created_by' => $author->id,
     ]);
 
-    $this->get(route('public.posts.index'))
+    $this->get(route('posts.index'))
         ->assertOk()
         ->assertInertia(
             fn (Assert $page) => $page

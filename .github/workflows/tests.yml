@@ -46,5 +46,8 @@ jobs:
       - name: Generate Application Key
         run: php artisan key:generate
 
+      - name: Cache Routes
+        run: php artisan route:cache
+
       - name: Tests
         run: ./vendor/bin/pest

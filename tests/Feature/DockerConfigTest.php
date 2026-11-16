@@ -75,30 +75,24 @@ describe('Docker Compose Configuration', function () {
     });
 
     describe('Compose Watch Configuration', function () {
-        it('app service has develop watch configured for backend code', function () {
-            $appDevelop = $this->dockerCompose['services']['app']['develop']['watch'];
+        it('app service has develop watch configured for backend dependencies', function () {
+            $appDevelop = $this->dockerCompose['services']['app']['develop']['watch'] ?? [];
             $syncPaths = collect($appDevelop)->pluck('path')->toArray();
 
-            expect($syncPaths)->toContain('./app');
-            expect($syncPaths)->toContain('./routes');
-            expect($syncPaths)->toContain('./config');
+            // The docker-compose watch is minimal - only rebuild on package changes
+            expect($syncPaths)->toContain('./composer.json');
+            expect($syncPaths)->toContain('./composer.lock');
         });
 
-        it('app service has develop watch configured for tests', function () {
-            $appDevelop = $this->dockerCompose['services']['app']['develop']['watch'];
-            $syncPaths = collect($appDevelop)->pluck('path')->toArray();
-
-            expect($syncPaths)->toContain('./tests');
-        });
-
-        it('node service has develop watch configured for vite config changes', function () {
-            $nodeDevelop = $this->dockerCompose['services']['node']['develop']['watch'];
-            $restartActions = collect($nodeDevelop)
-                ->filter(fn($item) => ($item['action'] ?? '') === 'sync+restart')
+        it('node service has develop watch configured for frontend dependencies', function () {
+            $nodeDevelop = $this->dockerCompose['services']['node']['develop']['watch'] ?? [];
+            $rebuildActions = collect($nodeDevelop)
+                ->filter(fn ($item) => ($item['action'] ?? '') === 'rebuild')
                 ->pluck('path')
                 ->toArray();
 
-            expect($restartActions)->toContain('./vite.config.ts');
+            expect($rebuildActions)->toContain('./package.json');
+            expect($rebuildActions)->toContain('./package-lock.json');
         });
     });
 });
