@@ -69,7 +69,7 @@ export default function Home({ hyperlinks, canRegister = true, search: initialSe
         <PublicLayout canRegister={canRegister} title="Hyperlinks">
             {/* Search Dropdown */}
             <div className="relative mx-auto mt-8 mb-40 w-full max-w-2xl">
-                <SearchDropdown className="absolute z-30 w-full" hyperlinks={items} onSearch={performSearch} initialSearch={initialSearch} />
+                <SearchDropdown className="absolute z-30 w-full" onSearch={performSearch} initialSearch={initialSearch} />
             </div>
 
             {/* Results */}
