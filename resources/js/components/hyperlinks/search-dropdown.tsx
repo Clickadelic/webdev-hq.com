@@ -161,7 +161,7 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
                                 setIsOpen(true);
                             }
                         }}
-                        placeholder="Search items, categories, tags, etc."
+                        placeholder="Items, categories, tags and more..."
                         className="w-full rounded-lg py-2.5 pr-10 pl-10 text-xl placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:outline-none"
                         autoComplete="off"
                     />
