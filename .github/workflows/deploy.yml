@@ -64,7 +64,7 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: ":memory:"
           APP_KEY: base64:u8vS6Yx9f9vH9Z9z9y9x9w9v9u9t9s9r9q9p9o9n9m=
-        run: php artisan wayfinder:generate --fresh
+        run: php -d memory_limit=512M artisan wayfinder:generate --fresh
 
       # 8. Vite Build
       - name: Build assets with Vite
