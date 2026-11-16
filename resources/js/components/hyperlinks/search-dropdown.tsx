@@ -157,7 +157,11 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
                         value={query}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
-                        onFocus={() => query.trim() && suggestions.length > 0 && setIsOpen(true)}
+                        onFocus={() => {
+                            if (query.trim() && (suggestions.length > 0 || (query.includes('.') || query.includes('/')))) {
+                                setIsOpen(true);
+                            }
+                        }}
                         placeholder="Search resources…"
                         className="w-full rounded-lg py-2.5 pr-10 pl-10 text-xl placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:outline-none"
                         autoComplete="off"
@@ -233,9 +237,17 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
             </div>
 
             {/* Keyboard hint */}
-            {query && suggestions.length > 0 && (
+            {query && isOpen && (
                 <div className="mt-2 text-center text-xs text-muted-foreground">
-                    Use <kbd className="rounded bg-primary/10 px-1 font-mono">↑↓</kbd> to navigate, <kbd className="rounded bg-primary/10 px-1 font-mono">Enter</kbd> to select, or type to search all.
+                    {suggestions.length > 0 ? (
+                        <>
+                            Use <kbd className="rounded bg-primary/10 px-1 font-mono">↑↓</kbd> to navigate, <kbd className="rounded bg-primary/10 px-1 font-mono">Enter</kbd> to select, or type to search all.
+                        </>
+                    ) : (
+                        <>
+                            Press <kbd className="rounded bg-primary/10 px-1 font-mono">Enter</kbd> to add this resource.
+                        </>
+                    )}
                 </div>
             )}
         </div>
