@@ -2014,16 +2014,16 @@
         },
         {
             "name": "laravel/surveyor",
-            "version": "v0.1.9",
+            "version": "v0.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/surveyor.git",
-                "reference": "36953bc750548926f8b110d887d6a9e4dcff7e50"
+                "reference": "1e91a7fd195beaac168c527fe568bf5870254037"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/surveyor/zipball/36953bc750548926f8b110d887d6a9e4dcff7e50",
-                "reference": "36953bc750548926f8b110d887d6a9e4dcff7e50",
+                "url": "https://api.github.com/repos/laravel/surveyor/zipball/1e91a7fd195beaac168c527fe568bf5870254037",
+                "reference": "1e91a7fd195beaac168c527fe568bf5870254037",
                 "shasum": ""
             },
             "require": {
@@ -2078,7 +2078,7 @@
                 "issues": "https://github.com/laravel/surveyor/issues",
                 "source": "https://github.com/laravel/surveyor"
             },
-            "time": "2026-03-17T22:45:01+00:00"
+            "time": "2026-04-30T18:58:11+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -11670,9 +11670,9 @@
     "platform": {
         "php": "^8.3"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.4.0"
     },
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.3.0"
 }
