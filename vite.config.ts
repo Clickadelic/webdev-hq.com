@@ -20,20 +20,12 @@ const plugins = [
 ];
 
 // Skip wayfinder plugin during CI builds (types are pre-generated)
-const isCI = process.env.CI === 'true' || process.env.CI === '1';
-const shouldSkip = isCI && process.env.SKIP_WAYFINDER !== 'false';
-
-console.log(`[Vite Config] CI=${process.env.CI}, isCI=${isCI}, shouldSkip=${shouldSkip}`);
-
-if (!shouldSkip) {
-    console.log('[Vite Config] Loading wayfinder plugin');
+if (process.env.CI !== 'true' || process.env.GENERATE_WAYFINDER === 'true') {
     plugins.push(
         wayfinder({
             command: 'php -d memory_limit=512M artisan wayfinder:generate',
         }),
     );
-} else {
-    console.log('[Vite Config] Skipping wayfinder plugin (CI environment)');
 }
 
 export default defineConfig({
