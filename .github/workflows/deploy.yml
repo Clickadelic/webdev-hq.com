@@ -182,15 +182,17 @@ jobs:
           echo "→ Installing Composer dependencies..."
           composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader 2>&1 | tail -20
 
-          # Jetzt Artisan-Befehle ausführen
+          # Jetzt Artisan-Befehle ausführen (mit erhöhtem PHP Memory Limit für speicherintensive Operationen)
+          export PHP_OPTIONS="-d memory_limit=512M"
+          
           echo "→ Clearing configuration cache..."
           php artisan config:clear 2>&1
           
           echo "→ Clearing view cache..."
           php artisan view:clear || true
           
-          echo "→ Generating Wayfinder types..."
-          php artisan wayfinder:generate --fresh 2>&1 || { echo "ERROR: Wayfinder generation failed"; exit 1; }
+          echo "→ Generating Wayfinder types (this requires more memory)..."
+          php -d memory_limit=512M artisan wayfinder:generate --fresh 2>&1 || { echo "ERROR: Wayfinder generation failed"; exit 1; }
           
           echo "→ Generating app key..."
           php artisan key:generate --force || true
