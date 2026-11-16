@@ -58,4 +58,6 @@ jobs:
         run: php artisan route:cache
 
       - name: Tests
+        env:
+          UNSPLASH_API_KEY: ${{ secrets.UNSPLASH_API_KEY }}
         run: ./vendor/bin/pest
