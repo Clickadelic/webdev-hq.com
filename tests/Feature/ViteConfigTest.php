@@ -12,9 +12,9 @@ describe('Vite Configuration', function () {
         });
 
         it('has HMR configured for localhost', function () {
-            expect($this->viteConfig)->toContain("hmr: {");
+            expect($this->viteConfig)->toContain('hmr: {');
             expect($this->viteConfig)->toContain("host: 'localhost'");
-            expect($this->viteConfig)->toContain("port: 5173");
+            expect($this->viteConfig)->toContain('port: 5173');
             expect($this->viteConfig)->toContain("protocol: 'ws'");
         });
 
@@ -59,7 +59,7 @@ describe('Vite Configuration', function () {
 
         it('includes wayfinder plugin', function () {
             expect($this->viteConfig)->toContain("import { wayfinder } from '@laravel/vite-plugin-wayfinder'");
-            expect($this->viteConfig)->toContain('wayfinder()');
+            expect($this->viteConfig)->toContain('wayfinder({');
         });
     });
 
