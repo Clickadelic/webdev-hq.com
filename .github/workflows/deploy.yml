@@ -58,6 +58,14 @@ jobs:
       - name: Install Node dependencies
         run: npm ci || (rm -f package-lock.json && npm install)
 
+      # 7. Generate Wayfinder types (with --fresh to avoid cache corruption)
+      - name: Generate Wayfinder types
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ":memory:"
+          APP_KEY: base64:u8vS6Yx9f9vH9Z9z9y9x9w9v9u9t9s9r9q9p9o9n9m=
+        run: php -d memory_limit=512M artisan wayfinder:generate --fresh
+
       # 8. Vite Build
       - name: Build assets with Vite
         env:
@@ -65,6 +73,7 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: ":memory:"
           APP_KEY: base64:u8vS6Yx9f9vH9Z9z9y9x9w9v9u9t9s9r9q9p9o9n9m=
+          CI: 'true'
         run: npm run build
 
       # 8. SSH Key für Deployment schreiben
