@@ -21,31 +21,28 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
     const searchTimer = useRef<number | null>(null);
 
     // Fetch suggestions from API
-    const fetchSuggestions = useCallback(
-        (searchQuery: string) => {
-            if (!searchQuery.trim()) {
+    const fetchSuggestions = useCallback((searchQuery: string) => {
+        if (!searchQuery.trim()) {
+            setSuggestions([]);
+            setIsOpen(false);
+            return;
+        }
+
+        setIsLoading(true);
+
+        fetch(`/api/v1/hyperlinks/search?q=${encodeURIComponent(searchQuery)}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setSuggestions(data.hyperlinks || []);
+                setIsOpen((data.hyperlinks || []).length > 0);
+                setHighlightedIndex(-1);
+            })
+            .catch(() => {
                 setSuggestions([]);
                 setIsOpen(false);
-                return;
-            }
-
-            setIsLoading(true);
-
-            fetch(`/api/v1/hyperlinks/search?q=${encodeURIComponent(searchQuery)}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    setSuggestions(data.hyperlinks || []);
-                    setIsOpen((data.hyperlinks || []).length > 0);
-                    setHighlightedIndex(-1);
-                })
-                .catch(() => {
-                    setSuggestions([]);
-                    setIsOpen(false);
-                })
-                .finally(() => setIsLoading(false));
-        },
-        [],
-    );
+            })
+            .finally(() => setIsLoading(false));
+    }, []);
 
     // Debounced API search and page update
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +58,7 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
             debounceTimer.current = window.setTimeout(() => {
                 fetchSuggestions(value);
             }, 300);
-            
+
             // Update page results with 300ms debounce
             searchTimer.current = window.setTimeout(() => {
                 onSearch(value);
@@ -144,8 +141,8 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
 
     return (
         <div ref={containerRef} className={cn('w-full', className)}>
-            <div className="rounded-xl bg-white/30 p-1 shadow backdrop-blur dark:bg-white/5">
-                <form onSubmit={(e) => e.preventDefault()} className="relative flex items-center justify-center rounded-lg">
+            <div className="rounded-xl bg-white/30 p-1 shadow backdrop-blur dark:bg-neutral-900/30">
+                <form onSubmit={(e) => e.preventDefault()} className="relative flex items-center justify-center rounded-lg bg-white dark:bg-neutral-900">
                     <Search className="pointer-events-none absolute left-3 size-5 text-muted-foreground" />
                     <input
                         ref={inputRef}
