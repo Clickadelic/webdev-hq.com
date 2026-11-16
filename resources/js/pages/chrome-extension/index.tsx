@@ -7,11 +7,13 @@ export default function ChromeExtension() {
                 <div className="flex grid-cols-1 flex-col items-center justify-between">
                     <h3 className="mb-5 text-lg">New Tab Extension</h3>
                     <img src="https://placehold.co/744x450" alt="WebDev HQ New Tab Extension" />
+                    <p>A new tab extension for WebDev HQ that enhances your browsing experience.</p>
                 </div>
 
                 <div className="flex grid-cols-1 flex-col items-center justify-between">
                     <h3 className="mb-5 text-lg">Debugger Extension</h3>
                     <img src="https://placehold.co/744x450" alt="WebDev HQ Debugger Extension" />
+                    <p>A debugger extension for WebDev HQ that helps you identify and fix issues in your web projects.</p>
                 </div>
             </div>
         </PublicLayout>
