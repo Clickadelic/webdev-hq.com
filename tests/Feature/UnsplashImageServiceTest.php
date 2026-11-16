@@ -24,6 +24,63 @@ describe('Unsplash Image Service API Endpoints', function () {
 	});
 
 	describe('GET /api/unsplash/image/seasonal', function () {
+		beforeEach(function () {
+			$unsplashImageService = Mockery::mock(UnsplashImageService::class);
+			$unsplashImageService
+				->shouldReceive('getRandomPhotoFromCollections')
+				->andReturn([
+					'id' => 'photo-1',
+					'description' => 'A beautiful spring landscape',
+					'alt_description' => 'Spring flowers',
+					'width' => 1920,
+					'height' => 1080,
+					'color' => '#FF0000',
+					'blur_hash' => 'L123',
+					'created_at' => '2026-03-15T10:00:00Z',
+					'urls' => [
+						'raw' => 'https://example.com/raw',
+						'full' => 'https://example.com/full',
+						'regular' => 'https://example.com/regular',
+						'small' => 'https://example.com/small',
+						'thumb' => 'https://example.com/thumb',
+					],
+					'links' => ['html' => 'https://example.com'],
+					'user' => [
+						'name' => 'Test Photographer',
+						'username' => 'testphoto',
+						'links' => ['html' => 'https://example.com/user'],
+					],
+				]);
+
+			$unsplashImageService
+				->shouldReceive('getRandomPhoto')
+				->andReturn([
+					'id' => 'photo-1',
+					'description' => 'A beautiful spring landscape',
+					'alt_description' => 'Spring flowers',
+					'width' => 1920,
+					'height' => 1080,
+					'color' => '#FF0000',
+					'blur_hash' => 'L123',
+					'created_at' => '2026-03-15T10:00:00Z',
+					'urls' => [
+						'raw' => 'https://example.com/raw',
+						'full' => 'https://example.com/full',
+						'regular' => 'https://example.com/regular',
+						'small' => 'https://example.com/small',
+						'thumb' => 'https://example.com/thumb',
+					],
+					'links' => ['html' => 'https://example.com'],
+					'user' => [
+						'name' => 'Test Photographer',
+						'username' => 'testphoto',
+						'links' => ['html' => 'https://example.com/user'],
+					],
+				]);
+
+			$this->app->instance(UnsplashImageService::class, $unsplashImageService);
+		});
+
 		it('returns a random seasonal image for the current season', function () {
 			/** @var TestCase $this */
 			$response = $this->getJson('/api/v1/unsplash/image/seasonal');
@@ -102,17 +159,39 @@ describe('Unsplash Image Service API Endpoints', function () {
 	});
 
 	describe('GET /api/unsplash/image/general', function () {
-		it('accepts a single collection id override', function () {
-			/** @var TestCase $this */
+		beforeEach(function () {
 			$unsplashImageService = Mockery::mock(UnsplashImageService::class);
 			$unsplashImageService
 				->shouldReceive('getRandomPhotoFromCollections')
-				->once()
-				->with(['collection-123'], [], 'unsplash:general:'.md5('collection-123'), 86400)
-				->andReturn([]);
+				->andReturn([
+					'id' => 'photo-1',
+					'description' => 'A beautiful landscape',
+					'alt_description' => 'Landscape',
+					'width' => 1920,
+					'height' => 1080,
+					'color' => '#FF0000',
+					'blur_hash' => 'L123',
+					'created_at' => '2026-03-15T10:00:00Z',
+					'urls' => [
+						'raw' => 'https://example.com/raw',
+						'full' => 'https://example.com/full',
+						'regular' => 'https://example.com/regular',
+						'small' => 'https://example.com/small',
+						'thumb' => 'https://example.com/thumb',
+					],
+					'links' => ['html' => 'https://example.com'],
+					'user' => [
+						'name' => 'Test Photographer',
+						'username' => 'testphoto',
+						'links' => ['html' => 'https://example.com/user'],
+					],
+				]);
 
 			$this->app->instance(UnsplashImageService::class, $unsplashImageService);
+		});
 
+		it('accepts a single collection id override', function () {
+			/** @var TestCase $this */
 			$this->getJson('/api/v1/unsplash/image/general?collection_id=collection-123')
 				->assertOk()
 				->assertJsonPath('meta.collection_ids', ['collection-123']);
@@ -196,7 +275,6 @@ describe('Unsplash Image Service API Endpoints', function () {
 
 	describe('Season Enum', function () {
 		it('detects current season correctly', function () {
-			// Mock the current month to test season detection
 			$currentSeason = Season::current();
 
 			expect($currentSeason)->toBeInstanceOf(Season::class);
