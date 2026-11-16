@@ -25,7 +25,7 @@ interface PaginatedHyperlinks {
 }
 
 // Home component, displays the list of hyperlinks for the public
-export default function Home({ hyperlinks, allHyperlinks, canRegister = true, search: initialSearch = '' }: { hyperlinks: PaginatedHyperlinks; allHyperlinks: Hyperlink[]; canRegister?: boolean; search?: string }) {
+export default function Home({ hyperlinks, canRegister = true, search: initialSearch = '' }: { hyperlinks: PaginatedHyperlinks; canRegister?: boolean; search?: string }) {
     const count = hyperlinks.total;
     const items = hyperlinks.data;
     const [editingHyperlink, setEditingHyperlink] = useState<Hyperlink | undefined>(undefined);
@@ -69,7 +69,7 @@ export default function Home({ hyperlinks, allHyperlinks, canRegister = true, se
         <PublicLayout canRegister={canRegister} title="Hyperlinks">
             {/* Search Dropdown */}
             <div className="relative mx-auto mt-8 mb-40 w-full max-w-2xl">
-                <SearchDropdown className="absolute z-30 w-full" hyperlinks={allHyperlinks} onSearch={performSearch} initialSearch={initialSearch} />
+                <SearchDropdown className="absolute z-30 w-full" onSearch={performSearch} initialSearch={initialSearch} />
             </div>
 
             {/* Results */}

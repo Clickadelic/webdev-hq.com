@@ -39,16 +39,8 @@ class HyperlinkController extends Controller
             ->paginate(30)
             ->withQueryString();
 
-        // Fetch all published hyperlinks for dropdown search (limited to prevent large payloads)
-        $allHyperlinksList = Hyperlink::with(['category', 'tags'])
-            ->published()
-            ->latest()
-            ->limit(500)
-            ->get();
-
         return inertia('hyperlinks/index', [
             'hyperlinks' => $hyperlinks,
-            'allHyperlinks' => $allHyperlinksList,
             'categories' => Category::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
             'tags' => Tag::orderBy('name', 'asc')->get(['id', 'name', 'slug']),
             'canRegister' => true,
