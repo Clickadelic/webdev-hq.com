@@ -161,7 +161,7 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
                                 setIsOpen(true);
                             }
                         }}
-                        placeholder="Search resources…"
+                        placeholder="Items, categories, tags and more..."
                         className="w-full rounded-lg py-2.5 pr-10 pl-10 text-xl placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:outline-none"
                         autoComplete="off"
                     />
@@ -199,9 +199,7 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
                                     <p className="line-clamp-1 text-xs text-muted-foreground">{hyperlink.url.replace(/^https?:\/\//, '')}</p>
                                     {hyperlink.category && (
                                         <div className="mt-1.5 flex items-center gap-2">
-                                            <span className="inline-block rounded-full bg-primary/15 px-2 py-0.5 text-[10px] font-medium text-primary">
-                                                {hyperlink.category.name}
-                                            </span>
+                                            <span className="inline-block rounded-full bg-primary/15 px-2 py-0.5 text-[10px] font-medium text-primary">{hyperlink.category.name}</span>
                                         </div>
                                     )}
                                     {hyperlink.tags && hyperlink.tags.length > 0 && (
