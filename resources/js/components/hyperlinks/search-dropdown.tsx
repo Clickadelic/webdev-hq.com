@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { type Hyperlink } from '@/types';
-import { ExternalLink, Loader2, Search, XIcon } from 'lucide-react';
+import { ExternalLink, Loader2, Search, X } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface SearchDropdownProps {
@@ -167,7 +167,7 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
                     />
                     {query && (
                         <button type="button" onClick={handleClear} aria-label="Clear search" title="Clear search" className="absolute right-3 text-slate-400 hover:cursor-pointer hover:text-primary">
-                            <XIcon className="size-5 rotate-180" />
+                            <X className="size-5" />
                         </button>
                     )}
                 </form>
@@ -197,6 +197,13 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
                                         <ExternalLink className="size-3.5 shrink-0 text-muted-foreground" />
                                     </div>
                                     <p className="line-clamp-1 text-xs text-muted-foreground">{hyperlink.url.replace(/^https?:\/\//, '')}</p>
+                                    {hyperlink.category && (
+                                        <div className="mt-1.5 flex items-center gap-2">
+                                            <span className="inline-block rounded-full bg-primary/15 px-2 py-0.5 text-[10px] font-medium text-primary">
+                                                {hyperlink.category.name}
+                                            </span>
+                                        </div>
+                                    )}
                                     {hyperlink.tags && hyperlink.tags.length > 0 && (
                                         <div className="mt-1 flex flex-wrap gap-1">
                                             {hyperlink.tags.slice(0, 3).map((tag) => (
