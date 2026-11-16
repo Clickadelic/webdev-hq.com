@@ -18,7 +18,6 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
     const inputRef = useRef<HTMLInputElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const debounceTimer = useRef<number | null>(null);
-    const searchTimer = useRef<number | null>(null);
 
     // Fetch suggestions from API
     const fetchSuggestions = useCallback((searchQuery: string) => {
@@ -44,29 +43,22 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
             .finally(() => setIsLoading(false));
     }, []);
 
-    // Debounced API search and page update
+    // Debounced dropdown suggestions (without updating page results)
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setQuery(value);
         setHighlightedIndex(-1);
 
         if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
-        if (searchTimer.current) window.clearTimeout(searchTimer.current);
 
         if (value.trim()) {
             // Fetch dropdown suggestions with 300ms debounce
             debounceTimer.current = window.setTimeout(() => {
                 fetchSuggestions(value);
             }, 300);
-
-            // Update page results with 300ms debounce
-            searchTimer.current = window.setTimeout(() => {
-                onSearch(value);
-            }, 300);
         } else {
             setSuggestions([]);
             setIsOpen(false);
-            onSearch('');
         }
     };
 
@@ -135,7 +127,6 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
             if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
-            if (searchTimer.current) window.clearTimeout(searchTimer.current);
         };
     }, []);
 
