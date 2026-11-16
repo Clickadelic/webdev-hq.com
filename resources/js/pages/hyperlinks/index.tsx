@@ -68,7 +68,7 @@ export default function Home({ hyperlinks, canRegister = true, search: initialSe
     return (
         <PublicLayout canRegister={canRegister} title="Hyperlinks">
             {/* Search Dropdown */}
-            <div className="relative mx-auto mt-8 w-full max-w-2xl">
+            <div className="relative mx-auto mt-8 mb-40 w-full max-w-2xl">
                 <SearchDropdown className="absolute z-30 w-full" hyperlinks={items} onSearch={performSearch} initialSearch={initialSearch} />
             </div>
 
@@ -76,7 +76,7 @@ export default function Home({ hyperlinks, canRegister = true, search: initialSe
             {items.length === 0 ? (
                 <p className="my-16 text-center text-muted-foreground">No resources available yet.</p>
             ) : (
-                <div className="relative top-28 z-20 pb-12">
+                <div className="relative z-20 pb-12">
                     <div className="grid grid-cols-1 gap-1 md:grid-cols-3 md:gap-2 lg:grid-cols-5 lg:gap-5">
                         {items.map((link) => (
                             <HyperlinkCard key={link.id} hyperlink={link} onEdit={isAuthenticated ? handleEdit : undefined} onDelete={isAuthenticated ? handleDelete : undefined} />
