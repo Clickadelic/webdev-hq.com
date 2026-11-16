@@ -708,5 +708,19 @@ class HyperlinkSeeder extends Seeder
 			],
 		);
 		$rolldownHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
+
+		$gtajsHyperlink = Hyperlink::updateOrCreate(
+			['url' => 'https://gtajs.com/'],
+			[
+				'title' => 'GTA.js',
+				'favicon_url' => 'https://gtajs.com/favicon-32x32.png',
+				'description' => 'A reimplementation of the original 1997 Grand Theft Auto engine in JavaScript and WebGL.',
+				'category_id' => $javascriptCategory->id,
+				'status' => Status::Published,
+				'created_by' => $user->id,
+				'team_id' => $team->id,
+			],
+		);
+		$gtajsHyperlink->tags()->syncWithoutDetaching([$javascriptTag->id]);
 	}
 }
