@@ -27,7 +27,7 @@ test('authenticated users can list, create, and edit dashboard posts', function 
     ]);
 
     $this->actingAs($user)
-        ->get(route('posts.index'))
+        ->get(route('posts.listPosts'))
         ->assertOk()
         ->assertInertia(
             fn (Assert $page) => $page
