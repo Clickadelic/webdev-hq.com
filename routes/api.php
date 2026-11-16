@@ -18,10 +18,8 @@ Route::prefix('v1')->group(function () {
 		Route::get('/general', [ImageController::class, 'general']);
 	});
 
-	// Hyperlinks search (public - no auth required)
-	Route::prefix('/hyperlinks')->middleware('throttle:60,10')->group(function () {
-		Route::get('/search', [HyperlinkController::class, 'search']);
-	});
+	// Hyperlinks search (public - no auth required) - MUST be before apiResource to avoid conflicts with {hyperlink} catch-all
+	Route::get('/hyperlinks/search', [HyperlinkController::class, 'search'])->middleware('throttle:60,10');
 
 	Route::prefix('auth')->group(function () {
 		// Public auth routes (no auth required)
@@ -43,3 +41,4 @@ Route::prefix('v1')->group(function () {
 		Route::apiResource('hyperlinks', HyperlinkController::class);
 	});
 });
+
