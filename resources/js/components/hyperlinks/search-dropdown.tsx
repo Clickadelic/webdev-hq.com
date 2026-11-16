@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { type Hyperlink } from '@/types';
-import { ChevronDown, ExternalLink, Search } from 'lucide-react';
+import { ExternalLink, Loader2, Search, XIcon } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface SearchDropdownProps {
@@ -33,15 +33,14 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
             .then((res) => res.json())
             .then((data) => {
                 setSuggestions(data.hyperlinks || []);
-                // Open dropdown if there are suggestions OR if the query looks like it could be a URL
-                const hasResults = (data.hyperlinks || []).length > 0;
-                const looksLikeUrl = searchQuery.includes('.') || searchQuery.includes('/');
-                setIsOpen(hasResults || looksLikeUrl);
+                // Always open dropdown when there's a query, whether results exist or not
+                setIsOpen(true);
                 setHighlightedIndex(-1);
             })
             .catch(() => {
                 setSuggestions([]);
-                setIsOpen(false);
+                // Still open dropdown to show fallback even on error
+                setIsOpen(true);
             })
             .finally(() => setIsLoading(false));
     }, []);
@@ -158,7 +157,7 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
                         onFocus={() => {
-                            if (query.trim() && (suggestions.length > 0 || (query.includes('.') || query.includes('/')))) {
+                            if (query.trim() && isOpen) {
                                 setIsOpen(true);
                             }
                         }}
@@ -168,7 +167,7 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
                     />
                     {query && (
                         <button type="button" onClick={handleClear} aria-label="Clear search" title="Clear search" className="absolute right-3 text-slate-400 hover:cursor-pointer hover:text-primary">
-                            <ChevronDown className="size-5 rotate-180" />
+                            <XIcon className="size-5 rotate-180" />
                         </button>
                     )}
                 </form>
@@ -214,23 +213,23 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
                     </div>
                 )}
 
+                {/* Loading state */}
+                {isOpen && isLoading && query.trim() && (
+                    <div className="absolute top-full right-0 left-0 z-50 mt-2 rounded-lg border border-primary/20 bg-white shadow-lg dark:bg-neutral-900">
+                        <div className="flex items-center justify-center gap-2 p-4">
+                            <Loader2 className="size-4 animate-spin text-primary" />
+                            <p className="text-sm text-muted-foreground">Searching...</p>
+                        </div>
+                    </div>
+                )}
+
                 {/* Fallback: No results found */}
-                {isOpen && suggestions.length === 0 && query.trim() && (
+                {isOpen && suggestions.length === 0 && query.trim() && !isLoading && (
                     <div className="absolute top-full right-0 left-0 z-50 mt-2 rounded-lg border border-primary/20 bg-white shadow-lg dark:bg-neutral-900">
                         <div className="p-4 text-center">
-                            <p className="text-sm text-muted-foreground mb-3">
+                            <p className="text-sm text-muted-foreground">
                                 No resources found for "<span className="font-semibold text-foreground">{query}</span>"
                             </p>
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    onSearch(query);
-                                    setIsOpen(false);
-                                }}
-                                className="inline-flex items-center justify-center rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
-                            >
-                                Add "{query}" as a new resource
-                            </button>
                         </div>
                     </div>
                 )}
@@ -241,7 +240,8 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
                 <div className="mt-2 text-center text-xs text-muted-foreground">
                     {suggestions.length > 0 ? (
                         <>
-                            Use <kbd className="rounded bg-primary/10 px-1 font-mono">↑↓</kbd> to navigate, <kbd className="rounded bg-primary/10 px-1 font-mono">Enter</kbd> to select, or type to search all.
+                            Use <kbd className="rounded bg-primary/10 px-1 font-mono">↑↓</kbd> to navigate, <kbd className="rounded bg-primary/10 px-1 font-mono">Enter</kbd> to select, or type to
+                            search all.
                         </>
                     ) : (
                         <>
