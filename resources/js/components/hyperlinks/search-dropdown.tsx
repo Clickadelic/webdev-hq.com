@@ -127,7 +127,6 @@ export default function SearchDropdown({ onSearch, initialSearch = '', className
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
             if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
-            if (searchTimer.current) window.clearTimeout(searchTimer.current);
         };
     }, []);
 
