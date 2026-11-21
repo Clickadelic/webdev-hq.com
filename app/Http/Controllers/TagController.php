@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag;
 use App\Http\Requests\StoreTagRequest;
 use App\Http\Requests\UpdateTagRequest;
+use App\Models\Tag;
 use Illuminate\Support\Str;
 
 class TagController extends Controller
@@ -28,6 +28,7 @@ class TagController extends Controller
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);
+        $data['created_by'] = $request->user()->id;
 
         Tag::create($data);
 

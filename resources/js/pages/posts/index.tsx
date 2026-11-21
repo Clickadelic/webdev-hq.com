@@ -9,7 +9,7 @@ import { ChevronLeft, ChevronRight, ImageOff, MoveRight } from 'lucide-react';
 
 export default function PostsIndex({ posts, canRegister = true }: { posts: Paginator<Post>; canRegister?: boolean }) {
     return (
-        <PublicLayout title="Posts" showTitle={true} canRegister={canRegister}>
+        <PublicLayout title="Posts" showTitle={true} canRegister={canRegister} showGradient isInteractive={false}>
             {posts.data.length >= 1 ? (
                 <div className="pb-8">
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">

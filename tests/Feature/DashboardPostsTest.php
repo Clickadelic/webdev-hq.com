@@ -34,6 +34,8 @@ test('authenticated users can list, create, and edit dashboard posts', function 
                 ->component('dashboard/posts/index')
                 ->has('posts.data', 2)
                 ->where('posts.data.0.id', $post->id)
+                ->missing('posts.data.0.author.email')
+                ->missing('posts.data.1.author.email')
         );
 
     $this->actingAs($user)

@@ -42,8 +42,8 @@ class PageController extends Controller
 		return Inertia::render('legal/terms-of-service');
 	}
 
-	public function chromeExtension()
+	public function chromeExtensions()
 	{
-		return Inertia::render('chrome-extension/index');
+		return Inertia::render('chrome-extensions/index');
 	}
 }

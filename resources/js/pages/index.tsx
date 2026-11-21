@@ -7,11 +7,6 @@ interface PageProps {
     hyperlinkCount: number;
 }
 
-interface PublicLayoutProps {
-    canRegister?: boolean;
-    contentClasses?: string;
-}
-
 /**
  * The Home component renders the main landing page for the WebDev HQ website.
  *
@@ -19,7 +14,7 @@ interface PublicLayoutProps {
  * @param  contentClasses An optional class name to apply to the main container.
  * @returns The JSX element representing the Home page.
  */
-export default function IndexPage({ canRegister = true }: PublicLayoutProps) {
+export default function IndexPage({ canRegister = true }: PageProps) {
     const { hyperlinkCount } = usePage<PageProps>().props;
     return (
         <PublicLayout
@@ -28,6 +23,7 @@ export default function IndexPage({ canRegister = true }: PublicLayoutProps) {
             title="Welcome"
             showTitle={false}
             showGradient
+            isInteractive
         >
             <h1 className="mb-10 text-5xl font-light text-white text-shadow-lg text-shadow-black/80">
                 <img
