@@ -24,6 +24,7 @@ class UpdateHyperlinkRequest extends FormRequest
             'status' => ['required', Rule::enum(Status::class)],
             'tags' => ['nullable', 'array'],
             'tags.*' => ['required', 'string', 'max:255'],
+            'team_id' => ['nullable', 'integer', Rule::in($this->user()->teams()->pluck('teams.id')->all())],
         ];
     }
 }

@@ -1,5 +1,4 @@
 import PublicLayout from '@/layouts/public-layout';
-import { usePage } from '@inertiajs/react';
 import { type Post } from '@/types';
 import PostsSidebar from '@/layouts/public-layout/sidebars/posts-sidebar';
 export default function PostsShow({
@@ -9,9 +8,6 @@ export default function PostsShow({
 	post: Post;
 	canRegister?: boolean;
 }) {
-	const page = usePage();
-
-    console.log(page.props); // Alle Inertia-Props
 	return (
 		<PublicLayout title={post.title} showTitle={true} canRegister={canRegister} leftSidebar={<PostsSidebar />}>
 			<h3 className="text-lg font-semibold">{post.subline}</h3>

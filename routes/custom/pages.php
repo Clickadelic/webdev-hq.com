@@ -15,5 +15,5 @@ Route::group(['prefix' => 'legal'], function () {
 	Route::get('/terms-of-service', [PageController::class, 'termsOfService'])->name('terms-of-service');
 });
 
-Route::get('/chrome-extension', [PageController::class, 'chromeExtension'])->name('chrome-extension.index');
+Route::get('/chrome-extensions', [PageController::class, 'chromeExtensions'])->name('chrome-extensions.index');
 Route::get('/contact', [ContactpageController::class, 'index'])->name('contact.index');

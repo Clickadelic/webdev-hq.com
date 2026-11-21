@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Actions\ResolveTagIds;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HyperlinkRequest;
 use App\Http\Requests\StoreHyperlinkRequest;
 use App\Models\Category;
 use App\Models\Hyperlink;
-use App\Models\Tag;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class HyperlinkController extends Controller
@@ -58,11 +59,17 @@ class HyperlinkController extends Controller
     public function store(StoreHyperlinkRequest $request): JsonResponse
     {
         $data = $request->safe()->except(['tags', 'category']);
-        $data['category_id'] = $this->resolveCategoryId($request->validated('category'));
         $data['created_by'] = $request->user()->id;
 
-        $hyperlink = Hyperlink::create($data);
-        $hyperlink->tags()->sync($this->resolveTagIds($request->validated('tags', [])));
+        $hyperlink = DB::transaction(function () use ($data, $request) {
+            $teamId = $request->validated('team_id');
+            $tagIds = app(ResolveTagIds::class)($request->validated('tags', []), $request->user(), $teamId === null ? null : (int) $teamId);
+            $data['category_id'] = $this->resolveCategoryId($request->validated('category'));
+            $hyperlink = Hyperlink::create($data);
+            $hyperlink->tags()->sync($tagIds);
+
+            return $hyperlink;
+        });
 
         return response()->json(['hyperlink' => $hyperlink], 201);
     }
@@ -91,25 +98,5 @@ class HyperlinkController extends Controller
             ['name' => $value],
             ['slug' => Str::slug($value)]
         )->id;
-    }
-
-    /**
-     * Resolve an array of tag values (numeric IDs or names) to tag IDs.
-     *
-     * @param  array<int, string>  $values
-     * @return array<int, int>
-     */
-    private function resolveTagIds(array $values): array
-    {
-        return collect($values)->map(function (string $value) {
-            if (is_numeric($value)) {
-                return (int) $value;
-            }
-
-            return Tag::firstOrCreate(
-                ['name' => $value],
-                ['slug' => Str::slug($value)]
-            )->id;
-        })->all();
     }
 }

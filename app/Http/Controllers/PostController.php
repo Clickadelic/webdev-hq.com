@@ -20,7 +20,7 @@ class PostController extends Controller
         return inertia('posts/index', [
             'posts' => Post::query()
                 ->published()
-                ->with(['author', 'category', 'tags'])
+                ->with(['author:id,name', 'category', 'tags'])
                 ->latest('published_at')
                 ->paginate(15),
         ]);
@@ -36,7 +36,7 @@ class PostController extends Controller
     public function show(Post $post): Response
     {
         return inertia('posts/show', [
-            'post' => $post->load(['author', 'category', 'tags']),
+            'post' => $post->load(['author:id,name', 'category', 'tags']),
             'canRegister' => true,
         ]);
     }
@@ -109,7 +109,7 @@ class PostController extends Controller
     {
         return inertia('dashboard/posts/index', [
             'posts' => Post::query()
-                ->with(['author', 'category', 'tags'])
+                ->with(['author:id,name', 'category', 'tags'])
                 ->latest()
                 ->paginate(15),
         ]);

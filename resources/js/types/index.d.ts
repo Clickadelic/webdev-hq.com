@@ -44,6 +44,7 @@ export interface SharedData {
     unsplashAuthScreenCollectionId: string | null;
     categories: Category[];
     tags: Tag[];
+    availableTeams: Pick<Team, 'id' | 'name'>[];
     [key: string]: unknown;
 }
 
@@ -165,7 +166,7 @@ export interface Post {
 
     // Relationen (aus forAppListing() via eager loading)
     category?: Category | null;
-    author?: User;
+    author?: { id: string; name: string } | null;
     tags?: Tag[];
 
     // Timestamps
