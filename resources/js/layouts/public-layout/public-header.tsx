@@ -22,6 +22,13 @@ interface PublicHeaderProps {
     className?: string;
 }
 
+const navigationItems = [
+    { href: '/', label: 'Home', icon: House },
+    { href: '/hyperlinks', label: 'Hyperlinks', icon: LinkIcon },
+    { href: '/posts', label: 'Posts', icon: PenIcon },
+    { href: '/chrome-extensions', label: 'Chrome Extensions', icon: Blocks },
+];
+
 /**
  * A component that renders the public header of the application.
  * @param {boolean} [canRegister] - Indicates if the registration link should be displayed
@@ -29,7 +36,8 @@ interface PublicHeaderProps {
  * @returns {React.ReactNode} - The rendered public header component
  */
 export default function PublicHeader({ canRegister = true, className }: PublicHeaderProps) {
-    const { auth } = usePage<SharedData>().props;
+    const { url, props: { auth } } = usePage<SharedData>();
+    const pathname = url.split(/[?#]/, 1)[0].replace(/\/+$/, '') || '/';
     const isMobile = useMediaQuery('(max-width: 768px)');
     return (
         <div className="w-full bg-white/30 pb-1 backdrop-blur dark:bg-neutral-900/30 dark:backdrop-blur">
@@ -38,33 +46,25 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                     <AppLogo logoClassName="size-7 md:mr-3" />
                     <nav className="mt-0.75 hidden items-center justify-between gap-4 lg:flex">
                         <ul className="flex items-center justify-start gap-6">
-                            <li>
-                                <Link href="/" className="flex h-auto items-center gap-2">
-                                    <House className="size-4" />
-                                    Home
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/posts" className="flex h-auto items-center gap-2">
-                                    <PenIcon className="size-4" />
-                                    Posts
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/hyperlinks" className="flex h-auto items-center gap-2">
-                                    <LinkIcon className="size-4" />
-                                    Hyperlinks
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/chrome-extension"
-                                    className="flex h-auto items-center gap-2"
-                                >
-                                    <Blocks className="size-4" />
-                                    Chrome Extension
-                                </Link>
-                            </li>
+                            {navigationItems.map(({ href, label, icon: Icon }) => {
+                                const isActive = pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
+
+                                return (
+                                    <li key={href}>
+                                        <Link
+                                            href={href}
+                                            aria-current={pathname === href ? 'page' : isActive ? 'location' : undefined}
+                                            className={cn(
+                                                'flex h-auto items-center gap-2 hover:text-primary',
+                                                isActive ? 'text-primary font-semibold' : 'text-muted-foreground',
+                                            )}
+                                        >
+                                            <Icon className="size-4" />
+                                            {label}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </nav>
                     <nav className="mt-0.75 hidden lg:flex">

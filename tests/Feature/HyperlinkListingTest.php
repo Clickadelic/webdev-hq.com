@@ -82,6 +82,12 @@ test('public hyperlink search filters published results by title url and descrip
 
 test('authenticated users can create hyperlinks via the api', function () {
     $user = User::factory()->create();
+    $team = Team::query()->create([
+        'owner_id' => $user->id,
+        'name' => 'API Team',
+        'slug' => 'api-team',
+    ]);
+    $user->teams()->attach($team);
 
     $response = $this
         ->actingAs($user, 'sanctum')
@@ -92,6 +98,7 @@ test('authenticated users can create hyperlinks via the api', function () {
             'category' => 'Testing',
             'status' => 'published',
             'tags' => ['api', 'postman'],
+            'team_id' => $team->id,
         ]);
 
     $response

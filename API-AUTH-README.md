@@ -107,6 +107,14 @@ Authorization: Bearer 1|xyz123abc...
 
 ---
 
+## Tag ownership
+
+Authenticated `POST /api/v1/tags` requests must include `name` and a `team_id` for a team the user belongs to. The server records the authenticated user as `created_by`.
+
+When `POST /api/v1/hyperlinks` creates new tags from names, it also requires a `team_id` belonging to the user. New tags inherit that team; existing tags retain their original ownership. Requests that only attach existing tags do not require a team.
+
+---
+
 ## Chrome Extension Integration
 
 ### Example: Login and Store Token

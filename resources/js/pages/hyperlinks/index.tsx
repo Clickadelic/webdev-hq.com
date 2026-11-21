@@ -12,7 +12,6 @@ import { router, usePage } from '@inertiajs/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
-
 // PaginatedHyperlinks interface defines the structure of the paginated hyperlinks data.
 interface PaginatedHyperlinks {
     data: Hyperlink[];
@@ -24,8 +23,7 @@ interface PaginatedHyperlinks {
     prev_page_url: string | null;
 }
 
-// Home component, displays the list of hyperlinks for the public
-export default function Home({ hyperlinks, canRegister = true, search: initialSearch = '' }: { hyperlinks: PaginatedHyperlinks; canRegister?: boolean; search?: string }) {
+export default function HyperlinksIndex({ hyperlinks, canRegister = true, search: initialSearch = '' }: { hyperlinks: PaginatedHyperlinks; canRegister?: boolean; search?: string }) {
     const count = hyperlinks.total;
     const items = hyperlinks.data;
     const [editingHyperlink, setEditingHyperlink] = useState<Hyperlink | undefined>(undefined);
@@ -66,7 +64,8 @@ export default function Home({ hyperlinks, canRegister = true, search: initialSe
     };
 
     return (
-        <PublicLayout canRegister={canRegister} title="Hyperlinks">
+        <PublicLayout canRegister={canRegister} title="Hyperlinks" showGradient>
+			
             {/* Search Dropdown */}
             <div className="relative mx-auto mt-8 mb-40 w-full max-w-2xl">
                 <SearchDropdown className="absolute z-30 w-full" onSearch={performSearch} initialSearch={initialSearch} />

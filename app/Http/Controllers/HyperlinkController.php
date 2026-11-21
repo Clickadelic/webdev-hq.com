@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\ResolveTagIds;
 use App\Http\Requests\StoreHyperlinkRequest;
 use App\Http\Requests\UpdateHyperlinkRequest;
 use App\Models\Category;
 use App\Models\Hyperlink;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class HyperlinkController extends Controller
@@ -93,12 +95,16 @@ class HyperlinkController extends Controller
     public function store(StoreHyperlinkRequest $request)
     {
         $data = $request->safe()->except(['tags', 'category']);
-        $data['category_id'] = $this->resolveCategoryId($request->validated('category'));
         $data['created_by'] = $request->user()->id;
-        $data['team_id'] = $request->user()->teams()->value('teams.id');
+        $selectedTeamId = $request->validated('team_id');
+        $data['team_id'] = $selectedTeamId ?? $request->user()->teams()->value('teams.id');
 
-        $hyperlink = Hyperlink::create($data);
-        $hyperlink->tags()->sync($this->resolveTagIds($request->validated('tags', [])));
+        DB::transaction(function () use ($data, $request, $selectedTeamId) {
+            $tagIds = app(ResolveTagIds::class)($request->validated('tags', []), $request->user(), $selectedTeamId === null ? null : (int) $selectedTeamId);
+            $data['category_id'] = $this->resolveCategoryId($request->validated('category'));
+            $hyperlink = Hyperlink::create($data);
+            $hyperlink->tags()->sync($tagIds);
+        });
 
         return redirect()
             ->back()
@@ -135,10 +141,19 @@ class HyperlinkController extends Controller
         $request->user()->can('update', $hyperlink) ?: abort(403);
 
         $data = $request->safe()->except(['tags', 'category']);
-        $data['category_id'] = $this->resolveCategoryId($request->validated('category'));
+        unset($data['team_id']);
+        $selectedTeamId = $request->validated('team_id');
+        $teamId = $hyperlink->team_id ?? $selectedTeamId;
 
-        $hyperlink->fill($data)->save();
-        $hyperlink->tags()->sync($this->resolveTagIds($request->validated('tags', [])));
+        DB::transaction(function () use ($data, $request, $hyperlink, $teamId) {
+            $tagIds = app(ResolveTagIds::class)($request->validated('tags', []), $request->user(), $teamId === null ? null : (int) $teamId);
+            $data['category_id'] = $this->resolveCategoryId($request->validated('category'));
+            if ($hyperlink->team_id === null && $teamId !== null) {
+                $data['team_id'] = $teamId;
+            }
+            $hyperlink->fill($data)->save();
+            $hyperlink->tags()->sync($tagIds);
+        });
 
         return redirect()
             ->back()
@@ -162,26 +177,6 @@ class HyperlinkController extends Controller
             ['name' => $value],
             ['slug' => Str::slug($value)]
         )->id;
-    }
-
-    /**
-     * Resolve an array of tag values (numeric IDs or names) to tag IDs.
-     *
-     * @param  array<int, string>  $values
-     * @return array<int, string>
-     */
-    private function resolveTagIds(array $values): array
-    {
-        return collect($values)->map(function (string $value) {
-            if (is_numeric($value)) {
-                return (string) $value;
-            }
-
-            return Tag::firstOrCreate(
-                ['name' => $value],
-                ['slug' => Str::slug($value)]
-            )->id;
-        })->all();
     }
 
     /**
