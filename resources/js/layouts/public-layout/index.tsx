@@ -7,7 +7,7 @@ import PublicHeader from '@/layouts/public-layout/public-header';
 import PublicTitle from '@/layouts/public-layout/public-title';
 import { cn } from '@/lib/utils';
 import { Head } from '@inertiajs/react';
-
+import { GradFlow } from 'gradflow';
 // Public Layout Interface
 interface PublicLayoutProps {
     title?: string;
@@ -18,6 +18,7 @@ interface PublicLayoutProps {
     canRegister?: boolean;
     wrapperClasses?: string;
     contentClasses?: string;
+    showGradient?: boolean;
 }
 
 /**
@@ -35,29 +36,31 @@ interface PublicLayoutProps {
  * @param {string} wrapperClasses - An optional class name to apply to the wrapper container
  * @returns {React.ReactNode} - The rendered public layout component
  */
-export default function PublicLayout({
-    title,
-    showTitle,
-    leftSidebar,
-    rightSidebar,
-    children,
-    canRegister,
-    wrapperClasses,
-    contentClasses,
-}: PublicLayoutProps) {
+export default function PublicLayout({ title, showTitle, leftSidebar, rightSidebar, children, canRegister, wrapperClasses, contentClasses, showGradient = false }: PublicLayoutProps) {
     return (
         <>
             <Head title={title} />
-            <div className="flex min-h-svh flex-col items-center justify-start">
+            <div className={cn('flex min-h-svh flex-col items-center justify-start', showGradient && 'relative isolate')}>
+                {showGradient && (
+                    <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+                        <GradFlow
+                            config={{
+                                type: 'fold',
+                                color1: '#1a90fd',
+                                color2: '#06081e',
+                                color3: '#F5F5F5',
+                                speed: 0.5,
+                                scale: 1,
+                                noise: 0.12,
+                            }}
+                            interactive
+                        />
+                    </div>
+                )}
                 <PublicHeader canRegister={canRegister} />
                 <PublicBreadcrumbs />
                 {leftSidebar && !rightSidebar && (
-                    <div
-                        className={cn(
-                            'container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6',
-                            wrapperClasses,
-                        )}
-                    >
+                    <div className={cn('container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6', wrapperClasses)}>
                         <aside className="col-span-1 hidden md:flex">{leftSidebar}</aside>
                         <main className={cn('col-span-5 w-full', contentClasses)}>
                             {showTitle && <PublicTitle title={title} />}
@@ -66,12 +69,7 @@ export default function PublicLayout({
                     </div>
                 )}
                 {leftSidebar && rightSidebar && (
-                    <div
-                        className={cn(
-                            'container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6',
-                            wrapperClasses,
-                        )}
-                    >
+                    <div className={cn('container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6', wrapperClasses)}>
                         <aside className="col-span-1">{leftSidebar}</aside>
                         <main className={cn('col-span-4 w-full', contentClasses)}>
                             {showTitle && <PublicTitle title={title} />}
@@ -81,12 +79,7 @@ export default function PublicLayout({
                     </div>
                 )}
                 {rightSidebar && !leftSidebar && (
-                    <div
-                        className={cn(
-                            'container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6',
-                            wrapperClasses,
-                        )}
-                    >
+                    <div className={cn('container mx-auto grid grow grid-cols-1 gap-4 md:grid-cols-6', wrapperClasses)}>
                         <main className={cn('col-span-5 w-full', contentClasses)}>
                             {showTitle && <PublicTitle title={title} />}
                             {children}
