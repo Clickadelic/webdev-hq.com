@@ -27,8 +27,9 @@ export default function IndexPage({ canRegister = true }: PublicLayoutProps) {
             contentClasses="flex flex-col items-center justify-center"
             title="Welcome"
             showTitle={false}
+            showGradient
         >
-            <h1 className="mb-10 text-5xl font-light text-neutral-950 dark:text-white">
+            <h1 className="mb-10 text-5xl font-light text-white text-shadow-lg text-shadow-black/80">
                 <img
                     src={LogoImageSrc}
                     alt="WebDev HQ Logo"
@@ -36,12 +37,12 @@ export default function IndexPage({ canRegister = true }: PublicLayoutProps) {
                 />
                 Web<span className="font-medium">Dev HQ</span>
             </h1>
-            <h2 className="relative mb-4 max-w-120 text-center text-3xl">
+            <h2 className="relative mb-4 max-w-120 text-center text-3xl text-white text-shadow-lg text-shadow-black/80">
                 Your Go-To Destination for Web Developers and alike.
             </h2>
-            <p className="mb-12 font-light text-muted-foreground rounded-full backdrop-blur border-border">
+            <p className="mb-12 rounded-full border-border font-light text-white text-shadow-lg text-shadow-black/80 backdrop-blur">
                 Currently tracking{' '}
-                <span className="font-bold text-neutral-950 dark:text-white">{hyperlinkCount}</span>{' '}
+                <span className="font-bold">{hyperlinkCount}</span>{' '}
                 resources.
             </p>
             <Link

@@ -4,13 +4,8 @@ import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { LoaderCircle } from 'lucide-react';
@@ -21,7 +16,6 @@ import { store, update } from '@/actions/App/Http/Controllers/PostController';
 import { type Category, type Post, type Status, type Tag } from '@/types';
 
 import { cn } from '@/lib/utils';
-
 /** Hilfsfunktion zum Generieren von URL-freundlichen Slugs */
 function slugify(text: string): string {
     return text
@@ -98,9 +92,7 @@ export default function PostForm({ post, categories = [], tags = [], className }
     const handleTagToggle = (tagId: string) => {
         setData((prev) => ({
             ...prev,
-            tag_ids: prev.tag_ids.includes(tagId)
-                ? prev.tag_ids.filter((id) => id !== tagId)
-                : [...prev.tag_ids, tagId],
+            tag_ids: prev.tag_ids.includes(tagId) ? prev.tag_ids.filter((id) => id !== tagId) : [...prev.tag_ids, tagId],
         }));
     };
 
@@ -127,143 +119,119 @@ export default function PostForm({ post, categories = [], tags = [], className }
     }
 
     return (
-        <form
-            onSubmit={handleSubmit}
-            className={cn('mx-auto flex w-full max-w-4xl flex-col gap-6', className)}
-        >
-            {/* Title & Slug */}
+        <form onSubmit={handleSubmit} className={cn('mx-auto flex w-full max-w-4xl flex-col gap-6', className)}>
+            {/* Title */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <div className="grid gap-2">
+                <div className="flex flex-col items-start justify-center gap-2">
                     <Label htmlFor="title">Title</Label>
-                    <Input
-                        id="title"
-                        value={data.title}
-                        required
-                        placeholder="My new blogpost"
-                        onChange={handleTitleChange}
-                    />
+                    <Input id="title" value={data.title} required placeholder="My new blogpost" onChange={handleTitleChange} />
                     {errors.title && <p className="text-sm text-destructive">{errors.title}</p>}
                 </div>
-
                 <div className="grid gap-2">
-                    <Label htmlFor="slug">Slug</Label>
-                    <Input
-                        id="slug"
-                        value={data.slug}
-                        required
-                        placeholder="my-new-blogpost"
-                        onChange={(e) => setData('slug', slugify(e.target.value))}
-                    />
-                    {errors.slug && <p className="text-sm text-destructive">{errors.slug}</p>}
+                    <Label htmlFor="published_at">Published At (Scheduled)</Label>
+                    <Input id="published_at" type="datetime-local" value={data.published_at} onChange={(e) => setData('published_at', e.target.value)} />
+                    {errors.published_at && <p className="text-sm text-destructive">{errors.published_at}</p>}
                 </div>
             </div>
+			<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+			</div>
 
             {/* Subline */}
             <div className="grid gap-2">
                 <Label htmlFor="subline">Subline</Label>
-                <Input
-                    id="subline"
-                    value={data.subline}
-                    placeholder="A short, catchy subline"
-                    onChange={(e) => setData('subline', e.target.value)}
-                />
+                <Input id="subline" value={data.subline} placeholder="A short, catchy subline" onChange={(e) => setData('subline', e.target.value)} />
                 {errors.subline && <p className="text-sm text-destructive">{errors.subline}</p>}
             </div>
-
-            {/* Category & Status */}
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <div className="grid gap-2">
-                    <Label htmlFor="category_id">Category</Label>
-                    <Select
-                        value={data.category_id || 'none'}
-                        onValueChange={(val) => setData('category_id', val === 'none' ? '' : val)}
-                    >
-                        <SelectTrigger>
-                            <SelectValue placeholder="Select a category" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="none">No category</SelectItem>
-                            {categories.map((cat) => (
-                                <SelectItem key={cat.id} value={String(cat.id)}>
-                                    {cat.name}
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
-                    {errors.category_id && (
-                        <p className="text-sm text-destructive">{errors.category_id}</p>
-                    )}
-                </div>
-
-                <div className="grid gap-2">
-                    <Label>Status</Label>
-                    <ToggleGroup
-                        size="sm"
-                        variant="outline"
-                        type="single"
-                        value={data.status}
-                        onValueChange={(value) => value && setData('status', value as Status)}
-                    >
-                        <ToggleGroupItem value="draft">Draft</ToggleGroupItem>
-                        <ToggleGroupItem value="published">Published</ToggleGroupItem>
-                        <ToggleGroupItem value="archived">Archived</ToggleGroupItem>
-                    </ToggleGroup>
-                    {errors.status && <p className="text-sm text-destructive">{errors.status}</p>}
-                </div>
+            {/* Slug */}
+            <div className="grid gap-2">
+                <Label htmlFor="slug">Slug</Label>
+                <Input id="slug" value={data.slug} required placeholder="my-new-blogpost" onChange={(e) => setData('slug', slugify(e.target.value))} />
+                {errors.slug && <p className="text-sm text-destructive">{errors.slug}</p>}
             </div>
-
-            {/* Tags Selection */}
-            {tags.length > 0 && (
-                <div className="grid gap-2">
-                    <Label>Tags</Label>
-                    <div className="flex flex-wrap gap-2">
-                        {tags.map((tag) => {
-                            const tagId = String(tag.id);
-                            const isSelected = data.tag_ids.includes(tagId);
-                            return (
-                                <Button
-                                    key={tag.id}
-                                    type="button"
-                                    size="sm"
-                                    variant={isSelected ? 'default' : 'outline'}
-                                    onClick={() => handleTagToggle(tagId)}
-                                >
-                                    {tag.name}
-                                </Button>
-                            );
-                        })}
+            <Tabs defaultValue="details">
+                <TabsList className="w-full">
+                    <TabsTrigger value="details">Details</TabsTrigger>
+                    <TabsTrigger value="seo-meta">SEO &amp; Meta</TabsTrigger>
+                </TabsList>
+                <TabsContent value="details" className="w-full">
+                    {/* Category */}
+                    <div>
+                        <Label htmlFor="category_id">Category</Label>
+                        <Select value={data.category_id || 'none'} onValueChange={(val) => setData('category_id', val === 'none' ? '' : val)}>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Select a category" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="none">No category</SelectItem>
+                                {categories.map((cat) => (
+                                    <SelectItem key={cat.id} value={String(cat.id)}>
+                                        {cat.name}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                        {errors.category_id && <p className="text-sm text-destructive">{errors.category_id}</p>}
                     </div>
-                    {errors.tag_ids && <p className="text-sm text-destructive">{errors.tag_ids}</p>}
-                </div>
-            )}
 
-            {/* Published At & Featured Image */}
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <div className="grid gap-2">
-                    <Label htmlFor="published_at">Published At (Scheduled)</Label>
-                    <Input
-                        id="published_at"
-                        type="datetime-local"
-                        value={data.published_at}
-                        onChange={(e) => setData('published_at', e.target.value)}
-                    />
-                    {errors.published_at && (
-                        <p className="text-sm text-destructive">{errors.published_at}</p>
-                    )}
-                </div>
+                    <div className="grid gap-2">
+                        <Label>Status</Label>
+                        <ToggleGroup size="sm" variant="outline" type="single" value={data.status} onValueChange={(value) => value && setData('status', value as Status)}>
+                            <ToggleGroupItem value="draft">Draft</ToggleGroupItem>
+                            <ToggleGroupItem value="published">Published</ToggleGroupItem>
+                            <ToggleGroupItem value="archived">Archived</ToggleGroupItem>
+                        </ToggleGroup>
+                        {errors.status && <p className="text-sm text-destructive">{errors.status}</p>}
+                    </div>
 
-                <div className="grid gap-2">
-                    <Label htmlFor="featured_image">Featured Image URL</Label>
-                    <Input
-                        id="featured_image"
-                        value={data.featured_image}
-                        placeholder="https://... /image.jpg"
-                        onChange={(e) => setData('featured_image', e.target.value)}
-                    />
-                    {errors.featured_image && (
-                        <p className="text-sm text-destructive">{errors.featured_image}</p>
+                    {/* Tags Selection */}
+                    {tags.length > 0 && (
+                        <div className="flex flex-col items-center justify-center gap-2">
+                            <Label>Tags</Label>
+                            <div className="flex flex-wrap gap-2">
+                                {tags.map((tag) => {
+                                    const tagId = String(tag.id);
+                                    const isSelected = data.tag_ids.includes(tagId);
+                                    return (
+                                        <Button key={tag.id} type="button" size="sm" variant={isSelected ? 'default' : 'outline'} onClick={() => handleTagToggle(tagId)}>
+                                            {tag.name}
+                                        </Button>
+                                    );
+                                })}
+                            </div>
+                            {errors.tag_ids && <p className="text-sm text-destructive">{errors.tag_ids}</p>}
+                        </div>
                     )}
-                </div>
+                </TabsContent>
+                <TabsContent value="seo-meta">
+                    {/* SEO Section */}
+                    <div className="grid gap-4">
+                        <h3 className="text-sm font-semibold text-muted-foreground">SEO Einstellungen</h3>
+
+                        <div className="grid gap-2">
+                            <Label htmlFor="meta_title">Meta Title</Label>
+                            <Input id="meta_title" value={data.meta_title} placeholder="Optionaler Titel für Suchmaschinen" onChange={(e) => setData('meta_title', e.target.value)} />
+                            {errors.meta_title && <p className="text-sm text-destructive">{errors.meta_title}</p>}
+                        </div>
+
+                        <div className="grid gap-2">
+                            <Label htmlFor="meta_description">Meta Description</Label>
+                            <Textarea
+                                id="meta_description"
+                                rows={2}
+                                value={data.meta_description}
+                                placeholder="Optionaler Meta-Text für Suchmaschinen..."
+                                onChange={(e) => setData('meta_description', e.target.value)}
+                            />
+                            {errors.meta_description && <p className="text-sm text-destructive">{errors.meta_description}</p>}
+                        </div>
+                    </div>
+                </TabsContent>
+            </Tabs>
+
+            <div className="grid gap-2">
+                <Label htmlFor="featured_image">Featured Image URL</Label>
+                <Input id="featured_image" value={data.featured_image} placeholder="https://... /image.jpg" onChange={(e) => setData('featured_image', e.target.value)} />
+                {errors.featured_image && <p className="text-sm text-destructive">{errors.featured_image}</p>}
             </div>
 
             {/* Description / Excerpt */}
@@ -276,64 +244,19 @@ export default function PostForm({ post, categories = [], tags = [], className }
                     placeholder="Kurze Zusammenfassung für Übersichten & OpenGraph Cards..."
                     onChange={(e) => setData('description', e.target.value)}
                 />
-                {errors.description && (
-                    <p className="text-sm text-destructive">{errors.description}</p>
-                )}
+                {errors.description && <p className="text-sm text-destructive">{errors.description}</p>}
             </div>
 
             {/* Content */}
             <div className="grid gap-2">
                 <Label htmlFor="content">Content</Label>
-                <Textarea
-                    id="content"
-                    rows={10}
-                    required
-                    value={data.content}
-                    placeholder="Der Hauptinhalt deines Posts (Markdown / HTML)..."
-                    onChange={(e) => setData('content', e.target.value)}
-                />
+                <Textarea id="content" rows={10} required value={data.content} placeholder="Der Hauptinhalt deines Posts (Markdown / HTML)..." onChange={(e) => setData('content', e.target.value)} />
                 {errors.content && <p className="text-sm text-destructive">{errors.content}</p>}
-            </div>
-
-            {/* SEO Section */}
-            <div className="grid gap-4 border-t pt-4">
-                <h3 className="text-sm font-semibold text-muted-foreground">SEO Einstellungen</h3>
-
-                <div className="grid gap-2">
-                    <Label htmlFor="meta_title">Meta Title</Label>
-                    <Input
-                        id="meta_title"
-                        value={data.meta_title}
-                        placeholder="Optionaler Titel für Suchmaschinen"
-                        onChange={(e) => setData('meta_title', e.target.value)}
-                    />
-                    {errors.meta_title && (
-                        <p className="text-sm text-destructive">{errors.meta_title}</p>
-                    )}
-                </div>
-
-                <div className="grid gap-2">
-                    <Label htmlFor="meta_description">Meta Description</Label>
-                    <Textarea
-                        id="meta_description"
-                        rows={2}
-                        value={data.meta_description}
-                        placeholder="Optionaler Meta-Text für Suchmaschinen..."
-                        onChange={(e) => setData('meta_description', e.target.value)}
-                    />
-                    {errors.meta_description && (
-                        <p className="text-sm text-destructive">{errors.meta_description}</p>
-                    )}
-                </div>
             </div>
 
             {/* Submit Button */}
             <Button type="submit" disabled={processing} className="w-full self-end md:w-auto">
-                {processing ? (
-                    <LoaderCircle className="animate-spin" />
-                ) : (
-                    <BsPlusLg size={12} className="mr-2" />
-                )}
+                {processing ? <LoaderCircle className="animate-spin" /> : <BsPlusLg size={12} className="mr-2" />}
                 {processing ? 'Saving...' : post ? 'Save Post' : 'Create Post'}
             </Button>
         </form>
