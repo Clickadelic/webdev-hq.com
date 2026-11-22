@@ -1,0 +1,82 @@
+import { Button } from '@/components/ui/button';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { useAppearance } from '@/hooks/use-appearance';
+import { Monitor, Moon, Sun } from 'lucide-react';
+import { HTMLAttributes } from 'react';
+
+/**
+ * A component that renders a dropdown menu for toggling the appearance (theme) of the application.
+ *
+ * @param {Object} props - The props for the component
+ * @param {string} [props.className] - The class name for the wrapper div
+ * @returns {React.ReactNode} - The rendered appearance toggle dropdown
+ */
+
+export default function PublicAppearanceDropdown({
+    className = '',
+    ...props
+}: HTMLAttributes<HTMLDivElement>) {
+    const { appearance, updateAppearance } = useAppearance();
+
+    const getCurrentIcon = () => {
+        switch (appearance) {
+            case 'dark':
+                return <Moon className="size-5" />;
+            case 'light':
+                return <Sun className="size-5" />;
+            default:
+                return <Monitor className="size-5" />;
+        }
+    };
+
+    return (
+        <div className={className} {...props}>
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="size-9 rounded-md p-5 shadow-xs hover:cursor-pointer hover:bg-muted hover:text-muted-foreground"
+                    >
+                        {getCurrentIcon()}
+                        <span className="sr-only">Toggle theme</span>
+                    </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                    <DropdownMenuItem
+                        onClick={() => updateAppearance('light')}
+                        className="hover:cursor-pointer"
+                    >
+                        <span className="flex items-center gap-2">
+                            <Sun className="size-5" />
+                            Light
+                        </span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                        onClick={() => updateAppearance('dark')}
+                        className="hover:cursor-pointer"
+                    >
+                        <span className="flex items-center gap-2">
+                            <Moon className="size-5" />
+                            Dark
+                        </span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                        onClick={() => updateAppearance('system')}
+                        className="hover:cursor-pointer"
+                    >
+                        <span className="flex items-center gap-2">
+                            <Monitor className="size-5" />
+                            System
+                        </span>
+                    </DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
+        </div>
+    );
+}

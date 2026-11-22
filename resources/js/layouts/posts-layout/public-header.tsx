@@ -1,0 +1,104 @@
+import UserDropdownMenu from '@/components/user-dropdown-menu';
+import { useMediaQuery } from '@/hooks/use-media-query';
+import AppLogo from '@/layouts/dashboard-layout/app-logo';
+import PublicAppearanceDropdown from '@/layouts/public-layout/appearance-dropdown';
+import MobileSheet from '@/layouts/public-layout/public-mobile-sheet';
+import { navigationItems } from '@/lib/navigation-items';
+import { cn } from '@/lib/utils';
+import { dashboard, login, register } from '@/routes';
+import { type SharedData } from '@/types';
+import { Link, usePage } from '@inertiajs/react';
+import { LayoutDashboard, CircleCheckBig, DoorOpen } from 'lucide-react';
+
+interface PublicHeaderProps {
+    canRegister?: boolean;
+    className?: string;
+}
+
+/**
+ * A component that renders the public header of the application.
+ * @param {boolean} [canRegister] - Indicates if the registration link should be displayed
+ * @param {string} [className] - Additional class names for the header
+ * @returns {React.ReactNode} - The rendered public header component
+ */
+export default function PublicHeader({ canRegister = true, className }: PublicHeaderProps) {
+    const {
+        url,
+        props: { auth },
+    } = usePage<SharedData>();
+    const pathname = url.split(/[?#]/, 1)[0].replace(/\/+$/, '') || '/';
+    const isMobile = useMediaQuery('(max-width: 768px)');
+    return (
+        <div className="w-full bg-white/30 pb-1 backdrop-blur dark:bg-neutral-900/30 dark:backdrop-blur">
+            <header className={cn('w-full bg-white dark:bg-neutral-900', className)}>
+                <div className="container mx-auto flex items-center justify-between px-3 py-1.5 sm:px-0 lg:py-3">
+                    <AppLogo logoClassName="size-7 md:mr-3" />
+                    <nav className="mt-0.75 hidden items-center justify-between gap-4 lg:flex">
+                        <ul className="flex items-center justify-start gap-6">
+                            {navigationItems.map(({ href, label, icon: Icon }) => {
+                                const isActive = pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
+
+                                return (
+                                    <li key={href}>
+                                        <Link
+                                            href={href}
+                                            aria-current={pathname === href ? 'page' : isActive ? 'location' : undefined}
+                                            className={cn('flex h-auto items-center gap-2 hover:text-primary', isActive ? 'font-semibold text-primary' : 'text-muted-foreground')}
+                                        >
+                                            <Icon className="size-4" />
+                                            {label}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </nav>
+                    <nav className="mt-0.75 hidden lg:flex">
+                        <div className="flex-start flex items-center gap-3">
+                            {auth.user ? (
+                                <ul className="flex justify-end gap-3">
+                                    <li>
+                                        <Link
+                                            href={dashboard.url()}
+                                            className="flex items-center justify-start gap-2 rounded-sm bg-primary px-3 py-1.5 text-sm leading-normal text-white hover:border-[#1915014a] hover:bg-primary/90"
+                                            title="Dashboard"
+                                        >
+                                            <LayoutDashboard className="size-4" />
+                                            Dashboard
+                                        </Link>
+                                    </li>
+                                </ul>
+                            ) : (
+                                <ul className="flex justify-end gap-3">
+                                    {canRegister && (
+                                        <li>
+                                            <Link
+                                                href={register.url()}
+                                                className="flex items-center justify-between gap-2 rounded-sm border-0 px-3 py-2 text-slate-800 hover:bg-slate-100 hover:text-primary dark:border-neutral-600 dark:bg-neutral-800 dark:text-slate-200 dark:hover:bg-neutral-700 dark:hover:text-primary"
+                                            >
+                                                <CircleCheckBig className="size-4" />
+                                                Register
+                                            </Link>
+                                        </li>
+                                    )}
+                                    <li>
+                                        <Link
+                                            href={login.url()}
+                                            className="hover:bg-primary-hover flex items-center justify-between gap-2 rounded-sm border-0 bg-primary px-3 py-2 text-white hover:bg-primary/90"
+                                        >
+                                            <DoorOpen className="size-4" />
+                                            Login
+                                        </Link>
+                                    </li>
+                                </ul>
+                            )}
+                            {auth.user ? <UserDropdownMenu user={auth.user} /> : null}
+                            <PublicAppearanceDropdown />
+                        </div>
+                    </nav>
+                    {isMobile && <MobileSheet className="flex lg:hidden" />}
+                </div>
+            </header>
+        </div>
+    );
+}

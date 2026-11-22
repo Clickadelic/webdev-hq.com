@@ -2,14 +2,7 @@
 
 import { create, destroy, edit, index } from '@/actions/App/Http/Controllers/PostController';
 import { Button } from '@/components/ui/button';
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import TablePagination from '@/components/ui/table-pagination';
 import AppLayout from '@/layouts/dashboard-layout';
 import { type BreadcrumbItem, type Paginator, type Post } from '@/types';
@@ -66,11 +59,7 @@ export default function DashboardPostsIndex() {
                                     <TableCell className="font-medium">{post.title}</TableCell>
                                     <TableCell>{post.category?.name ?? '-'}</TableCell>
                                     <TableCell className="capitalize">{post.status}</TableCell>
-                                    <TableCell>
-                                        {post.published_at
-                                            ? new Date(post.published_at).toLocaleDateString()
-                                            : '-'}
-                                    </TableCell>
+                                    <TableCell>{post.published_at ? new Date(post.published_at).toLocaleDateString() : '-'}</TableCell>
                                     <TableCell>
                                         {post.can_manage && (
                                             <div className="flex items-center gap-2">
@@ -82,7 +71,7 @@ export default function DashboardPostsIndex() {
                                                 </Button>
                                                 <Button
                                                     type="button"
-                                                    variant="outline"
+                                                    variant="destructive"
                                                     size="sm"
                                                     onClick={() => {
                                                         if (window.confirm(`Delete "${post.title}"?`)) {
@@ -104,10 +93,7 @@ export default function DashboardPostsIndex() {
                             ))
                         ) : (
                             <TableRow>
-                                <TableCell
-                                    colSpan={5}
-                                    className="py-12 text-center text-muted-foreground"
-                                >
+                                <TableCell colSpan={5} className="py-12 text-center text-muted-foreground">
                                     No posts yet.
                                 </TableCell>
                             </TableRow>
