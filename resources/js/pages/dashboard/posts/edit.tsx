@@ -7,10 +7,11 @@ import { type BreadcrumbItem, type Category, type Post, type Tag } from '@/types
 import { usePage } from '@inertiajs/react';
 
 export default function DashboardPostsEdit() {
-    const { post, categories, tags } = usePage<{
+    const { post, categories, tags, canAssignTeam } = usePage<{
         post: Post;
         categories: Category[];
         tags: Tag[];
+        canAssignTeam: boolean;
     }>().props;
     const breadcrumbs: BreadcrumbItem[] = [
         { title: 'Posts', href: index.url() },
@@ -21,7 +22,7 @@ export default function DashboardPostsEdit() {
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className="p-4">
                 <h1 className="mb-6 text-xl font-semibold">Edit post</h1>
-                <PostForm post={post} categories={categories} tags={tags} />
+                <PostForm post={post} categories={categories} tags={tags} canAssignTeam={canAssignTeam} />
             </div>
         </AppLayout>
     );

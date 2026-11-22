@@ -1,6 +1,6 @@
 'use client';
 
-import { create, edit, index } from '@/actions/App/Http/Controllers/PostController';
+import { create, destroy, edit, index } from '@/actions/App/Http/Controllers/PostController';
 import { Button } from '@/components/ui/button';
 import {
     Table,
@@ -13,8 +13,9 @@ import {
 import TablePagination from '@/components/ui/table-pagination';
 import AppLayout from '@/layouts/dashboard-layout';
 import { type BreadcrumbItem, type Paginator, type Post } from '@/types';
-import { Link, usePage } from '@inertiajs/react';
-import { Pencil, Plus } from 'lucide-react';
+import { Link, router, usePage } from '@inertiajs/react';
+import { Pencil, Plus, Trash2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -60,7 +61,7 @@ export default function DashboardPostsIndex() {
                     </TableHeader>
                     <TableBody>
                         {posts.data.length > 0 ? (
-                            posts.data.map((post:Post) => (
+                            posts.data.map((post: Post) => (
                                 <TableRow key={post.id}>
                                     <TableCell className="font-medium">{post.title}</TableCell>
                                     <TableCell>{post.category?.name ?? '-'}</TableCell>
@@ -71,12 +72,33 @@ export default function DashboardPostsIndex() {
                                             : '-'}
                                     </TableCell>
                                     <TableCell>
-                                        <Button asChild variant="outline" size="sm">
-                                            <Link href={edit.url(post.id)}>
-                                                <Pencil className="size-3.5" />
-                                                Edit
-                                            </Link>
-                                        </Button>
+                                        {post.can_manage && (
+                                            <div className="flex items-center gap-2">
+                                                <Button asChild variant="outline" size="sm">
+                                                    <Link href={edit.url(post.id)}>
+                                                        <Pencil className="size-3.5" />
+                                                        Edit
+                                                    </Link>
+                                                </Button>
+                                                <Button
+                                                    type="button"
+                                                    variant="outline"
+                                                    size="sm"
+                                                    onClick={() => {
+                                                        if (window.confirm(`Delete "${post.title}"?`)) {
+                                                            router.delete(destroy.url(post.id), {
+                                                                preserveScroll: true,
+                                                                onSuccess: () => toast.success('Post deleted!'),
+                                                                onError: () => toast.error('Post deletion failed.'),
+                                                            });
+                                                        }
+                                                    }}
+                                                >
+                                                    <Trash2 className="size-3.5" />
+                                                    Delete
+                                                </Button>
+                                            </div>
+                                        )}
                                     </TableCell>
                                 </TableRow>
                             ))
