@@ -6,7 +6,7 @@ FROM node:22-alpine AS build
 # Install PHP 84 CLI (needed for Composer + wayfinder:generate during Vite build)
 RUN apk add --no-cache \
     php84 php84-phar php84-mbstring php84-openssl php84-tokenizer \
-    php84-xml php84-dom php84-iconv php84-session php84-fileinfo \
+    php84-xml php84-dom php84-exif php84-iconv php84-session php84-fileinfo \
     php84-ctype php84-curl php84-pdo php84-pdo_sqlite php84-pdo_mysql \
     && ln -sf /usr/bin/php84 /usr/bin/php \
     && echo 'memory_limit = 512M' > /etc/php84/conf.d/99_memory.ini

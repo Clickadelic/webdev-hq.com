@@ -43,8 +43,17 @@ echo "==> Clearing & caching config..."
 php artisan config:clear
 
 echo "==> Setting permissions..."
+mkdir -p storage/app/public
 chown -R www-data:www-data storage bootstrap/cache
 chmod -R 775 storage bootstrap/cache
+
+if [ ! -e public/storage ] && [ ! -L public/storage ]; then
+    php artisan storage:link --no-interaction
+fi
+if [ ! -L public/storage ] || [ ! -d public/storage ] || [ "$(readlink -f public/storage)" != "$(readlink -f storage/app/public)" ]; then
+    echo "==> ERROR: public/storage must link to storage/app/public." >&2
+    exit 1
+fi
 
 echo "==> Starting Supervisor (Nginx + PHP-FPM)..."
 exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf

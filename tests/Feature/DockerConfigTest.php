@@ -27,6 +27,12 @@ describe('Docker Compose Configuration', function () {
         expect($mysqlPorts)->toContain('3306:3306');
     });
 
+    it('persists public uploads in a named volume', function () {
+        expect($this->dockerCompose['services']['app']['volumes'])
+            ->toContain('public-uploads:/var/www/html/storage/app/public')
+            ->and($this->dockerCompose['volumes'])->toHaveKey('public-uploads');
+    });
+
     describe('HMR Configuration', function () {
         it('mounts resources directory as bind mount in node container for HMR', function () {
             $nodeVolumes = $this->dockerCompose['services']['node']['volumes'];

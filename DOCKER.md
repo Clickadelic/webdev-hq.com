@@ -44,6 +44,10 @@ On first boot, the app container automatically:
 
 PHP 8.4-FPM + Nginx running behind Supervisor. The project directory is bind-mounted into the container, so code changes are reflected immediately. Database connection is configured via environment variables in `docker-compose.yml`, overriding anything in your local `.env`.
 
+Public uploads are stored in the `public-uploads` Docker volume and served through `public/storage`. The entrypoint creates the link if it is missing. Before switching an existing installation to this volume, copy any existing `storage/app/public` files into it; mounting an empty volume hides files already in the container. Back up this volume alongside the database. `docker compose down -v` deletes it.
+
+Post images accept JPEG, PNG, and WebP files up to 5 MB. Docker's PHP and Nginx limits allow these uploads; on other hosting, set PHP's `upload_max_filesize` to at least 5 MB and `post_max_size` and the web server request limit above 5 MB.
+
 ### MySQL (`webdevhq-mysql`)
 
 MySQL 8.0 with a persistent named volume (`mysql-data`). Default credentials:
