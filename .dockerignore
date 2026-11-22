@@ -5,6 +5,7 @@ vendor
 # Build output (rebuilt inside container)
 public/build
 public/hot
+public/storage
 bootstrap/ssr
 
 # Environment files (mounted or copied separately)
@@ -27,6 +28,7 @@ bootstrap/ssr
 .phpunit.cache
 .phpunit.result.cache
 storage/logs/*
+storage/app/public/*
 storage/framework/cache/*
 storage/framework/sessions/*
 storage/framework/views/*

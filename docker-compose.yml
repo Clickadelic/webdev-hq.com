@@ -20,6 +20,7 @@ services:
       - ./database:/var/www/html/database
       - ./tests:/var/www/html/tests
       - ./public:/var/www/html/public
+      - public-uploads:/var/www/html/storage/app/public
       - ./.env:/var/www/html/.env
     depends_on:
       mysql:
@@ -129,6 +130,7 @@ services:
 volumes:
   mysql-data:
   node-vendor:
+  public-uploads:
 
 networks:
   webdevhq:
