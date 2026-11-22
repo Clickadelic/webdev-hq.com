@@ -6,9 +6,9 @@ export interface AuthLayoutProps {
     name?: string;
     title?: string;
     description?: string;
-	canRegister?: boolean;
-	showGradient?: boolean;
-	interactive?: boolean;
+    canRegister?: boolean;
+    showGradient?: boolean;
+    interactive?: boolean;
 }
 
 export interface AuthStatusPageProps {
@@ -33,13 +33,7 @@ export interface AuthResetPasswordPageProps {
  * @param {string} description - The description/subline below the logo of the authentication page
  * @returns {React.ReactNode} - The wrapped children in the authentication layout component
  */
-export default function AuthSimpleLayout({
-    children,
-    title,
-    description,
-    showGradient = true,
-    interactive = false,
-}: PropsWithChildren<AuthLayoutProps>) {
+export default function AuthSimpleLayout({ children, title, description, showGradient = true, interactive = true }: PropsWithChildren<AuthLayoutProps>) {
     return (
         <div className="relative isolate flex min-h-svh flex-col items-center justify-center bg-neutral-200 p-6 md:p-10 dark:bg-neutral-900">
             {showGradient && <FloatingGradient isInteractive={interactive} />}
@@ -48,19 +42,17 @@ export default function AuthSimpleLayout({
                     <div className="flex flex-col items-center gap-4">
                         <div className="mb-1 flex items-center justify-center">
                             <AppLogo className="p-2" logoClassName="size-8" />
-        </div>
+                        </div>
                         <span className="sr-only">{title}</span>
 
                         <div className="space-y-2 text-center">
                             <h1 className="text-xl font-medium">{title}</h1>
-                            <p className="text-center text-sm text-muted-foreground">
-                                {description}
-                            </p>
+                            <p className="text-center text-sm text-muted-foreground">{description}</p>
                         </div>
                     </div>
                     {children}
                 </div>
             </div>
-		</div>
+        </div>
     );
 }
