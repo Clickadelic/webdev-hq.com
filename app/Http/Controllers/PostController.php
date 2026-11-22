@@ -9,9 +9,11 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Inertia\Response;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -49,8 +51,11 @@ class PostController extends Controller
     /** Display the dashboard post editing form. */
     public function edit(Post $post): Response
     {
+        Gate::authorize('update', $post);
+
         return inertia('dashboard/posts/edit', [
-            'post' => $post->load(['category', 'tags', 'media']),
+            'post' => $post->load(['category', 'tags', 'media', 'team:id,name']),
+            'canAssignTeam' => Gate::allows('assignTeam', $post),
             ...$this->formOptions(),
         ]);
     }
@@ -125,8 +130,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post): RedirectResponse
     {
-        abort_if((int) $post->created_by !== (int) Auth::id(), 403);
-        $post->delete($post->id);
+        Gate::authorize('delete', $post);
+        $post->delete();
 
         return back()->with('success', 'Post successfully deleted.');
     }
@@ -140,13 +145,20 @@ class PostController extends Controller
         ];
     }
 
-    public function listPosts(): Response
+    public function listPosts(Request $request): Response
     {
+        $user = $request->user()->loadMissing('teams');
+        $posts = Post::query()
+            ->with(['author:id,name', 'category', 'tags', 'media'])
+            ->latest()
+            ->paginate(15);
+
+        $posts->getCollection()->each(function (Post $post) use ($user): void {
+            $post->setAttribute('can_manage', $user->can('update', $post));
+        });
+
         return inertia('dashboard/posts/index', [
-            'posts' => Post::query()
-                ->with(['author:id,name', 'category', 'tags', 'media'])
-                ->latest()
-                ->paginate(15),
+            'posts' => $posts,
         ]);
     }
 

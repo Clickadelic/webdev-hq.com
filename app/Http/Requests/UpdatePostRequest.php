@@ -12,7 +12,16 @@ class UpdatePostRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        $post = $this->route('post');
+        $user = $this->user();
+        $teamId = $this->input('team_id');
+        $teamUnchanged = ($teamId === null && $post->team_id === null)
+            || (is_scalar($teamId) && $post->team_id !== null && (string) $teamId === (string) $post->team_id);
+
+        return $user->can('update', $post)
+            && (! $this->exists('team_id')
+                || $teamUnchanged
+                || $user->can('assignTeam', $post));
     }
 
     protected function prepareForValidation(): void
@@ -49,6 +58,10 @@ class UpdatePostRequest extends FormRequest
             'meta_description' => ['nullable', 'string'],
             'tag_ids' => ['nullable', 'array'],
             'tag_ids.*' => ['integer', 'exists:tags,id'],
+            'team_id' => ['nullable', 'integer', Rule::in([
+                ...$this->user()->teams()->pluck('teams.id')->all(),
+                ...($this->route('post')->team_id === null ? [] : [$this->route('post')->team_id]),
+            ])],
         ];
     }
 }
