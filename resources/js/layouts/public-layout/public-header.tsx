@@ -43,7 +43,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                                         <Link
                                             href={href}
                                             aria-current={pathname === href ? 'page' : isActive ? 'location' : undefined}
-                                            className={cn('flex h-auto items-center gap-1 hover:text-primary', isActive ? 'font-semibold text-primary' : 'text-white')}
+                                            className={cn('flex h-auto items-center gap-1 hover:text-primary', isActive ? 'font-semibold text-primary' : 'text-neutral-800 dark:text-neutral-200')}
                                         >
                                             <Icon className="size-4" />
                                             {label}
