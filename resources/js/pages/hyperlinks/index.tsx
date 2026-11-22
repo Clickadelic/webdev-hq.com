@@ -71,9 +71,9 @@ export default function HyperlinksIndex({ hyperlinks, canRegister = true, search
 
                     {/* Pagination */}
                     <TablePagination paginator={hyperlinks} className="mx-auto mt-8 max-w-md" preserveScroll={false} />
-                    <div className="mt-3 rounded-sm bg-white/30 px-3 py-2 text-center backdrop-blur dark:bg-neutral-900/30">
+                    {/* <div className="mt-3 rounded-sm bg-white/30 px-3 py-2 text-center backdrop-blur dark:bg-neutral-900/30">
                         <h3 className="text-white text-shadow-black/80">Currently tracking {count === 1 ? '1 resource' : `${count} resources`}.</h3>
-                    </div>
+                    </div> */}
                 </div>
             )}
 
