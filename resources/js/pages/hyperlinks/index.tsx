@@ -5,25 +5,13 @@ import { destroy } from '@/actions/App/Http/Controllers/HyperlinkController';
 import HyperlinkForm from '@/components/forms/hyperlink-form';
 import HyperlinkCard from '@/components/hyperlinks/hyperlink-card';
 import SearchDropdown from '@/components/hyperlinks/search-dropdown';
-import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { type Hyperlink } from '@/types';
+import TablePagination from '@/components/ui/table-pagination';
+import { type Hyperlink, type Paginator } from '@/types';
 import { router, usePage } from '@inertiajs/react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
-// PaginatedHyperlinks interface defines the structure of the paginated hyperlinks data.
-interface PaginatedHyperlinks {
-    data: Hyperlink[];
-    current_page: number;
-    last_page: number;
-    per_page: number;
-    total: number;
-    next_page_url: string | null;
-    prev_page_url: string | null;
-}
-
-export default function HyperlinksIndex({ hyperlinks, canRegister = true, search: initialSearch = '' }: { hyperlinks: PaginatedHyperlinks; canRegister?: boolean; search?: string }) {
+export default function HyperlinksIndex({ hyperlinks, canRegister = true, search: initialSearch = '' }: { hyperlinks: Paginator<Hyperlink>; canRegister?: boolean; search?: string }) {
     const count = hyperlinks.total;
     const items = hyperlinks.data;
     const [editingHyperlink, setEditingHyperlink] = useState<Hyperlink | undefined>(undefined);
@@ -83,31 +71,7 @@ export default function HyperlinksIndex({ hyperlinks, canRegister = true, search
                     </div>
 
                     {/* Pagination */}
-                    {hyperlinks.last_page > 1 && (
-                        <div className="mt-8 flex items-center justify-center gap-2">
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                disabled={!hyperlinks.prev_page_url}
-                                onClick={() => hyperlinks.prev_page_url && router.get(hyperlinks.prev_page_url, {}, { preserveState: true })}
-                            >
-                                <ChevronLeft className="mr-1 size-4" />
-                                Previous
-                            </Button>
-                            <span className="text-sm text-muted-foreground">
-                                Page {hyperlinks.current_page} of {hyperlinks.last_page}
-                            </span>
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                disabled={!hyperlinks.next_page_url}
-                                onClick={() => hyperlinks.next_page_url && router.get(hyperlinks.next_page_url, {}, { preserveState: true })}
-                            >
-                                Next
-                                <ChevronRight className="ml-1 size-4" />
-                            </Button>
-                        </div>
-                    )}
+                    <TablePagination paginator={hyperlinks} className="mt-8 flex-wrap gap-3" preserveScroll={false} />
                     <h3 className="mt-8 text-center text-muted-foreground">Currently tracking {count === 1 ? '1 resource' : `${count} resources`}.</h3>
                 </div>
             )}
