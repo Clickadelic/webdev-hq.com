@@ -1,11 +1,9 @@
-import { Button } from '@/components/ui/button';
+import TablePagination from '@/components/ui/table-pagination';
 import PublicLayout from '@/layouts/public-layout';
 import { type Paginator, type Post } from '@/types';
-import { router } from '@inertiajs/react';
-
 import { show } from '@/actions/App/Http/Controllers/PostController';
 import { Link } from '@inertiajs/react';
-import { ChevronLeft, ChevronRight, ImageOff, MoveRight } from 'lucide-react';
+import { ImageOff, MoveRight } from 'lucide-react';
 
 export default function PostsIndex({ posts, canRegister = true }: { posts: Paginator<Post>; canRegister?: boolean }) {
     return (
@@ -60,21 +58,7 @@ export default function PostsIndex({ posts, canRegister = true }: { posts: Pagin
                         ))}
                     </div>
 
-                    {posts.last_page > 1 && (
-                        <div className="mt-8 flex items-center justify-center gap-2 border-transparent hover:border-primary">
-                            <Button variant="outline" size="sm" disabled={!posts.prev_page_url} onClick={() => posts.prev_page_url && router.get(posts.prev_page_url)}>
-                                <ChevronLeft className="size-4" />
-                                Previous
-                            </Button>
-                            <span className="text-sm text-muted-foreground">
-                                Page {posts.current_page} of {posts.last_page}
-                            </span>
-                            <Button variant="outline" size="sm" disabled={!posts.next_page_url} onClick={() => posts.next_page_url && router.get(posts.next_page_url)}>
-                                Next
-                                <ChevronRight className="size-4" />
-                            </Button>
-                        </div>
-                    )}
+                    <TablePagination paginator={posts} className="mt-8 flex-wrap gap-3" preserveScroll={false} preserveState={false} />
                 </div>
             ) : (
                 <div className="py-16 text-center">

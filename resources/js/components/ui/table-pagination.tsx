@@ -1,11 +1,13 @@
 import { cn } from '@/lib/utils';
 import { type Paginator } from '@/types';
-import { router, usePage } from '@inertiajs/react';
+import { Link, router, usePage } from '@inertiajs/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface TablePaginationProps<T> {
     paginator: Paginator<T>;
     className?: string;
+    preserveScroll?: boolean;
+    preserveState?: boolean;
 }
 
 /** Returns an array of page numbers with '...' ellipsis where needed. */
@@ -27,13 +29,18 @@ function getPageNumbers(current: number, last: number): (number | '...')[] {
     return pages;
 }
 
-export default function TablePagination<T>({ paginator, className }: TablePaginationProps<T>) {
+export default function TablePagination<T>({
+    paginator,
+    className,
+    preserveScroll = true,
+    preserveState = true,
+}: TablePaginationProps<T>) {
     const { current_page, last_page, total, from, to, prev_page_url, next_page_url } = paginator;
 
     // Build URL for any page number, preserving existing query params.
     const currentUrl = usePage().url;
     const pageUrl = (page: number): string => {
-        const url = new URL(currentUrl, window.location.origin);
+        const url = new URL(currentUrl, 'http://localhost');
         url.searchParams.set('page', String(page));
         return url.pathname + url.search;
     };
@@ -42,7 +49,7 @@ export default function TablePagination<T>({ paginator, className }: TablePagina
 
     const pageNumbers = getPageNumbers(current_page, last_page);
     const navigate = (url: string) =>
-        router.visit(url, { preserveScroll: true, preserveState: true });
+        router.visit(url, { preserveScroll, preserveState });
 
     return (
         <div className={cn('flex items-center justify-between py-3', className)}>
@@ -75,9 +82,11 @@ export default function TablePagination<T>({ paginator, className }: TablePagina
                             …
                         </span>
                     ) : (
-                        <button
+                        <Link
                             key={page}
-                            onClick={() => navigate(pageUrl(page))}
+                            href={pageUrl(page)}
+                            preserveScroll={preserveScroll}
+                            preserveState={preserveState}
                             aria-label={`Page ${page}`}
                             aria-current={page === current_page ? 'page' : undefined}
                             className={cn(
@@ -88,7 +97,7 @@ export default function TablePagination<T>({ paginator, className }: TablePagina
                             )}
                         >
                             {page}
-                        </button>
+                        </Link>
                     ),
                 )}
 
