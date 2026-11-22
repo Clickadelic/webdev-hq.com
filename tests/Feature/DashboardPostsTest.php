@@ -3,6 +3,7 @@
 use App\Enums\Status;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -275,4 +276,107 @@ test('removing a legacy post image clears its URL', function () {
     ])->assertSessionHasNoErrors();
 
     expect($post->fresh()->featured_image)->toBeNull();
+});
+
+test('only the owner and assigned team members can edit or delete posts', function () {
+    $owner = User::factory()->create();
+    $member = User::factory()->create();
+    $outsider = User::factory()->create();
+    $team = Team::create(['name' => 'Editors', 'slug' => 'editors', 'owner_id' => $owner->id]);
+    $team->members()->attach([$owner->id, $member->id]);
+    $post = Post::factory()->create(['created_by' => $owner->id, 'team_id' => $team->id, 'title' => 'Team post', 'slug' => 'team-post', 'content' => 'Content', 'status' => Status::Draft]);
+    $personal = Post::factory()->create(['created_by' => $owner->id, 'team_id' => null, 'title' => 'Personal post', 'slug' => 'personal-post', 'content' => 'Content', 'status' => Status::Draft]);
+    $payload = ['title' => 'Changed', 'slug' => $post->slug, 'content' => 'Updated', 'status' => 'draft'];
+
+    $this->actingAs($outsider)->get(route('posts.edit', $post))->assertForbidden();
+    $this->put(route('posts.update', $post), $payload)->assertForbidden();
+    $this->delete(route('posts.destroy', $post))->assertForbidden();
+    $this->delete(route('posts.destroy', $personal))->assertForbidden();
+    expect($post->fresh()->title)->not->toBe('Changed');
+
+    $this->actingAs($member)->get(route('posts.edit', $post))
+        ->assertOk()->assertInertia(fn (Assert $page) => $page->where('canAssignTeam', false));
+    $this->put(route('posts.update', $post), $payload)->assertSessionHasNoErrors();
+    $this->get(route('posts.edit', $personal))->assertForbidden();
+    $this->put(route('posts.update', $personal), $payload)->assertForbidden();
+    $this->delete(route('posts.destroy', $personal))->assertForbidden();
+    $this->delete(route('posts.destroy', $post))->assertRedirect();
+    $this->assertSoftDeleted($post);
+
+    $this->actingAs($owner)->get(route('posts.edit', $personal))
+        ->assertOk()->assertInertia(fn (Assert $page) => $page->where('canAssignTeam', true));
+    $this->delete(route('posts.destroy', $personal))->assertRedirect();
+    $this->assertSoftDeleted($personal);
+});
+
+test('post owners retain access after leaving the assigned team and former members lose access', function () {
+    $owner = User::factory()->create();
+    $formerMember = User::factory()->create();
+    $team = Team::create(['name' => 'Editors', 'slug' => 'editors', 'owner_id' => $owner->id]);
+    $team->members()->attach($formerMember);
+    $post = Post::factory()->create(['created_by' => $owner->id, 'team_id' => $team->id, 'title' => 'Team post', 'slug' => 'team-post', 'content' => 'Content', 'status' => Status::Draft]);
+
+    $this->actingAs($formerMember)->get(route('posts.edit', $post))->assertOk();
+    $team->members()->detach($formerMember);
+    $this->actingAs($formerMember->fresh())->get(route('posts.edit', $post))->assertForbidden();
+    $this->actingAs($owner)->get(route('posts.edit', $post))->assertOk();
+    $this->put(route('posts.update', $post), [
+        'title' => 'Still mine',
+        'slug' => $post->slug,
+        'content' => 'Updated',
+        'status' => 'draft',
+        'team_id' => $team->id,
+    ])->assertSessionHasNoErrors();
+    $this->delete(route('posts.destroy', $post))->assertRedirect();
+});
+
+test('post team assignment is optional and restricted to the owner and their teams', function () {
+    $owner = User::factory()->create();
+    $member = User::factory()->create();
+    $other = User::factory()->create();
+    $team = Team::create(['name' => 'Editors', 'slug' => 'editors', 'owner_id' => $owner->id]);
+    $otherTeam = Team::create(['name' => 'Other', 'slug' => 'other', 'owner_id' => $other->id]);
+    $team->members()->attach([$owner->id, $member->id]);
+    $payload = ['title' => 'New post', 'slug' => 'new-post', 'content' => 'Content', 'status' => 'draft'];
+
+    $this->actingAs($owner)->post(route('posts.store'), [...$payload, 'team_id' => $otherTeam->id])
+        ->assertSessionHasErrors('team_id');
+    $this->post(route('posts.store'), [...$payload, 'team_id' => $team->id])->assertSessionHasNoErrors();
+    $post = Post::where('slug', 'new-post')->firstOrFail();
+    expect($post->team_id)->toBe($team->id);
+
+    $update = [...$payload, 'team_id' => null];
+    $this->actingAs($member)->put(route('posts.update', $post), [...$payload, 'team_id' => $team->id])
+        ->assertSessionHasNoErrors();
+    $this->actingAs($member)->put(route('posts.update', $post), $update)->assertForbidden();
+    expect($post->fresh()->team_id)->toBe($team->id);
+    $this->actingAs($owner)->put(route('posts.update', $post), [...$payload, 'team_id' => $otherTeam->id])
+        ->assertSessionHasErrors('team_id');
+    $this->put(route('posts.update', $post), $update)->assertSessionHasNoErrors();
+    expect($post->fresh()->team_id)->toBeNull();
+    $this->actingAs($member)->get(route('posts.edit', $post))->assertForbidden();
+
+    $this->actingAs($owner)->post(route('posts.store'), [...$payload, 'slug' => 'personal-post'])->assertSessionHasNoErrors();
+    $personal = Post::where('slug', 'personal-post')->firstOrFail();
+    expect($personal->team_id)->toBeNull();
+    $this->put(route('posts.update', $personal), [...$payload, 'slug' => 'personal-post', 'team_id' => $team->id])
+        ->assertSessionHasNoErrors();
+    expect($personal->fresh()->team_id)->toBe($team->id);
+    $this->actingAs($member)->get(route('posts.edit', $personal))->assertOk();
+});
+
+test('dashboard post action permissions reflect ownership and team membership', function () {
+    $owner = User::factory()->create();
+    $member = User::factory()->create();
+    $outsider = User::factory()->create();
+    $team = Team::create(['name' => 'Editors', 'slug' => 'editors', 'owner_id' => $owner->id]);
+    $team->members()->attach([$owner->id, $member->id]);
+    $post = Post::factory()->create(['created_by' => $owner->id, 'team_id' => $team->id, 'title' => 'Team post', 'slug' => 'team-post', 'content' => 'Content', 'status' => Status::Draft]);
+
+    foreach ([[$owner, true], [$member, true], [$outsider, false]] as [$user, $allowed]) {
+        $this->actingAs($user)->get(route('posts.listPosts'))
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('posts.data.0.id', $post->id)
+                ->where('posts.data.0.can_manage', $allowed));
+    }
 });

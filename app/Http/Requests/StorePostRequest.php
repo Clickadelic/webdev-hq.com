@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Enums\Status;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 
 class StorePostRequest extends FormRequest
@@ -40,6 +41,7 @@ class StorePostRequest extends FormRequest
             'meta_description' => ['nullable', 'string'],
             'tag_ids' => ['nullable', 'array'],
             'tag_ids.*' => ['integer', 'exists:tags,id'],
+            'team_id' => ['nullable', 'integer', Rule::in($this->user()->teams()->pluck('teams.id')->all())],
         ];
     }
 }

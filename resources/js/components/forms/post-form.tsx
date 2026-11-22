@@ -1,4 +1,4 @@
-import { useForm } from '@inertiajs/react';
+import { useForm, usePage } from '@inertiajs/react';
 import { useEffect, useRef } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -13,7 +13,7 @@ import { BsPlusLg } from 'react-icons/bs';
 import { toast } from 'sonner';
 
 import { store, update } from '@/actions/App/Http/Controllers/PostController';
-import { type Category, type Post, type Status, type Tag } from '@/types';
+import { type Category, type Post, type SharedData, type Status, type Tag } from '@/types';
 
 import { cn } from '@/lib/utils';
 /** Hilfsfunktion zum Generieren von URL-freundlichen Slugs */
@@ -30,10 +30,12 @@ interface PostFormProps {
     categories?: Category[];
     tags?: Tag[];
     className?: string;
+    canAssignTeam?: boolean;
 }
 
-export default function PostForm({ post, categories = [], tags = [], className }: PostFormProps) {
+export default function PostForm({ post, categories = [], tags = [], className, canAssignTeam = !post }: PostFormProps) {
     const imageInput = useRef<HTMLInputElement>(null);
+    const availableTeams: SharedData['availableTeams'] = usePage<SharedData>().props.availableTeams ?? [];
     // Inertia's useForm Hook
     const {
         data,
@@ -52,6 +54,7 @@ export default function PostForm({ post, categories = [], tags = [], className }
         featured_image_upload: null as File | null,
         remove_featured_image: false,
         category_id: post?.category_id ?? '',
+        team_id: post?.team_id ? String(post.team_id) : '',
         status: (post?.status ?? 'draft') as Status,
         published_at: post?.published_at ? post.published_at.slice(0, 16) : '',
         meta_title: post?.meta_title ?? '',
@@ -70,6 +73,7 @@ export default function PostForm({ post, categories = [], tags = [], className }
                 featured_image_upload: null,
                 remove_featured_image: false,
                 category_id: post.category_id ?? '',
+                team_id: post.team_id ? String(post.team_id) : '',
                 status: post.status,
                 published_at: post.published_at ? post.published_at.slice(0, 16) : '',
                 meta_title: post.meta_title ?? '',
@@ -158,6 +162,27 @@ export default function PostForm({ post, categories = [], tags = [], className }
                 <Input id="slug" value={data.slug} required placeholder="my-new-blogpost" onChange={(e) => setData('slug', slugify(e.target.value))} />
                 {errors.slug && <p className="text-sm text-destructive">{errors.slug}</p>}
             </div>
+            {canAssignTeam && (
+                <div className="grid gap-2">
+                    <Label htmlFor="post-team">Post access</Label>
+                    <Select value={data.team_id || 'personal'} onValueChange={(value) => setData('team_id', value === 'personal' ? '' : value)}>
+                        <SelectTrigger id="post-team">
+                            <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="personal">Personal</SelectItem>
+                            {post?.team && !availableTeams.some((team) => String(team.id) === String(post.team_id)) && (
+                                <SelectItem value={String(post.team.id)}>{post.team.name}</SelectItem>
+                            )}
+                            {availableTeams.map((team) => (
+                                <SelectItem key={team.id} value={String(team.id)}>{team.name}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                    <p className="text-sm text-muted-foreground">Members of the selected team can edit and delete this post.</p>
+                    {errors.team_id && <p className="text-sm text-destructive">{errors.team_id}</p>}
+                </div>
+            )}
             <Tabs defaultValue="details">
                 <TabsList className="w-full">
                     <TabsTrigger value="details">Details</TabsTrigger>

@@ -163,10 +163,13 @@ export interface Post {
     // Foreign Keys
     category_id?: string | null; // oder number (falls Categories kein UUID nutzt)
     created_by: string;
+    team_id?: number | null;
+    can_manage?: boolean;
 
     // Relationen (aus forAppListing() via eager loading)
     category?: Category | null;
     author?: { id: string; name: string } | null;
+    team?: { id: number; name: string } | null;
     tags?: Tag[];
 
     // Timestamps
