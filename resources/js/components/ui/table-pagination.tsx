@@ -118,7 +118,7 @@ export default function TablePagination<T>({
 				</button>
 			</div>
 
-			<div className="bg-white/30 dark:bg-neutral-900/30 backdrop-blur px-3 py-2 rounded-sm mt-3">
+			<div className="text-white dark:text-neutral-200 bg-white/30 dark:bg-neutral-900/30 backdrop-blur px-3 py-2 rounded-sm mt-3">
 				Showing <span className="font-medium">{from}</span>–
 				<span className="font-medium">{to}</span> of{' '}
 				<span className="font-medium">{total} items.</span>

@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { LayoutDashboard, CircleCheckBig, DoorOpen } from 'lucide-react';
+import { CircleCheckBig, DoorOpen, LayoutDashboard } from 'lucide-react';
 
 interface PublicHeaderProps {
     canRegister?: boolean;
@@ -43,7 +43,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                                         <Link
                                             href={href}
                                             aria-current={pathname === href ? 'page' : isActive ? 'location' : undefined}
-                                            className={cn('flex h-auto items-center gap-2 hover:text-primary', isActive ? 'font-semibold text-primary' : 'text-muted-foreground')}
+                                            className={cn('flex h-auto items-center gap-1 hover:text-primary', isActive ? 'font-semibold text-primary' : 'text-white')}
                                         >
                                             <Icon className="size-4" />
                                             {label}
