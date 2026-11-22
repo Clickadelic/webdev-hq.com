@@ -57,6 +57,13 @@ for (const [component, url, props, interactive] of [
     ['chrome-extensions/index', '/chrome-extensions', {}, false],
     ['posts/index', '/posts', { posts: { data: [], last_page: 1 } }, false],
     ['hyperlinks/index', '/hyperlinks', { hyperlinks: { data: [], total: 0 } }, false],
+    ['auth/login', '/login', { canResetPassword: true, canRegister: true, status: 'Login status' }, false],
+    ['auth/register', '/register', {}, false],
+    ['auth/forgot-password', '/forgot-password', {}, false],
+    ['auth/reset-password', '/reset-password/test-token', { token: 'test-token', email: 'test@example.com' }, false],
+    ['auth/confirm-password', '/user/confirm-password', {}, false],
+    ['auth/verify-email', '/email/verify', {}, false],
+    ['auth/two-factor-challenge', '/two-factor-challenge', {}, false],
 ]) {
     test(`${url} has ${interactive ? 'an interactive' : 'a non-interactive'} gradient`, async () => {
         const { default: Page } = await server.ssrLoadModule(`/resources/js/pages/${component}.tsx`);
@@ -73,5 +80,10 @@ for (const [component, url, props, interactive] of [
         });
 
         assert.match(body, new RegExp(`<canvas data-interactive="${interactive}"></canvas>`));
+        if (component === 'auth/login') {
+            assert.match(body, /Forgot password\?/);
+            assert.match(body, /Register/);
+            assert.match(body, /Login status/);
+        }
     });
 }

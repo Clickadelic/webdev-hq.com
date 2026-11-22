@@ -1,12 +1,28 @@
-import BackgroundImage from '@/components/background-image';
+import FloatingGradient from '@/components/floating-gradient';
 import AppLogo from '@/layouts/dashboard-layout/app-logo';
-import { type SharedData } from '@/types';
-import { usePage } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
-interface AuthLayoutProps {
+
+export interface AuthLayoutProps {
     name?: string;
     title?: string;
     description?: string;
+	canRegister?: boolean;
+	showGradient?: boolean;
+	interactive?: boolean;
+}
+
+export interface AuthStatusPageProps {
+    status?: string;
+}
+
+export interface AuthLoginPageProps extends AuthStatusPageProps, Pick<AuthLayoutProps, 'showGradient' | 'interactive'> {
+    canResetPassword: boolean;
+    canRegister: boolean;
+}
+
+export interface AuthResetPasswordPageProps {
+    token: string;
+    email: string;
 }
 
 /**
@@ -21,17 +37,18 @@ export default function AuthSimpleLayout({
     children,
     title,
     description,
+    showGradient = true,
+    interactive = false,
 }: PropsWithChildren<AuthLayoutProps>) {
-    const { unsplashAuthScreenCollectionId } = usePage<SharedData>().props;
-
     return (
-        <BackgroundImage collectionId={unsplashAuthScreenCollectionId ?? undefined}>
-            <div className="dark:bg-neutral w-84 rounded-xl bg-white/30 p-1 shadow-lg md:w-96">
+        <div className="relative isolate flex min-h-svh flex-col items-center justify-center bg-neutral-200 p-6 md:p-10 dark:bg-neutral-900">
+            {showGradient && <FloatingGradient isInteractive={interactive} />}
+            <div className="dark:bg-neutral w-full max-w-84 rounded-xl bg-white/30 p-1 shadow-lg md:max-w-96">
                 <div className="flex flex-col gap-8 rounded-md bg-white p-8 dark:bg-neutral-900">
                     <div className="flex flex-col items-center gap-4">
                         <div className="mb-1 flex items-center justify-center">
                             <AppLogo className="p-2" logoClassName="size-8" />
-                        </div>
+        </div>
                         <span className="sr-only">{title}</span>
 
                         <div className="space-y-2 text-center">
@@ -44,6 +61,6 @@ export default function AuthSimpleLayout({
                     {children}
                 </div>
             </div>
-        </BackgroundImage>
+		</div>
     );
 }
