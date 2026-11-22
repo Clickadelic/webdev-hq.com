@@ -3,11 +3,12 @@ import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 import AuthLayout from '@/layouts/auth-layout';
+import type { AuthStatusPageProps } from '@/layouts/auth-layout';
 import { logout } from '@/routes';
 import { send } from '@/routes/verification';
 import { Form, Head } from '@inertiajs/react';
 
-export default function VerifyEmail({ status }: { status?: string }) {
+export default function VerifyEmail({ status }: AuthStatusPageProps) {
     return (
         <AuthLayout
             title="Verify email"

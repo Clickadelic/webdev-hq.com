@@ -13,21 +13,18 @@ import { store } from '@/routes/login';
 import { request } from '@/routes/password';
 import { Form, Head } from '@inertiajs/react';
 import { Eye, EyeOff } from 'lucide-react';
-
-interface LoginProps {
-    status?: string;
-    canResetPassword: boolean;
-    canRegister: boolean;
-}
+import type { AuthLoginPageProps } from '@/layouts/auth-layout';
 
 export default function Login({
     status,
     canResetPassword,
     canRegister,
-}: LoginProps) {
+    showGradient,
+    interactive,
+}: AuthLoginPageProps) {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     return (
-        <AuthLayout title="Login" description="Welcome back">
+        <AuthLayout title="Login" description="Welcome back" showGradient={showGradient} interactive={interactive}>
             <Head title="Login" />
 
             <Form
