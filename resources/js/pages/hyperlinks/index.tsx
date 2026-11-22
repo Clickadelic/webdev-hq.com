@@ -53,7 +53,6 @@ export default function HyperlinksIndex({ hyperlinks, canRegister = true, search
 
     return (
         <PublicLayout canRegister={canRegister} title="Hyperlinks" showGradient>
-			
             {/* Search Dropdown */}
             <div className="relative mx-auto mt-8 mb-40 w-full max-w-2xl">
                 <SearchDropdown className="absolute z-30 w-full" onSearch={performSearch} initialSearch={initialSearch} />
@@ -71,8 +70,10 @@ export default function HyperlinksIndex({ hyperlinks, canRegister = true, search
                     </div>
 
                     {/* Pagination */}
-                    <TablePagination paginator={hyperlinks} className="mt-8 flex-wrap gap-3" preserveScroll={false} />
-                    <h3 className="mt-8 text-center text-muted-foreground">Currently tracking {count === 1 ? '1 resource' : `${count} resources`}.</h3>
+                    <TablePagination paginator={hyperlinks} className="mx-auto mt-8 max-w-md" preserveScroll={false} />
+                    <div className="mt-3 rounded-sm bg-white/30 px-3 py-2 text-center backdrop-blur dark:bg-neutral-900/30">
+                        <h3 className="text-white text-shadow-black/80">Currently tracking {count === 1 ? '1 resource' : `${count} resources`}.</h3>
+                    </div>
                 </div>
             )}
 

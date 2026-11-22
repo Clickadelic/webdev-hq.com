@@ -3,33 +3,17 @@ import { useMediaQuery } from '@/hooks/use-media-query';
 import AppLogo from '@/layouts/dashboard-layout/app-logo';
 import PublicAppearanceDropdown from '@/layouts/public-layout/appearance-dropdown';
 import MobileSheet from '@/layouts/public-layout/public-mobile-sheet';
+import { navigationItems } from '@/lib/navigation-items';
 import { cn } from '@/lib/utils';
 import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import {
-    Blocks,
-    CircleCheckBig,
-    DoorOpen,
-    House,
-	// Send,
-    LayoutDashboard,
-    Link as LinkIcon,
-    Pen as PenIcon,
-} from 'lucide-react';
+import { LayoutDashboard, CircleCheckBig, DoorOpen } from 'lucide-react';
 
 interface PublicHeaderProps {
     canRegister?: boolean;
     className?: string;
 }
-
-const navigationItems = [
-    { href: '/', label: 'Home', icon: House },
-    { href: '/hyperlinks', label: 'Hyperlinks', icon: LinkIcon },
-    { href: '/posts', label: 'Posts', icon: PenIcon },
-    { href: '/chrome-extensions', label: 'Chrome Extensions', icon: Blocks },
-    // { href: '/contact', label: 'Contact', icon: Send },
-];
 
 /**
  * A component that renders the public header of the application.
@@ -38,7 +22,10 @@ const navigationItems = [
  * @returns {React.ReactNode} - The rendered public header component
  */
 export default function PublicHeader({ canRegister = true, className }: PublicHeaderProps) {
-    const { url, props: { auth } } = usePage<SharedData>();
+    const {
+        url,
+        props: { auth },
+    } = usePage<SharedData>();
     const pathname = url.split(/[?#]/, 1)[0].replace(/\/+$/, '') || '/';
     const isMobile = useMediaQuery('(max-width: 768px)');
     return (
@@ -56,10 +43,7 @@ export default function PublicHeader({ canRegister = true, className }: PublicHe
                                         <Link
                                             href={href}
                                             aria-current={pathname === href ? 'page' : isActive ? 'location' : undefined}
-                                            className={cn(
-                                                'flex h-auto items-center gap-2 hover:text-primary',
-                                                isActive ? 'text-primary font-semibold' : 'text-muted-foreground',
-                                            )}
+                                            className={cn('flex h-auto items-center gap-2 hover:text-primary', isActive ? 'font-semibold text-primary' : 'text-muted-foreground')}
                                         >
                                             <Icon className="size-4" />
                                             {label}
