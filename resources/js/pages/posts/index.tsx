@@ -1,7 +1,7 @@
+import { show } from '@/actions/App/Http/Controllers/PostController';
 import TablePagination from '@/components/ui/table-pagination';
 import PublicLayout from '@/layouts/public-layout';
 import { type Paginator, type Post } from '@/types';
-import { show } from '@/actions/App/Http/Controllers/PostController';
 import { Link } from '@inertiajs/react';
 import { ImageOff, MoveRight } from 'lucide-react';
 
@@ -58,7 +58,7 @@ export default function PostsIndex({ posts, canRegister = true }: { posts: Pagin
                         ))}
                     </div>
 
-                    <TablePagination paginator={posts} className="mt-8 flex-wrap gap-3" preserveScroll={false} preserveState={false} />
+                    <TablePagination paginator={posts} className="flex-wrap gap-3" preserveScroll={false} preserveState={false} />
                 </div>
             ) : (
                 <div className="py-16 text-center">
