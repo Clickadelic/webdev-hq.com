@@ -9,8 +9,13 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Inertia\Response;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Throwable;
 
 class PostController extends Controller
 {
@@ -20,7 +25,7 @@ class PostController extends Controller
         return inertia('posts/index', [
             'posts' => Post::query()
                 ->published()
-                ->with(['author:id,name', 'category', 'tags'])
+                ->with(['author:id,name', 'category', 'tags', 'media'])
                 ->latest('published_at')
                 ->paginate(15),
         ]);
@@ -36,7 +41,7 @@ class PostController extends Controller
     public function show(Post $post): Response
     {
         return inertia('posts/show', [
-            'post' => $post->load(['author:id,name', 'category', 'tags']),
+            'post' => $post->load(['author:id,name', 'category', 'tags', 'media']),
             'canRegister' => true,
         ]);
     }
@@ -45,7 +50,7 @@ class PostController extends Controller
     public function edit(Post $post): Response
     {
         return inertia('dashboard/posts/edit', [
-            'post' => $post->load(['category', 'tags']),
+            'post' => $post->load(['category', 'tags', 'media']),
             ...$this->formOptions(),
         ]);
     }
@@ -57,16 +62,26 @@ class PostController extends Controller
     {
         $validated = $request->validated();
         $tagIds = $validated['tag_ids'] ?? [];
-        unset($validated['tag_ids']);
+        unset($validated['tag_ids'], $validated['featured_image_upload']);
+        $uploadedMedia = null;
 
-        $post = Post::create([
-            ...$validated,
-            'created_by' => Auth::id(),
-        ]);
+        try {
+            DB::transaction(function () use ($request, $validated, $tagIds, &$uploadedMedia): void {
+                $post = Post::create([
+                    ...$validated,
+                    'created_by' => Auth::id(),
+                ]);
+                $post->tags()->sync($tagIds);
+                if ($request->hasFile('featured_image_upload')) {
+                    $uploadedMedia = $this->storeFeaturedImage($post, $request->file('featured_image_upload'));
+                }
+            });
+        } catch (Throwable $exception) {
+            $uploadedMedia?->delete();
+            throw $exception;
+        }
 
-        $post->tags()->sync($tagIds);
-
-        return redirect()->route('dashboard.posts.create')
+        return redirect()->route('posts.create')
             ->with('success', 'Post successfully created.');
     }
 
@@ -77,10 +92,30 @@ class PostController extends Controller
     {
         $validated = $request->validated();
         $tagIds = $validated['tag_ids'] ?? [];
-        unset($validated['tag_ids']);
+        unset($validated['tag_ids'], $validated['featured_image_upload'], $validated['remove_featured_image']);
+        $replaceImage = $request->hasFile('featured_image_upload');
+        $removeImage = $request->boolean('remove_featured_image');
+        $previousMedia = ($replaceImage || $removeImage) ? $post->getFirstMedia('featured-image') : null;
+        $uploadedMedia = null;
 
-        $post->update($validated);
-        $post->tags()->sync($tagIds);
+        if ($replaceImage || $removeImage) {
+            $validated['featured_image'] = null;
+        }
+
+        try {
+            DB::transaction(function () use ($request, $post, $validated, $tagIds, $replaceImage, &$uploadedMedia): void {
+                $post->update($validated);
+                $post->tags()->sync($tagIds);
+                if ($replaceImage) {
+                    $uploadedMedia = $this->storeFeaturedImage($post, $request->file('featured_image_upload'));
+                }
+            });
+        } catch (Throwable $exception) {
+            $uploadedMedia?->delete();
+            throw $exception;
+        }
+
+        $previousMedia?->delete();
 
         return back()->with('success', 'Post successfully updated.');
     }
@@ -109,9 +144,16 @@ class PostController extends Controller
     {
         return inertia('dashboard/posts/index', [
             'posts' => Post::query()
-                ->with(['author:id,name', 'category', 'tags'])
+                ->with(['author:id,name', 'category', 'tags', 'media'])
                 ->latest()
                 ->paginate(15),
         ]);
+    }
+
+    private function storeFeaturedImage(Post $post, UploadedFile $file): Media
+    {
+        return $post->addMedia($file)
+            ->usingFileName(Str::uuid().'.'.$file->extension())
+            ->toMediaCollection('featured-image', 'public');
     }
 }

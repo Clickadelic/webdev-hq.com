@@ -32,7 +32,7 @@ class StorePostRequest extends FormRequest
             'slug' => ['required', 'string', 'max:255', 'unique:posts,slug'],
             'description' => ['nullable', 'string'],
             'content' => ['required', 'string'],
-            'featured_image' => ['nullable', 'string', 'max:2048'],
+            'featured_image_upload' => ['nullable', 'image', 'mimes:jpeg,png,webp', 'extensions:jpg,jpeg,png,webp', 'max:5120'],
             'category_id' => ['nullable', 'uuid', 'exists:categories,id'],
             'status' => ['required', new Enum(Status::class)],
             'published_at' => ['nullable', 'date'],

@@ -1,5 +1,5 @@
 import { useForm } from '@inertiajs/react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -33,12 +33,13 @@ interface PostFormProps {
 }
 
 export default function PostForm({ post, categories = [], tags = [], className }: PostFormProps) {
+    const imageInput = useRef<HTMLInputElement>(null);
     // Inertia's useForm Hook
     const {
         data,
         setData,
         post: sendPost,
-        put,
+        transform,
         processing,
         errors,
         reset,
@@ -48,7 +49,8 @@ export default function PostForm({ post, categories = [], tags = [], className }
         slug: post?.slug ?? '',
         description: post?.description ?? '',
         content: post?.content ?? '',
-        featured_image: post?.featured_image ?? '',
+        featured_image_upload: null as File | null,
+        remove_featured_image: false,
         category_id: post?.category_id ?? '',
         status: (post?.status ?? 'draft') as Status,
         published_at: post?.published_at ? post.published_at.slice(0, 16) : '',
@@ -65,7 +67,8 @@ export default function PostForm({ post, categories = [], tags = [], className }
                 slug: post.slug,
                 description: post.description ?? '',
                 content: post.content,
-                featured_image: post.featured_image ?? '',
+                featured_image_upload: null,
+                remove_featured_image: false,
                 category_id: post.category_id ?? '',
                 status: post.status,
                 published_at: post.published_at ? post.published_at.slice(0, 16) : '',
@@ -100,18 +103,25 @@ export default function PostForm({ post, categories = [], tags = [], className }
         e.preventDefault();
 
         if (post) {
-            put(update.url(post.id), {
+            transform((formData) => ({ ...formData, _method: 'PUT' }));
+            sendPost(update.url(post.id), {
                 preserveScroll: true,
-                onSuccess: () => toast.success('Post updated!'),
+                onSuccess: () => {
+                    setData((previous) => ({ ...previous, featured_image_upload: null, remove_featured_image: false }));
+                    if (imageInput.current) imageInput.current.value = '';
+                    toast.success('Post updated!');
+                },
                 onError: () => toast.error('Post update failed!'),
             });
             return;
         }
 
+        transform((formData) => formData);
         sendPost(store.url(), {
             preserveScroll: true,
             onSuccess: () => {
                 reset();
+                if (imageInput.current) imageInput.current.value = '';
                 toast.success('Post created!');
             },
             onError: () => toast.error('Post creation failed!'),
@@ -229,9 +239,36 @@ export default function PostForm({ post, categories = [], tags = [], className }
             </Tabs>
 
             <div className="grid gap-2">
-                <Label htmlFor="featured_image">Featured Image URL</Label>
-                <Input id="featured_image" value={data.featured_image} placeholder="https://... /image.jpg" onChange={(e) => setData('featured_image', e.target.value)} />
-                {errors.featured_image && <p className="text-sm text-destructive">{errors.featured_image}</p>}
+                <Label htmlFor="featured_image_upload">Featured image</Label>
+                {post?.featured_image && !data.remove_featured_image && (
+                    <img src={post.featured_image} alt="Current featured image" className="max-h-40 w-auto rounded object-contain" />
+                )}
+                <Input
+                    ref={imageInput}
+                    id="featured_image_upload"
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.webp"
+                    onChange={(e) => setData((previous) => ({
+                        ...previous,
+                        featured_image_upload: e.target.files?.[0] ?? null,
+                        remove_featured_image: false,
+                    }))}
+                />
+                <p className="text-sm text-muted-foreground">JPEG, PNG or WebP, up to 5 MB.</p>
+                {post?.featured_image && (
+                    <Button type="button" variant="outline" className="w-fit" onClick={() => {
+                        setData((previous) => ({
+                            ...previous,
+                            featured_image_upload: null,
+                            remove_featured_image: !previous.remove_featured_image,
+                        }));
+                        if (imageInput.current) imageInput.current.value = '';
+                    }}>
+                        {data.remove_featured_image ? 'Keep current image' : 'Remove current image'}
+                    </Button>
+                )}
+                {errors.featured_image_upload && <p className="text-sm text-destructive">{errors.featured_image_upload}</p>}
+                {errors.remove_featured_image && <p className="text-sm text-destructive">{errors.remove_featured_image}</p>}
             </div>
 
             {/* Description / Excerpt */}

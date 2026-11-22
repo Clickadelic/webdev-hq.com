@@ -12,6 +12,7 @@ import {
     CircleCheckBig,
     DoorOpen,
     House,
+	// Send,
     LayoutDashboard,
     Link as LinkIcon,
     Pen as PenIcon,
@@ -27,6 +28,7 @@ const navigationItems = [
     { href: '/hyperlinks', label: 'Hyperlinks', icon: LinkIcon },
     { href: '/posts', label: 'Posts', icon: PenIcon },
     { href: '/chrome-extensions', label: 'Chrome Extensions', icon: Blocks },
+    // { href: '/contact', label: 'Contact', icon: Send },
 ];
 
 /**
